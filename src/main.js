@@ -5,7 +5,7 @@ import { loginTemplate} from './lib/index.js';
 // Import the functions you need from the SDKs you need
  // Import the functions you need from the SDKs you need
  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
- import { getAuth, FacebookAuthProvider, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+ import { getAuth, FacebookAuthProvider,createUserWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
  // TODO: Add SDKs for Firebase products that you want to use
  // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -37,18 +37,29 @@ btnLogout.addEventListener('click',()=>{
     })
 })
 
-/* btnLogin.addEventListener('click', loginEmail); */
+btnLogin.addEventListener('click', loginEmail);
 
-/* function loginEmail() {
+function loginEmail() {
     const email = document.getElementById("inputUser").value;
     const password = document.getElementById("inputPassword").value;
-    auth.
-        createUserWithEmailAndPassword(email, password)
-        .then(userCredential => {
-            console.log("siiii");
-        });
+    const auth = getAuth();
+createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in
+    const user = userCredential.user;
+    console.log("siii entre");
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
 
-} */
+}
+
+
+
 
 let loginGmail = document.getElementById("loginGmail");
 
