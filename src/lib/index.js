@@ -1,5 +1,5 @@
-
 export const loginTemplate = () => {
+
   return `<div class="containerInputs">
   <img class="logoLogin" src="./images/logoNetcoins.png" alt="">
   <h1 >Netcoins</h1>

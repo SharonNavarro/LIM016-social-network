@@ -1,5 +1,6 @@
 // Este es el punto de entrada de tu aplicacion
 
+
 import { loginTemplate, RegistrarseTemplate } from './lib/index.js';
 
 
@@ -8,6 +9,7 @@ import { getAuth, onAuthStateChanged, FacebookAuthProvider, signInWithEmailAndPa
 import { collection, query, where, getDocs, getFirestore } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 // Your web app's Firebase configuration
 const firebaseConfig = {
+
     apiKey: "AIzaSyDLn-gLtWbPB0uo4YeVleQHoU--dUGFIjA",
     authDomain: "social-network-netcoins.firebaseapp.com",
     databaseURL: "https://social-network-netcoins-default-rtdb.firebaseio.com",
@@ -15,11 +17,13 @@ const firebaseConfig = {
     storageBucket: "social-network-netcoins.appspot.com",
     messagingSenderId: "359714878827",
     appId: "1:359714878827:web:1856985dbf41196a7b882e"
+
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-//const auth = getAuth();
+
+const auth = getAuth();
 
 
 
@@ -27,11 +31,13 @@ const login = document.getElementById('login');
 login.innerHTML = loginTemplate();
 /* const btnLogout = document.getElementById("btnLogout");
 
+
 btnLogout.addEventListener('click', () => {
     auth.signOut().then(() => {
         console.log("saliste");
     })
 }) */
+
 
 btnLogin.addEventListener('click', loginEmail);
 
@@ -58,6 +64,7 @@ function loginEmail() {
 
 let loginGmail = document.getElementById("loginGmail");
 const loginGoogle = () => {
+
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
     signInWithRedirect(auth, provider);
@@ -81,6 +88,7 @@ loginGmail.addEventListener("click", loginGoogle, false)
 
 let loginFacebook = document.getElementById("loginFacebook");
 const loginAppFacebook = () => {
+
     const auth = getAuth();
     const provider = new FacebookAuthProvider();
     signInWithRedirect(auth, provider);
