@@ -1,28 +1,27 @@
 // Este es el punto de entrada de tu aplicacion
-
+ 
 import { loginTemplate} from './lib/index.js';
 // Import the functions you need from the SDKs you need
 // Import the functions you need from the SDKs you need
- // Import the functions you need from the SDKs you need
- import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
- import { getAuth, FacebookAuthProvider, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
- // TODO: Add SDKs for Firebase products that you want to use
- // https://firebase.google.com/docs/web/setup#available-libraries
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"; import { getAuth, FacebookAuthProvider, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
- // Your web app's Firebase configuration
- const firebaseConfig = {
+// Your web app's Firebase configuration
+const firebaseConfig = {
   apiKey: "AIzaSyDLn-gLtWbPB0uo4YeVleQHoU--dUGFIjA",
   authDomain: "social-network-netcoins.firebaseapp.com",
   databaseURL: "https://social-network-netcoins-default-rtdb.firebaseio.com",
-   projectId: "social-network-netcoins",
-   storageBucket: "social-network-netcoins.appspot.com",
-   messagingSenderId: "359714878827",
-   appId: "1:359714878827:web:1856985dbf41196a7b882e"
- };
+  projectId: "social-network-netcoins",
+  storageBucket: "social-network-netcoins.appspot.com",
+  messagingSenderId: "359714878827",
+  appId: "1:359714878827:web:1856985dbf41196a7b882e"
+};
 
- // Initialize Firebase
- const app = initializeApp(firebaseConfig);
- const auth= getAuth();
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth= getAuth();
 
 // aqui exportaras las funciones que necesites
 const login = document.getElementById('login');
@@ -32,10 +31,10 @@ login.innerHTML = loginTemplate();
 const btnLogout = document.getElementById("btnLogout");
 
 btnLogout.addEventListener('click',()=>{
-    auth.signOut().then(()=>{
-        console.log("saliste");
-    })
-})
+  auth.signOut().then(()=>{
+    console.log("saliste");
+  });
+});
 
 /* btnLogin.addEventListener('click', loginEmail); */
 
@@ -73,11 +72,11 @@ const loginGoogle = () => {
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
       // ...
-  });
-}
+    });
+};
 loginGmail.addEventListener("click", loginGoogle, false)
 
-/*------AUTH WITH FACEBOOK------*/
+/*------ AUTH WITH FACEBOOK ------*/
 let loginFacebook = document.getElementById("loginFacebook");
 
 const loginAppFacebook = () => {
@@ -85,21 +84,21 @@ const loginAppFacebook = () => {
   const provider = new FacebookAuthProvider();
   signInWithRedirect(auth, provider);
   getRedirectResult(auth)
-  .then((result) => {
+    .then((result) => {
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-    const credential = FacebookAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
 
-    const user = result.user;
-  }).catch((error) => {
+      const user = result.user;
+    }).catch((error) => {
     // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.email;
-    // AuthCredential type that was used.
-    const credential = FacebookAuthProvider.credentialFromError(error);
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // AuthCredential type that was used.
+      const credential = FacebookAuthProvider.credentialFromError(error);
     // ...
-  });
-}
-loginFacebook.addEventListener("click", loginAppFacebook, false)
+    });
+};
+loginFacebook.addEventListener("click", loginAppFacebook, false);
