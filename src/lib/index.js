@@ -1,5 +1,5 @@
 export const loginTemplate = () => {
-return `<div class="containerInputs">
+  return `<div class="containerInputs ">
 <img class="logoLogin" src="./images/logoNetcoins.png" alt="">
 <h1 >Netcoins</h1>
 <input class="inputUser" id="inputUser"type="text" placeholder="Usuario">
@@ -17,4 +17,4 @@ return `<div class="containerInputs">
 <button class="btn third" id= "btnLogout">LogIn</button>
 </div>
 </div>`;
-}
+};

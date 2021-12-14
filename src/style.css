@@ -170,12 +170,14 @@ margin-top: 20px;
   @media screen and (min-width: 540px) { 
     .containerLogin  .sectionLogin .login {
     
-      background-image:url(/images/bigcoins.png);
+      background-image:url(/images/bgNetcoins.jpg);
       background-color:rgb(255, 255, 255) ;
       background-repeat: no-repeat;
-      background-attachment: fixed;
       background-size: cover;
       height: 100%;
+      border-radius: 0px;
+      background-position: center center;
+
 
     }
  .containerInputs{
