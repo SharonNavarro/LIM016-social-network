@@ -6,6 +6,8 @@
      
     }
 /*     --------------------------------SECTION LOGIN------------------------------------------ */
+
+
 .logoLogin{
 display: block;
 margin: auto;
@@ -28,6 +30,11 @@ background-position: center;
 background-size: cover;
 display: none;
 }
+
+@media (min-width: 1024px) {
+
+
+ }
 .containerLogin{
     width: 100%;
     display: flex;

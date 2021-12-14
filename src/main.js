@@ -11,9 +11,9 @@ import { loginTemplate} from './lib/index.js';
 
  // Your web app's Firebase configuration
  const firebaseConfig = {
-   apiKey: "AIzaSyDLn-gLtWbPB0uo4YeVleQHoU--dUGFIjA",
-   authDomain: "social-network-netcoins.firebaseapp.com",
-   databaseURL: "https://social-network-netcoins-default-rtdb.firebaseio.com",
+  apiKey: "AIzaSyDLn-gLtWbPB0uo4YeVleQHoU--dUGFIjA",
+  authDomain: "social-network-netcoins.firebaseapp.com",
+  databaseURL: "https://social-network-netcoins-default-rtdb.firebaseio.com",
    projectId: "social-network-netcoins",
    storageBucket: "social-network-netcoins.appspot.com",
    messagingSenderId: "359714878827",
