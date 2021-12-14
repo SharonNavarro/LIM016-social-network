@@ -163,9 +163,9 @@ const setupPosts = data => {
 
 
 //listar datos para usuarios autenticados
-const auth = getAuth();
-auth.onAuthStateChanged(user => {
 
+auth.onAuthStateChanged(user => {
+    const auth = getAuth();
     if (user) {
         const db = getFirestore();
          // fs.collection('posts')
