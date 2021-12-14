@@ -1,5 +1,5 @@
 
-export const loginTemplate = () => {
+export const loginTemplate = () => { 
   return `<div class="containerInputs">
   <img class="logoLogin" src="./images/logoNetcoins.png" alt="">
   <h1 >Netcoins</h1>
@@ -10,7 +10,6 @@ export const loginTemplate = () => {
   <div class="loginIcons">    
    <a id="loginFacebook"><img  src="./images/logo-facebook.png" alt=""></a> 
     <a id="loginGmail"><img  src="./images/logo-gmail.png" id="authGoogle" alt=""></a>
-     <a id="loginTwitter"><img  src="./images/icono-twitter.png" alt=""></a>
      </div>
      <div class="groupLbl">  
      <label class="lblCuenta" for="">¿No tienes una cuenta?</label>
