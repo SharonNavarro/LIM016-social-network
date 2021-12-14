@@ -1,5 +1,5 @@
-
 export const loginTemplate = () => {
+
   return `<div class="containerInputs">
   <img class="logoLogin" src="./images/logoNetcoins.png" alt="">
   <h1 >Netcoins</h1>
@@ -41,3 +41,4 @@ export const RegistrarseTemplate = () => {
   </div>
   </div>`;
 }
+

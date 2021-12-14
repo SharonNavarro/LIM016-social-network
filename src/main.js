@@ -1,16 +1,19 @@
 // Este es el punto de entrada de tu aplicacion
 
+
 import { loginTemplate, RegistrarseTemplate } from './lib/index.js';
 // Import the functions you need from the SDKs you need
 // Import the functions you need from the SDKs you need
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getAuth, FacebookAuthProvider,signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
+
     apiKey: "AIzaSyDLn-gLtWbPB0uo4YeVleQHoU--dUGFIjA",
     authDomain: "social-network-netcoins.firebaseapp.com",
     databaseURL: "https://social-network-netcoins-default-rtdb.firebaseio.com",
@@ -18,22 +21,27 @@ const firebaseConfig = {
     storageBucket: "social-network-netcoins.appspot.com",
     messagingSenderId: "359714878827",
     appId: "1:359714878827:web:1856985dbf41196a7b882e"
+
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
 const auth = getAuth();
+
 
 
 const login = document.getElementById('login');
 login.innerHTML = loginTemplate();
 const btnLogout = document.getElementById("btnLogout");
 
+
 btnLogout.addEventListener('click', () => {
     auth.signOut().then(() => {
         console.log("saliste");
     })
 })
+
 
 btnLogin.addEventListener('click', loginEmail);
 
@@ -59,6 +67,7 @@ function loginEmail() {
 
 /* let loginGmail = document.getElementById("loginGmail");
 const loginGoogle = () => {
+
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
     signInWithRedirect(auth, provider);
@@ -79,8 +88,10 @@ loginGmail.addEventListener("click", loginGoogle, false) */
 
 /*------LOGIN WITH FACEBOOK------*/
 
+
 /* let loginFacebook = document.getElementById("loginFacebook");
 const loginAppFacebook = () => {
+
     const auth = getAuth();
     const provider = new FacebookAuthProvider();
     signInWithRedirect(auth, provider);
@@ -129,3 +140,4 @@ function registerEmail() {
                 const errorMessage = error.message;
             });
 }
+
