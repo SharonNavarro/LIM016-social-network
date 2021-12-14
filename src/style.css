@@ -107,9 +107,10 @@ margin-top: 20px;
   color: #006fe6; 
   margin: 5px;
 }
-.lblRegistrate{
+.linkRegistrate{
   color: #006fe695; 
   margin: 5px;
+  cursor: pointer;
 }
 .groupLbl{
   display: flex;
