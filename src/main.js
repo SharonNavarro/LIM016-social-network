@@ -1,14 +1,11 @@
 // Este es el punto de entrada de tu aplicacion
 
 import { loginTemplate, RegistrarseTemplate } from './lib/index.js';
-// Import the functions you need from the SDKs you need
-// Import the functions you need from the SDKs you need
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { getAuth, FacebookAuthProvider,signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getAuth, onAuthStateChanged, FacebookAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+import { collection, query, where, getDocs, getFirestore } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyDLn-gLtWbPB0uo4YeVleQHoU--dUGFIjA",
@@ -22,7 +19,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+//const auth = getAuth();
+
 
 
 const login = document.getElementById('login');
@@ -38,15 +36,16 @@ btnLogout.addEventListener('click', () => {
 btnLogin.addEventListener('click', loginEmail);
 
 function loginEmail() {
-    const email = document.getElementById("inputUser").value;
-    const password = document.getElementById("inputPassword").value;
+    let email = document.getElementById("inputUser").value;
+    let password = document.getElementById("inputPassword").value;
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
             console.log("siii valido");
-            email.innerHTML="";
-            password.innerHTML="";           
+            document.getElementById("inputUser").value = "";
+            document.getElementById("inputPassword").value = "";
+
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -57,7 +56,7 @@ function loginEmail() {
 
 /*------LOGIN WITH GMAIL------*/
 
-/* let loginGmail = document.getElementById("loginGmail");
+let loginGmail = document.getElementById("loginGmail");
 const loginGoogle = () => {
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
@@ -67,6 +66,7 @@ const loginGoogle = () => {
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
             const user = result.user;
+            console.log("google entro");
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -75,11 +75,11 @@ const loginGoogle = () => {
           
         });
 }
-loginGmail.addEventListener("click", loginGoogle, false) */
+loginGmail.addEventListener("click", loginGoogle, false)
 
 /*------LOGIN WITH FACEBOOK------*/
 
-/* let loginFacebook = document.getElementById("loginFacebook");
+let loginFacebook = document.getElementById("loginFacebook");
 const loginAppFacebook = () => {
     const auth = getAuth();
     const provider = new FacebookAuthProvider();
@@ -98,7 +98,7 @@ const loginAppFacebook = () => {
             console.log(errorCode, errorMessage, email);
         });
 }
-loginFacebook.addEventListener("click", loginAppFacebook, false) */
+loginFacebook.addEventListener("click", loginAppFacebook, false)
 
 const register = document.getElementById('linkRegistrate');
 const sectionLogin = document.getElementById('sectionLogin');
@@ -113,19 +113,73 @@ function registerUser() {
 }
 
 function registerEmail() {
- 
-        const email = document.getElementById("inputUserRegister").value;
-        const password = document.getElementById("inputPasswordRegister").value;
-        const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                console.log("siii entre");
-                email.reset();
-                password.reset();           
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-            });
+
+    const email = document.getElementById("inputUserRegister").value;
+    const password = document.getElementById("inputPasswordRegister").value;
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            console.log("siii entre");
+            document.getElementById("inputUser").value = "";
+            document.getElementById("inputPassword").value = "";
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+        });
 }
+//-------------------SECTION POSTS------------------------
+const sectionPosts = document.getElementById("sectionPosts");
+const posts = document.getElementById("posts")
+const setupPosts = data => {
+    if (data.length) {
+        let html = '';
+        data.forEach(doc => {
+            const post = doc.data();
+            console.log(post);
+            const li = `
+    <li class="list-group-item">
+    <h3>${doc.titulo}</h3>
+    <p>${doc.descripcion}</p>
+    </li>
+
+    `;
+            html += li;
+        });
+        posts.innerHTML = html;
+    } else {
+        posts.innerHTML = " <p>logueate para ver las publicaciones</p> "
+    }
+}
+
+
+//listar datos para usuarios autenticados
+const auth = getAuth();
+auth.onAuthStateChanged(user => {
+
+    if (user) {
+        const db = getFirestore();
+         // fs.collection('posts')
+          //  .get()
+           // .then((snapshot)=>{
+                //console.log(snapshot.docs);
+               // setupPosts(snapshot.docs)
+           // }) 
+
+        const q = query(collection(db, "posts"));
+        getDocs(q)
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.id, " => ", doc.data());
+                });
+            })
+
+
+    } else {
+        console.log("usuario no lgueado");
+    }
+
+})
+
+//aqui empiezo de nuevo vamossss si se puede!!!!
