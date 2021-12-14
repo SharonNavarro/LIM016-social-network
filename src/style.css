@@ -5,6 +5,9 @@
     padding:0 ;   
      
     }
+    #btnRegister{
+      width: 120px;
+    }
 /*     --------------------------------SECTION LOGIN------------------------------------------ */
 .logoLogin{
 display: block;

@@ -25,13 +25,13 @@ const app = initializeApp(firebaseConfig);
 
 const login = document.getElementById('login');
 login.innerHTML = loginTemplate();
-const btnLogout = document.getElementById("btnLogout");
+/* const btnLogout = document.getElementById("btnLogout");
 
 btnLogout.addEventListener('click', () => {
     auth.signOut().then(() => {
         console.log("saliste");
     })
-})
+}) */
 
 btnLogin.addEventListener('click', loginEmail);
 
