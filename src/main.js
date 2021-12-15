@@ -79,7 +79,7 @@ const loginGoogle = () => {
             const errorMessage = error.message;
             const email = error.email;
             const credential = GoogleAuthProvider.credentialFromError(error);
-          
+
         });
 }
 loginGmail.addEventListener("click", loginGoogle, false)
@@ -168,13 +168,6 @@ auth.onAuthStateChanged(user => {
     const auth = getAuth();
     if (user) {
         const db = getFirestore();
-         // fs.collection('posts')
-          //  .get()
-           // .then((snapshot)=>{
-                //console.log(snapshot.docs);
-               // setupPosts(snapshot.docs)
-           // }) 
-
         const q = query(collection(db, "posts"));
         getDocs(q)
             .then((querySnapshot) => {
@@ -182,8 +175,6 @@ auth.onAuthStateChanged(user => {
                     console.log(doc.id, " => ", doc.data());
                 });
             })
-
-
     } else {
         console.log("usuario no lgueado");
     }
