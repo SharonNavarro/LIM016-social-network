@@ -44,3 +44,82 @@ export const registrarseTemplate = () => {
 <a id="loginFacebook"><img  src="./images/logo-facebook.png" alt=""></a> 
 <a id="loginGmail"><img  src="./images/logo-gmail.png" id="authGoogle" alt=""></a>
  <a id="loginTwitter"><img  src="./images/icono-twitter.png" alt=""></a> */
+
+ export const generalTemplate = () => {
+   return `
+   <div class="containerGeneral" id="containerGeneral"> 
+
+   <header>
+     <div class="menu">
+       <ul>
+         <input type="checkbox" id="btn-menu" />
+         <label for="btn-menu">
+           <img src="https://image.flaticon.com/icons/png/128/1215/1215141.png" alt="" />
+         </label>
+         <li>
+           <a id="account"><img src="" id="iconAccount" alt="">Account</a>
+         </li>
+         <li>
+           <a id="friends"><img src="" id="iconFriends" alt="">Friends</a>
+         </li>
+         <li>
+           <a id="messages"><img src="" id="iconMessages" alt="">Messages</a>
+         </li>
+         <li>
+           <a id="netChange"><img src="" id="iconNetChange" alt="">NetChange</a>
+         </li>
+       </ul>
+     </div>
+
+     <div class="textNetcoin">
+       <h1>Netcoins</h1>
+     </div>
+
+     <img class="logoLogin" src="./images/logoNetcoins.png" alt="">
+   </header>
+
+   <div class="containerMenuIcons">
+     <div class="containerIconHome">
+       <a id="home"><img src="" id="iconHome" alt=""></a>
+     </div>
+     <div class="containerIconFavorite">
+       <a id="favorite"><img src="" id="iconFavorite" alt=""></a>
+     </div>
+     <div class="containerIconNotifications">
+       <a id="notifications"><img src="" id="iconNotifications" alt=""></a>
+     </div>
+   </div>
+   
+   <main>
+   </main>
+
+ </div>
+   `
+ }
+
+ export const homeTemplate = () => {
+  return `
+  <section id="containerHome">
+  <div class="netHistories">
+    <div class="containerNetHistories">
+      <!--Generar dinamicamente las histories
+      -->
+    </div>
+  </div>
+
+  <div class="publicPost">
+    <div class="containerPublicPost">
+       <!--Generar dinamicamente la seccion para publicar un estado-->
+    </div>
+  </div>
+
+  <div class="posts">
+    <div class="containerPosts">
+      <!--Generar dinamicamente los posts-->
+   </div>
+  </div>
+</section>
+  `
+ }
+
+ 

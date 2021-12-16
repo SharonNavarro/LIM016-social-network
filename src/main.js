@@ -99,7 +99,6 @@ const loginGoogle = () => {
             const token = credential.accessToken;
             const user = result.user;
             console.log("google entro");
-
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
