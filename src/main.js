@@ -33,7 +33,35 @@ btnLogout.addEventListener('click', () => {
     auth.signOut().then(() => {
         console.log("saliste");
     })
-}) 
+})
+redirect();
+
+function redirect() {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+
+            // The user object has basic properties such as display name, email, etc.
+            const displayName = user.displayName;
+
+            const email = user.email;
+            const photoURL = user.photoURL;
+            const emailVerified = user.emailVerified;
+
+            // The user's ID, unique to the Firebase project. Do NOT use
+            // this value to authenticate with your backend server, if
+            // you have one. Use User.getToken() instead.
+            const uid = user.uid;
+            console.log("🚀 ~ file: main.js ~ line 48 ~ redirect ", displayName, email, photoURL, emailVerified)
+            /*    window.location.replace("holaaa") */
+        } else {
+            console.log("inicia sesion");
+        }
+    });
+
+
+}
+
 
 
 btnLogin.addEventListener('click', loginEmail);
@@ -71,6 +99,7 @@ const loginGoogle = () => {
             const token = credential.accessToken;
             const user = result.user;
             console.log("google entro");
+
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -100,7 +129,7 @@ const loginAppFacebook = () => {
             const errorMessage = error.message;
             const email = error.email;
             const credential = FacebookAuthProvider.credentialFromError(error);
-            console.log(errorCode, errorMessage, email);
+            console.log("errorrr", errorCode, errorMessage, email);
         });
 }
 loginFacebook.addEventListener("click", loginAppFacebook, false)
@@ -182,12 +211,12 @@ const db = getFirestore();
 const sectionPosts = document.getElementById("sectionPosts");
 const posts = document.getElementById("posts")
 
-const setUpPosts =data => {
-    if (data.length){
+const setUpPosts = data => {
+    if (data.length) {
         let html = "";
         data.forEach(doc => {
             const post = doc.data();
-            const li =  `
+            const li = `
             <li class="list-group">
                 <h3>${post.titulo}</h3>
                 <p>${post.descripcion}</p>
@@ -195,13 +224,13 @@ const setUpPosts =data => {
             `;
             html += li;
         });
-        posts.innerHTML= html;
+        posts.innerHTML = html;
     } else {
-        posts.innerHTML= '<p class=""> Login to see Posts</p>'
+        posts.innerHTML = '<p class=""> Login to see Posts</p>'
     }
 }
 
-onAuthStateChanged(auth, (user) => {
+/* onAuthStateChanged(auth, (user) => {
     if (user) {
         const intento = (collection(db, "posts"));
         getDocs(intento)
@@ -213,7 +242,7 @@ onAuthStateChanged(auth, (user) => {
       } else {
         setUpPosts([]);
       }
-    });
-    
+    }); */
+
 
 
