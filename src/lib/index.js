@@ -10,12 +10,11 @@ export const loginTemplate = () => {
   <div class="loginIcons">    
    <a id="loginFacebook"><img  src="./images/logo-facebook.png" alt=""></a> 
     <a id="loginGmail"><img  src="./images/logo-gmail.png" id="authGoogle" alt=""></a>
-     <a id="loginTwitter"><img  src="./images/icono-twitter.png" alt=""></a>
      </div>
      <div class="groupLbl">  
      <label class="lblCuenta" for="">¿No tienes una cuenta?</label>
      <a class="linkRegistrate" id="linkRegistrate" for="">Registrate</a>
-    
+     <button class="btn third" id= "btnLogout">LogOut</button> 
      </div>
   
   </div>`;
@@ -23,7 +22,7 @@ export const loginTemplate = () => {
 
 {/* <button class="btn third" id= "btnLogout">LogIn</button> */}
 
-export const RegistrarseTemplate = () => {
+export const registrarseTemplate = () => {
   return `
   
   <div class="register" id=register>  

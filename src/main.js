@@ -1,7 +1,7 @@
 // Este es el punto de entrada de tu aplicacion
 
 
-import { loginTemplate, RegistrarseTemplate } from './lib/index.js';
+import { loginTemplate, registrarseTemplate } from './lib/index.js';
 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
@@ -22,21 +22,18 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth();
-
-
 
 const login = document.getElementById('login');
 login.innerHTML = loginTemplate();
-/* const btnLogout = document.getElementById("btnLogout");
 
 
+const btnLogout = document.getElementById("btnLogout");
 btnLogout.addEventListener('click', () => {
     auth.signOut().then(() => {
         console.log("saliste");
     })
-}) */
+}) 
 
 
 btnLogin.addEventListener('click', loginEmail);
@@ -79,7 +76,7 @@ const loginGoogle = () => {
             const errorMessage = error.message;
             const email = error.email;
             const credential = GoogleAuthProvider.credentialFromError(error);
-
+            console.log("nop");
         });
 }
 loginGmail.addEventListener("click", loginGoogle, false)
@@ -115,7 +112,7 @@ register.addEventListener('click', registerUser);
 
 function registerUser() {
     login.style.display = "none";
-    sectionLogin.innerHTML = RegistrarseTemplate();
+    sectionLogin.innerHTML = registrarseTemplate();
     const btnRegister = document.getElementById('btnRegister');
     btnRegister.addEventListener('click', registerEmail);
 }
@@ -138,7 +135,7 @@ function registerEmail() {
         });
 }
 //-------------------SECTION POSTS------------------------
-const sectionPosts = document.getElementById("sectionPosts");
+/*const sectionPosts = document.getElementById("sectionPosts");
 const posts = document.getElementById("posts")
 const setupPosts = data => {
     if (data.length) {
@@ -159,12 +156,12 @@ const setupPosts = data => {
     } else {
         posts.innerHTML = " <p>logueate para ver las publicaciones</p> "
     }
-}
+}*/
 
 
 //listar datos para usuarios autenticados
 
-auth.onAuthStateChanged(user => {
+/*.onAuthStateChanged(user => {
     const auth = getAuth();
     if (user) {
         const db = getFirestore();
@@ -179,6 +176,44 @@ auth.onAuthStateChanged(user => {
         console.log("usuario no lgueado");
     }
 
-})
+})*/
 
-//aqui empiezo de nuevo vamossss si se puede!!!!
+const db = getFirestore();
+const sectionPosts = document.getElementById("sectionPosts");
+const posts = document.getElementById("posts")
+
+const setUpPosts =data => {
+    if (data.length){
+        let html = "";
+        data.forEach(doc => {
+            const post = doc.data();
+            const li =  `
+            <li class="list-group">
+                <h3>${post.titulo}</h3>
+                <p>${post.descripcion}</p>
+            </li>
+            `;
+            html += li;
+        });
+        posts.innerHTML= html;
+    } else {
+        posts.innerHTML= '<p class=""> Login to see Posts</p>'
+    }
+}
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        const intento = (collection(db, "posts"));
+        getDocs(intento)
+        .then((snapshot) => {
+            snapshot.forEach((doc) => {
+                console.log(doc.id, " => ", doc.data());
+            });
+      })
+      } else {
+        setUpPosts([]);
+      }
+    });
+    
+
+
