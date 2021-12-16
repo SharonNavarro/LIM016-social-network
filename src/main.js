@@ -73,6 +73,7 @@ const loginGoogle = () => {
             const token = credential.accessToken;
             const user = result.user;
             console.log("google entro");
+            window.location.replace("hola")
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
