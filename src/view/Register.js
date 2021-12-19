@@ -27,7 +27,7 @@ export default () => {
   </div>
 </div>`;
 
-    const divElemt = document.createElement('div');
+    const divElemt = document.createElement('section');
     divElemt.classList.add('classViewRegister')
     divElemt.innerHTML = viewRegister;
 
