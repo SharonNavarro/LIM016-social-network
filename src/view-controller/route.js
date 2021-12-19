@@ -7,15 +7,23 @@ export const changeTmp = (hash) => {
     const containerHeader = document.getElementById('containerHeader');
 
    //console.log("aquiiiiiiiii",header2);
-   
+
 
     switch (hash) {
         case '':
         case '#':
         case '#/':
-            sectionMain.innerHTML="";   
-            containerHeader.innerHTML="";        
-            { return sectionMain.appendChild(components.Login()); }
+                  sectionMain.innerHTML="";
+                  containerHeader.innerHTML="";
+                  sectionMain.appendChild(components.Login())
+        break;
+        
+        case '#/Register':
+                  sectionMain.innerHTML="";
+                  containerHeader.innerHTML="";
+                  sectionMain.appendChild(components.Register())                
+        break;
+
         case '#/Account':
         case '#/Friends':
         case '#/Messages':
@@ -23,9 +31,7 @@ export const changeTmp = (hash) => {
         case '#/Favorite':
         case '#/Notifications':
         case '#/Home':
-        case '#/Register':
-            {        
-               
+                         
                 sectionMain.innerHTML="";
                 containerHeader.innerHTML= `
  
@@ -53,12 +59,10 @@ export const changeTmp = (hash) => {
                       <li><a href="#/Notifications"><img src="" id="iconNotifications" alt="">Notifications</a> </li>         
                     </ul>
                   </nav>
-              </div> 
-              
-                
-                `;
-                return    sectionMain.appendChild(components[id]());
-            }
+              </div>           
+              `;
+                sectionMain.appendChild(components[id]());
+            break;
         default:
             return sectionMain.appendChild(components.Different())
     }

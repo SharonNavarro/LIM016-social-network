@@ -3,7 +3,7 @@ export default () => {
   template`;
 
     const divElemt = document.createElement('div');
-    divElemt.classList.add('position')
+    divElemt.classList.add('classViewNotifications')
     divElemt.innerHTML = viewNotifications;
     return divElemt;
 };

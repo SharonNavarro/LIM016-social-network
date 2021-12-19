@@ -1,3 +1,7 @@
+import{ signUp } from "./auth.js"
+
+
+
 export default () => {
     const viewRegister = `
     <div class="containerLogin">
@@ -24,7 +28,29 @@ export default () => {
 </div>`;
 
     const divElemt = document.createElement('div');
-    divElemt.classList.add('position')
+    divElemt.classList.add('classViewRegister')
     divElemt.innerHTML = viewRegister;
+
+    const email= divElemt.querySelector("#inputUserRegister").value;
+    const password= divElemt.querySelector("#inputPasswordRegister").value;
+
+    const btnRegister= divElemt.querySelector("#btnRegister")
+    btnRegister.addEventListener("click",()=>{    
+      signUp(email,password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        document.getElementById("inputUser").value = "";
+        document.getElementById("inputPassword").value = "";
+        window.location.hash('#/Home');
+        console.log("usuario registrado");
+       })
+       .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage)
+      });
+    });   
+      //login.style.display = "none";
+      //sectionLogin.innerHTML = registrarseTemplate();
     return divElemt;
 };
