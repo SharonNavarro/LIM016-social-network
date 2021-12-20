@@ -17,6 +17,7 @@ const firebaseConfig = {
 
 };
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
@@ -100,10 +101,10 @@ const loginAppFacebook = () => {
 }
 //loginFacebook.addEventListener("click", loginAppFacebook, false)
 
-/* const register = document.getElementById('linkRegistrate');
+ const register = document.getElementById('linkRegistrate');
 const sectionLogin = document.getElementById('sectionLogin');
- */
-//register.addEventListener('click', registerUser);
+
+register.addEventListener('click', registerUser);
 
 function registerUser() {
     login.style.display = "none";
@@ -170,4 +171,4 @@ const setUpPosts = data => {
 
 //--------------------------------------------------------------------------
 
-
+export { auth, getAuth, onAuthStateChanged, FacebookAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, getRedirectResult }

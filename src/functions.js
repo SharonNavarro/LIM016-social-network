@@ -1,6 +1,5 @@
 
-import { getAuth, onAuthStateChanged, FacebookAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-
+export { auth, getAuth, onAuthStateChanged, FacebookAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "./main.js" 
 export function login() {
     const btnLogin = document.getElementById('btnLogin');
 
@@ -8,7 +7,6 @@ export function login() {
     function loginEmail() {
         let email = document.getElementById("inputUser").value;
         let password = document.getElementById("inputPassword").value;
-        const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
@@ -20,6 +18,8 @@ export function login() {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                console.log(errorMessage)
+
             });
     }
 }
@@ -28,26 +28,26 @@ export function loginGoogle() {
     let loginGmail = document.getElementById("loginGmail");
     loginGmail.addEventListener("click", googleGmail)
     function googleGmail() {
-        const auth = getAuth();
         const provider = new GoogleAuthProvider();
         signInWithRedirect(auth, provider);
         getRedirectResult(auth)
-            .then(window.location.replace('#/Home'))
-            .then(redirect())
+            // .then(window.location.replace('#/Home'))
+            // .then(redirect())
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 const email = error.email;
                 const credential = GoogleAuthProvider.credentialFromError(error);
-                console.log("No se pudo iniciar sesion", error);
+                console.log("No se pudo iniciar sesion", errorMessage);
             });
     }
 }
-function redirect() {
 
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-        if (user) {           
+
+    /*
+        onAuthStateChanged(auth, (user) => {
+        if (user) {      
+            window.location.hash='#/Home';    
             const displayName = user.displayName;
             const email = user.email;
             const photoURL = user.photoURL;
@@ -59,9 +59,9 @@ function redirect() {
             console.log("Inicia sesion");
         }
     });
+*/
 
 
-}
 /* onAuthStateChanged(auth, (user) => {
 
     if (user) {

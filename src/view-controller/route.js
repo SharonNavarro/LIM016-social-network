@@ -16,6 +16,7 @@ export const changeTmp = (hash) => {
             sectionMain.innerHTML="";   
             containerHeader.innerHTML="";        
             { return sectionMain.appendChild(components.Login()); }
+          break
         case '#/Account':
         case '#/Friends':
         case '#/Messages':
