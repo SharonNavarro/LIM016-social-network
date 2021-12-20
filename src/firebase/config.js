@@ -6,7 +6,7 @@ import {
  signInWithEmailAndPassword, 
  createUserWithEmailAndPassword, 
  GoogleAuthProvider, 
- signInWithRedirect, 
+ signInWithPopup, 
  getRedirectResult,
  signOut,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
@@ -38,7 +38,7 @@ const auth = getAuth(app);
 const db= getFirestore(app);
 const user= auth.currentUser;
 const providerGoogle= new GoogleAuthProvider(app);
-const providerFacebook= new GoogleAuthProvider(app);
+const providerFacebook= new FacebookAuthProvider(app);
 
 // exportando firebase auth
 export { 
@@ -50,7 +50,7 @@ export {
     onAuthStateChanged,  
     signInWithEmailAndPassword, 
     createUserWithEmailAndPassword, 
-    signInWithRedirect, 
+    signInWithPopup, 
     getRedirectResult,
     signOut,
 };

@@ -1,4 +1,4 @@
-import{ signIn, signInFacebook, userState, signInGoogleRedirect, signInGoogleRedirectResult }from "../firebase/auth.js"
+import{ signIn, signInFacebook, userState, signInGoogle, signInGoogleRedirectResult }from "../firebase/auth.js"
 
 
 export default () => {
@@ -50,8 +50,7 @@ export default () => {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorCode, errorMessage)
-        
+                console.log(errorCode, errorMessage)        
             })
           });
           
@@ -59,12 +58,15 @@ export default () => {
       const loginGmaiL= divElemt.querySelector("#loginGmail");
       loginGmaiL.addEventListener("click", ()=>{
      
-        signInGoogleRedirect();
-        signInGoogleRedirectResult()
+        signInGoogle()
+        //signInGoogleRedirectResult()
         .then((user)=>{
             window.location.hash='#/Home';
             console.log("iniciaste sesion con google")
             console.log(user);
+            console.log(user.user.displayName);
+            console.log(user.user.email);
+            console.log(user.user.photoURL);
         }) 
         .catch((error) => {
             const errorCode = error.code;
@@ -79,9 +81,15 @@ export default () => {
       const loginFacebook= divElemt.querySelector("#loginFacebook");
       loginFacebook.addEventListener("click", ()=>{
         signInFacebook()
-        .then(()=>{
-            window.location.hash='#/Home';
-        }) 
+        .then((user)=>{
+          window.location.hash='#/Home';
+          console.log("iniciaste sesion con Facebook")
+          
+          console.log(user.user.displayName);
+          console.log(user.user.email);
+          console.log(user.user.photoURL);
+      }) 
+  
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;

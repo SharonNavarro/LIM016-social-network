@@ -5,7 +5,7 @@ import{
     onAuthStateChanged,  
     signInWithEmailAndPassword, 
     createUserWithEmailAndPassword, 
-    signInWithRedirect, 
+    signInWithPopup, 
     getRedirectResult,
     signOut,
 } from "./config.js"
@@ -15,11 +15,11 @@ import{
 
 export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
-export const signInGoogleRedirect = () => signInWithRedirect(auth, providerGoogle); 
+export const signInGoogle = () => signInWithPopup(auth, providerGoogle); 
 
 export const signInGoogleRedirectResult = () => getRedirectResult(auth);
 
-export const signInFacebook = () => signInWithRedirect(auth, providerFacebook); getRedirectResult(auth); 
+export const signInFacebook = () => signInWithPopup(auth, providerFacebook);  
 
 
 // registrarse
