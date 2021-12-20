@@ -6,9 +6,8 @@ import {
  signInWithEmailAndPassword, 
  createUserWithEmailAndPassword, 
  GoogleAuthProvider, 
- signInWithRedirect, 
- getRedirectResult,
  signOut,
+ signInWithPopup
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
 import { 
@@ -50,8 +49,7 @@ export {
     onAuthStateChanged,  
     signInWithEmailAndPassword, 
     createUserWithEmailAndPassword, 
-    signInWithRedirect, 
-    getRedirectResult,
+    signInWithPopup,
     signOut,
 };
 

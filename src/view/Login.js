@@ -1,4 +1,4 @@
-import{ signIn, signInFacebook, userState, signInGoogleRedirect, signInGoogleRedirectResult }from "../firebase/auth.js"
+import{ signIn, signInFacebook, userState, signInGoogle }from "../firebase/auth.js"
 
 
 export default () => {
@@ -59,8 +59,7 @@ export default () => {
       const loginGmaiL= divElemt.querySelector("#loginGmail");
       loginGmaiL.addEventListener("click", ()=>{
      
-        signInGoogleRedirect();
-        signInGoogleRedirectResult()
+        signInGoogle()
         .then((user)=>{
             window.location.hash='#/Home';
             console.log("iniciaste sesion con google")
