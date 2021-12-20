@@ -1,6 +1,5 @@
 import{ signIn, signInFacebook, userState, signInGoogle }from "../firebase/auth.js"
 
-
 export default () => {
     const viewLogin = `
     <div class="containerLogin">
@@ -50,8 +49,7 @@ export default () => {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorCode, errorMessage)
-        
+                console.log(errorCode, errorMessage)        
             })
           });
           
@@ -60,10 +58,14 @@ export default () => {
       loginGmaiL.addEventListener("click", ()=>{
      
         signInGoogle()
+        //signInGoogleRedirectResult()
         .then((user)=>{
             window.location.hash='#/Home';
             console.log("iniciaste sesion con google")
             console.log(user);
+            console.log(user.user.displayName);
+            console.log(user.user.email);
+            console.log(user.user.photoURL);
         }) 
         .catch((error) => {
             const errorCode = error.code;
@@ -78,9 +80,15 @@ export default () => {
       const loginFacebook= divElemt.querySelector("#loginFacebook");
       loginFacebook.addEventListener("click", ()=>{
         signInFacebook()
-        .then(()=>{
-            window.location.hash='#/Home';
-        }) 
+        .then((user)=>{
+          window.location.hash='#/Home';
+          console.log("iniciaste sesion con Facebook")
+          
+          console.log(user.user.displayName);
+          console.log(user.user.email);
+          console.log(user.user.photoURL);
+      }) 
+  
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
