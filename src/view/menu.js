@@ -1,6 +1,7 @@
- import{ signOutAccount }from "./auth "
+ import{ signOutAccount }from "../firebase/auth.js"
  export default () => { 
- const menu = `
+ const viewMenu = `
+  <div class= "containerMenu">
     <input type="checkbox" id="btn-menu" />
         <label for="btn-menu">
             <img src="https://image.flaticon.com/icons/png/128/1215/1215141.png" alt="" />
@@ -22,26 +23,28 @@
           <li><a href="#/Notifications"><img src="" id="iconNotifications" alt="">Notifications</a> </li>         
         </ul>
         </nav>
+        </div>
         </div>           
                `;
 
-      const divElemt = document.createElement('div');
+      const divElemt = document.createElement('section');
             divElemt.classList.add('classViewMenu')
-            divElemt.innerHTML = menu;
+            divElemt.innerHTML = viewMenu;
             
       const containerHeader = document.getElementById('containerHeader')
       const container = document.getElementById('container')
-      const btnLogout = menu.querySelector("#btnLogout");
+      const btnLogout =divElemt.querySelector("#btnLogout");
       
       btnLogout.addEventListener('click', () => {
           containerHeader.innerHTML = "";
           container.innerHTML = "";
-          auth.signOut().then(() => {
-          console.log("saliste");
-          window.location.replace('#/')          
+          signOutAccount()
+          .then(() => {
+          console.log("cerraste sesion");
+          window.location.hash='#/';        
           })
       })            
-    
+    return divElemt;
 }   
 
 

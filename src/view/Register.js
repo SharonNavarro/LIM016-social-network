@@ -1,11 +1,10 @@
-import{ signUp } from "./auth.js"
-
+import{ signUp } from "../firebase/auth.js"
+import{ auth } from "../firebase/config.js"
 
 
 export default () => {
     const viewRegister = `
-    <div class="containerLogin">
-
+<div class="containerLogin">
   <div class="sectionWelcome">
   </div>
 
@@ -31,12 +30,12 @@ export default () => {
     divElemt.classList.add('classViewRegister')
     divElemt.innerHTML = viewRegister;
 
-    const email= divElemt.querySelector("#inputUserRegister").value;
-    const password= divElemt.querySelector("#inputPasswordRegister").value;
+    const email= divElemt.querySelector("#inputUserRegister");
+    const password= divElemt.querySelector("#inputPasswordRegister");
 
     const btnRegister= divElemt.querySelector("#btnRegister")
     btnRegister.addEventListener("click",()=>{    
-      signUp(email,password)
+      signUp(email.value, password.value)
       .then((userCredential) => {
         const user = userCredential.user;
         document.getElementById("inputUser").value = "";

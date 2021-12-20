@@ -1,7 +1,5 @@
 import{
-    auth,   
-    user,
-    app,
+    auth,  
     providerFacebook,
     providerGoogle,
     onAuthStateChanged,  
@@ -17,14 +15,16 @@ import{
 
 export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
-export const signInGoogle = () => signInWithRedirect(auth, providerGoogle); getRedirectResult(auth);
+export const signInGoogleRedirect = () => signInWithRedirect(auth, providerGoogle); 
+
+export const signInGoogleRedirectResult = () => getRedirectResult(auth);
 
 export const signInFacebook = () => signInWithRedirect(auth, providerFacebook); getRedirectResult(auth); 
 
 
 // registrarse
 
-export const signUp = (email,password ) => createUserWithEmailAndPassword(auth, email, password);
+export const signUp = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
 
 // cerrar sesion

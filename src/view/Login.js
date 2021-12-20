@@ -1,4 +1,5 @@
-import{signIn,signInGoogle, signInFacebook, userState}from "./auth.js"
+import{ signIn, signInFacebook, userState, signInGoogleRedirect, signInGoogleRedirectResult }from "../firebase/auth.js"
+
 
 export default () => {
     const viewLogin = `
@@ -31,50 +32,55 @@ export default () => {
     divElemt.classList.add('classViewLogin')
     divElemt.innerHTML = viewLogin;
 
-    const email= divElemt.querySelector("#inputUser").value;
-    const password=divElemt.querySelector("#inputPassword").value;
+    const email= divElemt.querySelector("#inputUser");
+    const password=divElemt.querySelector("#inputPassword");
     const btnLogin = divElemt.querySelector('#btnLogin');
       
       
-          btnLogin.addEventListener('submit', (e)=>{
-            e.preventDefault();
-            signIn(email, password)
+          btnLogin.addEventListener('click', ()=>{
+   
+            signIn(email.value, password.value)
             .then((userCredential)=>{
                 const user = userCredential.user;
                 divElemt.querySelector("#inputUser").value = "";
                 divElemt.querySelector("#inputPassword").value = "";
-                window.location.hash('#/Home');
+                window.location.hash='#/Home';
                 console.log(user)
             }) 
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(error)
+                console.log(errorCode, errorMessage)
         
             })
           });
           
               
       const loginGmaiL= divElemt.querySelector("#loginGmail");
-      loginGmaiL.addEventListener("click", (e)=>{
-        signInGoogle()
-        .then(()=>{
-            window.location.hash('#/Home');
+      loginGmaiL.addEventListener("click", ()=>{
+     
+        signInGoogleRedirect();
+        signInGoogleRedirectResult()
+        .then((user)=>{
+            window.location.hash='#/Home';
+            console.log("iniciaste sesion con google")
+            console.log(user);
         }) 
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorCode,errorMessage)
         })
+ 
       })
     
           
               
       const loginFacebook= divElemt.querySelector("#loginFacebook");
-      loginFacebook.addEventListener("click", (e)=>{
+      loginFacebook.addEventListener("click", ()=>{
         signInFacebook()
         .then(()=>{
-            window.location.hash('#/Home');
+            window.location.hash='#/Home';
         }) 
         .catch((error) => {
             const errorCode = error.code;
@@ -90,7 +96,7 @@ export default () => {
             const photoURL = user.photoURL;
             const emailVerified = user.emailVerified;
             const uid = user.uid;
-            window.location.hash('#/Home');
+      
 
         }
       
