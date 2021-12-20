@@ -9,6 +9,7 @@ import Register from './Register.js';
 import Different from './404.js';
 import Favorite from './Favorite.js';
 import Notifications from './Notifications.js';
+import Menu from './Menu.js';
 
 const components = {
     Login: Login,
@@ -21,7 +22,8 @@ const components = {
     Register: Register,
     Notifications: Notifications,
     Favorite: Favorite,
-    Different: Different
+    Different: Different,
+    Menu: Menu,
 }
 
 export { components }
