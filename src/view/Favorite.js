@@ -1,6 +1,9 @@
 export default () => {
     const viewFavorite = `
-  template`;
+  
+    <div class="content" > 
+   <p>bienvenido a Favorite </p>
+    </div>`;
 
     const divElemt = document.createElement('section');
     divElemt.classList.add('position')

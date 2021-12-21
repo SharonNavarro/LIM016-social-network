@@ -1,6 +1,8 @@
 export default () => {
     const viewFriends = `
-  <p>este es friends</p>`;
+    <div class="content" > 
+    <p>bienvenido a frienss</p>
+     </div>`;
 
     const divElemt = document.createElement('section');
     divElemt.classList.add('position')

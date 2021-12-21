@@ -4,9 +4,10 @@ import { components } from '../view/index.js';
 export const changeTmp = (hash) => {
     const id = hash.split('/')[1];
     const sectionMain = document.getElementById('container');
+   // const sectionContent = document.getElementById('contenido');
     const containerHeader = document.getElementById('containerHeader');
 
-   //console.log("aquiiiiiiiii",header2);
+   
 
 
     switch (hash) {

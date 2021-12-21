@@ -171,14 +171,14 @@ margin-top: 20px;
     box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #006fe6;
   }
 
-.containerGeneral {
+/* .containerGeneral {
   display:grid;
   grid-template-rows: repeat(3, auto);
   grid-template-areas: 
     "header"
     "containerMenuIcons"
     "main";
-}
+} */
 /* ----------------------------------------MENU HAMBURGUESA --------------------------------------------*/
 
  label img {
@@ -236,8 +236,10 @@ margin-top: 20px;
 }
 
 /* -------------------------------------- */
+.containerMenuIcons{
+  position: relative;
+}
 .ulMenu2 {
-
   list-style-type: none;
   margin: 10px;
   padding: 0;
@@ -247,12 +249,12 @@ margin-top: 20px;
 
 .liMenu {
   display: inline-block;
-
 }
 
 .ulMenu2 .liMenu a img{
   display: inline-block;
   width: 40px;
+ /*  position: absolute; */
 }
 
 
@@ -266,35 +268,28 @@ margin-top: 20px;
 --------------------------------------------------------
 --------------------------------------------------------- */
 #view-code{
-  color:#4183d7; 
+  color:#92b5e4; 
   font-size:13px;
   text-transform:uppercase;
   font-weight:700;
   text-decoration:none;
-  position:absolute;top:640px; left:50%;margin-left:-35px;
+  position:absolute;
+  top:640px; 
+  left:50%;
+  margin-left:-35px;
 }
 div.screen{
-	width:320px;
-	height:560px;	
+	width:420px;
+	height:100%;	
 	overflow:hidden;
 	position:absolute; 
-	top:50px; 
+/* 	top:50px; 
 	left:50%;
-  margin-left:-160px;
-	background:#31558a;
+  margin-left:-160px; */
+  margin: auto;
+	background:#ffffff79;
+  
 }
-
-.list{margin-top:36px; text-align:left;}
-.item{
-	height:115px;
-	margin-top:30px 0;
-	padding-left:115px;
-	clear:both;
-}
-.item .img, .item span{background:#214273; border-radius:3px;}
-.item .img{float:left; width:71px; height:71px; margin-left:-93px;}
-.item span{height:11px; width:180px; margin-bottom:19px; float:left;}
-.item span:nth-of-type(3){width:75px; margin-botom:0;}
 
 div.burger {
 	height: 30px; 
@@ -331,7 +326,7 @@ div.burger {
 	}
 	 
 	
-	div.rotate30{
+	.rotate30{
 		-ms-transform: rotate(30deg); 
     	-webkit-transform: rotate(30deg); 
 	    transform: rotate(30deg);	
@@ -341,7 +336,7 @@ div.burger {
 		     -o-transition: all 50ms ease-out;
 		        transition: all 50ms ease-out;					
 	}
-	div.rotate150{
+	.rotate150{
 		-ms-transform: rotate(150deg); 
     	-webkit-transform: rotate(150deg); 
 	    transform: rotate(150deg);	
@@ -352,7 +347,7 @@ div.burger {
 		        transition: all 50ms ease-out;					
 	}
 	
-	div.rotate45{
+	.rotate45{
 		-ms-transform: rotate(45deg); 
     	-webkit-transform: rotate(45deg); 
 	    transform: rotate(45deg);	
@@ -362,7 +357,7 @@ div.burger {
 		     -o-transition: all 100ms ease-out;
 		        transition: all 100ms ease-out;					
 	}
-	div.rotate135{
+	.rotate135{
 		-ms-transform: rotate(135deg); 
     	-webkit-transform: rotate(135deg); 
 	    transform: rotate(135deg);	
@@ -373,16 +368,17 @@ div.burger {
 		        transition: all 100ms ease-out;					
 	}
 
-div.navbar{height:73px;background:#385e97;}
+div.navbar{height:73px;background:#75a2e6;}
 
 div.circle{	
 	border-radius: 50%;
 	width: 0px;
 	height: 0px; 
-	position:absolute;
+	position:relative;
 	top: 35px;
 	left: 36px;
-	background:#fff;
+	background:rgb(255, 255, 255);
+ 
 	opacity:1;
 	-webkit-transition: all 300ms cubic-bezier(0.000, 0.995, 0.990, 1.000);
 	   -moz-transition: all 300ms cubic-bezier(0.000, 0.995, 0.990, 1.000);
@@ -393,6 +389,7 @@ div.circle{
 div.circle.expand{
 	width:1200px;
 	height:1200px;
+  
 	top: -560px;
 	left: -565px; 	
 	-webkit-transition: all 400ms cubic-bezier(0.000, 0.995, 0.990, 1.000);
@@ -407,6 +404,7 @@ div.menu {
 	width: 320px;
 	position: absolute;
 	top: 0px; left: 0px;
+ 
 }
 div.menu ul li {
 	list-style: none;
@@ -414,7 +412,7 @@ div.menu ul li {
 	top:50px;;
 	left:0;
 	opacity:0;
-	width:320px;
+	width:420px;
 	text-align:center;
 	font-size:0px;
 	-webkit-transition: all 70ms cubic-bezier(0.000, 0.995, 0.990, 1.000);
@@ -467,4 +465,9 @@ div.menu li.animate:nth-of-type(6){
 	top:470px;
 	transition-delay: 0.15s;	
 			
+}
+
+.content{
+  padding-top: 150px;
+  padding-left: 20px;
 }
