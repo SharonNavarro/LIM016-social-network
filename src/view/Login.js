@@ -1,5 +1,4 @@
-import{ signIn, signInFacebook, userState, signInGoogle, signInGoogleRedirectResult }from "../firebase/auth.js"
-
+import{ signIn, signInFacebook, userState, signInGoogle }from "../firebase/auth.js"
 
 export default () => {
     const viewLogin = `
