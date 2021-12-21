@@ -1,6 +1,5 @@
 import{ signIn, signInFacebook, userState, signInGoogle }from "../firebase/auth.js"
 
-
 export default () => {
     const viewLogin = `
     <div class="containerLogin">

@@ -1,6 +1,6 @@
 export default () => {
     const viewHome = `
-    <div class="containerHome" id="containerHome"> 
+    <div class="containerHome" id="containerHome">
 
    <div class="storyGallery">
 
