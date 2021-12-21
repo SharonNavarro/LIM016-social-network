@@ -7,7 +7,7 @@ export default () => {
    <div class="storyGallery">
 
       <div class="story story1"> 
-        <img src="./images/plusIcon.png" alt="">
+        
         <p>Post Story</p>
       </div>
 
@@ -18,6 +18,9 @@ export default () => {
       <div class="story story3"> 
         <p>Rocio</p>
       </div>
+      <div class="story story2"> 
+      <p>Camila</p>
+    </div>
 
     </div>
 <div class="alignCenter">
@@ -47,7 +50,7 @@ export default () => {
         <div class="userProfile">
         <img src="./images/profile2.png">
           <div>
-            <p>Jhon Durand</p>
+            <p>Carlos Tarazona</p>
             <span>June 24 2021, 13:40 pm</span>
           </div>
         </div> 
