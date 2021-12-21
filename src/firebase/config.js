@@ -9,7 +9,6 @@ import {
  signInWithPopup, 
  getRedirectResult,
  signOut,
- signInWithPopup
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
 import { 
