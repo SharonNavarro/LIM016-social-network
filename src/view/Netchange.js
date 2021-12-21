@@ -1,6 +1,6 @@
 export default () => {
     const viewNetchange = `
-  template`;
+  esta vista es netchange`;
 
     const divElemt = document.createElement('section');
     divElemt.classList.add('classViewNetchange')

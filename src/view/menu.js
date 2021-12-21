@@ -2,27 +2,32 @@
  export default () => { 
  const viewMenu = `
   <div class= "containerMenu">
-    <input type="checkbox" id="btn-menu" />
-        <label for="btn-menu">
-            <img src="https://image.flaticon.com/icons/png/128/1215/1215141.png" alt="" />
-        </label> 
-        <nav>
-        <ul>      
-          <li><a href="#/Account">Account</a></li>
-          <li><a href="#/Friends">Friends</a> </li>
-          <li><a href="#/Messages">Messages</a> </li>
-          <li><a href="#/Netchange">Netchanges</a> </li>   
-          <li><a id="btnLogout" style="cursor:pointer" >Cerrar Sesión</a> </li>         
-        </ul>
-        </nav> 
+  <div class="respmenu">
+  <input type="checkbox" >
+  <label for="btn-menu">
+  <img class ="imagen" src="./images/menuuu.png" alt="" />
+  </label> 
+  <nav>
+    <ul>
+    <li><a href="#/Account">Account</a></li>
+    <li><a href="#/Friends">Friends</a> </li>
+    <li><a href="#/Messages">Messages</a> </li>
+    <li><a href="#/Netchange">Netchanges</a> </li>   
+    <li><a id="btnLogout" style="cursor:pointer" >Cerrar Sesión</a> </li>   
+    </ul>
+  </nav>
+</div>      
+               
+       
       <div class="containerMenuIcons">      
        <nav>
-        <ul>
-          <li><a href="#/Home"><img src="" id="iconHome" alt="">Home </a></li>        
-          <li><a href="#/Favorite"><img src="" id="iconFavorite" alt="">Favorite</a></li>
-          <li><a href="#/Notifications"><img src="" id="iconNotifications" alt="">Notifications</a> </li>         
+        <ul class="ulMenu2">
+          <li class="liMenu" ><a href="#/Home"><img src="./images/home.png" id="iconHome" alt=""></a></li>        
+          <li class="liMenu"><a href="#/Favorite"><img src="./images/favorite.png" id="iconFavorite" alt=""></a></li>
+          <li class="liMenu"><a href="#/Notifications"><img src="./images/notificacion.png" id="iconNotifications" alt=""></a> </li>         
         </ul>
         </nav>
+        
         </div>
         </div>           
                `;

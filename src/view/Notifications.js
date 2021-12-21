@@ -1,6 +1,6 @@
 export default () => {
     const viewNotifications = `
-  template`;
+  este es notificaciones`;
 
     const divElemt = document.createElement('section');
     divElemt.classList.add('classViewNotifications')
