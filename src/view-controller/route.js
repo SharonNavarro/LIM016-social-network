@@ -14,8 +14,8 @@ export const changeTmp = (hash) => {
         case '':
         case '#':
         case '#/':
-                  sectionMain.innerHTML="";
-                  containerHeader.innerHTML="";
+                  sectionMain.innerHTML=' ';
+                  containerHeader.innerHTML=" ";
                   sectionMain.appendChild(components.Login())
         break;
         case '#/Register':
