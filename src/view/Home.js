@@ -1,5 +1,5 @@
 export default () => {
-    const viewHome = `
+  const viewHome = `
     <div class="containerHome" id="containerHome">
     <div class="content" > 
    
@@ -22,6 +22,7 @@ export default () => {
     </div>
 
     </div>
+ 
 <div class="alignCenter">
 
   <div class="containerWriter">
@@ -47,9 +48,11 @@ export default () => {
   </div>
 
 
+
     <div class="containerPosts">
     
       <div class="containerAlignItems">
+
 
         <div class="userProfile">
         <img src="./images/profile2.png">
@@ -170,8 +173,8 @@ export default () => {
     </div>
     </div>
  `;
-    const divElemt = document.createElement('section');
-    divElemt.classList.add('position')
-    divElemt.innerHTML = viewHome;
-    return divElemt;
+  const divElemt = document.createElement('section');
+  divElemt.classList.add('position')
+  divElemt.innerHTML = viewHome;
+  return divElemt;
 };
