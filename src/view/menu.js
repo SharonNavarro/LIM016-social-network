@@ -2,9 +2,7 @@ import { signOutAccount } from "../firebase/auth.js"
 export default () => {
   const viewMenu = `
   <div class= "containerMenu">    
- 
-  <div class="screen">
- 
+  <div class="screen"> 
 	<div class="navbar"></div>
 	<div class="circle">
   </div>
@@ -14,10 +12,9 @@ export default () => {
     <li><a href="#/Friends">Friends</a> </li>
     <li><a href="#/Messages">Messages</a> </li>
     <li><a href="#/Netchange">Netchanges</a> </li>   
-    <li><a id="btnLogout" style="cursor:pointer" >Cerrar Sesión</a> </li>   
+    <li><a id="btnLogout" style="cursor:pointer">Cerrar Sesión</a> </li>   
 		</ul>
 	</div>
-
   <div class="containerMenuIcons">      
   <nav>
    <ul class="ulMenu2">
@@ -25,15 +22,9 @@ export default () => {
      <li class="liMenu"><a href="#/Favorite"><img src="./images/favorite.png" id="iconFavorite" alt=""></a></li>
      <li class="liMenu"><a href="#/Notifications"><img src="./images/notificacion.png" id="iconNotifications" alt=""></a> </li>         
    </ul>
-   </nav>
-   
+   </nav>   
    </div>
-  
-
-
-
-	<div class="burger" id="burger">
-  
+	<div class="burger" id="burger">  
 		<div class="x" id="x"></div>
 		<div class="y" id="y"></div>
 		<div class="z" id="z"></div>

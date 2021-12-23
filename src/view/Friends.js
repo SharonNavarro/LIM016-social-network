@@ -1,6 +1,6 @@
 export default () => {
     const viewFriends = `
-    <div class="content" > 
+    <div class='content' > 
     <p>bienvenido a frienss</p>
      </div>`;
 

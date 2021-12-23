@@ -18,11 +18,12 @@ width: 50%;
 margin-bottom: 30px;
 }
 h1{  
-  color: #64AED1;
+  color: #208fc2;
   margin: auto !important;
   font-family: 'Turret Road', cursive;   
-  display: flex;
-  justify-content: center;
+  display: flex;   
+  justify-content: center;    
+
 
 }
 .sectionWelcome{
@@ -62,9 +63,6 @@ padding: 20px;
 .containerInputs{
     width: 100%;
     max-width: 300px;
-   /*  height: 30%  ; */
-  /*   background: chartreuse; */
-  
     margin: auto;
 }
 .containerInputs .inputUser{
@@ -92,6 +90,7 @@ margin: 0 auto 20px;
 display: flex;
 flex-direction: row;
 justify-content: center;
+align-items: center;
 }
 .loginIcons a{
   display: inline-block;
@@ -139,14 +138,12 @@ margin-top: 20px;
             appearance: none;
     background-color: transparent;
     border-radius: 0.6em;
-    cursor: pointer;
-  
+    cursor: pointer;  
     font-size: 14px;
     line-height: 1;
     margin: auto;
     padding: 10px;
-    margin-top: 20px; 
-  
+    margin-top: 20px;   
     text-decoration: none;
     text-align: center;
    /*   font-family: 'Flamenco', cursive; */
@@ -157,7 +154,7 @@ margin-top: 20px;
     outline: 0;
   }
   .third {
-    border-color:6AED1;
+    border-color:#16AED1;
     letter-spacing: 0.5px;
     text-align: center !important;
     font-weight: bold;
@@ -332,14 +329,14 @@ background-image: linear-gradient(transparent, rgba(0,0,0,0.6)), url(/images/pro
 }
 
 
-.containerGeneral {
+/* .containerGeneral {
   display:grid;
   grid-template-rows: repeat(3, auto);
   grid-template-areas: 
     "header"
     "containerMenuIcons"
     "main";
-} */
+}  */
 /* ----------------------------------------MENU HAMBURGUESA --------------------------------------------*/
 
  label img {
@@ -631,8 +628,14 @@ div.menu li.animate:nth-of-type(6){
 .content{
   padding-top: 150px;
   padding-left: 20px;
+ 
   }
- */
+  #container{
+    z-index: 1100;
+  }
+ .containerHome{
+   z-index: 160;
+ }
  .containerAccount .userProfileBody,
  .containerAccount {
      display: flex;
@@ -841,3 +844,5 @@ div.menu li.animate:nth-of-type(6){
     margin-top: 0;
 }
 }
+
+/* -------------------MENU MÁS DIVETIDO---------------------------- */

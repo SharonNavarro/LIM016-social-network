@@ -20,7 +20,7 @@ export default () => {
          </div>
          <div class="groupLbl">  
          <label class="lblCuenta" for="">¿No tienes una cuenta?</label>
-         <a href="#/Register" class="linkRegistrate" id="linkRegistrate" for="">Registrate</a>     
+         <a href="#/Register" class="linkRegistrate" id="linkRegistrate" for="">Regístrate</a>     
          </div>      
        </div>
       </div>
