@@ -45,7 +45,6 @@ export default () => {
       </div>
     </div>
   </div>
-
       <div class="containerPosts">
         <div class="userProfile">
         <img src="./images/profile2.png">
