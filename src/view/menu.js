@@ -1,39 +1,38 @@
 import { signOutAccount } from "../firebase/auth.js"
 export default () => {
   const viewMenu = `
-  <div class= "containerMenu">    
-  <div class="screen"> 
-	<div class="navbar"></div>
-	<div class="circle">
-  </div>
-	<div class="menu"> 
-		<ul>
-		<li><a href="#/Account">Account</a></li>
+  <div class= "containerMenu">
+  <div class="respmenu">
+  <input type="checkbox" >
+  <label for="btn-menu">
+  <img class ="imagen" src="./images/menuuu.png" alt="" />
+  </label> 
+  <div class="contentTitulo">
+  <h2 class="titulo">Netcoins</h2>
+  </div> 
+  <nav>
+    <ul>
+    <li><a href="#/Account">Account</a></li>
     <li><a href="#/Friends">Friends</a> </li>
     <li><a href="#/Messages">Messages</a> </li>
     <li><a href="#/Netchange">Netchanges</a> </li>   
-    <li><a id="btnLogout" style="cursor:pointer">Cerrar Sesión</a> </li>   
-		</ul>
-	</div>
-  <div class="containerMenuIcons">      
-  <nav>
-   <ul class="ulMenu2">
-     <li class="liMenu" ><a href="#/Home"><img src="./images/home.png" id="iconHome" alt=""></a></li>        
-     <li class="liMenu"><a href="#/Favorite"><img src="./images/favorite.png" id="iconFavorite" alt=""></a></li>
-     <li class="liMenu"><a href="#/Notifications"><img src="./images/notificacion.png" id="iconNotifications" alt=""></a> </li>         
-   </ul>
-   </nav>   
-   </div>
-	<div class="burger" id="burger">  
-		<div class="x" id="x"></div>
-		<div class="y" id="y"></div>
-		<div class="z" id="z"></div>
-	</div>
-
-</div>           
+    <li><a id="btnLogout" style="cursor:pointer" >Cerrar Sesión</a> </li>   
+    </ul>
+  </nav>
+  </div>      
+               
        
-     
-        </div>           
+      <div class="containerMenuIcons">      
+       <nav>
+        <ul class="ulMenu2">
+          <li class="liMenu" ><a href="#/Home"><img src="./images/home.png" id="iconHome" alt=""></a></li>        
+          <li class="liMenu"><a href="#/Favorite"><img src="./images/favorite.png" id="iconFavorite" alt=""></a></li>
+          <li class="liMenu"><a href="#/Notifications"><img src="./images/notificacion.png" id="iconNotifications" alt=""></a> </li>         
+        </ul>
+        </nav>
+        
+        </div>
+        </div>          
                `;
 
   const divElemt = document.createElement('section');
@@ -54,16 +53,16 @@ export default () => {
       })
   })
 
-  if (container.innerHTML == "") {
+/*   if (container.innerHTML == "") {
     
     menuInteractivo();
 
-  }
+  } */
 
   return divElemt;
 }
 
-function menuInteractivo() { setTimeout(() => {
+/* function menuInteractivo() { setTimeout(() => {
   
   if ('ontouchstart' in window) { var click = 'touchstart'; }
   else { var click = 'click'; }
@@ -158,4 +157,4 @@ function menuInteractivo() { setTimeout(() => {
 
   }
 }, 1000);
-} 
+}  */
