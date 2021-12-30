@@ -2,6 +2,7 @@ import{
     auth,  
     providerFacebook,
     providerGoogle,
+    providerTwitter,
     onAuthStateChanged,  
     signInWithEmailAndPassword, 
     createUserWithEmailAndPassword, 
@@ -16,6 +17,8 @@ import{
 export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
 export const signInGoogle = () => signInWithPopup(auth, providerGoogle); 
+
+export const signInTwitter = () => signInWithPopup(auth, providerTwitter); 
 
 export const signInGoogleRedirectResult = () => getRedirectResult(auth);
 

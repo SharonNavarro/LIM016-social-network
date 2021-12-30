@@ -1,4 +1,4 @@
-import{ signIn, signInFacebook, userState, signInGoogle }from "../firebase/auth.js"
+import{ signIn, signInFacebook, userState, signInGoogle, signInTwitter }from "../firebase/auth.js"
 
 export default () => {
     const viewLogin = `
@@ -17,6 +17,7 @@ export default () => {
       <div class="loginIcons">    
        <a id="loginFacebook"><img src="./images/logo-facebook.png" alt=""></a> 
         <a id="loginGmail"><img  src="./images/logo-gmail.png" alt=""></a>
+        <a id="loginTwitter"><img  src="./images/logo-tu.png" alt=""></a>
          </div>
          <div class="groupLbl">  
          <label class="lblCuenta" for="">¿No tienes una cuenta?</label>
@@ -53,6 +54,33 @@ export default () => {
             })
           });
           
+
+//twiterrrrrr
+const loginTwitter= divElemt.querySelector("#loginTwitter");
+loginTwitter.addEventListener("click", ()=>{
+
+  signInTwitter()
+  //signInGoogleRedirectResult()
+  .then((user)=>{
+      window.location.hash='#/Home';
+      console.log("iniciaste sesion con google")
+      console.log(user);
+      console.log(user.user.displayName);
+      console.log(user.user.email);
+      console.log(user.user.photoURL);
+  }) 
+  .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode,errorMessage)
+  })
+
+})
+
+    
+//uuuuuu
+
+
               
       const loginGmaiL= divElemt.querySelector("#loginGmail");
       loginGmaiL.addEventListener("click", ()=>{
