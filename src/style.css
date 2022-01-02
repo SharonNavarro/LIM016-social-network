@@ -15,25 +15,17 @@
 display: block;
 margin: auto;
 width: 50%;
-margin-bottom: 30px;
+margin-bottom: 10px;
 }
+
 h1{  
   color: #64AED1;
   margin: auto !important;
   font-family: 'Turret Road', cursive;   
   display: flex;
   justify-content: center;
-
+  margin-bottom: 20px;
 }
-.sectionWelcome{
-background: url( "./images/bgNetcoins.jpg");
-width: 100%;
-height: 625px;
-background-position: center;
-background-size: cover;
-display: none;
-}
-
 
 .containerLogin{
     width: 100%;
@@ -66,32 +58,43 @@ padding: 20px;
   /*   background: chartreuse; */
   
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.containerInputs .inputUser{
-    
-display: block;
-width: 230px;
-height: 40px;
-padding: 10px;
-border-radius: 10px;
-border: 1px solid white;
-margin: 20px auto ;
 
+.containerInputEmail, .containerInputPassword {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  width: 260px;
+  height: 40px;
+  padding-left: 3%;
+  margin-top: 5%;
+  border-radius: 10px;
 }
-.containerInputs .inputPassword{
+
+.containerInputEmail i, .containerInputPassword i {
+  color: gray;
+}
+
+.inputUser, .inputPassword {
 display: block;
 width: 230px;
-height: 40px;
+height: 34px;
 padding: 10px;
-border-radius: 10px;
+border-radius: 5px;
 border: 1px solid white;
-margin: 0 auto 20px;
+outline: none; 
 }
+
 .loginIcons{
   margin-top: 10px;
-display: flex;
-flex-direction: row;
-justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .loginIcons a{
   display: inline-block;
@@ -126,6 +129,27 @@ margin-top: 20px;
   justify-content: center;
 
 }
+
+/*------- Validacion del formulario Login -------*/
+
+.inactiveEmailErrorMessage , .inactivePasswordErrorMessage {
+  visibility: hidden;
+}
+
+.activeLoginErrorMessage {
+  visibility: visible;
+  color: rgb(223 28 28 / 77%);
+  padding-left: 3%;
+  margin-top: 3%;
+  font-family: 'Turret Road', cursive;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.containerInputEmail.error, .containerInputPassword.error{
+  border: 2px solid rgba(223, 28, 28, 0.664);
+} 
+
 /* --------------------------------------------------- */
 
 .btn {
@@ -165,7 +189,11 @@ margin-top: 20px;
     box-shadow: 0 0 40px 40px #64AED1 inset, 0 0 0 0 #64AED1;
     -webkit-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
-  }
+    width: 45%;
+    display: flex;
+    justify-content: center;
+}
+
   .third:hover {
     color: #64AED1;
     box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #006fe6;
@@ -901,3 +929,21 @@ div.menu li.animate:nth-of-type(6){
     margin-top: 0;
 }
 }
+
+ @media (min-width: 410px) {
+  .login {
+    background: url(./images/bgNetcoins.jpg);
+    width: 100%;
+    height: 625px;
+    background-position: center;
+    background-size: cover;
+    display: none;
+  }
+
+  .containerInputs {
+    background: rgb(191 216 235);
+    border-radius: 5px;
+    padding: 1%;
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.63);
+  }
+ }
