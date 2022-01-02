@@ -1,11 +1,9 @@
-import{ signIn, signInFacebook, userState, signInGoogle }from "../firebase/auth.js"
+import{ signIn, signInFacebook, userState, signInGoogle, signInTwitter }from "../firebase/auth.js"
 import{ addErrorMessage, addErrorInput, removeErrorInput, removeErrorMessage }from "../lib/functions.js"
 
 export default () => {
     const viewLogin = `
     <div class="containerLogin">
-      <div class="sectionWelcome">
-      </div>
       <div class="sectionLogin" id="sectionLogin">
 
         <div class="login" id="login">  
@@ -38,6 +36,7 @@ export default () => {
             <div class="loginIcons">    
               <a id="loginFacebook"><img src="./images/logo-facebook.png" alt=""></a> 
               <a id="loginGmail"><img  src="./images/logo-gmail.png" alt=""></a>
+              <a id="loginTwitter"><img  src="./images/logo-tu.png" alt=""></a>
             </div>
 
             <div class="groupLbl">  
@@ -47,10 +46,7 @@ export default () => {
 
           </div>
 
-        </div>
-
-      </div>
-    </div>`;
+        </div>`;
 
     const divElemt = document.createElement('section');
     divElemt.classList.add('classViewLogin')
@@ -105,6 +101,34 @@ export default () => {
                 }
             })
           });
+          
+
+//twiterrrrrr
+const loginTwitter= divElemt.querySelector("#loginTwitter");
+loginTwitter.addEventListener("click", ()=>{
+
+  signInTwitter()
+  //signInGoogleRedirectResult()
+  .then((user)=>{
+      window.location.hash='#/Home';
+      console.log("iniciaste sesion con google")
+      console.log(user);
+      console.log(user.user.displayName);
+      console.log(user.user.email);
+      console.log(user.user.photoURL);
+  }) 
+  .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode,errorMessage)
+  })
+
+})
+
+    
+//uuuuuu
+
+
               
       const loginGmaiL= divElemt.querySelector("#loginGmail");
       loginGmaiL.addEventListener("click", ()=>{

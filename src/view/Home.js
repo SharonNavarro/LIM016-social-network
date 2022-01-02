@@ -1,8 +1,7 @@
 export default () => {
-    const viewHome = `
+  const viewHome = `
     <div class="containerHome" id="containerHome">
     <div class="content" > 
-   
     
    <div class="storyGallery">
 
@@ -10,18 +9,19 @@ export default () => {
         <img src="./images/plusIcon.png">
       </div>
 
-      <div class="story story2"> 
-        <p>Alessandra</p>
-      </div>
+   <div class="story story2"> 
+     <p>Alessandra</p>
+   </div>
 
-      <div class="story story3"> 
-        <p>Rocio</p>
-      </div>
-      <div class="story story2"> 
-      <p>Camila</p>
-    </div>
+   <div class="story story3"> 
+     <p>Rocio</p>
+   </div>
+   <div class="story story2"> 
+   <p>Camila</p>
+ </div>
 
     </div>
+ 
 <div class="alignCenter">
 
   <div class="containerWriter">
@@ -47,9 +47,11 @@ export default () => {
   </div>
 
 
+
     <div class="containerPosts">
     
       <div class="containerAlignItems">
+
 
         <div class="userProfile">
         <img src="./images/profile2.png">
@@ -170,8 +172,8 @@ export default () => {
     </div>
     </div>
  `;
-    const divElemt = document.createElement('section');
-    divElemt.classList.add('position')
-    divElemt.innerHTML = viewHome;
-    return divElemt;
+  const divElemt = document.createElement('section');
+  divElemt.classList.add('position')
+  divElemt.innerHTML = viewHome;
+  return divElemt;
 };

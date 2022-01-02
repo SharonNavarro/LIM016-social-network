@@ -1,4 +1,3 @@
-//import { header } from './lib/index.js';
 import { changeTmp } from './view-controller/route.js';
 
 const init = () => {
@@ -11,7 +10,6 @@ const init = () => {
 }
 
 window.addEventListener('load', init);
-
 
 
 //-------------------SECTION POSTS------------------------

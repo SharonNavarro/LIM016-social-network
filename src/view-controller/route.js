@@ -7,15 +7,12 @@ export const changeTmp = (hash) => {
    // const sectionContent = document.getElementById('contenido');
     const containerHeader = document.getElementById('containerHeader');
 
-   
-
-
     switch (hash) {
         case '':
         case '#':
         case '#/':
                   sectionMain.innerHTML="";
-                  containerHeader.innerHTML="";
+                  containerHeader.innerHTML=" ";
                   sectionMain.appendChild(components.Login())
         break;
         case '#/Register':

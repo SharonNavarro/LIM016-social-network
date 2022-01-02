@@ -1,6 +1,9 @@
 export default () => {
     const viewMessages = `
-  <h1/> este es mensajes</h1>`;
+    <div class="content" > 
+  <h1/> este es mensajes</h1>
+  </div>
+  `;
 
     const divElemt = document.createElement('section');
     divElemt.classList.add('classViewNetchange')
