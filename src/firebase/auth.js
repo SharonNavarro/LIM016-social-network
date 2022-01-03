@@ -26,7 +26,7 @@ export const signInGoogleRedirectResult = () => getRedirectResult(auth);
 
 export const signInFacebook = () => signInWithPopup(auth, providerFacebook);
 
-export const verificar = () => sendEmailVerification(user);
+/* export const verificar = () => sendEmailVerification(user); */
 
 
 
@@ -34,6 +34,8 @@ export const verificar = () => sendEmailVerification(user);
 
 export const signUp = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
+
+export const EmailVerification = () => sendEmailVerification(auth.currentUser);
 
 // cerrar sesion
 
