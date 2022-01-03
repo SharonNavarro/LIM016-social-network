@@ -1,5 +1,6 @@
 import{
     auth,  
+    user,
     providerFacebook,
     providerGoogle,
     providerTwitter,
@@ -8,6 +9,7 @@ import{
     createUserWithEmailAndPassword, 
     signInWithPopup, 
     getRedirectResult,
+    sendEmailVerification,
     signOut,
 } from "./config.js"
 
@@ -29,10 +31,13 @@ export const signInFacebook = () => signInWithPopup(auth, providerFacebook);
 
 export const signUp = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
-
 // cerrar sesion
 
-export const signOutAccount = ( ) => signOut(auth);
+export const signOutAccount = () => signOut(auth);
+
+// enviar email de verificacion
+
+export const emailVerification = () => sendEmailVerification(user);
 
 // observar el estado del usuario
 
