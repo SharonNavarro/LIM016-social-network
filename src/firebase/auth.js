@@ -10,6 +10,7 @@ import {
     signInWithPopup,
     getRedirectResult,
     sendEmailVerification,
+    sendPasswordResetEmail,
     signOut,
 } from "./config.js"
 
@@ -26,7 +27,7 @@ export const signInGoogleRedirectResult = () => getRedirectResult(auth);
 
 export const signInFacebook = () => signInWithPopup(auth, providerFacebook);
 
-/* export const verificar = () => sendEmailVerification(user); */
+export const passwordReset = (email) => sendPasswordResetEmail(auth, email);
 
 
 

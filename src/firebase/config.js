@@ -10,8 +10,10 @@ import {
  signInWithPopup, 
  getRedirectResult,
  sendEmailVerification,
+ sendPasswordResetEmail,
  signOut,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
 
 import { 
     collection,
@@ -60,6 +62,7 @@ export {
     createUserWithEmailAndPassword, 
     signInWithPopup, 
     getRedirectResult,
+    sendPasswordResetEmail,
     signOut,
 };
 

@@ -1,4 +1,4 @@
-import { signIn, signInFacebook, userState, signInGoogle, signInTwitter } from "../firebase/auth.js"
+import { signIn, signInFacebook, userState, signInGoogle, signInTwitter, passwordReset } from "../firebase/auth.js"
 import { addErrorMessage, addErrorInput, removeErrorInput, removeErrorMessage } from "../lib/functions.js"
 
 export default () => {
@@ -71,7 +71,7 @@ export default () => {
         const user = userCredential.user;
         divElemt.querySelector("#inputUser").value = "";
         divElemt.querySelector("#inputPassword").value = "";
-      
+
         console.log(user.email);
         console.log(user.emailVerified);
         if (user.emailVerified === false) {
@@ -90,23 +90,24 @@ export default () => {
           addErrorInput(containerInputEmail, 'error');
           addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido. Por favor, escriba su contraseña.');
           addErrorInput(containerInputPassword, 'error');
-        }  else  if ( password.value === '') {
-                  
+        } else if (password.value === '') {
+
           addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido. Por favor, escriba su contraseña.');
           addErrorInput(containerInputPassword, 'error');
-        } else  if ( email.value === '') {
-         
-           addErrorMessage(inactiveEmailErrorMessage, 'Campo inválido. Por favor, escriba su correo electrónico.');
-           addErrorInput(containerInputEmail, 'error');
-          
-         }
+        } else if (email.value === '') {
+
+          addErrorMessage(inactiveEmailErrorMessage, 'Campo inválido. Por favor, escriba su correo electrónico.');
+          addErrorInput(containerInputEmail, 'error');
+
+        }
 
         else if (errorCode === 'auth/wrong-password') {
           removeErrorInput(containerInputEmail, 'error');
           removeErrorMessage(inactiveEmailErrorMessage, '');
           addErrorMessage(inactivePasswordErrorMessage, 'Contraseña incorrecta.');
-          link.innerHTML="Reestablecer contraseña";
+          link.innerHTML = "Reestablecer contraseña";
           addErrorInput(containerInputPassword, 'error');
+          reestablecer(email.value);
         }
         else if (errorCode === 'auth/user-not-found') {
           removeErrorInput(containerInputPassword, 'error');
@@ -123,6 +124,15 @@ export default () => {
       })
   });
 
+  //Restablecer contraseña
+function reestablecer(email){
+  link.addEventListener("click", () => {
+
+    passwordReset(email)
+    .then(console.log("verifica tu correo"))
+  
+  } )
+}
 
   //twiterrrrrr
   const loginTwitter = divElemt.querySelector("#loginTwitter");
