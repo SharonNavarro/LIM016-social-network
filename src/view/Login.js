@@ -28,6 +28,7 @@ export default () => {
             <div class="inactivePasswordErrorMessage">
               <i class="fas fa-exclamation-circle"></i>
               <small>Error Message</small>
+              <a id="link"> </a>
             </div>
 
             <button type="submit" class="btn third" id= "btnLogin">Inicia Sesión</button>
@@ -55,6 +56,7 @@ export default () => {
   const email = divElemt.querySelector("#inputUser");
   const password = divElemt.querySelector("#inputPassword");
   const btnLogin = divElemt.querySelector('#btnLogin');
+  const link = divElemt.querySelector('#link');
 
   const inactiveEmailErrorMessage = divElemt.querySelector('.inactiveEmailErrorMessage');
   const inactivePasswordErrorMessage = divElemt.querySelector('.inactivePasswordErrorMessage');
@@ -88,11 +90,22 @@ export default () => {
           addErrorInput(containerInputEmail, 'error');
           addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido. Por favor, escriba su contraseña.');
           addErrorInput(containerInputPassword, 'error');
-        }
+        }  else  if ( password.value === '') {
+                  
+          addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido. Por favor, escriba su contraseña.');
+          addErrorInput(containerInputPassword, 'error');
+        } else  if ( email.value === '') {
+         
+           addErrorMessage(inactiveEmailErrorMessage, 'Campo inválido. Por favor, escriba su correo electrónico.');
+           addErrorInput(containerInputEmail, 'error');
+          
+         }
+
         else if (errorCode === 'auth/wrong-password') {
           removeErrorInput(containerInputEmail, 'error');
           removeErrorMessage(inactiveEmailErrorMessage, '');
           addErrorMessage(inactivePasswordErrorMessage, 'Contraseña incorrecta.');
+          link.innerHTML="Reestablecer contraseña";
           addErrorInput(containerInputPassword, 'error');
         }
         else if (errorCode === 'auth/user-not-found') {

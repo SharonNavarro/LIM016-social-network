@@ -725,3 +725,16 @@ font-size: 18px;
  
   
     }
+
+
+    /* link Reestablecer contraseña*/
+
+    #link{
+    
+      margin-top: 5px;
+
+      display: block;
+      font-size: 12px;
+      text-decoration: underline ;
+      cursor: pointer;
+    }
