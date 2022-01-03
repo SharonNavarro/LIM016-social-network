@@ -3,13 +3,17 @@ import {
  getAuth,
  onAuthStateChanged, 
  FacebookAuthProvider, 
+ TwitterAuthProvider,
  signInWithEmailAndPassword, 
  createUserWithEmailAndPassword, 
  GoogleAuthProvider, 
  signInWithPopup, 
  getRedirectResult,
+ sendEmailVerification,
+ sendPasswordResetEmail,
  signOut,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
 
 import { 
     collection,
@@ -18,6 +22,7 @@ import {
     getDocs, 
     getFirestore
 } from  "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
 
 
 const firebaseConfig = {
@@ -39,6 +44,9 @@ const db= getFirestore(app);
 const user= auth.currentUser;
 const providerGoogle= new GoogleAuthProvider(app);
 const providerFacebook= new FacebookAuthProvider(app);
+const providerTwitter = new TwitterAuthProvider(app);
+
+
 
 // exportando firebase auth
 export { 
@@ -47,11 +55,14 @@ export {
     app,
     providerFacebook,
     providerGoogle,
+    providerTwitter,
+    sendEmailVerification,
     onAuthStateChanged,  
     signInWithEmailAndPassword, 
     createUserWithEmailAndPassword, 
     signInWithPopup, 
     getRedirectResult,
+    sendPasswordResetEmail,
     signOut,
 };
 

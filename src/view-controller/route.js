@@ -7,9 +7,6 @@ export const changeTmp = (hash) => {
    // const sectionContent = document.getElementById('contenido');
     const containerHeader = document.getElementById('containerHeader');
 
-   
-
-
     switch (hash) {
         case '':
         case '#':

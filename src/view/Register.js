@@ -1,10 +1,10 @@
-import{ signUp } from "../firebase/auth.js"
-import{ auth } from "../firebase/config.js"
+import { signUp, EmailVerification } from "../firebase/auth.js"
+import { auth } from "../firebase/config.js"
 
 
 export default () => {
-    const viewRegister = `
-    <form action="" class="containerLogin" id="formulario">
+  const viewRegister = `
+<div class="containerLogin">
   <div class="sectionWelcome">
   </div>
 
@@ -76,33 +76,40 @@ export default () => {
 `;
 
 
-   
-    const divElemt = document.createElement('section');
-    divElemt.classList.add('classViewRegister')
-    divElemt.innerHTML = viewRegister;
+  const divElemt = document.createElement('section');
+  divElemt.classList.add('classViewRegister')
+  divElemt.innerHTML = viewRegister;
 
-    const email= divElemt.querySelector("#inputUserRegister");
-    const password= divElemt.querySelector("#inputPasswordRegister");
-    const name= divElemt.querySelector("#inputUserName");
-    
+  const email = divElemt.querySelector("#inputUserRegister");
+  const password = divElemt.querySelector("#inputPasswordRegister");
 
-    const btnRegister= divElemt.querySelector("#btnRegister")
-    btnRegister.addEventListener("click",()=>{    
-      signUp(email.value, password.value)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        document.getElementById("inputUser").value = "";
-        document.getElementById("inputPassword").value = "";
-        window.location.hash('#/Home');
-        console.log("usuario registrado");
-       })
-       .catch((error) => {
+  const btnRegister = divElemt.querySelector("#btnRegister")
+  btnRegister.addEventListener("click", () => {
+    signUp(email.value, password.value)
+      .then(() => {
+
+        divElemt.querySelector("#inputUserRegister").value = "";
+        divElemt.querySelector("#inputPasswordRegister").value = ""
+        EmailVerification()
+          .then(() => {
+            console.log("Revisa tu correo para verificarlo");
+          });
+
+       
+      })
+
+      .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage)
+        console.log("error", error);
       });
-    });   
-      //login.style.display = "none";
-      //sectionLogin.innerHTML = registrarseTemplate();
-    return divElemt;
+  });
+
+
+
+
+
+
+  return divElemt;
 };

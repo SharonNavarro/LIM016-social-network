@@ -1,116 +1,224 @@
-import{ signIn, signInFacebook, userState, signInGoogle }from "../firebase/auth.js"
+import { signIn, signInFacebook, userState, signInGoogle, signInTwitter, passwordReset } from "../firebase/auth.js"
+import { addErrorMessage, addErrorInput, removeErrorInput, removeErrorMessage } from "../lib/functions.js"
 
 export default () => {
-    const viewLogin = `
+  const viewLogin = `
     <div class="containerLogin">
-    <div class="sectionWelcome">
-     </div>
       <div class="sectionLogin" id="sectionLogin">
-      <div class="login" id=login>  
-      <div class="containerInputs">
-      <img class="logoLogin" src="./images/logoNetcoins.png" alt="">
-      <h1 >Netcoins</h1>
-      <input class="inputUser" id="inputUser"type="text" placeholder="Usuario">
-      <input type="password" class="inputPassword" id="inputPassword" type="text" placeholder="Contraseña">
-      <button type="submit" class="btn third" id= "btnLogin">LogIn</button>
-      <label class="lbl" for=""> o ingresa con:</label>
-      <div class="loginIcons">    
-       <a id="loginFacebook"><img src="./images/logo-facebook.png" alt=""></a> 
-        <a id="loginGmail"><img  src="./images/logo-gmail.png" alt=""></a>
-         </div>
-         <div class="groupLbl">  
-         <label class="lblCuenta" for="">¿No tienes una cuenta?</label>
-         <a href="#/Register" class="linkRegistrate" id="linkRegistrate" for="">Registrate</a>     
-         </div>      
-       </div>
-      </div>
-    </div>
-  </div>`;
 
-    const divElemt = document.createElement('section');
-    divElemt.classList.add('classViewLogin')
-    divElemt.innerHTML = viewLogin;
+        <div class="login" id="login">  
 
-    const email= divElemt.querySelector("#inputUser");
-    const password=divElemt.querySelector("#inputPassword");
-    const btnLogin = divElemt.querySelector('#btnLogin');
-      
-      
-          btnLogin.addEventListener('click', ()=>{
-   
-            signIn(email.value, password.value)
-            .then((userCredential)=>{
-                const user = userCredential.user;
-                divElemt.querySelector("#inputUser").value = "";
-                divElemt.querySelector("#inputPassword").value = "";
-                window.location.hash='#/Home';
-                console.log(user)
-            }) 
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage)        
-            })
-          });
-          
-              
-      const loginGmaiL= divElemt.querySelector("#loginGmail");
-      loginGmaiL.addEventListener("click", ()=>{
-     
-        signInGoogle()
-        //signInGoogleRedirectResult()
-        .then((user)=>{
-            window.location.hash='#/Home';
-            console.log("iniciaste sesion con google")
-            console.log(user);
-            console.log(user.user.displayName);
-            console.log(user.user.email);
-            console.log(user.user.photoURL);
-        }) 
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode,errorMessage)
-        })
- 
+          <div class="containerInputs">
+            <img class="logoLogin" src="./images/logoNetcoins.png" alt="">
+            <h1 >Netcoins</h1>
+
+            <div class="containerInputEmail">
+              <i class="fas fa-envelope"></i>
+              <input class="inputUser" id="inputUser" name="email" type="text" placeholder="Correo electronico">
+            </div>
+            <div class="inactiveEmailErrorMessage">
+              <i class="fas fa-exclamation-circle"></i>
+              <small>Error Message</small>
+            </div>
+
+            <div class="containerInputPassword">
+              <i class="fas fa-key"></i>
+              <input type="password" class="inputPassword" name="password" id="inputPassword" type="text" placeholder="Contraseña">
+            </div>
+            <div class="inactivePasswordErrorMessage">
+              <i class="fas fa-exclamation-circle"></i>
+              <small>Error Message</small>
+              <a id="link"> </a>
+            </div>
+
+            <button type="submit" class="btn third" id= "btnLogin">Inicia Sesión</button>
+            <label class="lbl" for=""> o ingresa con:</label>
+
+            <div class="loginIcons">    
+              <a id="loginFacebook"><img src="./images/logo-facebook.png" alt=""></a> 
+              <a id="loginGmail"><img  src="./images/logo-gmail.png" alt=""></a>
+              <a id="loginTwitter"><img  src="./images/logo-tu.png" alt=""></a>
+            </div>
+
+            <div class="groupLbl">  
+              <label class="lblCuenta" for="">¿No tienes una cuenta?</label>
+              <a href="#/Register" class="linkRegistrate" id="linkRegistrate" for="">Registrate</a>     
+            </div>  
+
+          </div>
+
+        </div>`;
+
+  const divElemt = document.createElement('section');
+  divElemt.classList.add('classViewLogin')
+  divElemt.innerHTML = viewLogin;
+
+  const email = divElemt.querySelector("#inputUser");
+  const password = divElemt.querySelector("#inputPassword");
+  const btnLogin = divElemt.querySelector('#btnLogin');
+  const link = divElemt.querySelector('#link');
+
+  const inactiveEmailErrorMessage = divElemt.querySelector('.inactiveEmailErrorMessage');
+  const inactivePasswordErrorMessage = divElemt.querySelector('.inactivePasswordErrorMessage');
+  const containerInputEmail = divElemt.querySelector('.containerInputEmail');
+  const containerInputPassword = divElemt.querySelector('.containerInputPassword');
+
+  btnLogin.addEventListener('click', () => {
+    // e.preventDefault();
+    //sharonnm2002@gmail.com
+    signIn(email.value, password.value)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        divElemt.querySelector("#inputUser").value = "";
+        divElemt.querySelector("#inputPassword").value = "";
+
+        console.log(user.email);
+        console.log(user.emailVerified);
+        if (user.emailVerified === false) {
+          console.log("correo no verificado");
+        } else {
+          console.log("correo registrado y verificado");
+          window.location.hash = '#/Home';
+        }
+
       })
-    
-          
-              
-      const loginFacebook= divElemt.querySelector("#loginFacebook");
-      loginFacebook.addEventListener("click", ()=>{
-        signInFacebook()
-        .then((user)=>{
-          window.location.hash='#/Home';
-          console.log("iniciaste sesion con Facebook")
-          
-          console.log(user.user.displayName);
-          console.log(user.user.email);
-          console.log(user.user.photoURL);
-      }) 
-  
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode,errorMessage)
-        })
-      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if (email.value === '' && password.value === '') {
+          addErrorMessage(inactiveEmailErrorMessage, 'Campo inválido. Por favor, escriba su correo electrónico.');
+          addErrorInput(containerInputEmail, 'error');
+          addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido. Por favor, escriba su contraseña.');
+          addErrorInput(containerInputPassword, 'error');
+        } else if (password.value === '') {
 
-      userState((user)=>{
-        if (user){
-            const displayName = user.displayName;
-            const email = user.email;
-            const photoURL = user.photoURL;
-            const emailVerified = user.emailVerified;
-            const uid = user.uid;
-      
+          addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido. Por favor, escriba su contraseña.');
+          addErrorInput(containerInputPassword, 'error');
+        } else if (email.value === '') {
+
+          addErrorMessage(inactiveEmailErrorMessage, 'Campo inválido. Por favor, escriba su correo electrónico.');
+          addErrorInput(containerInputEmail, 'error');
 
         }
-      
+
+        else if (errorCode === 'auth/wrong-password') {
+          removeErrorInput(containerInputEmail, 'error');
+          removeErrorMessage(inactiveEmailErrorMessage, '');
+          addErrorMessage(inactivePasswordErrorMessage, 'Contraseña incorrecta.');
+          link.innerHTML = "Reestablecer contraseña";
+          addErrorInput(containerInputPassword, 'error');
+          reestablecer(email.value);
+        }
+        else if (errorCode === 'auth/user-not-found') {
+          removeErrorInput(containerInputPassword, 'error');
+          removeErrorMessage(inactivePasswordErrorMessage, '');
+          addErrorMessage(inactiveEmailErrorMessage, 'Usuario no encontrado. Por favor, vuelva a escribir su correo electrónico.');
+          addErrorInput(containerInputEmail, 'error');
+        }
+        else {
+          removeErrorInput(containerInputPassword, 'error');
+          removeErrorInput(containerInputEmail, 'error');
+          removeErrorMessage(inactiveEmailErrorMessage, '');
+          addErrorMessage(inactivePasswordErrorMessage, ' Ocurrió un error. Por favor, vuelva a escribir sus datos correctamente.')
+        }
       })
-    
-    
-    return divElemt;
+  });
+
+  //Restablecer contraseña
+function reestablecer(email){
+  link.addEventListener("click", () => {
+
+    passwordReset(email)
+    .then(console.log("verifica tu correo"))
+  
+  } )
+}
+
+  //twiterrrrrr
+  const loginTwitter = divElemt.querySelector("#loginTwitter");
+  loginTwitter.addEventListener("click", () => {
+
+    signInTwitter()
+      //signInGoogleRedirectResult()
+      .then((user) => {
+        window.location.hash = '#/Home';
+        console.log("iniciaste sesion con google")
+        console.log(user);
+        console.log(user.user.displayName);
+        console.log(user.user.email);
+        console.log(user.user.photoURL);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage)
+      })
+
+  })
+
+
+  //uuuuuu
+
+
+
+  const loginGmaiL = divElemt.querySelector("#loginGmail");
+  loginGmaiL.addEventListener("click", () => {
+
+    signInGoogle()
+      //signInGoogleRedirectResult()
+      .then((user) => {
+        window.location.hash = '#/Home';
+        console.log("iniciaste sesion con google")
+        console.log(user);
+        console.log(user.user.displayName);
+        console.log(user.user.email);
+        console.log(user.user.emailVerified);
+        console.log(user.user.photoURL);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage)
+      })
+
+  })
+
+
+
+  const loginFacebook = divElemt.querySelector("#loginFacebook");
+  loginFacebook.addEventListener("click", () => {
+    signInFacebook()
+      .then((user) => {
+        window.location.hash = '#/Home';
+        console.log("iniciaste sesion con Facebook")
+
+        console.log(user.user.displayName);
+        console.log(user.user.email);
+        console.log(user.user.photoURL);
+      })
+
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage)
+      })
+  })
+
+  userState((user) => {
+    if (user) {
+      const displayName = user.displayName;
+      const email = user.email;
+      const photoURL = user.photoURL;
+      const emailVerified = user.emailVerified;
+      const uid = user.uid;
+
+
+    }
+
+  })
+
+
+  return divElemt;
 };
 
 
