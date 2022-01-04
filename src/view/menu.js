@@ -25,9 +25,9 @@ export default () => {
       <div class="containerMenuIcons">      
        <nav>
         <ul class="ulMenu2">
-          <li class="liMenu" ><a href="#/Home"><img src="./images/home.png" id="iconHome" alt=""></a></li>        
-          <li class="liMenu"><a href="#/Favorite"><img src="./images/favorite.png" id="iconFavorite" alt=""></a></li>
-          <li class="liMenu"><a href="#/Notifications"><img src="./images/notificacion.png" id="iconNotifications" alt=""></a> </li>         
+          <li class="liMenu" ><a href="#/Home"><img src="./images/home-solid.png" id="iconHome" alt=""></a></li>        
+          <li class="liMenu"><a href="#/Favorite"><img src="./images/star-solid.png" id="iconFavorite" alt=""></a></li>
+          <li class="liMenu"><a href="#/Notifications"><img src="./images/bell-solid.png" id="iconNotifications" alt=""></a> </li>         
         </ul>
         </nav>
         

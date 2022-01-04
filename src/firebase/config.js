@@ -10,8 +10,10 @@ import {
  signInWithPopup, 
  getRedirectResult,
  sendEmailVerification,
+ sendPasswordResetEmail,
  signOut,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
 
 import { 
     collection,
@@ -44,6 +46,8 @@ const providerGoogle= new GoogleAuthProvider(app);
 const providerFacebook= new FacebookAuthProvider(app);
 const providerTwitter = new TwitterAuthProvider(app);
 
+
+
 // exportando firebase auth
 export { 
     auth,   
@@ -52,12 +56,13 @@ export {
     providerFacebook,
     providerGoogle,
     providerTwitter,
+    sendEmailVerification,
     onAuthStateChanged,  
     signInWithEmailAndPassword, 
     createUserWithEmailAndPassword, 
     signInWithPopup, 
     getRedirectResult,
-    sendEmailVerification,
+    sendPasswordResetEmail,
     signOut,
 };
 
