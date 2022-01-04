@@ -467,6 +467,9 @@ align-items: center;
  /*  text-shadow: 1px 1px black; */
   justify-content: center;
   width: 100%;
+  color: #0e3054;
+  font-family: 'Turret Road', cursive;
+  letter-spacing: 1.5px;
 }
 .respmenu input[type="checkbox"], .respmenu .imagen{
   position: absolute;
@@ -495,7 +498,7 @@ align-items: center;
 .respmenu {
   color: white;
   position: relative;
-  background: #5ab8e441;
+  background: #b1daee91;
   min-height: 48px ;
   display: block;
  
@@ -525,10 +528,9 @@ align-items: center;
   display: inline-block;
 }
 
-.ulMenu2 .liMenu a img{
-  display: inline-block;
-  width: 40px;
- /*  position: absolute; */
+.ulMenu2 .liMenu a i{
+  font-size: 38px;
+  color: rgb(12, 38, 77);
 }
 
 .content{
@@ -539,10 +541,10 @@ align-items: center;
 color: #3674b6;
 text-transform: uppercase;
 font-size: 18px;
-	
+font-family: 'Turret Road', cursive;   
+letter-spacing: 2.5px;
   }
   .contentTitulo{
-   
     display: flex ;   
     justify-content: center;
     min-height: 48px;
