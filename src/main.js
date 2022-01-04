@@ -1,5 +1,7 @@
 import { changeTmp } from './view-controller/route.js';
-
+/* import {
+    getPublish
+} from "../firebase/firestore.js" */
 const init = () => {
     changeTmp(window.location.hash);
     window.addEventListener('hashchange', () => {
@@ -11,6 +13,17 @@ const init = () => {
 
 window.addEventListener('load', init);
 
+
+  
+/* export const cargar = () => {
+    window.addEventListener('DOMContentLoaded', async (e) => {
+        const publishes = await getPublish();
+        console.log(publishes);
+        console.log("aqui estoy");
+
+    })
+
+} */
 
 //-------------------SECTION POSTS------------------------
 
