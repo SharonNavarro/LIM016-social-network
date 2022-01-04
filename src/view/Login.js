@@ -126,14 +126,13 @@ export default () => {
   });
 
   //Restablecer contraseña
-function reestablecer(email){
-  link.addEventListener("click", () => {
+  function reestablecer(email) {
+    link.addEventListener("click", () => {
+      passwordReset(email)
+        .then(console.log("verifica tu correo"))
 
-    passwordReset(email)
-    .then(console.log("verifica tu correo"))
-  
-  } )
-}
+    })
+  }
 
   //twiterrrrrr
   const loginTwitter = divElemt.querySelector("#loginTwitter");
@@ -143,7 +142,7 @@ function reestablecer(email){
       //signInGoogleRedirectResult()
       .then((user) => {
         window.location.hash = '#/Home';
-        console.log("iniciaste sesion con google")
+        console.log("iniciaste sesion con Twitter")
         console.log(user);
         console.log(user.user.displayName);
         console.log(user.user.email);

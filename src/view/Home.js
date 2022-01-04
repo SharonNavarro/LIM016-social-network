@@ -1,3 +1,11 @@
+import { userState } from "../firebase/auth.js"
+
+import {
+  savePublish, /* getPublish, */ getDocs,
+  doc,db,
+  collection,
+} from "../firebase/firestore.js"
+
 export default () => {
   const viewHome = `
     <div class="containerHome" id="containerHome">
@@ -22,28 +30,28 @@ export default () => {
 
     </div>
  
-<div class="alignCenter">
+<div class="alignCenter" id="postContainer">
 
   <div class="containerWriter">
     
     <div class="userProfile">
-      <img src="./images/profile4.png">
+      <img id="photoUser">
       <div>
-        <p><bold>Jhoana Durand</bold></p>
+        <p><bold id="nameUser"></bold></p>
       </div>
     </div> 
 
-    <div class="containerTextPost">
-      <textarea rows="3" placeholder="What's on your mind, Jhoana?"></textarea>
+    <form class="containerTextPost" id="formPublish">
+      <textarea id="textPost" rows="3" placeholder="What's on your mind?"></textarea>
       
       <div class="containerIconsBtn">
         <div class="addPost">
           <a href="#"><img src="./images/iconPhoto.png" alt= ></a>
           <a href="#"><img src="./images/iconPrivacity.png" alt= ></a>
-          <button class="postBtn">Publish</button>
+          <button class="postBtn" id="btnPublish">Publicar</button>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 
 
@@ -175,5 +183,61 @@ export default () => {
   const divElemt = document.createElement('section');
   divElemt.classList.add('position')
   divElemt.innerHTML = viewHome;
+
+  const nameUser = divElemt.querySelector("#nameUser");
+  const photoUser = divElemt.querySelector("#photoUser");
+
+  const formPublish = divElemt.querySelector("#formPublish");
+  const postContainer = divElemt.querySelector("#postContainer");
+
+  
+  userState((user) => {
+    if (user) {
+      const displayName = user.displayName;
+      const email = user.email;
+      const photoURL = user.photoURL;
+      const emailVerified = user.emailVerified;
+      const uid = user.uid;
+      nameUser.innerHTML = displayName;
+      photoUser.src = photoURL;
+    }
+
+  })
+
+  formPublish.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const textPost = formPublish['textPost'].value;
+
+    await savePublish(textPost);
+
+    formPublish.reset();
+    console.log("enviado");
+  });
+
+
+
+  
   return divElemt;
+  
 };
+
+
+
+window.addEventListener('DOMContentLoaded', async (e) => {
+ 
+  getDocs(collection(db, "posts"))
+  .then((snapshot) => {
+      snapshot.forEach((doc) => {
+          console.log(doc.data().content);
+          postContainer.innerHTML+=`  
+          <div > 
+          ${doc.data().content}
+          </div>`
+      });
+  });
+    //console.log("fffffffffff",publishes);
+   
+    console.log("holaaaaa");
+  });
+

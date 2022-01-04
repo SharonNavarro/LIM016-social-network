@@ -20,7 +20,9 @@ import {
     query, 
     where, 
     getDocs, 
-    getFirestore
+    getFirestore,
+    doc, setDoc,
+    addDoc 
 } from  "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 
@@ -73,6 +75,8 @@ export{
     collection,
     query, 
     where, 
-    getDocs, 
+    getDocs,
+    doc, setDoc,
+    addDoc 
 
 };
