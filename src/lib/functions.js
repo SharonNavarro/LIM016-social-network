@@ -18,3 +18,11 @@ export const removeErrorMessage = (formControl, message) => {
 export const removeErrorInput = (formControl, classControl) => {
    return formControl.classList.remove(classControl);
 }
+
+
+// errores registro 
+
+
+
+
+
