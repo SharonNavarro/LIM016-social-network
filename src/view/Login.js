@@ -78,6 +78,7 @@ export default () => {
         console.log(user.emailVerified);
         if (user.emailVerified === false) {
           console.log("correo no verificado");
+          window.location.hash = '#/Home';
         } else {
           console.log("correo registrado y verificado");
           window.location.hash = '#/Home';

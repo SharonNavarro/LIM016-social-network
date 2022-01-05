@@ -48,8 +48,8 @@ export default () => {
       
       <div class="containerIconsBtn">
         <div class="addPost">
-          <a href="#"><img src="./images/iconPhoto.png" alt= ></a>
-          <a href="#"><img src="./images/iconPrivacity.png" alt= ></a>
+          <a href="#"><i class="far fa-image"></i></a>
+          <a href="#"><i class="fas fa-unlock-alt"></i></a>
           <button class="postBtn" id="btnPublish">Publicar</button>
         </div>
       </div>
