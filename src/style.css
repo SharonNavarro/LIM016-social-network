@@ -79,8 +79,8 @@ padding: 20px;
 }
 .containerInputs {
   width: 100%;
-  max-width: 300px;
-  margin: auto;
+  max-width: 400px;
+  margin-left: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -271,9 +271,9 @@ border: 2px solid rgba(223, 28, 28, 0.664);
 
 .formulario__input{
   display: block; 
-  width: 80%;
+  width: 250px;
 	background: #fff;
-	border: 3px solid transparent;
+	border: solid transparent;
 	border-radius: 3px;
 	height: 45px;
 	line-height: 45px;
@@ -706,16 +706,16 @@ font-size: 18px;
    width: 100%;
    display: flex;
    justify-content: center;
-   background: linear-gradient(#6294e7, transparent);
+   background: linear-gradient(#b1daee91, transparent);
    margin-bottom: 1.25rem;
 }
-
+ 
 .containerAccount .profileUserCover{
    display: block;
    position: relative;
    width: 90%;
    height: 17rem;
-   background: linear-gradient(45deg, #99c5f5, #6294e7);
+   background: linear-gradient(45deg, #5ab8e441,  #3674b6 );
    border-radius: 0 0 20px 20px;
 }
 
@@ -817,7 +817,10 @@ width: 80%;
 height: 80%;
 display: flex;
 flex-wrap: wrap;
-background-color: rgba(229, 229, 229, 1)
+background-color: rgba(229, 229, 229, 1);
+font-family: 'Inter', sans-serif;
+font-weight: bold;
+
 
 }
 
