@@ -5,7 +5,7 @@ export default () => {
   <div class="respmenu">
   <input type="checkbox" >
   <label for="btn-menu">
-  <img class ="imagen" src="./images/menuuu.png" alt="" />
+  <i class="fas fa-bars imagen"></i>
   </label> 
   <div class="contentTitulo">
   <h2 class="titulo">Netcoins</h2>
