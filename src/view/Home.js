@@ -1,9 +1,11 @@
 import { userState } from "../firebase/auth.js"
 
 import {
-  savePublish, /* getPublish, */ getDocs,
-  doc,db,
+  savePublish, getDocs,
+  doc,
   collection,
+  getPublish
+
 } from "../firebase/firestore.js"
 
 export default () => {
@@ -30,7 +32,7 @@ export default () => {
 
     </div>
  
-<div class="alignCenter" id="postContainer">
+<div class="alignCenter" >
 
   <div class="containerWriter">
     
@@ -54,38 +56,8 @@ export default () => {
     </form>
   </div>
 
-
-
-    <div class="containerPosts">
+    <div  id="postContainer">
     
-      <div class="containerAlignItems">
-
-
-        <div class="userProfile">
-        <img src="./images/profile2.png">
-        <div>
-            <p>Carlos Tarazona</p>
-            <span>@Carlo</span>
-        </div>
-        </div> 
-
-        <button type="button">
-            <i class="fas fa-ellipsis-h"></i>
-        </button>
-
-      </div>
-
-        <div class="containerTextPost">
-            <p>Bienvenidxs a la experiencia Netcoins!! Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin.</p>
-        
-            <div class="containerIconsBtn">
-                <div class="addPosts">
-                    <div class="iconPost"><img src="./images/heartIcon.png">1508</div>
-                    <div class="iconPost"><img src="./images/textGlobeIcon.png">2</div>
-                    <div class="iconPost"><img src="./images/Star.png"></div>
-                </div>
-            </div>
-        </div>
     </div>
 
 
@@ -190,7 +162,7 @@ export default () => {
   const formPublish = divElemt.querySelector("#formPublish");
   const postContainer = divElemt.querySelector("#postContainer");
 
-  
+
   userState((user) => {
     if (user) {
       const displayName = user.displayName;
@@ -206,38 +178,86 @@ export default () => {
 
   formPublish.addEventListener("submit", async (e) => {
     e.preventDefault();
-
     const textPost = formPublish['textPost'].value;
-
     await savePublish(textPost);
-
     formPublish.reset();
     console.log("enviado");
+    postContainer.innerHTML = "";
+    await get();
+
+
   });
 
-
-
-  
   return divElemt;
-  
+
 };
 
-
-
 window.addEventListener('DOMContentLoaded', async (e) => {
- 
-  getDocs(collection(db, "posts"))
-  .then((snapshot) => {
-      snapshot.forEach((doc) => {
-          console.log(doc.data().content);
-          postContainer.innerHTML+=`  
-          <div > 
-          ${doc.data().content}
-          </div>`
-      });
+  await get();
+
+})
+
+async function get() {
+  let displayName= "";
+  let photoURL="";
+  userState((user) => {
+    if (user) {
+       displayName = user.displayName;
+      const email = user.email;
+       photoURL = user.photoURL;
+      const emailVerified = user.emailVerified;
+      const uid = user.uid;   
+    }  
+  })
+  
+  const querySnapshot = await getPublish();
+  querySnapshot.forEach((doc) => {
+    console.log(doc.data().content);
+    postContainer.innerHTML += `        
+          
+    <div class="containerPosts" >
+    
+  
+
+          <div class="containerAlignItems"> 
+    
+            <div class="userProfile">
+            <img src=${photoURL}>
+            <div>
+            <p><bold > ${displayName}</bold></p>
+               
+            </div>
+            </div> 
+    
+            <button type="button">
+                <i class="fas fa-ellipsis-h"></i>
+            </button>
+    
+          </div>
+    
+            <div class="containerTextPost">
+                <p> ${doc.data().content}</p>
+            
+                <div class="containerIconsBtn">
+                    <div class="addPosts">
+                        <div class="iconPost"><img src="./images/heartIcon.png">1508</div>
+                        <div class="iconPost"><img src="./images/textGlobeIcon.png">2</div>
+                        <div class="iconPost"><img src="./images/Star.png"></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+          
+          
+          
+          
+          
+          
+          `
   });
-    //console.log("fffffffffff",publishes);
-   
-    console.log("holaaaaa");
-  });
+}
+
+
+
+
 

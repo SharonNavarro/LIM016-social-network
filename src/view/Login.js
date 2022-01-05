@@ -4,6 +4,8 @@ import { addErrorMessage, addErrorInput, removeErrorInput, removeErrorMessage } 
 export default () => {
   const viewLogin = `
     <div class="containerLogin">
+    <div class="sectionWelcome">
+    </div>
       <div class="sectionLogin" id="sectionLogin">
 
         <div class="login" id="login">  
