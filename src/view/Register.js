@@ -101,6 +101,7 @@ export default () => {
   const password = divElemt.querySelector("#inputPasswordRegister");
   const btnRegister = divElemt.querySelector('#btnRegister');
   const terminos= divElemt.querySelector('#terminos');
+  
 
   
   const inactiveEmailErrorMessage = divElemt.querySelector('.inactiveEmailErrorMessage');
@@ -122,10 +123,15 @@ export default () => {
       .then(() => {
 
         divElemt.querySelector("#inputUserRegister").value = "";
-        divElemt.querySelector("#inputPasswordRegister").value = ""
+        divElemt.querySelector("#inputPasswordRegister").value = "";
+        divElemt.querySelector("#inputUserName").value = "";
+        divElemt.querySelector("#inputNameUserRegister").value = "";
+
         EmailVerification()
           .then(() => {
             console.log("Revisa tu correo para verificarlo");
+
+            
           });
 
        
