@@ -5,17 +5,17 @@ export default () => {
   <div class="respmenu">
   <input type="checkbox" >
   <label for="btn-menu">
-  <img class ="imagen" src="./images/menuuu.png" alt="" />
+  <i class="fas fa-bars imagen"></i>
   </label> 
   <div class="contentTitulo">
   <h2 class="titulo">Netcoins</h2>
   </div> 
   <nav>
     <ul>
-    <li><a href="#/Account">Account</a></li>
-    <li><a href="#/Friends">Friends</a> </li>
-    <li><a href="#/Messages">Messages</a> </li>
-    <li><a href="#/Netchange">Netchanges</a> </li>   
+    <li><a href="#/Account"><i class="far fa-user-circle"></i>Account</a></li>
+    <li><a href="#/Friends"><i class="fas fa-users"></i>Friends</a> </li>
+    <li><a href="#/Messages"><i class="far fa-comments"></i>Messages</a> </li>
+    <li><a href="#/Netchange"><i class="fas fa-search-dollar"></i></i>Netchanges</a> </li>   
     <li><a id="btnLogout" style="cursor:pointer" >Cerrar Sesión</a> </li>   
     </ul>
   </nav>
@@ -25,9 +25,9 @@ export default () => {
       <div class="containerMenuIcons">      
        <nav>
         <ul class="ulMenu2">
-          <li class="liMenu" ><a href="#/Home"><img src="./images/home.png" id="iconHome" alt=""></a></li>        
-          <li class="liMenu"><a href="#/Favorite"><img src="./images/favorite.png" id="iconFavorite" alt=""></a></li>
-          <li class="liMenu"><a href="#/Notifications"><img src="./images/notificacion.png" id="iconNotifications" alt=""></a> </li>         
+          <li class="liMenu" ><a href="#/Home"><i class="fas fa-home" id="iconHome"></i></a></li>        
+          <li class="liMenu"><a href="#/Favorite"><i class="fas fa-star" id="iconFavorite"></i></a></li>
+          <li class="liMenu"><a href="#/Notifications"><i class="fas fa-bell" id="iconNotifications"></i></a> </li>         
         </ul>
         </nav>
         

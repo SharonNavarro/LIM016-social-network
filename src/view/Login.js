@@ -4,6 +4,8 @@ import { addErrorMessage, addErrorInput, removeErrorInput, removeErrorMessage } 
 export default () => {
   const viewLogin = `
     <div class="containerLogin">
+    <div class="sectionWelcome">
+    </div>
       <div class="sectionLogin" id="sectionLogin">
 
         <div class="login" id="login">  
@@ -76,6 +78,7 @@ export default () => {
         console.log(user.emailVerified);
         if (user.emailVerified === false) {
           console.log("correo no verificado");
+          window.location.hash = '#/Home';
         } else {
           console.log("correo registrado y verificado");
           window.location.hash = '#/Home';

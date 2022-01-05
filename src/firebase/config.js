@@ -11,6 +11,7 @@ import {
  getRedirectResult,
  sendEmailVerification,
  sendPasswordResetEmail,
+
  signOut,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
@@ -22,7 +23,8 @@ import {
     getDocs, 
     getFirestore,
     doc, setDoc,
-    addDoc 
+    addDoc ,
+    onSnapshot,
 } from  "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 
@@ -77,6 +79,7 @@ export{
     where, 
     getDocs,
     doc, setDoc,
-    addDoc 
+    addDoc,
+    onSnapshot 
 
 };

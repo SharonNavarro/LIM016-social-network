@@ -35,6 +35,7 @@ export const passwordReset = (email) => sendPasswordResetEmail(auth, email);
 
 export const signUp = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
+// enviar email de verificacion
 
 export const EmailVerification = () => sendEmailVerification(auth.currentUser);
 

@@ -5,35 +5,26 @@ import {
     where,
     getDocs,
     doc, setDoc,
-    addDoc
+    addDoc,
+    onSnapshot
 } from "./config.js"
 
 const savePublish = (textPost) =>
     addDoc(collection(db, "posts"), {
         content: textPost
     });
-/* const getPublish = () =>
-    getDocs(collection(db, "posts"))
-    .then((snapshot) => {
-        snapshot.forEach((doc) => {
-            console.log(doc.data());
-        });
-    }); */
-/* const intento = (collection(db, "posts"));
-getDocs(intento)
-    .then((snapshot) => {
-        snapshot.forEach((doc) => {
-            console.log(doc.id, " => ", doc.data());
-        });
-    }) */
+
+const getPublish = () => getDocs(collection(db, "posts"))
 
 export {
 
     savePublish,
-    /* getPublish, */
+    getPublish,
     getDocs,
     doc,
     collection,
-    db,
+  
+    
+
 
 };
