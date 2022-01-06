@@ -242,7 +242,7 @@ async function get() {
                     <div class="addPosts">
                         <div class="iconPost"><img src="./images/heartIcon.png">1508</div>
                         <div class="iconPost"><img src="./images/textGlobeIcon.png">2</div>
-                        <div class="iconPost"><img src="./images/Star.png"></div>
+                        <div class="iconPost"><img src="./images/St hnpar.png"></div>
                     </div>
                 </div>
             </div>
