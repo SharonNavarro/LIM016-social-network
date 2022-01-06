@@ -485,8 +485,8 @@ font-size: 13px;
 }
 
 .postBtn {    
-border: 0px solid rgba(35, 95, 207);
-background-color: rgba(35, 95, 207);
+border: 0px solid rgba(55, 115, 179, 0.692);
+background-color: rgba(55, 115, 179, 0.692);
 padding: 10px;
 border-radius: 18px;
 color: white;
@@ -626,14 +626,12 @@ height: 48px;
 }
 
 .respmenu .imagen {
-  font-size: 35px;
-  pointer-events: none;
-  color:rgb(12, 38, 77);
-  margin-left: 3%;
-  margin-top: 6px;
-font-size: 48px;
-pointer-events: none;
-
+  font-size: 38px;
+    pointer-events: none;
+    color: #3674b6;
+    margin-left: 1%;
+    margin-top: 6px;
+    pointer-events: none;
 }
 
 .respmenu input[type="checkbox"] {
@@ -676,8 +674,8 @@ display: inline-block;
 }
 
 .ulMenu2 .liMenu a i{
-  font-size: 35px;
-  color: rgb(12, 38, 77);
+  font-size: 30px;
+  color: rgba(55, 115, 179, 0.692);
 }
 
 .content{
@@ -687,9 +685,9 @@ background: rgba(229, 229, 229, 1);
 .titulo{
 color: #3674b6;
 text-transform: uppercase;
-font-size: 18px;
+font-size: 23px;
 font-family: 'Turret Road', cursive;   
-letter-spacing: 2.5px;
+letter-spacing: 2.9px;
   }
   .contentTitulo{
     display: flex ;   
