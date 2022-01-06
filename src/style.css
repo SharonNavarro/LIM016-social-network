@@ -931,3 +931,78 @@ font-weight: bold;
     cursor: pointer;
   }
 
+.selectEdition{
+  color: #626262;
+  border-color:white;
+  border-width: 0px;
+  background: transparent;
+}
+.selectEdition:hover{
+  color: #006fe6;
+  
+}
+/* .op{
+  margin: 15px;
+  padding: 15px;
+  width: 70px;
+  height: 40px;
+} */
+
+select {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  height: 30px;
+  padding: 5px;
+  width: 30px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  margin-right: 30px;
+  margin-top: 20px;
+  
+}
+select::-ms-expand {
+  display: none;
+}
+select:focus{ outline: none;}
+
+/* ---------------- Modal de eliminar posts--------------- */
+.modal-contenido{
+  background-color:aqua;
+  width:300px;
+  padding: 10px 20px;
+  margin: 20% auto;
+  position: relative;
+  opacity:1;
+  pointer-events:auto;
+}
+.modal{
+  background-color: rgba(0,0,0,.8);
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  opacity:0;
+  pointer-events:none;
+  transition: all 1s;
+}
+.show{
+  
+  pointer-events:auto;
+  background-color: rgba(0,0,0,.8);
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  opacity:1;
+  pointer-events:none;
+
+}
+/* #miModal .activado{
+  opacity:1;
+  pointer-events:auto;
+} */

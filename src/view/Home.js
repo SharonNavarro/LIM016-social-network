@@ -4,7 +4,10 @@ import {
   savePublish, getDocs,
   doc,
   collection,
-  getPublish
+  getPublish,
+  db,
+  deletePublish,
+  deleteDoc
 
 } from "../firebase/firestore.js"
 
@@ -151,6 +154,16 @@ export default () => {
 
     </div>
     </div>
+  
+    <div id="miModal" class="modal">    
+    <div  class="modal-contenido">
+      <h2>¿Estás seguro de eliminar la publicación?</h2>
+      <button id="btnDelete">eliminar</button>
+      <button id="btnEdit">cancelar</button>
+    </div> 
+    </div> 
+    </div> 
+   
  `;
   const divElemt = document.createElement('section');
   divElemt.classList.add('position')
@@ -173,7 +186,6 @@ export default () => {
       nameUser.innerHTML = displayName;
       photoUser.src = photoURL;
     }
-
   })
 
   formPublish.addEventListener("submit", async (e) => {
@@ -184,7 +196,6 @@ export default () => {
     console.log("enviado");
     postContainer.innerHTML = "";
     await get();
-
 
   });
 
@@ -198,27 +209,25 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 })
 
 async function get() {
-  let displayName= "";
-  let photoURL="";
+  let displayName = "";
+  let photoURL = "";
   userState((user) => {
     if (user) {
-       displayName = user.displayName;
+      displayName = user.displayName;
       const email = user.email;
-       photoURL = user.photoURL;
+      photoURL = user.photoURL;
       const emailVerified = user.emailVerified;
-      const uid = user.uid;   
-    }  
+      const uid = user.uid;
+    }
   })
-  
+
   const querySnapshot = await getPublish();
   querySnapshot.forEach((doc) => {
-    console.log(doc.data().content);
+    const post = doc.data();
+    post.id = doc.id;
     postContainer.innerHTML += `        
           
     <div class="containerPosts" >
-    
-  
-
           <div class="containerAlignItems"> 
     
             <div class="userProfile">
@@ -228,10 +237,13 @@ async function get() {
                
             </div>
             </div> 
-    
-            <button type="button">
-                <i class="fas fa-ellipsis-h"></i>
-            </button>
+           
+               
+              <select class="selectEdition  fa" > 
+             <option  style="display:none" class="  fa" selected> &#xf141; </option>
+             <option  value="edit"   data-id="${post.id}" class="op fa"> &#xf044;  </option>
+             <option value="delete" data-id="${post.id}" class="op fa">&#xf2ed;   </option>
+             </select>
     
           </div>
     
@@ -246,15 +258,39 @@ async function get() {
                     </div>
                 </div>
             </div>
-            </div>
-          
-          
-          
-          
-          
+            </div>   
           
           `
   });
+
+  const selectEdition = document.querySelectorAll(".selectEdition");
+  const miModal = document.querySelector("#miModal");
+  const btnDelete = document.querySelector("#btnDelete");
+  const btnEdit = document.querySelector("#btnEdit");
+
+  selectEdition.forEach(selectEdition => {
+    selectEdition.addEventListener("change", function () {
+
+      const selectedOption = this.options[selectEdition.selectedIndex];
+      async function modalDelete () {
+        miModal.setAttribute("class", "modal");
+        await deletePublish(selectedOption.dataset.id);
+        postContainer.innerHTML = "";
+        await get();
+      }
+
+      if (selectedOption.value === "delete") {
+        miModal.setAttribute("class", "show");
+        btnDelete.addEventListener("click",modalDelete )
+      }
+      else {
+
+
+      }
+
+    })
+  })
+
 }
 
 
