@@ -81,7 +81,7 @@ padding: 5px;
 }
 .containerInputs {
   width: 100%;
-  max-width: 400px;
+
   margin-left: auto;
   display: flex;
   flex-direction: column;
