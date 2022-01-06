@@ -240,8 +240,8 @@ async function get() {
             
                 <div class="containerIconsBtn">
                     <div class="addPosts">
-                        <div class="iconPost"><img src="./images/heartIcon.png">1508</div>
-                        <div class="iconPost"><img src="./images/textGlobeIcon.png">2</div>
+                        <div class="iconPost"><img src="./images/heartIcon.png"></div>
+                        <div class="iconPost"><img src="./images/textGlobeIcon.png"></div>
                         <div class="iconPost"><img src="./images/Star.png"></div>
                     </div>
                 </div>
