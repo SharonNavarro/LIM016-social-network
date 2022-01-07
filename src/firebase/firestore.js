@@ -6,7 +6,8 @@ import {
     getDocs,
     doc, setDoc,
     addDoc,
-    onSnapshot
+    onSnapshot,
+    deleteDoc
 } from "./config.js"
 
 const savePublish = (textPost) =>
@@ -16,6 +17,8 @@ const savePublish = (textPost) =>
 
 const getPublish = () => getDocs(collection(db, "posts"))
 
+const deletePublish= async(id)=> await deleteDoc(doc(db, "posts", id));
+
 export {
 
     savePublish,
@@ -23,6 +26,9 @@ export {
     getDocs,
     doc,
     collection,
+    deletePublish,
+    deleteDoc,
+    db,
   
     
 
