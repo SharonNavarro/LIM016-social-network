@@ -33,7 +33,7 @@
 </div> 
 
 <form class="containerTextPost" id="formPublish">
-  <textarea id="textPost" rows="3" placeholder="What's on your mind?"></textarea>
+  <textarea class="textareaPublish" id="textPost" rows="3" placeholder="What's on your mind?"></textarea>
   
   <div class="containerIconsBtn">
     <div class="addPost">
@@ -141,16 +141,6 @@
  </div>
  </div>
 
-  <div id="miModal" class="modal">    
-     <div  class="modal-contenido">
-       <h5 class="h2Modal">¿Estás seguro que deseas eliminar la publicación?</h5>
-       <div class="groupBtnOptions"> 
-       <button class="btnOptions"  id="btnDelete">Eliminar</button>
-       <button class="btnOptions" id="btnCancel">Cancelar</button>
-       </div> 
-     </div> 
-   </div> 
-
    <div id="miModalPublishVoid" class="closeModal">    
    <div  class="modal-contenidoReturn">
      <h5 class="h2Modal">Tu publicación está vacia!!</h5>
@@ -192,10 +182,21 @@
             </div>
             <div class="groupBtnOptionsUpdate hiddenBtn groupBtnUpdate" data-id="${id}" > 
             <button class="btnOptions btnSave" data-id="${id}" >Guardar</button>
-            <button class="btnCancelUpdate" data-id="${id}">Cancelar</button>
+            <button class="btnOptions btnCancelUpdate" data-id="${id}">Cancelar</button>
              </div> 
         </div>
         </div>
+        
+  <div id="miModal" class="modal">    
+  <div  class="modal-contenido">
+    <h5 class="h2Modal">¿Estás seguro que deseas eliminar la publicación?</h5>
+    <div class="groupBtnOptions"> 
+    <button class="btnOptions"  id="btnDelete">Eliminar</button>
+    <button class="btnOptions btnCancel"  data-id="${id}" >Cancelar</button>
+    </div> 
+  </div> 
+</div> 
+
       `;
 
       export {

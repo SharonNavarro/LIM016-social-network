@@ -453,7 +453,7 @@ padding-left: 55px;
 padding-top: 10px;
 }
 
-.containerTextPost textarea {
+.containerTextPost .textareaPublish {
 width: 100%;
 border: 0;
 outline: 0;
@@ -1068,6 +1068,13 @@ select:focus{ outline: none;}
   left:0;
   opacity:1;
   z-index: 999;
-
-
+}
+.contenido{
+  width: 100%;
+  border: 0;
+  outline: 0;
+  
+  background: transparent;
+  resize: none;
+  font-size: 1rem;
 }

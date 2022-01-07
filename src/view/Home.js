@@ -99,7 +99,7 @@ async function showPublish() {
   const miModal = document.querySelector("#miModal");
 
   const btnDelete = document.querySelector("#btnDelete");
-  const btnCancel = document.querySelector("#btnCancel");
+  const btnCancel = document.querySelectorAll(".btnCancel");
   const btnCancelUpdate = document.querySelectorAll(".btnCancelUpdate");
   const btnEdit = document.querySelector("#btnEdit");
   const contenido = document.querySelectorAll(".contenido");
@@ -122,16 +122,18 @@ async function showPublish() {
       }
       async function cancelarModal() {
         miModal.setAttribute("class", "modal");
-        console.log(selectedOption.value);
-        if (selectedOption.value != "menuOptions")
-          selectEdition.value = "menuOptions";
+
+        resetIconOption();
+        await showPublish();
       }
 
 
       if (selectedOption.value === "delete") {
-        miModal.setAttribute("class", "showDelete");       
+        miModal.setAttribute("class", "showDelete");
         btnDelete.addEventListener("click", modalDelete);
-        btnCancel.addEventListener("click", cancelarModal);
+        btnCancel.forEach((btnCanc) => {
+          btnCanc.addEventListener("click", cancelarModal);
+        });
       }
       else if (selectedOption.value === "edit") {
 
@@ -139,21 +141,13 @@ async function showPublish() {
 
           if (e.dataset.id == selectedOption.dataset.id) {
             e.disabled = false;
+            const statusShowNone = "none";
+            const statusShowBlock = "block";
 
-            containerIconsBtn.forEach((e) => {
-              if (e.dataset.id == selectedOption.dataset.id) {
+            showIconosAndGroupBtnUpdate(containerIconsBtn, statusShowNone)
+            showIconosAndGroupBtnUpdate(groupBtnUpdate, statusShowBlock)
 
-                e.style.display = "none";
-              }
-            });
-            groupBtnUpdate.forEach((e) => {
-              if (e.dataset.id == selectedOption.dataset.id) {
-
-                e.style.display = "block"
-              }
-            });
-
-//inicio de boton que modifica la publicacion
+            //inicio de boton que modifica la publicacion
             btnSave.forEach((btn) => {
 
               btn.addEventListener("click", async () => {
@@ -163,22 +157,11 @@ async function showPublish() {
                   const textUpdate = (e.value);
 
                   await updatePublish(idUpdate, textUpdate);
-                  groupBtnUpdate.forEach((e) => {
-                    if (e.dataset.id == selectedOption.dataset.id) {
+                  showIconosAndGroupBtnUpdate(groupBtnUpdate, statusShowNone)
+                  showIconosAndGroupBtnUpdate(containerIconsBtn, statusShowBlock)
 
-                      e.style.display = "none"
-                    }
-                  });
-                  containerIconsBtn.forEach((e) => {
-                    if (e.dataset.id == selectedOption.dataset.id) {
-
-                      e.style.display = "block";
-                    }
-                  });
                   e.disabled = true;
-                  if (selectedOption.value != "menuOptions") {
-                    selectEdition.value = "menuOptions";
-                  }
+                  resetIconOption();
 
                 }
 
@@ -186,32 +169,22 @@ async function showPublish() {
 
             });
 
-//inicio de boton cuando se cancela la edicion
+            //inicio de boton cuando se cancela la edicion
             btnCancelUpdate.forEach((btnUpdate) => {
-           
-              btnUpdate.addEventListener("click", () => {
-                console.log(btnUpdate.dataset.id);
-                if (btnUpdate.dataset.id == selectedOption.dataset.id) {
 
-                  groupBtnUpdate.forEach((e) => {
-                    if (e.dataset.id == selectedOption.dataset.id) {
+              btnUpdate.addEventListener("click",async () => {
 
-                      e.style.display = "none"
-                    }
-                  });
-                  containerIconsBtn.forEach((e) => {
-                    if (e.dataset.id == selectedOption.dataset.id) {
+                const texto= await getPublish(selectedOption.dataset.id)
+                console.log(texto.data().content);
+                const texte=(texto.data().content);
+               e.value=texte;
+         
+                  showIconosAndGroupBtnUpdate(groupBtnUpdate, statusShowNone)
+                  showIconosAndGroupBtnUpdate(containerIconsBtn, statusShowBlock)
 
-                      e.style.display = "block";
-                    }
-                  });
-                
-                  if (selectedOption.value != "menuOptions"){
-                    selectEdition.value = "menuOptions";
-                  }
+                  resetIconOption();
                   e.disabled = true;
-                  
-                }
+
               })
 
             })
@@ -219,9 +192,27 @@ async function showPublish() {
           }
 
         })
-//fin de recorrer contenido
+        //fin de recorrer contenido
 
       }
+
+
+      function showIconosAndGroupBtnUpdate(container, statusShow) {
+        container.forEach((e) => {
+          if (e.dataset.id == selectedOption.dataset.id) {
+            e.style.display = statusShow;
+          }
+        });
+
+      }
+
+      function resetIconOption() {
+        if (selectedOption.value != "menuOptions") {
+          selectEdition.value = "menuOptions";
+        }
+      }
+
+
       //fin del else
 
     })
