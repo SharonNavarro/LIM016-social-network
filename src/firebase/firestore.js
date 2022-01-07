@@ -4,33 +4,41 @@ import {
     query,
     where,
     getDocs,
+    getDoc,
     doc, setDoc,
     addDoc,
     onSnapshot,
-    deleteDoc
+    deleteDoc,
+    updateDoc
 } from "./config.js"
 
-const savePublish = (textPost) =>
-    addDoc(collection(db, "posts"), {
-        content: textPost
-    });
+const savePublish = (textPost) => addDoc(collection(db, "posts"), {
+    content: textPost
+});
 
-const getPublish = () => getDocs(collection(db, "posts"))
+const getPublishes = () => getDocs(collection(db, "posts"))
 
-const deletePublish= async(id)=> await deleteDoc(doc(db, "posts", id));
+const getPublish = async (id) => await getDoc(doc(db, "posts", id));
+
+const updatePublish = async (id, textPost) => await updateDoc(doc(db, "posts", id), {
+    content: textPost
+});
+
+
+
+const deletePublish = async (id) => await deleteDoc(doc(db, "posts", id));
 
 export {
 
     savePublish,
-    getPublish,
+    getPublishes,
     getDocs,
     doc,
     collection,
     deletePublish,
     deleteDoc,
     db,
-  
-    
-
+    getPublish,
+    updatePublish
 
 };

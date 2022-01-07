@@ -970,13 +970,16 @@ select:focus{ outline: none;}
 
 /* ---------------- Modal de eliminar posts--------------- */
 .modal-contenido{
-  background-color:aqua;
+  background-color:white;
   width:300px;
+  height: 150px;
   padding: 10px 20px;
   margin: 20% auto;
   position: relative;
   opacity:1;
   pointer-events:auto;
+  border-radius: 15px;
+  
 }
 .modal{
   background-color: rgba(0,0,0,.8);
@@ -1002,7 +1005,26 @@ select:focus{ outline: none;}
   pointer-events:none;
 
 }
-/* #miModal .activado{
-  opacity:1;
-  pointer-events:auto;
-} */
+.h2Modal{
+  text-align: center;
+  margin: 20px;
+}
+
+.btnOptions {    
+  border: 0px solid rgba(35, 95, 207);
+  background-color: rgba(35, 95, 207);
+  padding: 10px;
+  border-radius: 18px;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+  }
+.groupBtnOptions{
+  display: flex;
+  justify-content: center;
+}
+.hiddenBtn{
+  display: none;
+}

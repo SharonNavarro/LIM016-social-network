@@ -21,11 +21,13 @@ import {
     query, 
     where, 
     getDocs, 
+    getDoc,
     getFirestore,
     doc, setDoc,
     addDoc ,
     onSnapshot,
-    deleteDoc 
+    deleteDoc,
+    updateDoc
 } from  "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 
@@ -68,6 +70,7 @@ export {
     signInWithPopup, 
     getRedirectResult,
     sendPasswordResetEmail,
+    
     signOut,
 };
 
@@ -82,6 +85,9 @@ export{
     doc, setDoc,
     addDoc,
     onSnapshot ,
-    deleteDoc
+    deleteDoc,
+    getDoc,
+    updateDoc
+
 
 };
