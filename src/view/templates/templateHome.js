@@ -136,21 +136,30 @@
             </div>
         </div>
     </div>
-</div>
+ </div>
 
-</div>
-</div>
+ </div>
+ </div>
 
-<div id="miModal" class="modal">    
-<div  class="modal-contenido">
-  <h5 class="h2Modal">¿Estás seguro que deseas eliminar la publicación?</h5>
-  <div class="groupBtnOptions"> 
-  <button class="btnOptions"  id="btnDelete">Eliminar</button>
-  <button class="btnOptions" id="btnCancel">Cancelar</button>
-  </div> 
-</div> 
-</div> 
-</div> 
+  <div id="miModal" class="modal">    
+     <div  class="modal-contenido">
+       <h5 class="h2Modal">¿Estás seguro que deseas eliminar la publicación?</h5>
+       <div class="groupBtnOptions"> 
+       <button class="btnOptions"  id="btnDelete">Eliminar</button>
+       <button class="btnOptions" id="btnCancel">Cancelar</button>
+       </div> 
+     </div> 
+   </div> 
+
+   <div id="miModalPublishVoid" class="closeModal">    
+   <div  class="modal-contenidoReturn">
+     <h5 class="h2Modal">Tu publicación está vacia!!</h5>
+     <div class="groupBtnOptionsReturn"> 
+     <button  id="btnReturn">Volver</button>     
+     </div> 
+   </div> 
+ </div> 
+
 
 `;
 
@@ -181,9 +190,9 @@
                     <div class="iconPost"><img src="./images/Star.png"></div>
                 </div>
             </div>
-            <div class="groupBtnOptions hiddenBtn groupBtnUpdate" data-id="${id}" > 
+            <div class="groupBtnOptionsUpdate hiddenBtn groupBtnUpdate" data-id="${id}" > 
             <button class="btnOptions btnSave" data-id="${id}" >Guardar</button>
-            <button class="btnOptions btnCancel">Cancelar</button>
+            <button class="btnCancelUpdate" data-id="${id}">Cancelar</button>
              </div> 
         </div>
         </div>

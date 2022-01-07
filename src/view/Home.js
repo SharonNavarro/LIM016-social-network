@@ -37,25 +37,40 @@ export default () => {
       photoUser.src = photoURL;
     }
   })
+  const miModalPublishVoid = divElemt.querySelector("#miModalPublishVoid");
+  const btnReturn = divElemt.querySelector("#btnReturn");
 
   formPublish.addEventListener("submit", async (e) => {
+
     e.preventDefault();
     const textPost = formPublish['textPost'].value;
-    await savePublish(textPost);
-    formPublish.reset();
-    console.log("enviado");
-    await get();
 
+    if (textPost == "" || textPost.trim() == "") {
+      miModalPublishVoid.setAttribute("class", "show");
+      btnReturn.addEventListener("click", closeModal)
+
+
+    } else {
+      await savePublish(textPost);
+      formPublish.reset();
+
+      await showPublish();
+
+    }
   });
+
+  function closeModal() {
+    miModalPublishVoid.setAttribute("class", "closeModal");
+  }
 
   return divElemt;
 };
 
 window.addEventListener('DOMContentLoaded', async (e) => {
-  await get();
+  await showPublish();
 })
 
-async function get() {
+async function showPublish() {
 
   let displayName = "";
   let photoURL = "";
@@ -82,8 +97,10 @@ async function get() {
 
   const selectEdition = document.querySelectorAll(".selectEdition");
   const miModal = document.querySelector("#miModal");
+
   const btnDelete = document.querySelector("#btnDelete");
   const btnCancel = document.querySelector("#btnCancel");
+  const btnCancelUpdate = document.querySelectorAll(".btnCancelUpdate");
   const btnEdit = document.querySelector("#btnEdit");
   const contenido = document.querySelectorAll(".contenido");
   const containerIconsBtn = document.querySelectorAll(".containerIconsBtn");
@@ -95,10 +112,12 @@ async function get() {
     selectEdition.addEventListener("change", async function () {
 
       const selectedOption = this.options[selectEdition.selectedIndex];
+
       async function modalDelete() {
+        console.log(btnDelete);
         miModal.setAttribute("class", "modal");
         await deletePublish(selectedOption.dataset.id);
-        await get();
+        await showPublish();
 
       }
       async function cancelarModal() {
@@ -110,11 +129,11 @@ async function get() {
 
 
       if (selectedOption.value === "delete") {
-        miModal.setAttribute("class", "show");
+        miModal.setAttribute("class", "showDelete");       
         btnDelete.addEventListener("click", modalDelete);
         btnCancel.addEventListener("click", cancelarModal);
       }
-      else {
+      else if (selectedOption.value === "edit") {
 
         contenido.forEach((e) => {
 
@@ -134,44 +153,76 @@ async function get() {
               }
             });
 
-          
+//inicio de boton que modifica la publicacion
             btnSave.forEach((btn) => {
-             
+
               btn.addEventListener("click", async () => {
-              
-                if(btn.dataset.id==selectedOption.dataset.id){
+
+                if (btn.dataset.id == selectedOption.dataset.id) {
                   const idUpdate = (selectedOption.dataset.id);
                   const textUpdate = (e.value);
-                
+
                   await updatePublish(idUpdate, textUpdate);
                   groupBtnUpdate.forEach((e) => {
                     if (e.dataset.id == selectedOption.dataset.id) {
-      
+
                       e.style.display = "none"
                     }
                   });
                   containerIconsBtn.forEach((e) => {
                     if (e.dataset.id == selectedOption.dataset.id) {
-      
+
                       e.style.display = "block";
                     }
                   });
                   e.disabled = true;
-                  if (selectedOption.value != "menuOptions"){
-                  selectEdition.value = "menuOptions";
-              }
+                  if (selectedOption.value != "menuOptions") {
+                    selectEdition.value = "menuOptions";
+                  }
 
                 }
-                
+
               })
 
             });
 
+//inicio de boton cuando se cancela la edicion
+            btnCancelUpdate.forEach((btnUpdate) => {
+           
+              btnUpdate.addEventListener("click", () => {
+                console.log(btnUpdate.dataset.id);
+                if (btnUpdate.dataset.id == selectedOption.dataset.id) {
 
+                  groupBtnUpdate.forEach((e) => {
+                    if (e.dataset.id == selectedOption.dataset.id) {
+
+                      e.style.display = "none"
+                    }
+                  });
+                  containerIconsBtn.forEach((e) => {
+                    if (e.dataset.id == selectedOption.dataset.id) {
+
+                      e.style.display = "block";
+                    }
+                  });
+                
+                  if (selectedOption.value != "menuOptions"){
+                    selectEdition.value = "menuOptions";
+                  }
+                  e.disabled = true;
+                  
+                }
+              })
+
+            })
+            //fin de bpton cancelar cuando se edita
           }
 
         })
-        }
+//fin de recorrer contenido
+
+      }
+      //fin del else
 
     })
   })
