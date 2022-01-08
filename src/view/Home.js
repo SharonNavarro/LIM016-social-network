@@ -54,13 +54,16 @@ export default () => {
     } else {
 
       let hoy = new Date();
-      let fecha = /* hoy.getHours() + ':' + hoy.getMinutes() + ':' +  */hoy.getSeconds()/*  + " - " + hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear(); */;
-      const datePublish = fecha;
-      console.log("segundo de publicacion es", datePublish);
-      await savePublish(textPost, datePublish/* ,userName,urlPhoto,totalStars,totalHearts,comments */);
+      let datePublish, hourPublish;
+      hourPublish = hoy.getHours() + ':' + hoy.getMinutes();
+      datePublish = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
+
+      console.log("hora de publicacion es", hourPublish);
+      console.log("fecha de publicacion es", datePublish);
+      await savePublish(textPost, datePublish, hourPublish/* ,userName,urlPhoto,totalStars,totalHearts,comments */);
       formPublish.reset();
 
-      await showPublish(datePublish);
+      await showPublish();
 
     }
   });
@@ -76,7 +79,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
   await showPublish();
 })
 
-async function showPublish(datePublish) {
+async function showPublish() {
 
   let displayName = "";
   let photoURL = "";
@@ -90,24 +93,18 @@ async function showPublish(datePublish) {
     }
   })
 
-  //let fecha = new Date();
-  //let fechaActual =/*  fecha.getHours() + ':' + fecha.getMinutes() + ':' + */ fecha.getSeconds() /* + " - " + hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear(); */;
-// console.log("segundos actual",fechaActual);
-//var diff = fechaActual - datePublish;
-//console.log("segundos pasados cuando se recarga la pagina",diff/* /(1000*60*60*24) */ );
-
-
   const querySnapshot = await getPublishes();
   let templatePosts = "";
   querySnapshot.forEach((doc) => {
     const post = doc.data();
-
     post.id = doc.id;
     let idPosts = post.id;
-    let contentPosts = doc.data().content
-    console.log(contentPosts);
+    let contentPosts = doc.data().content;
+    const datePublish = doc.data().datePublish;
+    const hourPublish = doc.data().hourPublish;
+    // console.log(contentPosts);
 
-    templatePosts += templatePublishes(photoURL, displayName, idPosts, contentPosts)
+    templatePosts += templatePublishes(photoURL, displayName, idPosts, contentPosts, datePublish, hourPublish)
   });
   postContainer.innerHTML = templatePosts;
 
@@ -129,19 +126,7 @@ async function showPublish(datePublish) {
 
       const selectedOption = this.options[selectEdition.selectedIndex];
       /*   orderPublishes(); */
-      async function modalDelete() {
-        console.log(btnDelete);
-        miModal.setAttribute("class", "modal");
-        await deletePublish(selectedOption.dataset.id);
-        await showPublish();
 
-      }
-      async function cancelarModal() {
-        miModal.setAttribute("class", "modal");
-
-        resetIconOption();
-        await showPublish();
-      }
 
 
       if (selectedOption.value === "delete") {
@@ -186,20 +171,23 @@ async function showPublish(datePublish) {
             });
 
             //inicio de boton cuando se cancela la edicion
-            btnCancelUpdate.forEach((btnUpdate) => {
+            btnCancelUpdate.forEach((btnCancelUp) => {
 
-              btnUpdate.addEventListener("click", async () => {
+              btnCancelUp.addEventListener("click", async (btnCancel) => {
 
-                const texto = await getPublish(selectedOption.dataset.id)
-                console.log(texto.data().content);
-                const texte = (texto.data().content);
-                e.value = texte;
+                if (btnCancel.target.dataset.id == selectedOption.dataset.id) {
+                  const texto = await getPublish(selectedOption.dataset.id)
 
-                showIconosAndGroupBtnUpdate(groupBtnUpdate, statusShowNone)
-                showIconosAndGroupBtnUpdate(containerIconsBtn, statusShowBlock)
+                  const texte = (texto.data().content);
+                  e.value = texte;
 
-                resetIconOption();
-                e.disabled = true;
+                  showIconosAndGroupBtnUpdate(groupBtnUpdate, statusShowNone)
+                  showIconosAndGroupBtnUpdate(containerIconsBtn, statusShowBlock)
+
+                  resetIconOption();
+                  e.disabled = true;
+
+                }
 
               })
 
@@ -219,7 +207,19 @@ async function showPublish(datePublish) {
        
   
         } */
+      async function modalDelete() {
+        console.log(btnDelete);
+        miModal.setAttribute("class", "modal");
+        await deletePublish(selectedOption.dataset.id);
+        await showPublish();
 
+      }
+      async function cancelarModal() {
+        miModal.setAttribute("class", "modal");
+
+        resetIconOption();
+        await showPublish();
+      }
 
       function showIconosAndGroupBtnUpdate(container, statusShow) {
         container.forEach((e) => {

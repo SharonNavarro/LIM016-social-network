@@ -154,7 +154,7 @@
 `;
 
 
- const templatePublishes= (photoURL,displayName,id,content) => `        
+ const templatePublishes= (photoURL,displayName,id,content,datePublish,hourPublish) => `        
           
 <div class="containerPosts" >
       <div class="containerAlignItems"> 
@@ -163,7 +163,8 @@
           <img src=${photoURL}>
         <div>
           <p class="nameUser"><bold > ${displayName}</bold></p>
-          <p class="timePublish">Hace 8 horas</p>
+          <p class="timePublish"> ${datePublish}</p>
+          <p class="timePublish"> ${hourPublish}</p>
         </div>
         </div> 
           <select class="selectEdition  fa" > 
