@@ -435,10 +435,10 @@ width: 49px;
 border-radius: 50%;
 margin: 10px;
 }
-.userProfile p {
+.userProfile .nameUser {
 margin-bottom: -5px;
 color: #626262;
-font-size: 1.1rem;
+font-size: 15px;
 margin-bottom: 1%;
 font-family: 'Inter', sans-serif;
 font-weight: bold;
@@ -453,7 +453,7 @@ padding-left: 55px;
 padding-top: 10px;
 }
 
-.containerTextPost textarea {
+.containerTextPost .textareaPublish {
 width: 100%;
 border: 0;
 outline: 0;
@@ -1068,6 +1068,16 @@ select:focus{ outline: none;}
   left:0;
   opacity:1;
   z-index: 999;
-
-
+}
+.contenido{
+  width: 100%;
+  border: 0;
+  outline: 0;
+  
+  background: transparent;
+  resize: none;
+  font-size: 1rem;
+}
+.timePublish{
+  font-size: 12px;
 }

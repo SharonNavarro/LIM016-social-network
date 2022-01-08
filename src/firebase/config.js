@@ -27,7 +27,9 @@ import {
     addDoc ,
     onSnapshot,
     deleteDoc,
-    updateDoc
+    updateDoc,
+     orderBy,
+     limit
 } from  "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 
@@ -87,7 +89,8 @@ export{
     onSnapshot ,
     deleteDoc,
     getDoc,
-    updateDoc
-
+    updateDoc,
+     orderBy,
+     limit
 
 };

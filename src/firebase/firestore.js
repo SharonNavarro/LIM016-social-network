@@ -9,22 +9,31 @@ import {
     addDoc,
     onSnapshot,
     deleteDoc,
-    updateDoc
+    updateDoc,
+    orderBy,
+    limit
 } from "./config.js"
 
-const savePublish = (textPost) => addDoc(collection(db, "posts"), {
-    content: textPost
+const savePublish = (textPost, datePublish, hourPublish/* ,userName,urlPhoto,totalStars,totalHearts,comments */) => addDoc(collection(db, "posts"), {
+    content: textPost,
+    datePublish: datePublish,
+    hourPublish: hourPublish
+    /*    userName:userName,
+       urlPhoto:urlPhoto,
+       stars: totalStars,
+       hearts: totalHearts,
+       comments:comments, */
+
 });
 
-const getPublishes = () => getDocs(collection(db, "posts"))
+const getPublishes = () => getDocs(query(collection(db, "posts"), orderBy("content","desc")));
+
 
 const getPublish = async (id) => await getDoc(doc(db, "posts", id));
 
 const updatePublish = async (id, textPost) => await updateDoc(doc(db, "posts", id), {
     content: textPost
 });
-
-
 
 const deletePublish = async (id) => await deleteDoc(doc(db, "posts", id));
 
@@ -39,6 +48,7 @@ export {
     deleteDoc,
     db,
     getPublish,
-    updatePublish
+    updatePublish,
+    /* getPublishOrder */
 
 };
