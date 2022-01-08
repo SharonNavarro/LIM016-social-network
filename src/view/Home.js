@@ -9,7 +9,8 @@ import {
   deletePublish,
   updatePublish,
   deleteDoc,
-  getPublish
+  getPublish,
+  /*  getPublishOrder */
 
 } from "../firebase/firestore.js"
 
@@ -51,10 +52,15 @@ export default () => {
 
 
     } else {
-      await savePublish(textPost);
+
+      let hoy = new Date();
+      let fecha = /* hoy.getHours() + ':' + hoy.getMinutes() + ':' +  */hoy.getSeconds()/*  + " - " + hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear(); */;
+      const datePublish = fecha;
+      console.log("segundo de publicacion es", datePublish);
+      await savePublish(textPost, datePublish/* ,userName,urlPhoto,totalStars,totalHearts,comments */);
       formPublish.reset();
 
-      await showPublish();
+      await showPublish(datePublish);
 
     }
   });
@@ -70,7 +76,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
   await showPublish();
 })
 
-async function showPublish() {
+async function showPublish(datePublish) {
 
   let displayName = "";
   let photoURL = "";
@@ -83,13 +89,23 @@ async function showPublish() {
       const uid = user.uid;
     }
   })
+
+  //let fecha = new Date();
+  //let fechaActual =/*  fecha.getHours() + ':' + fecha.getMinutes() + ':' + */ fecha.getSeconds() /* + " - " + hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear(); */;
+// console.log("segundos actual",fechaActual);
+//var diff = fechaActual - datePublish;
+//console.log("segundos pasados cuando se recarga la pagina",diff/* /(1000*60*60*24) */ );
+
+
   const querySnapshot = await getPublishes();
   let templatePosts = "";
   querySnapshot.forEach((doc) => {
     const post = doc.data();
+
     post.id = doc.id;
     let idPosts = post.id;
     let contentPosts = doc.data().content
+    console.log(contentPosts);
 
     templatePosts += templatePublishes(photoURL, displayName, idPosts, contentPosts)
   });
@@ -112,7 +128,7 @@ async function showPublish() {
     selectEdition.addEventListener("change", async function () {
 
       const selectedOption = this.options[selectEdition.selectedIndex];
-
+      /*   orderPublishes(); */
       async function modalDelete() {
         console.log(btnDelete);
         miModal.setAttribute("class", "modal");
@@ -172,18 +188,18 @@ async function showPublish() {
             //inicio de boton cuando se cancela la edicion
             btnCancelUpdate.forEach((btnUpdate) => {
 
-              btnUpdate.addEventListener("click",async () => {
+              btnUpdate.addEventListener("click", async () => {
 
-                const texto= await getPublish(selectedOption.dataset.id)
+                const texto = await getPublish(selectedOption.dataset.id)
                 console.log(texto.data().content);
-                const texte=(texto.data().content);
-               e.value=texte;
-         
-                  showIconosAndGroupBtnUpdate(groupBtnUpdate, statusShowNone)
-                  showIconosAndGroupBtnUpdate(containerIconsBtn, statusShowBlock)
+                const texte = (texto.data().content);
+                e.value = texte;
 
-                  resetIconOption();
-                  e.disabled = true;
+                showIconosAndGroupBtnUpdate(groupBtnUpdate, statusShowNone)
+                showIconosAndGroupBtnUpdate(containerIconsBtn, statusShowBlock)
+
+                resetIconOption();
+                e.disabled = true;
 
               })
 
@@ -195,6 +211,14 @@ async function showPublish() {
         //fin de recorrer contenido
 
       }
+
+      /*   function orderPublishes() {
+          const ordenado = getPublishOrder();
+          
+            console.log("aqui esta ordenado", getPublishOrder());
+       
+  
+        } */
 
 
       function showIconosAndGroupBtnUpdate(container, statusShow) {

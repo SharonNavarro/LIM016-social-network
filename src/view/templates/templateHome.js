@@ -28,7 +28,7 @@
 <div class="userProfile">
   <img id="photoUser">
   <div>
-    <p><bold id="nameUser"></bold></p>
+    <p class="nameUser"><bold id="nameUser"></bold></p>
   </div>
 </div> 
 
@@ -160,9 +160,10 @@
       <div class="containerAlignItems"> 
 
         <div class="userProfile">
-        <img src=${photoURL}>
+          <img src=${photoURL}>
         <div>
-        <p><bold > ${displayName}</bold></p>               
+          <p class="nameUser"><bold > ${displayName}</bold></p>
+          <p class="timePublish">Hace 8 horas</p>
         </div>
         </div> 
           <select class="selectEdition  fa" > 
