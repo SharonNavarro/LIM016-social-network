@@ -9,17 +9,17 @@ import {
 } from "../firebase/firestore.js"
 
 export default () => {
- //Template Home
+  //Template Home
   const viewHome = templateHome;
   const divElemt = document.createElement('section');
   divElemt.classList.add('position')
   divElemt.innerHTML = viewHome;
- //Functions
+  //Functions
   let displayName, photoURL;
   const nameUser = divElemt.querySelector("#nameUser");
   const photoUser = divElemt.querySelector("#photoUser");
   const formPublish = divElemt.querySelector("#formPublish");
-   
+
   userState(async (user) => {
     if (user) {
       displayName = user.displayName;
@@ -31,7 +31,7 @@ export default () => {
   })
   const miModalPublishVoid = divElemt.querySelector("#miModalPublishVoid");
   const btnReturn = divElemt.querySelector("#btnReturn");
-
+  //Enviar Publicación
   formPublish.addEventListener("submit", async (e) => {
 
     e.preventDefault();
@@ -45,12 +45,9 @@ export default () => {
       let datePublish, hourPublish;
       hourPublish = hoy.getHours() + ':' + hoy.getMinutes();
       datePublish = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
-      /* let userName = displayName;
-      let urlPhoto = photoURL; */
 
       await savePublish(textPost, datePublish, hourPublish, displayName, photoURL/*,totalStars,totalHearts,comments */);
       formPublish.reset();
-
       await showPublish();
 
     }
@@ -63,25 +60,24 @@ export default () => {
   return divElemt;
 };
 
-let querySnapshot,post,idPosts,contentPosts,dateOfPublish,hourPublish,userName,urlPhoto;
-
+let querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
 
 window.addEventListener('DOMContentLoaded', async (e) => {
   await showPublish();
 })
 
 async function showPublish() {
-   querySnapshot = await getPublishes();
+  querySnapshot = await getPublishes();
   let templatePosts = "";
   querySnapshot.forEach((doc) => {
-     post = doc.data();
+    post = doc.data();
     post.id = doc.id;
-     idPosts = post.id;
-     contentPosts = doc.data().content;
-     dateOfPublish = doc.data().datePublish;
-     hourPublish = doc.data().hourPublish;
-     userName = doc.data().userName;
-     urlPhoto = doc.data().urlPhoto;  
+    idPosts = post.id;
+    contentPosts = doc.data().content;
+    dateOfPublish = doc.data().datePublish;
+    hourPublish = doc.data().hourPublish;
+    userName = doc.data().userName;
+    urlPhoto = doc.data().urlPhoto;
 
     templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish)
   });
@@ -89,7 +85,6 @@ async function showPublish() {
 
   const selectEdition = document.querySelectorAll(".selectEdition");
   const miModal = document.querySelector("#miModal");
-
   const btnDelete = document.querySelector("#btnDelete");
   const btnCancel = document.querySelectorAll(".btnCancel");
   const btnCancelUpdate = document.querySelectorAll(".btnCancelUpdate");
@@ -104,9 +99,6 @@ async function showPublish() {
     selectEdition.addEventListener("change", async function () {
 
       const selectedOption = this.options[selectEdition.selectedIndex];
-      /*   orderPublishes(); */
-
-
 
       if (selectedOption.value === "delete") {
         miModal.setAttribute("class", "showDelete");
@@ -165,27 +157,15 @@ async function showPublish() {
 
                   resetIconOption();
                   e.disabled = true;
-
                 }
-
               })
-
             })
             //fin de bpton cancelar cuando se edita
           }
-
         })
         //fin de recorrer contenido
-
       }
 
-      /*   function orderPublishes() {
-          const ordenado = getPublishOrder();
-          
-            console.log("aqui esta ordenado", getPublishOrder());
-       
-  
-        } */
       async function modalDelete() {
         console.log(btnDelete);
         miModal.setAttribute("class", "modal");
@@ -195,7 +175,6 @@ async function showPublish() {
       }
       async function cancelarModal() {
         miModal.setAttribute("class", "modal");
-
         resetIconOption();
         await showPublish();
       }
@@ -206,7 +185,6 @@ async function showPublish() {
             e.style.display = statusShow;
           }
         });
-
       }
 
       function resetIconOption() {
@@ -214,8 +192,6 @@ async function showPublish() {
           selectEdition.value = "menuOptions";
         }
       }
-
-
       //fin del else
 
     })

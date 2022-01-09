@@ -50,6 +50,4 @@ export {
     db,
     getPublish,
     updatePublish,
-    /* getPublishOrder */
-
 };

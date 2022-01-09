@@ -15,8 +15,9 @@
 .logoLogin{
 display: flex;
 margin: auto;
-width: 50%;
-margin-bottom: 3%;
+width: 40%;
+margin-bottom: 15px;
+margin-top: 30px;
 }
 
 
@@ -54,17 +55,17 @@ display: none;
   }
 .containerLogin .sectionLogin{
 width: 100%;
-height: 100%;
+height: 640px;
 background: white;
-padding: 5px;
+/* padding: 5px; */
 
 }
 .containerLogin .sectionLogin .login{
 
     margin: auto;
     width: 100%;
-    background-color: rgba(91, 158, 209, 0.419);
-    border-radius: 20px;
+    background: url( "./images/bgNetcoins.jpg");
+  /*   border-radius: 20px; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,12 +77,14 @@ padding: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 4%;
+   /*  padding-top: 4%; */
     padding-bottom: 4%;
+
+
 }
 .containerInputs {
   width: 100%;
-  max-width: 400px;
+  max-width: 330px;
   margin-left: auto;
   display: flex;
   flex-direction: column;
@@ -94,7 +97,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 background: white;
-width: 260px;
+width: 240px;
 height: 40px;
 padding-left: 3%;
 margin-top: 5%;
@@ -107,7 +110,7 @@ color: gray;
 
 .inputUser, .inputPassword {
 display: block;
-width: 230px;
+width: 200px;
 height: 34px;
 padding: 10px;
 border-radius: 5px;
@@ -134,14 +137,14 @@ margin: 5px;
 }
 .lbl{
 
-color: #3674b6; 
+color: #ffffff; 
 display: flex;
 justify-content: center;
-margin-top: 20px;
+/* margin-top: 20px; */
 
 }
 .lblCuenta{
-color: #006fe6; 
+color: #ffffff; 
 margin: 5px;
 }
 .linkRegistrate{
@@ -193,8 +196,9 @@ border: 2px solid rgba(223, 28, 28, 0.664);
     font-size: 14px;
     line-height: 1;
     margin: auto;
+    margin-bottom: 20px;
     padding: 10px;
-    margin-top: 3%;   
+    margin-top: 2%;   
     text-decoration: none;
     text-align: center;
    /*   font-family: 'Flamenco', cursive; */
@@ -587,7 +591,7 @@ width: 40px;
 }
 label:hover{
 cursor: pointer;
-background: rgba(0,0,0,0.3);
+
 }
 .respmenu li{
 display: flex;
@@ -853,7 +857,7 @@ font-weight: bold;
 }
 
 .containerInputs {
-  background: rgb(191 216 235);
+  background: rgba(191, 216, 235, 0.768);
   border-radius: 5px;
   padding: 1%;
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.63); 
@@ -889,9 +893,10 @@ font-weight: bold;
    }
 
   .containerInputs {
-    background: rgb(191 216 235);
-    border-radius: 5px;
+    background: rgba(214, 225, 233, 0.275);
+    border-radius: 30px;
     box-shadow: 0px 0px 9px 4px black;
+    height: 560px;
   }
  }
  
