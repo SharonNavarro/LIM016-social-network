@@ -94,21 +94,16 @@ export default () => {
           addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido. Por favor, escriba su contraseña.');
           addErrorInput(containerInputPassword, 'error');
         } else if (password.value === '') {
-
           addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido. Por favor, escriba su contraseña.');
-          addErrorInput(containerInputPassword, 'error');
         } else if (email.value === '') {
-
           addErrorMessage(inactiveEmailErrorMessage, 'Campo inválido. Por favor, escriba su correo electrónico.');
-          addErrorInput(containerInputEmail, 'error');
-
         }
-
         else if (errorCode === 'auth/wrong-password') {
+          removeErrorInput(containerInputPassword, 'error');
           removeErrorInput(containerInputEmail, 'error');
           removeErrorMessage(inactiveEmailErrorMessage, '');
-          addErrorMessage(inactivePasswordErrorMessage, 'Contraseña incorrecta.');
-          link.innerHTML = "Reestablecer contraseña";
+          addErrorMessage(inactivePasswordErrorMessage, 'Email/contraseña incorrecta. ¿Olvidaste tu contraseña?');
+          link.innerHTML = "Reestablecela";
           addErrorInput(containerInputPassword, 'error');
           reestablecer(email.value);
         }
