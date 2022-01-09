@@ -14,6 +14,9 @@ import {
 
 } from "../firebase/firestore.js"
 
+
+
+
 export default () => {
   const viewHome = templateHome;
   const divElemt = document.createElement('section');
@@ -26,12 +29,12 @@ export default () => {
   const formPublish = divElemt.querySelector("#formPublish");
   const postContainer = divElemt.querySelector("#postContainer");
 
-  let displayName ,photoURL;
+  let displayName, photoURL;
   userState(async (user) => {
     if (user) {
-       displayName = user.displayName;
+      displayName = user.displayName;
       const email = user.email;
-       photoURL = user.photoURL;
+      photoURL = user.photoURL;
       const emailVerified = user.emailVerified;
       const uid = user.uid;
       nameUser.innerHTML = displayName;
@@ -46,7 +49,7 @@ export default () => {
 
     e.preventDefault();
     const textPost = formPublish['textPost'].value;
-  
+
 
     if (textPost == "" || textPost.trim() == "") {
       miModalPublishVoid.setAttribute("class", "show");
@@ -62,10 +65,10 @@ export default () => {
 
       console.log("hora de publicacion es", hourPublish);
       console.log("fecha de publicacion es", datePublish);
-      let userName=displayName;
-      let urlPhoto=photoURL;
+      let userName = displayName;
+      let urlPhoto = photoURL;
 
-      await savePublish(textPost, datePublish, hourPublish ,userName,urlPhoto/*,totalStars,totalHearts,comments */);
+      await savePublish(textPost, datePublish, hourPublish, userName, urlPhoto/*,totalStars,totalHearts,comments */);
       formPublish.reset();
 
       await showPublish();
@@ -80,31 +83,27 @@ export default () => {
   return divElemt;
 };
 
+let querySnapshot,post,idPosts,contentPosts,dateOfPublish,hourPublish,userName,urlPhoto;
+
+
 window.addEventListener('DOMContentLoaded', async (e) => {
   await showPublish();
 })
 
 async function showPublish() {
-
-  let displayName = "";
-  let photoURL = "";
-
-
-  const querySnapshot = await getPublishes();
+   querySnapshot = await getPublishes();
   let templatePosts = "";
   querySnapshot.forEach((doc) => {
-    const post = doc.data();
+     post = doc.data();
     post.id = doc.id;
-    let idPosts = post.id;
-    let contentPosts = doc.data().content;
-    const datePublish = doc.data().datePublish;
-    const hourPublish = doc.data().hourPublish;
-    const userName = doc.data().userName;
-    const urlPhoto = doc.data().urlPhoto;
+     idPosts = post.id;
+     contentPosts = doc.data().content;
+     dateOfPublish = doc.data().datePublish;
+     hourPublish = doc.data().hourPublish;
+     userName = doc.data().userName;
+     urlPhoto = doc.data().urlPhoto;  
 
-    // console.log(contentPosts);
-
-    templatePosts += templatePublishes(userName,urlPhoto,idPosts, contentPosts, datePublish, hourPublish)
+    templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish)
   });
   postContainer.innerHTML = templatePosts;
 
