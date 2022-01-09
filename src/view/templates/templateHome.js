@@ -154,15 +154,15 @@
 `;
 
 
- const templatePublishes= (photoURL,displayName,id,content,datePublish,hourPublish) => `        
+ const templatePublishes= (userName,urlPhoto,id,content,datePublish,hourPublish) => `        
           
 <div class="containerPosts" >
       <div class="containerAlignItems"> 
 
         <div class="userProfile">
-          <img src=${photoURL}>
+          <img src=${urlPhoto}>
         <div>
-          <p class="nameUser"><bold > ${displayName}</bold></p>
+          <p class="nameUser"><bold > ${userName}</bold></p>
           <p class="timePublish"> ${datePublish}</p>
           <p class="timePublish"> ${hourPublish}</p>
         </div>
