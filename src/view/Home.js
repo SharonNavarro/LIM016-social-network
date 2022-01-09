@@ -26,16 +26,17 @@ export default () => {
   const formPublish = divElemt.querySelector("#formPublish");
   const postContainer = divElemt.querySelector("#postContainer");
 
-
-  userState((user) => {
+  let displayName ,photoURL;
+  userState(async (user) => {
     if (user) {
-      const displayName = user.displayName;
+       displayName = user.displayName;
       const email = user.email;
-      const photoURL = user.photoURL;
+       photoURL = user.photoURL;
       const emailVerified = user.emailVerified;
       const uid = user.uid;
       nameUser.innerHTML = displayName;
       photoUser.src = photoURL;
+      await showPublish();
     }
   })
   const miModalPublishVoid = divElemt.querySelector("#miModalPublishVoid");
@@ -45,6 +46,7 @@ export default () => {
 
     e.preventDefault();
     const textPost = formPublish['textPost'].value;
+  
 
     if (textPost == "" || textPost.trim() == "") {
       miModalPublishVoid.setAttribute("class", "show");
@@ -60,7 +62,10 @@ export default () => {
 
       console.log("hora de publicacion es", hourPublish);
       console.log("fecha de publicacion es", datePublish);
-      await savePublish(textPost, datePublish, hourPublish/* ,userName,urlPhoto,totalStars,totalHearts,comments */);
+      let userName=displayName;
+      let urlPhoto=photoURL;
+
+      await savePublish(textPost, datePublish, hourPublish ,userName,urlPhoto/*,totalStars,totalHearts,comments */);
       formPublish.reset();
 
       await showPublish();
@@ -83,15 +88,7 @@ async function showPublish() {
 
   let displayName = "";
   let photoURL = "";
-  userState((user) => {
-    if (user) {
-      displayName = user.displayName;
-      const email = user.email;
-      photoURL = user.photoURL;
-      const emailVerified = user.emailVerified;
-      const uid = user.uid;
-    }
-  })
+
 
   const querySnapshot = await getPublishes();
   let templatePosts = "";
@@ -102,9 +99,12 @@ async function showPublish() {
     let contentPosts = doc.data().content;
     const datePublish = doc.data().datePublish;
     const hourPublish = doc.data().hourPublish;
+    const userName = doc.data().userName;
+    const urlPhoto = doc.data().urlPhoto;
+
     // console.log(contentPosts);
 
-    templatePosts += templatePublishes(photoURL, displayName, idPosts, contentPosts, datePublish, hourPublish)
+    templatePosts += templatePublishes(userName,urlPhoto,idPosts, contentPosts, datePublish, hourPublish)
   });
   postContainer.innerHTML = templatePosts;
 
