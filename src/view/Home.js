@@ -1,42 +1,29 @@
 import { userState } from "../firebase/auth.js"
 import { templateHome, templatePublishes } from "./templates/templateHome.js"
 import {
-  savePublish, getDocs,
-  doc,
-  collection,
+  savePublish,
   getPublishes,
-  db,
   deletePublish,
   updatePublish,
-  deleteDoc,
   getPublish,
-  /*  getPublishOrder */
-
 } from "../firebase/firestore.js"
 
-
-
-
 export default () => {
+ //Template Home
   const viewHome = templateHome;
   const divElemt = document.createElement('section');
   divElemt.classList.add('position')
   divElemt.innerHTML = viewHome;
-
+ //Functions
+  let displayName, photoURL;
   const nameUser = divElemt.querySelector("#nameUser");
   const photoUser = divElemt.querySelector("#photoUser");
-
   const formPublish = divElemt.querySelector("#formPublish");
-  const postContainer = divElemt.querySelector("#postContainer");
-
-  let displayName, photoURL;
+   
   userState(async (user) => {
     if (user) {
       displayName = user.displayName;
-      const email = user.email;
       photoURL = user.photoURL;
-      const emailVerified = user.emailVerified;
-      const uid = user.uid;
       nameUser.innerHTML = displayName;
       photoUser.src = photoURL;
       await showPublish();
@@ -50,25 +37,18 @@ export default () => {
     e.preventDefault();
     const textPost = formPublish['textPost'].value;
 
-
     if (textPost == "" || textPost.trim() == "") {
       miModalPublishVoid.setAttribute("class", "show");
       btnReturn.addEventListener("click", closeModal)
-
-
     } else {
-
       let hoy = new Date();
       let datePublish, hourPublish;
       hourPublish = hoy.getHours() + ':' + hoy.getMinutes();
       datePublish = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
+      /* let userName = displayName;
+      let urlPhoto = photoURL; */
 
-      console.log("hora de publicacion es", hourPublish);
-      console.log("fecha de publicacion es", datePublish);
-      let userName = displayName;
-      let urlPhoto = photoURL;
-
-      await savePublish(textPost, datePublish, hourPublish, userName, urlPhoto/*,totalStars,totalHearts,comments */);
+      await savePublish(textPost, datePublish, hourPublish, displayName, photoURL/*,totalStars,totalHearts,comments */);
       formPublish.reset();
 
       await showPublish();
