@@ -12,10 +12,10 @@ export default () => {
   </div> 
   <nav>
     <ul>
-    <li><a href="#/Account"><i class="far fa-user-circle"></i>Account</a></li>
-    <li><a href="#/Friends"><i class="fas fa-users"></i>Friends</a> </li>
-    <li><a href="#/Messages"><i class="far fa-comments"></i>Messages</a> </li>
-    <li><a href="#/Netchange"><i class="fas fa-search-dollar"></i></i>Netchanges</a> </li>   
+    <li><a href="#/Account"><i class="far fa-user-circle"></i>Mi perfil</a></li>
+    <li><a href="#/Friends"><i class="fas fa-users"></i>Amigos</a> </li>
+    <li><a href="#/Messages"><i class="far fa-comments"></i>Mensajes</a> </li>
+    <li><a href="#/Netchange"><i class="fas fa-search-dollar"></i></i>Netcambios</a> </li>   
     <li><a id="btnLogout" style="cursor:pointer" >Cerrar Sesión</a> </li>   
     </ul>
   </nav>

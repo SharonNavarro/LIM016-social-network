@@ -11,7 +11,7 @@ export default () => {
         <div class="login" id="login">  
 
           <div class="containerInputs">
-            <img class="logoLogin" src="./images/logoNetcoins.png" alt="">
+            <img class="logoLogin" src="./images/logo2.png" alt="">
             <h1 >Netcoins</h1>
 
             <div class="containerInputEmail">

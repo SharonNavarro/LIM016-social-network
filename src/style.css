@@ -27,6 +27,9 @@ h1{
   font-family: 'Turret Road', cursive;   
   display: flex;   
   justify-content: center;
+  text-shadow: 2px 2px black;
+  color :white;
+  text-transform: uppercase;
 }
 .sectionWelcome {
 background: url( "./images/bgNetcoins.jpg");
@@ -140,17 +143,22 @@ margin: 5px;
 color: #ffffff; 
 display: flex;
 justify-content: center;
+text-shadow: 1px 1px black;
 /* margin-top: 20px; */
 
 }
 .lblCuenta{
-color: #ffffff; 
+color:  #241e34; 
 margin: 5px;
+text-shadow:0.4px 0.4px #241e34;
+
 }
 .linkRegistrate{
-color: #006fe695; 
+color:  #1776f1; 
 margin: 5px;
 cursor: pointer;
+text-shadow:1px 1px 1px #1776f1;
+
 }
 .groupLbl{
 display: flex;
@@ -219,6 +227,7 @@ border: 2px solid rgba(223, 28, 28, 0.664);
   width: 45%;
   display: flex;
   justify-content: center;
+  text-shadow: 1px 0.5px 1px black;
 }
 
 .third:hover {
@@ -484,13 +493,18 @@ font-size: 13px;
 
 .addPost a i {
   margin-right: 10px;
-  font-size: 30px;
+  font-size: 20px;
+  background-color: white;
+}
+.addPost a .ico {
+  margin-right: 10px;
+  font-size: 18px;
   background-color: white;
 }
 
 .postBtn {    
 border: 0px solid rgba(55, 115, 179, 0.692);
-background-color: rgba(55, 115, 179, 0.692);
+background: linear-gradient(45deg,rgba(55, 115, 179, 0.692),rgba(35, 95, 207));
 padding: 10px;
 border-radius: 18px;
 color: white;
@@ -608,13 +622,13 @@ align-items: center;
   background: #9bd6f241;
   /* font-variant: small-caps; */
   font-size: 18px;
-  text-transform: uppercase;
-  color: #3674b6;
+  /* text-transform: uppercase; */
+
  /*  text-shadow: 1px 1px black; */
   justify-content: center;
   width: 100%;
-  color: #0e3054;
-  font-family: 'Turret Road', cursive;
+  color: #285f9b;
+  font-family: 'arial', cursive;
   letter-spacing: 1.5px;
   column-gap: 3%;
 }
@@ -632,10 +646,11 @@ height: 48px;
 .respmenu .imagen {
   font-size: 38px;
     pointer-events: none;
-    color: #3674b6;
-    margin-left: 1%;
-    margin-top: 6px;
+    color: #5d90c7;
+  /*   margin-left: 1%;
+    margin-top: 6px; */
     pointer-events: none;
+    margin: 15px;
 }
 
 .respmenu input[type="checkbox"] {
@@ -696,8 +711,9 @@ letter-spacing: 2.9px;
   .contentTitulo{
     display: flex ;   
     justify-content: center;
-    min-height: 48px;
+    min-height: 68px;
     align-items: center;
+    background: linear-gradient(45deg, transparent ,rgba(55, 115, 179, 0.692));
   }
 
 .containerAccount .userProfileBody,
@@ -891,7 +907,8 @@ font-weight: bold;
    }
 
   .containerInputs {
-    background: rgba(214, 225, 233, 0.275);
+    /*  background: rgba(214, 225, 233, 0.207);*/
+  background: linear-gradient(to bottom, rgba(248, 248, 248, 0.919), rgba(128, 182, 220, 0.207), rgba(214, 225, 233, 0.145),rgba(248, 248, 248, 0.919));
     border-radius: 30px;
     box-shadow: 0px 0px 9px 4px black;
     height: 560px;
@@ -1013,7 +1030,8 @@ select:focus{ outline: none;}
 
 .btnOptions {    
   border: 0px solid rgba(35, 95, 207);
-  background-color: rgba(35, 95, 207);
+  background: linear-gradient(45deg,rgba(55, 115, 179, 0.692),rgba(35, 95, 207));
+
   padding: 10px;
   border-radius: 18px;
   color: white;
