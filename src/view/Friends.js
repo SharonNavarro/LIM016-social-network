@@ -2,10 +2,9 @@ export default () => {
   const viewFriends = `
   
     <div class="content friends" > 
-      <p>bienvenido a friends</p>
           <div class="container">
           <div class="seccion-buscar">
-          <div class="input-buscar">
+          <div class="input-buscar searchBar">
               <input type="search" placeholder="Buscar usuario">
               <i class="fas fa-search"></i>
           </div>

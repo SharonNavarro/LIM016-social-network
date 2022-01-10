@@ -66,16 +66,7 @@ export default () => {
                 <span>Nombre de usuario</span>
                 <span>Activo - Escribiendo...</span>
             </div>
-            <div class="opciones">
-                <ul>
-                    <li>
-                        <button type="button"><i class="fas fa-video"></i></button>
-                    </li>
-                    <li>
-                        <button type="button"><i class="fas fa-phone-alt"></i></button>
-                    </li>
-                </ul>
-            </div>
+            
         </div>
         <div class="panel-chat">
             <div class="mensaje">

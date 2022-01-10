@@ -1186,57 +1186,11 @@ footer{
 
 }
 
-.search-box{
-  width: 100%;
-  position: relative;
-  display: flex;
-
-}
-.search-input{
-  display: flex ;
-  padding: 10px;
-  border: 3px solid #3674b6;
-  border-radius:20px 0 0 20px ;
-  border-right: none;
-  outline: none;
-  font-size: 13px;
-  color: rgb(155, 142, 140);
-  background: none;
-  background : white ;
-  height: 40px;
-  width: 200px;
-  margin:10px 0px 10px 10px;
-font-family: 'Inter', sans-serif; 
-
-
-}
-.search-button{
-text-align: center;
-height: 40px;
-width: 40px;
-outline: none;
-cursor: pointer;
-border: 3px solid #3674b6;
-border-radius: 0 20px 20px 0 ;
-border-left: none;
-background: none;
-font-size: 13px;
-border-left: 3px solid #3674b6;
-background-color: white;
-margin:10px 0px 0px 0px ;
-
-}
-
-.fa-search{
-
-  color: #3674b6 ;
-
-}
-
 
 .content {
 
   display: flex;
+  flex-direction: column;
 }
 
 
@@ -1244,6 +1198,22 @@ margin:10px 0px 0px 0px ;
 
   margin-bottom: 1rem;
 
+
+}
+
+
+.friends{
+ display: flex;
+ flex-direction: column ;
+ justify-content: center;
+}
+
+
+.searchBar{
+ 
+  margin-top: 3rem;
+  margin-left: 3rem;
+  justify-content: center;
 
 }
 .btn-animado {
@@ -1257,7 +1227,9 @@ margin:10px 0px 0px 0px ;
   cursor: pointer;
   transition: all ease-in 150ms;
   overflow: hidden;
-  width: 260px ;
+  width: 80% ;
+  margin-left: 2rem;
+
 
 }
 
@@ -1319,19 +1291,20 @@ margin:10px 0px 0px 0px ;
   display: flex;
   align-items: center;
   position: relative;
-  width: 100%;
+  width: 80%;
   margin-bottom: 1rem;
+  margin-left: 40px;
 }
 .seccion-buscar input[type="search"] {
   display: block;
-  width: 100%;
+  width:100%;
   background-color: #F3F3F3;
   border: 0;
   padding: 8px 15px;
   border-radius: 2rem;
 }
 .seccion-buscar i {
-  position: absolute;
+ 
   right: 15px;
 }
 
@@ -1408,7 +1381,7 @@ margin:10px 0px 0px 0px ;
   color: #fff;
   padding: 0 8px;
   border-radius: 8px;
-  vertical-align: center;
+
 }
 
 /* seccion chat */
