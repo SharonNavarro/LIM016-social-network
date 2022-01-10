@@ -9,6 +9,7 @@ import {
 } from "../firebase/firestore.js"
 
 export default () => {
+  
   //Template Home
   const viewHome = templateHome;
   const divElemt = document.createElement('section');
@@ -42,11 +43,13 @@ export default () => {
       btnReturn.addEventListener("click", closeModal)
     } else {
       let hoy = new Date();
-      let datePublish, hourPublish;
-      hourPublish = hoy.getHours() + ':' + hoy.getMinutes();
+      let dateOrder = new Date();
+      let datePublish, hourPublish,dateOrderComplet;
+      hourPublish =  hoy.getHours()+ ':' + hoy.getMinutes();
       datePublish = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
-
-      await savePublish(textPost, datePublish, hourPublish, displayName, photoURL/*,totalStars,totalHearts,comments */);
+      dateOrderComplet= dateOrder.getDate() + '/' + (dateOrder.getMonth() + 1) + '/'+  dateOrder.getFullYear() + '/'+ dateOrder.getHours()+ '/'+  dateOrder.getMinutes()+ '/'+dateOrder.getSeconds();
+      console.log(dateOrderComplet);
+      await savePublish(textPost, datePublish, hourPublish, displayName, photoURL,dateOrderComplet/*,totalStars,totalHearts,comments */);
       formPublish.reset();
       await showPublish();
 
@@ -58,6 +61,7 @@ export default () => {
   }
 
   return divElemt;
+
 };
 
 let querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;

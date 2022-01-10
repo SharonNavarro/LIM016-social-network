@@ -1,4 +1,4 @@
- const templateHome=`
+const templateHome = `
 <div class="containerHome" id="containerHome">
 <div class="content" > 
 
@@ -33,12 +33,12 @@
 </div> 
 
 <form class="containerTextPost" id="formPublish">
-  <textarea class="textareaPublish" id="textPost" rows="3" placeholder="What's on your mind?"></textarea>
+  <textarea class="textareaPublish" id="textPost" rows="3" placeholder="¿Qué estás pensando?"></textarea>
   
   <div class="containerIconsBtn">
     <div class="addPost">
       <a href="#"><i class="far fa-image"></i></a>
-      <a href="#"><i class="fas fa-unlock-alt"></i></a>
+      <a href="#"><i class="fas fa-unlock-alt ico"></i></a>
       <button class="postBtn" id="btnPublish">Publicar</button>
     </div>
   </div>
@@ -145,7 +145,7 @@
    <div  class="modal-contenidoReturn">
      <h5 class="h2Modal">Tu publicación está vacia!!</h5>
      <div class="groupBtnOptionsReturn"> 
-     <button  id="btnReturn">Volver</button>     
+     <button  id="btnReturn" class="btnOptions">Volver</button>     
      </div> 
    </div> 
  </div> 
@@ -154,7 +154,7 @@
 `;
 
 
- const templatePublishes= (userName,urlPhoto,id,content,datePublish,hourPublish) => `        
+const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPublish) => `        
           
 <div class="containerPosts" >
       <div class="containerAlignItems"> 
@@ -201,7 +201,7 @@
 
       `;
 
-      export {
-        templateHome,
-        templatePublishes
-      }
+export {
+  templateHome,
+  templatePublishes
+}
