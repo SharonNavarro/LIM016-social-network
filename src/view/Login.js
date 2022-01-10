@@ -93,9 +93,11 @@ export default () => {
           addErrorInput(containerInputEmail, 'error');
           addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido. Por favor, escriba su contraseña.');
           addErrorInput(containerInputPassword, 'error');
+          link.innerHTML = "";
         } else if (password.value === '') {
           addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido. Por favor, escriba su contraseña.');
         } else if (email.value === '') {
+          link.innerHTML = "";
           addErrorMessage(inactiveEmailErrorMessage, 'Campo inválido. Por favor, escriba su correo electrónico.');
         }
         else if (errorCode === 'auth/wrong-password') {
@@ -109,11 +111,15 @@ export default () => {
         }
         else if (errorCode === 'auth/user-not-found') {
           removeErrorInput(containerInputPassword, 'error');
-          removeErrorMessage(inactivePasswordErrorMessage, '');
-          addErrorMessage(inactiveEmailErrorMessage, 'Usuario no encontrado. Por favor, vuelva a escribir su correo electrónico.');
-          addErrorInput(containerInputEmail, 'error');
+          removeErrorInput(containerInputEmail, 'error');
+          removeErrorMessage(inactiveEmailErrorMessage, '');
+          addErrorMessage(inactivePasswordErrorMessage, 'Email/contraseña incorrecta. ¿Olvidaste tu contraseña?');
+          link.innerHTML = "Reestablecela";
+          addErrorInput(containerInputPassword, 'error');
+          reestablecer(email.value);
         }
         else {
+          link.innerHTML = "";
           removeErrorInput(containerInputPassword, 'error');
           removeErrorInput(containerInputEmail, 'error');
           removeErrorMessage(inactiveEmailErrorMessage, '');

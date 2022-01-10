@@ -75,7 +75,7 @@ async function showPublish() {
   let templatePosts = "";
   querySnapshot.forEach((doc) => {
      post = doc.data();
-    post.id = doc.id;
+     post.id = doc.id;
      idPosts = post.id;
      contentPosts = doc.data().content;
      dateOfPublish = doc.data().datePublish;
@@ -85,6 +85,7 @@ async function showPublish() {
 
     templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish)
   });
+  //donde se ubica postContainer
   postContainer.innerHTML = templatePosts;
 
   const selectEdition = document.querySelectorAll(".selectEdition");
