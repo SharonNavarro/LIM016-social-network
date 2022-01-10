@@ -87,7 +87,33 @@ export default () => {
   </div>
 </div>
 </div>
-</div> 
+</div>
+<footer id="containerFooter">
+
+  <div class="bo-wrap clr4">
+    <div class="bo-footer">
+      <div class="bo-footer-social"></div>
+    </div>
+  </div>
+  <div class="bo-wrap clr3">
+    <div class="bo-footer">
+      <div class="bo-footer-smap">
+        <a class= "bo-footer-text" href="">Politica de Privacidad</a> |  
+        <a class= "bo-footer-text" href="">Contact Us</a>
+      </div>
+      <div class="bo-footer-uonline">
+        <div class="bo-footer-power">
+          Powered By  - <a class= "bo-footer-text" href="">SJM</a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="bo-wrap clr4">
+      <div class="bo-footer">
+        <div class="bo-footer-copyright">&copy;2022 SJM  All rights reserved.</div>
+      </div>
+    </div>
+    </footer> 
    `;
 
 
