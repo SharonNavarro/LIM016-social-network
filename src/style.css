@@ -26,12 +26,13 @@ h1 {
   justify-content: center;
 }
 .sectionWelcome {
-  background: url('./images/bgNetcoins.jpg');
-  width: 100%;
-  height: 625px;
-  background-position: center;
-  background-size: cover;
-  display: none;
+background: url(  "./images/bgNetcoins.jpg");
+width: 100%;
+height: 725px;
+background-position: center;
+background-size: cover;
+
+display: none;
 }
 
 .loginImg {
@@ -48,36 +49,42 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  }
+.containerLogin .sectionLogin{
+/* width: 0%; */
+height: 730px;
+background: white;
+/* padding: 5px; */
+
 }
-.containerLogin .sectionLogin {
-  width: 100%;
-  height: 640px;
-  background: white;
-  /* padding: 5px; */
-}
-.containerLogin .sectionLogin .login {
-  margin: auto;
-  width: 100%;
-  background: url('./images/bgNetcoins.jpg');
+.containerLogin .sectionLogin .login{
+
+    margin: auto;
+    width: 100%;
+    background: url(  "https://api.time.com/wp-content/uploads/2021/11/Crypto-Bitcoin.jpg");
   /*   border-radius: 20px; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /*  padding-top: 4%; */
-  padding-bottom: 4%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   /*  padding-top: 4%; */
+    padding-bottom: 4%;
+    background-position: center;
+background-size: cover;
+
+
 }
 .containerInputs {
   width: 100%;
-  max-width: 330px;
-  margin-left: auto;
+  max-width: 300px;
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -139,10 +146,12 @@ h1 {
   color: #ffffff;
   margin: 5px;
 }
-.linkRegistrate {
-  color: #006fe695;
-  margin: 5px;
-  cursor: pointer;
+.linkRegistrate{
+color:  #1776f1; 
+margin: 5px;
+cursor: pointer;
+text-shadow:0.4px 0.4px 0.4px #1776f1;
+
 }
 .groupLbl {
   display: flex;
@@ -586,25 +595,24 @@ label:hover {
   align-items: center;
 }
 
-.respmenu a {
+/* .respmenu a {
   color: inherit;
   text-decoration: none;
   display: flex;
   padding: 40px;
-  /*  border-bottom: 2px solid #456789; */
+ 
   background: #9bd6f241;
-  /* font-variant: small-caps; */
-  font-size: 18px;
+
   text-transform: uppercase;
   color: #3674b6;
-  /*  text-shadow: 1px 1px black; */
+ 
   justify-content: center;
   width: 100%;
   color: #0e3054;
   font-family: 'Turret Road', cursive;
   letter-spacing: 1.5px;
   column-gap: 3%;
-}
+} */
 .respmenu input[type='checkbox'],
 .respmenu .imagen {
   position: absolute;
@@ -615,21 +623,26 @@ label:hover {
   top: 0;
   width: 48px;
   height: 48px;
+  margin: 10px;
+  z-index: 1000;
 }
 
 .respmenu .imagen {
   font-size: 38px;
   pointer-events: none;
-  color: #3674b6;
+  color: #91a5bb;
   margin-left: 1%;
   margin-top: 6px;
   pointer-events: none;
+  margin: 10px;
+  z-index: 1000;
 }
+
 
 .respmenu input[type='checkbox'] {
   opacity: 0;
   min-height: 48px;
-
+color: white;
   /*   position: relative;*/
 }
 
@@ -669,7 +682,7 @@ label:hover {
   /*  border-bottom: 2px solid #456789; */
   background: #9bd6f241;
   /* font-variant: small-caps; */
-  font-size: 18px;
+  font-size: 14px;
   /* text-transform: uppercase; */
 
   /*  text-shadow: 1px 1px black; */
@@ -695,11 +708,13 @@ label:hover {
 .respmenu .imagen {
   font-size: 38px;
   pointer-events: none;
-  color: #5d90c7;
+  color: #d7e0e9;
   /*   margin-left: 1%;
       margin-top: 6px; */
   pointer-events: none;
-  margin: 15px;
+ 
+  margin: 10px;
+  z-index: 1000;
 }
 
 .respmenu input[type='checkbox'] {
@@ -730,7 +745,7 @@ label:hover {
 }
 .ulMenu2 {
 list-style-type: none;
-margin: 10px;
+margin: 5px;
 padding: 0;
 display: flex;
 justify-content: space-around;
@@ -973,6 +988,7 @@ font-weight: bold;
     border-radius: 30px;
     box-shadow: 0px 0px 9px 4px black;
     height: 560px;
+    padding-bottom: 25px;
   }
 }
 
@@ -1009,6 +1025,11 @@ font-weight: bold;
   border-color: white;
   border-width: 0px;
   background: transparent;
+
+ 
+}
+.ocultar{
+  visibility: hidden;
 }
 .selectEdition:hover {
   color: #006fe6;
@@ -1205,26 +1226,33 @@ footer {
   text-decoration: underline;
 }
 
-.bo-footer-copyright {
-  text-align: center;
-  color: #636a7d;
+.bo-footer-text {
+  color:#dee2eb ;
+  font-size: 14px;
+}
+.bo-footer-text:hover {color: #ffffff; text-decoration: underline;}
+
+
+.bo-footer-copyright {text-align: center; color:  white;    font-size: 13px;;
 }
 
 /*##### Footer Responsive #####*/
 /* for 980px or less */
 @media screen and (max-width: 750px) {
-  .bo-footer {
-    width: 95%;
-    padding: 1% 2%;
-  }
-  s .bo-footer-smap {
-    width: 46%;
-    padding: 1% 2%;
-  }
-  .bo-footer-uonline {
-    width: 46%;
-    padding: 1% 2%;
-    float: right;
+	
+	.bo-footer {
+		width: 100%;
+		padding: 1% 2%;
+  
+	}s
+	.bo-footer-smap {
+		width: 46%;
+		padding: 1% 2%;
+	}
+	.bo-footer-uonline {
+		width: 46%;
+		padding: 1% 2%;
+		float: right;
     text-align: right;
   }
 
@@ -1248,7 +1276,8 @@ footer {
     width: auto;
     float: none;
     text-align: center;
-  }
+    color: rgb(157 172 191);
+	}
 
   .bo-footer-power {
     width: auto;
@@ -1633,6 +1662,44 @@ footer {
   }
 }
 
+
+@media (min-width: 1000px) {
+  .containerLogin{
+    /* flex-direction: row; */
+    background: url( "https://elpulsolaboral.com.mx/img/articles/al-debate-el-futuro-del-trabajo-jszQy/86azY_futuro%20.jpg");
+    
+   
+
+  }
+  .sectionLogin{
+   
+  }
+
+  .sectionWelcome{
+/*     width: 70%;
+    display: block; */
+/*     background: linear-gradient(to left, rgba(32, 44, 141, 0.919), rgba(77, 131, 169, 0.679), rgba(214, 225, 233, 0.145),rgba(248, 248, 248, 0.919));
+ */
+/*   background: url( "http://www.riet-edu.org/uploads/imagenes/repositorio/2020/04/19/349/2020041903400133dfa769f91ff3acd80e166c6aa91fa5.jpg");
+ *//*   background-position: center;
+  background-size: cover; */
+
+  }
+  .containerInputs {
+    /*  background: rgba(214, 225, 233, 0.207);*/
+  background: linear-gradient(to bottom, rgba(248, 248, 248, 0.919), rgba(128, 182, 220, 0.207), rgba(214, 225, 233, 0.145),rgba(248, 248, 248, 0.919));
+  border-radius: 30px;
+  max-width: 300px;
+  margin-right: initial;
+  }
+
+  .containerLogin .sectionLogin .login{
+/*     background: url( "https://cdnb.artstation.com/p/assets/images/images/004/585/959/original/jordan-jaminet-m-hologram.gif?1484770364");
+ */     
+ padding-right: 50px; 
+  }
+}
+
 /*   hhhhhhhhhhhhh*/
 .perfil-usuario {
   background: linear-gradient(transparent, #d5dae0);
@@ -1845,15 +1912,17 @@ footer {
 }
 .ulMenu2 {
   width: 69%;
-  margin-left: 31%;
-  position: fixed;
+margin-left: 31%;
+position: fixed;
   background: white;
   padding-top: 16px;
   padding-bottom: 6px;
   height: 50px;
-  margin-top: 1px;
-  z-index: 100
+  /* margin-top: 1px; */
+  z-index: 100;
 }
+
+
 
 }
 

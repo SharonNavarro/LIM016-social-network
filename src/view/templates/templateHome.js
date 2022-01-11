@@ -167,7 +167,7 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
           <p class="timePublish"> ${hourPublish}</p>
         </div>
         </div> 
-          <select class="selectEdition  fa" > 
+          <select class="selectEdition   fa"  data-id="${id}" > 
          <option value="menuOptions" style="display:none" class="  fa" selected> &#xf141; </option>
          <option  value="edit"  data-id="${id}" class="op fa"> &#xf044;  </option>
          <option value="delete" data-id="${id}" class="op fa">&#xf2ed;   </option>
