@@ -177,9 +177,9 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
             <textarea class="contenido" data-id="${id}" disabled> ${content}</textarea>        
             <div class="containerIconsBtn"  data-id="${id}">
                 <div class="addPosts">
-                    <div class="iconPost"><img src="./images/heartIcon.png">1508</div>
-                    <div class="iconPost"><img src="./images/textGlobeIcon.png">2</div>
-                    <div class="iconPost"><img src="./images/Star.png"></div>
+                    <div class="iconPost"><i class="far fa-heart"></i>1508</div>
+                    <div class="iconPost"><i class="far fa-comment-alt"></i>2</div>
+                    <div class="iconPost"><i class="far fa-star"></i></div>
                 </div>
             </div>
             <div class="groupBtnOptionsUpdate hiddenBtn groupBtnUpdate" data-id="${id}" > 

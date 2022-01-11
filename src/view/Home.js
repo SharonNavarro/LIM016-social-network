@@ -123,6 +123,7 @@ async function showPublish() {
 
 
   });
+  //donde se ubica postContainer
   postContainer.innerHTML = templatePosts;
 
   const selectEdition = document.querySelectorAll(".selectEdition");
@@ -163,6 +164,7 @@ async function showPublish() {
       if (selectedOption.value === "delete") {
         miModal.setAttribute("class", "showDelete");
         btnDelete.addEventListener("click", modalDelete);
+        //preguntar por boton cancel
         btnCancel.forEach((btnCanc) => {
           btnCanc.addEventListener("click", cancelarModal);
         });
@@ -205,7 +207,6 @@ async function showPublish() {
             btnCancelUpdate.forEach((btnCancelUp) => {
 
               btnCancelUp.addEventListener("click", async (btnCancel) => {
-
                 if (btnCancel.target.dataset.id == selectedOption.dataset.id) {
                   const getPost = await getPublish(selectedOption.dataset.id)
 
@@ -235,7 +236,6 @@ async function showPublish() {
         miModal.setAttribute("class", "modal");
         await deletePublish(selectedOption.dataset.id);
         await showPublish();
-
       }
       async function cancelarModal() {
         miModal.setAttribute("class", "modal");
