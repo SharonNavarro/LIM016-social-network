@@ -349,10 +349,11 @@ h1 {
 }
 
 .storyGallery {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  z-index: 50;
+display: flex;
+justify-content: space-around;
+margin-bottom: 20px;
+margin-top: 20px;
 }
 .story {
   flex-basis: 19%;
@@ -495,11 +496,13 @@ h1 {
 }
 
 .addPosts {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  column-gap: 15%;
-  margin-top: 2%;
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+column-gap: 15%;
+margin-top: 2%;
+padding-left: 1%;
+color: black;
 }
 
 .iconPost {
@@ -726,11 +729,12 @@ label:hover {
   position: relative;
 }
 .ulMenu2 {
-  list-style-type: none;
-  margin: 10px;
-  padding: 0;
-  display: flex;
-  justify-content: space-around;
+list-style-type: none;
+margin: 10px;
+padding: 0;
+display: flex;
+justify-content: space-around;
+align-items: center;
 }
 
 .liMenu {
@@ -758,6 +762,23 @@ label:hover {
   min-height: 48px;
   align-items: center;
 }
+.titulo{
+color: #3674b6;
+text-transform: uppercase;
+font-size: 23px;
+font-family: 'Turret Road', cursive;   
+letter-spacing: 2.9px;
+  }
+  .contentTitulo{
+    display: flex;
+    justify-content: center;
+    min-height: 54px;
+    align-items: center;
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+  }
 
 /*.containerAccount .userProfileBody,
 .containerAccount {
@@ -1795,186 +1816,57 @@ footer {
   .perfil-usuario .portada-perfil {
     height: 28rem;
   }
-  .perfil-usuario .menu-perfil ul {
-    flex-direction: column;
-  }
-  .perfil-usuario .lista-perfil {
-    display: block;
-  }
-  .perfil-usuario .menu-perfil {
-    margin-top: 2rem;
-  }
-  .perfil-usuario .menu-perfil ul {
-    display: flex;
-    list-style: none;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 2.5rem;
-    width: 70%;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 0 12px 2px rgba(148, 179, 199, 0.1);
-  }
-  .perfil-usuario .icono-perfil {
-    display: inline-block;
-  }
 }
 
-.perfilUsuarioDatos {
 
+@media (min-width: 700px) {
+#container {
   display: flex;
-  flex-wrap: wrap;
-  padding: 1.5rem 3rem;
-  background-color: white;
-  margin: auto;
-  margin-top: 4rem;
-}
-
-.perfilUsuarioDatos .lista-datos {
-  width: 100%;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
-  text-align: justify;
+  align-items: flex-end;
 }
-.perfilUsuarioDatos .lista-datos li {
-  padding: 3px 0;
+.respmenu input[type="checkbox"] {
+  visibility: hidden;
 }
-
-.perfilUsuarioDatos .lista-datos li > .icono {
-  font-size: 1.2rem;
+.respmenu .imagen {
+  visibility: hidden;
 }
-.principal {
-  display: flex;
-  flex-wrap: wrap;
-  text-align: center;
-  margin:auto;
-}
-.alignCenterAccount {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-top: 4rem;
-}
-.containerWriterAccount {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  background: #fff;
-  border-radius: 40px;
-  padding: 20px;
-  color: #626262;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-}
-.userProfileAccount {
-  display: flex;
-  width: 100%;
-  margin: auto;
-  margin-left: 2rem;
-  align-items: center;
-  color: #9a9a9a;
-  font-weight: bold;
-}
-.userProfileAccount img {
-  height: 30%;
+.respmenu nav {
+  display: block;
+  position: absolute;
   width: 30%;
-  border-radius: 50%;
-  margin: 10px;
+  position: fixed;
+  margin-top: 5.3%;
 }
-.userProfileAccount .nameUserAccount {
-  margin-bottom: -5px;
-  color: #626262;
-  font-size: 15px;
-  margin-bottom: 1%;
-  font-family: 'Inter', sans-serif;
-  font-weight: bold;
+.position {
+  width: 69%;
+  margin-top: 7%;
 }
-
-.userProfileAccount span {
-  font-size: 0.9rem;
-}
-
-.containerTextPostAccount {
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 55px;
-  padding-top: 10px;
+.ulMenu2 {
+  width: 69%;
+  margin-left: 31%;
+  position: fixed;
+  background: white;
+  padding-top: 16px;
+  padding-bottom: 6px;
+  height: 50px;
+  margin-top: 1px;
+  z-index: 100
 }
 
-.containerTextPostAccount .textareaPublishAccount {
-  display: flex;
-  width: 100%;
-  border: 0;
-  outline: 0;
-  border-bottom: 1px solid #ccc;
-  background: transparent;
-  resize: none;
-  font-size: 1rem;
 }
 
-.addPostAccount {
-  display: flex;
-  margin-top: 10px;
-  justify-content: space-evenly;
+@media (max-width: 780px) and (min-width: 700px)  {
+/* .position {
+    margin-top: 7%;
+} */
+.respmenu nav {
+  margin-top: 7%;
+}
 }
 
-.addPostAccount a {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  color: #626262;
-  margin-right: 30px;
-  font-size: 13px;
+@media (min-width: 1000px) {
+.position {
+    margin-top: 4%;
 }
-
-.addPostAccount a i {
-  margin-right: 10px;
-  font-size: 30px;
-  background-color: white;
-}
-
-.postBtnAccount {
-  border: 0px solid rgba(55, 115, 179, 0.692);
-  background-color: rgba(55, 115, 179, 0.692);
-  padding: 10px;
-  border-radius: 18px;
-  color: white;
-  cursor: pointer;
-}
-
-.containerPostsAccount {
-  display: flex;
-  width: 95%;
-  background: #fff;
-  border-radius: 60px;
-  padding: 20px;
-  padding-left: 5%;
-  color: #626262;
-  margin: 20px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-}
-
-.addPostAccount {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  column-gap: 15%;
-  margin-top: 2%;
-}
-
-.iconPostAccount {
-  display: flex;
-  align-items: center;
-}
-
-.containerAlignItemsAccount {
-  display: flex;
-  justify-content: space-between;
-}
-.containerAlignItemsAccount button {
-  border: 0px solid white;
-  background-color: white;
-  cursor: pointer;
 }
