@@ -7,16 +7,16 @@ import {
   updatePublish,
   getPublish,
 } from "../firebase/firestore.js"
-
+let displayName, photoURL, email;
 export default () => {
-  
+
   //Template Home
   const viewHome = templateHome;
   const divElemt = document.createElement('section');
   divElemt.classList.add('position')
   divElemt.innerHTML = viewHome;
   //Functions
-  let displayName, photoURL;
+
   const nameUser = divElemt.querySelector("#nameUser");
   const photoUser = divElemt.querySelector("#photoUser");
   const formPublish = divElemt.querySelector("#formPublish");
@@ -25,11 +25,16 @@ export default () => {
     if (user) {
       displayName = user.displayName;
       photoURL = user.photoURL;
+      email = user.email;
       nameUser.innerHTML = displayName;
       photoUser.src = photoURL;
+
       await showPublish();
+
     }
   })
+
+
   const miModalPublishVoid = divElemt.querySelector("#miModalPublishVoid");
   const btnReturn = divElemt.querySelector("#btnReturn");
   //Enviar Publicación
@@ -44,15 +49,14 @@ export default () => {
     } else {
       let hoy = new Date();
       let dateOrder = new Date();
-      let datePublish, hourPublish,dateOrderComplet;
-      hourPublish =  hoy.getHours()+ ':' + hoy.getMinutes();
+      let datePublish, hourPublish, dateOrderComplet;
+      hourPublish = hoy.getHours() + ':' + hoy.getMinutes();
       datePublish = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
-      dateOrderComplet= dateOrder.getDate() + '/' + (dateOrder.getMonth() + 1) + '/'+  dateOrder.getFullYear() + '/'+ dateOrder.getHours()+ '/'+  dateOrder.getMinutes()+ '/'+dateOrder.getSeconds();
-      console.log(dateOrderComplet);
-      await savePublish(textPost, datePublish, hourPublish, displayName, photoURL,dateOrderComplet/*,totalStars,totalHearts,comments */);
+      dateOrderComplet = dateOrder.getTime();
+
+      await savePublish(textPost, datePublish, hourPublish, displayName, photoURL, dateOrderComplet, email/*,totalStars,totalHearts,comments */);
       formPublish.reset();
       await showPublish();
-
     }
   });
 
@@ -82,8 +86,42 @@ async function showPublish() {
     hourPublish = doc.data().hourPublish;
     userName = doc.data().userName;
     urlPhoto = doc.data().urlPhoto;
-
     templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish)
+/* 
+    const selectEdition = document.querySelectorAll(".selectEdition");
+    
+    if (displayName !== userName) {
+      templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish)
+      setTimeout(() => {
+        selectEdition.forEach(classele => {
+          classele.classList.add("ocultar")
+          console.log(classele);
+        });
+      }, 100);
+
+    }
+    else if (displayName === userName) {
+      templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish)
+      setTimeout(() => {
+
+        selectEdition.forEach(classele => {
+          classele.classList.remove("ocultar")
+          console.log(classele);
+        });
+      }, 100);
+    } */
+    /*   function select2() {
+        setTimeout(() => {
+          const selectEdition = document.querySelector(".selectEdition");   
+                 
+         
+             selectEdition.classList.add("ocultar") 
+             console.log(selectEdition);
+        }, 100);
+  
+      } */
+
+
   });
   postContainer.innerHTML = templatePosts;
 
@@ -100,8 +138,26 @@ async function showPublish() {
 
 
   selectEdition.forEach(selectEdition => {
-    selectEdition.addEventListener("change", async function () {
 
+    /*    if (selectEdition.target.dataset.id == idPosts) {
+         const getPost = await getPublish(selectEdition.dataset.id)
+   
+         const text = (getPost.data().content);
+         const emailUser=getPost.data().email;
+         if(emailUser==email){
+           
+         }
+       } */
+    /* 
+    selectEdition.addEventListener("click",function(){
+    
+    
+    }) */
+
+
+    selectEdition.addEventListener("change", async function () {
+      console.log("idpost", idPosts);
+      console.log("idselect", selectEdition.dataset.id);
       const selectedOption = this.options[selectEdition.selectedIndex];
 
       if (selectedOption.value === "delete") {
@@ -151,10 +207,14 @@ async function showPublish() {
               btnCancelUp.addEventListener("click", async (btnCancel) => {
 
                 if (btnCancel.target.dataset.id == selectedOption.dataset.id) {
-                  const texto = await getPublish(selectedOption.dataset.id)
+                  const getPost = await getPublish(selectedOption.dataset.id)
 
-                  const texte = (texto.data().content);
-                  e.value = texte;
+                  const text = (getPost.data().content);
+                  /*      const emailUser=getPost.data().email;
+                       if(emailUser==email){
+     
+                       } */
+                  e.value = text;
 
                   showIconosAndGroupBtnUpdate(groupBtnUpdate, statusShowNone)
                   showIconosAndGroupBtnUpdate(containerIconsBtn, statusShowBlock)

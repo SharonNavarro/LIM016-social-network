@@ -32,11 +32,12 @@ h1{
   text-transform: uppercase;
 }
 .sectionWelcome {
-background: url( "./images/bgNetcoins.jpg");
+background: url(  "./images/bgNetcoins.jpg");
 width: 100%;
-height: 625px;
+height: 725px;
 background-position: center;
 background-size: cover;
+
 display: none;
 }
 
@@ -57,8 +58,8 @@ display: none;
   justify-content: space-between;
   }
 .containerLogin .sectionLogin{
-width: 100%;
-height: 640px;
+/* width: 0%; */
+height: 730px;
 background: white;
 /* padding: 5px; */
 
@@ -67,7 +68,7 @@ background: white;
 
     margin: auto;
     width: 100%;
-    background: url( "./images/bgNetcoins.jpg");
+    background: url(  "https://api.time.com/wp-content/uploads/2021/11/Crypto-Bitcoin.jpg");
   /*   border-radius: 20px; */
     display: flex;
     flex-direction: column;
@@ -76,19 +77,21 @@ background: white;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    margin: auto;
+    margin-left: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
    /*  padding-top: 4%; */
     padding-bottom: 4%;
+    background-position: center;
+background-size: cover;
 
 
 }
 .containerInputs {
   width: 100%;
-  max-width: 330px;
-  margin-left: auto;
+  max-width: 300px;
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,7 +160,7 @@ text-shadow:0.4px 0.4px #241e34;
 color:  #1776f1; 
 margin: 5px;
 cursor: pointer;
-text-shadow:1px 1px 1px #1776f1;
+text-shadow:0.4px 0.4px 0.4px #1776f1;
 
 }
 .groupLbl{
@@ -898,6 +901,14 @@ font-weight: bold;
 @media (max-width: 750px) {
    .containerAccount .lista-datos {
        width: 100%;
+      
+   }
+   @font-face {
+     font-family:Arial, Helvetica, sans-serif ;
+     src: url() format(woff);
+     url:"";
+
+
    }
 
    .containerAccount .profileUserCover,
@@ -912,7 +923,11 @@ font-weight: bold;
     border-radius: 30px;
     box-shadow: 0px 0px 9px 4px black;
     height: 560px;
+    padding-bottom: 25px;
   }
+ }
+ .rayita{
+   color: white;
  }
  
  /* adaptación a dispositivos */
@@ -954,7 +969,14 @@ font-weight: bold;
   border-color:white;
   border-width: 0px;
   background: transparent;
+
+ 
 }
+.ocultar{
+  visibility: hidden;
+}
+
+
 .selectEdition:hover{
   color: #006fe6;
   
@@ -1105,15 +1127,20 @@ select:focus{ outline: none;}
 
 footer{
 
-  background: #b1daee91;
+margin-top: -8px;
 }
-.bo-wrap {clear:both; width: auto;}
+.bo-wrap {
+  clear:both;
+   width: 300px;
+   font-family: system-ui;
+}
 .bo-footer {
   clear:both;
   width: auto;
   padding: 5px;
-  width: 960px;
+ /*  width: 960px; */
 	margin: 0 auto;
+  margin-top: 10px;
 }
 
 .bo-footer-social {text-align: center; line-height: 1px;}
@@ -1144,11 +1171,14 @@ footer{
 }
 
 
-.bo-footer-text {color:#636A7D ;}
+.bo-footer-text {
+  color:#dee2eb ;
+  font-size: 14px;
+}
 .bo-footer-text:hover {color: #ffffff; text-decoration: underline;}
 
 
-.bo-footer-copyright {text-align: center; color: #636A7D;
+.bo-footer-copyright {text-align: center; color:  white;    font-size: 13px;;
 }
 
 /*##### Footer Responsive #####*/
@@ -1156,9 +1186,9 @@ footer{
 @media screen and (max-width: 750px) {
 	
 	.bo-footer {
-		width: 95%;
+		width: 100%;
 		padding: 1% 2%;
-    
+  
 	}s
 	.bo-footer-smap {
 		width: 46%;
@@ -1200,6 +1230,7 @@ footer{
 		width: auto;
 		float: none;
     text-align: center;
+    color: rgb(157 172 191);
 	}
 
 }
@@ -1597,5 +1628,42 @@ footer{
 @media (max-width: 780px) {
   .seccion-usuarios {
       width: 280px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .containerLogin{
+    /* flex-direction: row; */
+    background: url( "https://elpulsolaboral.com.mx/img/articles/al-debate-el-futuro-del-trabajo-jszQy/86azY_futuro%20.jpg");
+    
+   
+
+  }
+  .sectionLogin{
+   
+  }
+
+  .sectionWelcome{
+/*     width: 70%;
+    display: block; */
+/*     background: linear-gradient(to left, rgba(32, 44, 141, 0.919), rgba(77, 131, 169, 0.679), rgba(214, 225, 233, 0.145),rgba(248, 248, 248, 0.919));
+ */
+/*   background: url( "http://www.riet-edu.org/uploads/imagenes/repositorio/2020/04/19/349/2020041903400133dfa769f91ff3acd80e166c6aa91fa5.jpg");
+ *//*   background-position: center;
+  background-size: cover; */
+
+  }
+  .containerInputs {
+    /*  background: rgba(214, 225, 233, 0.207);*/
+  background: linear-gradient(to bottom, rgba(248, 248, 248, 0.919), rgba(128, 182, 220, 0.207), rgba(214, 225, 233, 0.145),rgba(248, 248, 248, 0.919));
+  border-radius: 30px;
+  max-width: 300px;
+  margin-right: initial;
+  }
+
+  .containerLogin .sectionLogin .login{
+/*     background: url( "https://cdnb.artstation.com/p/assets/images/images/004/585/959/original/jordan-jaminet-m-hologram.gif?1484770364");
+ */     
+ padding-right: 50px; 
   }
 }
