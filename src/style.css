@@ -373,7 +373,7 @@ font-family: 'Inter', sans-serif;
 }
 
 .storyGallery {
-
+  z-index: 50;
 display: flex;
 justify-content: space-around;
 margin-bottom: 20px;
@@ -528,6 +528,8 @@ flex-direction: row;
 justify-content: flex-start;
 column-gap: 15%;
 margin-top: 2%;
+padding-left: 1%;
+color: black;
 }
 
 .iconPost {
@@ -686,6 +688,7 @@ margin: 10px;
 padding: 0;
 display: flex;
 justify-content: space-around;
+align-items: center;
 }
 
 .liMenu {
@@ -709,11 +712,14 @@ font-family: 'Turret Road', cursive;
 letter-spacing: 2.9px;
   }
   .contentTitulo{
-    display: flex ;   
+    display: flex;
     justify-content: center;
-    min-height: 68px;
+    min-height: 54px;
     align-items: center;
-    background: linear-gradient(45deg, transparent ,rgba(55, 115, 179, 0.692));
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+    z-index: 100;
+    position: fixed;
+    width: 100%;
   }
 
 .containerAccount .userProfileBody,
@@ -1598,4 +1604,57 @@ footer{
   .seccion-usuarios {
       width: 280px;
   }
+}
+
+
+@media (min-width: 700px) {
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.respmenu input[type="checkbox"] {
+  visibility: hidden;
+}
+.respmenu .imagen {
+  visibility: hidden;
+}
+.respmenu nav {
+  display: block;
+  position: absolute;
+  width: 30%;
+  position: fixed;
+  margin-top: 5.3%;
+}
+.position {
+  width: 69%;
+  margin-top: 7%;
+}
+.ulMenu2 {
+  width: 69%;
+  margin-left: 31%;
+  position: fixed;
+  background: white;
+  padding-top: 16px;
+  padding-bottom: 6px;
+  height: 50px;
+  margin-top: 1px;
+  z-index: 100
+}
+
+}
+
+@media (max-width: 780px) and (min-width: 700px)  {
+/* .position {
+    margin-top: 7%;
+} */
+.respmenu nav {
+  margin-top: 7%;
+}
+}
+
+@media (min-width: 1000px) {
+.position {
+    margin-top: 4%;
+}
 }
