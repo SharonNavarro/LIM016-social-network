@@ -422,6 +422,7 @@ margin-top: 20px;
   padding: 20px;
   color: #626262;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  z-index: 50;
 }
 .userProfile {
   display: flex;
@@ -502,6 +503,7 @@ margin-top: 20px;
   color: #626262;
   margin: 20px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  z-index: 200;
 }
 
 .addPosts {
@@ -745,7 +747,7 @@ label:hover {
 }
 .ulMenu2 {
 list-style-type: none;
-margin: 5px;
+margin: 15px; 
 padding: 0;
 display: flex;
 justify-content: space-around;
@@ -1072,6 +1074,7 @@ select:focus {
   opacity: 1;
   pointer-events: auto;
   border-radius: 15px;
+  z-index: -1;
 }
 .modal {
   background-color: rgba(0, 0, 0, 0.8);
@@ -1094,6 +1097,7 @@ select:focus {
   left: 0;
   opacity: 1;
   pointer-events: none;
+  z-index: 100;
 }
 .h2Modal {
   text-align: center;
@@ -1136,6 +1140,7 @@ select:focus {
   opacity: 1;
   pointer-events: auto;
   border-radius: 15px;
+  z-index: -20;
 }
 .closeModal {
   background-color: rgba(0, 0, 0, 0.8);
@@ -1914,10 +1919,10 @@ footer {
 margin-left: 31%;
 position: fixed;
   background: white;
-  padding-top: 16px;
-  padding-bottom: 6px;
+  padding-top: 1px;
+/*   padding-bottom: 6px; */
   height: 50px;
-  /* margin-top: 1px; */
+  margin-top: 1px;
   z-index: 100;
 }
 
