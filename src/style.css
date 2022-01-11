@@ -26,7 +26,6 @@ h1 {
   justify-content: center;
 }
 .sectionWelcome {
-<<<<<<< HEAD
 background: url(  "./images/bgNetcoins.jpg");
 width: 100%;
 height: 725px;
@@ -34,14 +33,6 @@ background-position: center;
 background-size: cover;
 
 display: none;
-=======
-  background: url('./images/bgNetcoins.jpg');
-  width: 100%;
-  height: 625px;
-  background-position: center;
-  background-size: cover;
-  display: none;
->>>>>>> 48fb85b9eb47a8088b8625df4e653d3d53691b4f
 }
 
 .loginImg {
@@ -58,7 +49,6 @@ display: none;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-<<<<<<< HEAD
   }
 .containerLogin .sectionLogin{
 /* width: 0%; */
@@ -90,33 +80,6 @@ background: white;
 background-size: cover;
 
 
-=======
-}
-.containerLogin .sectionLogin {
-  width: 100%;
-  height: 640px;
-  background: white;
-  /* padding: 5px; */
-}
-.containerLogin .sectionLogin .login {
-  margin: auto;
-  width: 100%;
-  background: url('./images/bgNetcoins.jpg');
-  /*   border-radius: 20px; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /*  padding-top: 4%; */
-  padding-bottom: 4%;
->>>>>>> 48fb85b9eb47a8088b8625df4e653d3d53691b4f
 }
 .containerInputs {
   width: 100%;
@@ -183,19 +146,12 @@ background-size: cover;
   color: #ffffff;
   margin: 5px;
 }
-<<<<<<< HEAD
 .linkRegistrate{
 color:  #1776f1; 
 margin: 5px;
 cursor: pointer;
 text-shadow:0.4px 0.4px 0.4px #1776f1;
 
-=======
-.linkRegistrate {
-  color: #006fe695;
-  margin: 5px;
-  cursor: pointer;
->>>>>>> 48fb85b9eb47a8088b8625df4e653d3d53691b4f
 }
 .groupLbl {
   display: flex;
