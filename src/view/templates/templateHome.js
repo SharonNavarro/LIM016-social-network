@@ -159,19 +159,19 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
 <div class="containerPosts" >
       <div class="containerAlignItems"> 
 
-        <div class="userProfile">
+      <div class="userProfile">
           <img src=${urlPhoto}>
-        <div>
+          <div>
           <p class="nameUser"><bold > ${userName}</bold></p>
           <p class="timePublish"> ${datePublish}</p>
           <p class="timePublish"> ${hourPublish}</p>
-        </div>
-        </div> 
-          <select class="selectEdition   fa"  data-id="${id}" > 
-         <option value="menuOptions" style="display:none" class="  fa" selected> &#xf141; </option>
-         <option  value="edit"  data-id="${id}" class="op fa"> &#xf044;  </option>
-         <option value="delete" data-id="${id}" class="op fa">&#xf2ed;   </option>
-         </select>
+          </div>
+      </div> 
+          <select class="selectEdition fa"  data-id="${id}" > 
+            <option value="menuOptions" style="display:none" class="  fa" selected> &#xf141; </option>
+            <option  value="edit"  data-id="${id}" class="op fa"> &#xf044;  </option>
+            <option value="delete" data-id="${id}" class="op fa">&#xf2ed;   </option>
+          </select>
       </div>
         <div class="containerTextPost">
             <textarea class="contenido" data-id="${id}" disabled> ${content}</textarea>        
@@ -200,8 +200,55 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
 </div> 
 
       `;
+const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, hourPublish) => `        
+          
+      <div class="containerPosts" >
+            <div class="containerAlignItems"> 
+      
+            <div class="userProfile">
+                <img src=${urlPhoto}>
+                <div>
+                <p class="nameUser"><bold > ${userName}</bold></p>
+                <p class="timePublish"> ${datePublish}</p>
+                <p class="timePublish"> ${hourPublish}</p>
+                </div>
+            </div> 
+                <select class="ocultar"  data-id="${id}" > 
+                  <option value="menuOptions" style="display:none" class="  fa" selected> &#xf141; </option>
+                  <option  value="edit"  data-id="${id}" class="op fa"> &#xf044;  </option>
+                  <option value="delete" data-id="${id}" class="op fa">&#xf2ed;   </option>
+                </select>
+            </div>
+              <div class="containerTextPost">
+                  <textarea class="contenido" data-id="${id}" disabled> ${content}</textarea>        
+                  <div class="containerIconsBtn"  data-id="${id}">
+                      <div class="addPosts">
+                          <div class="iconPost" data-id="${id}" ><i class="far fa-heart"></i>1508</div>
+                          <div class="iconPost"><i class="far fa-comment-alt"></i>2</div>
+                          <div class="iconPost"><i class="far fa-star"></i></div>
+                      </div>
+                  </div>
+                  <div class="groupBtnOptionsUpdate hiddenBtn groupBtnUpdate" data-id="${id}" > 
+                  <button class="btnOptions btnSave" data-id="${id}" >Guardar</button>
+                  <button class="btnOptions btnCancelUpdate" data-id="${id}">Cancelar</button>
+                   </div> 
+              </div>
+              </div>
+              
+        <div id="miModal" class="modal">    
+        <div  class="modal-contenido">
+          <h5 class="h2Modal">¿Estás seguro que deseas eliminar la publicación?</h5>
+          <div class="groupBtnOptions"> 
+          <button class="btnOptions"  id="btnDelete">Eliminar</button>
+          <button class="btnOptions btnCancel"  data-id="${id}" >Cancelar</button>
+          </div> 
+        </div> 
+      </div> 
+      
+            `;
 
 export {
   templateHome,
-  templatePublishes
+  templatePublishes,
+  templatePublishesUsers
 }
