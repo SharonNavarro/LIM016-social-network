@@ -122,9 +122,9 @@ export default () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         if (email.value === '' && password.value === '') {
-          addErrorMessage(inactiveEmailErrorMessage, 'Campo inválido. Por favor, escriba su correo electrónico.');
+          addErrorMessage(inactiveEmailErrorMessage, 'Campo inválido.');
           addErrorInput(containerInputEmail, 'error');
-          addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido. Por favor, escriba su contraseña.');
+          addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido.');
           addErrorInput(containerInputPassword, 'error');
           link.innerHTML = "";
         } else if (password.value === '') {
@@ -156,7 +156,7 @@ export default () => {
           removeErrorInput(containerInputPassword, 'error');
           removeErrorInput(containerInputEmail, 'error');
           removeErrorMessage(inactiveEmailErrorMessage, '');
-          addErrorMessage(inactivePasswordErrorMessage, ' Ocurrió un error. Por favor, vuelva a escribir sus datos correctamente.')
+          addErrorMessage(inactivePasswordErrorMessage, ' Ocurrió un error. Por favor, vuelva a escribir sus datos.')
         }
       })
   });
