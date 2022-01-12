@@ -14,19 +14,17 @@ import {
     limit
 } from "./config.js"
 
-const savePublish = (textPost, datePublish, hourPublish,userName,urlPhoto,dateOrderComplet,email/* ,totalStars,totalHearts,comments */) => addDoc(collection(db, "posts"), {
+const savePublish = (textPost, datePublish, hourPublish, userName, urlPhoto, dateOrderComplet, email,totalStars/* ,totalHearts,comments */) => addDoc(collection(db, "posts"), {
     content: textPost,
     datePublish: datePublish,
     hourPublish: hourPublish,
     userName: userName,
     urlPhoto: urlPhoto,
-    dateOrderComplet:dateOrderComplet,
-    email:email
-   
-    /* 
-   stars: totalStars,
-   hearts: totalHearts,
-   comments:comments, */
+    dateOrderComplet: dateOrderComplet,
+    email: email,
+    stars: totalStars,
+    /* hearts: totalHearts,
+  comments:comments, */
 
 });
 
@@ -35,11 +33,14 @@ const getPublish = async (id) => await getDoc(doc(db, "posts", id));
 const updatePublish = async (id, textPost) => await updateDoc(doc(db, "posts", id), {
     content: textPost
 });
+const updatePublishStart = async (id, stars) => await updateDoc(doc(db, "posts", id), {
+    stars: stars
+});
 
 const deletePublish = async (id) => await deleteDoc(doc(db, "posts", id));
 
 export {
-
+    updatePublishStart,
     savePublish,
     getPublishes,
     getDocs,
