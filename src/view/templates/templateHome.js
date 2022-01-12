@@ -5,7 +5,7 @@ const templateHome = `
 <div class="storyGallery">
 
   <div class="story story1"> 
-    <img src="./images/plusIcon.png">
+  <i class="fas fa-plus-circle iconAdd"></i>
   </div>
 
 <div class="story story2"> 

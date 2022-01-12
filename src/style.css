@@ -386,7 +386,7 @@ margin-top: 20px;
 }
 .story {
   flex-basis: 19%;
-  padding-top: 32%;
+  padding-top: 25%;
   position: relative;
   background-position: center;
   background-size: cover;
@@ -501,13 +501,13 @@ margin-top: 20px;
 
 .addPost a i {
   margin-right: 10px;
-  font-size: 30px;
+  font-size: 20px;
   background-color: white;
 }
 
 .postBtn {
   border: 0px solid rgba(55, 115, 179, 0.692);
-  background:linear-gradient(to left, rgb(122 173 186), #8cc7ca);
+  background:linear-gradient(to left, rgb(109 156 184), #99bea4);
   padding: 10px;
   border-radius: 18px;
   color: white;
@@ -703,7 +703,7 @@ label:hover {
   color: inherit;
   text-decoration: none;
   display: flex;
-  padding: 40px;
+  padding: 39px;
   /*  border-bottom: 2px solid #456789; */
   background: #9bd6f241;
   /* font-variant: small-caps; */
@@ -769,13 +769,14 @@ label:hover {
   position: relative;
 }
 .ulMenu2 {
-list-style-type: none;
-/* margin: 15px;  */
-padding: 7px;
-display: flex;
-justify-content: space-around;
-align-items: center;
-background: white;
+  list-style-type: none;
+  /* margin: 15px; */
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: white;
+  
 }
 
 .liMenu {
@@ -784,7 +785,7 @@ background: white;
 
 .ulMenu2 .liMenu a i {
   font-size: 30px;
-  color: rgba(55, 115, 179, 0.692);
+  color: #81abbf;
 }
 
 .content {
@@ -819,7 +820,7 @@ letter-spacing: 2.9px;
     background: linear-gradient(0.25turn, rgb(49 117 88), #ebf8e1,rgb(28 97 158));
     z-index: 100;
     position: fixed;
-
+    width: 100%;
     /* cambios agregados de sharon
      background: linear-gradient(0.25turn, #3f87a6, #ebf8e1,#8cc7ca);
  
@@ -1158,7 +1159,7 @@ select:focus {
 
 .btnOptions {
   border: 0px solid rgba(35, 95, 207);
-  background: linear-gradient(to left, rgb(122 173 186), #8cc7ca);
+  background: linear-gradient(to left, rgb(109 156 184), #99bea4);
   padding: 10px;
   border-radius: 18px;
   color: white;
@@ -2053,15 +2054,14 @@ footer {
   margin-top: 110px;
 }
 .ulMenu2 {
-  width: 69%;
-margin-left: 31%;
-position: fixed;
+  width: 70%;
+  margin-left: 30%;
+  position: fixed;
   background: white;
-  /* padding-top: 16px;
-  padding-bottom: 6px; */
-  height: 50px;
+  /* height: 50px; */
   margin-top: 0px;
-  z-index: 100;
+  padding-top: 18px;
+  
 }
 
 }
@@ -2087,4 +2087,16 @@ position: fixed;
   margin-bottom: 15px;
 
 }
+}
+.ulMenu{
+  background: white;
+  padding-top: 50px;
+}
+.iconAdd{
+  font-size: 20px;
+  margin: auto;
+  color: #81abbf;
+  font-weight: bold;
+  padding-left: 40%;
+  padding-bottom: 10px;
 }
