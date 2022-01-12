@@ -223,8 +223,8 @@ const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, ho
                   <textarea class="contenido" data-id="${id}" disabled> ${content}</textarea>        
                   <div class="containerIconsBtn"  data-id="${id}">
                       <div class="addPosts">
-                          <div class="iconPost" data-id="${id}" ><i class="far fa-heart"></i>1508</div>
-                          <div class="iconPost"><i class="far fa-comment-alt"></i>2</div>
+                          <div class="iconPost" data-id="${id}" ><i class="far fa-heart icoHeart"></i></div>
+                          <div class="iconPost"><i class="far fa-comment-alt"></i></div>
                           <div class="iconPost"><i class="far fa-star"></i></div>
                       </div>
                   </div>
