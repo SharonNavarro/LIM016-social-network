@@ -33,11 +33,14 @@ const getPublish = async (id) => await getDoc(doc(db, "posts", id));
 const updatePublish = async (id, textPost) => await updateDoc(doc(db, "posts", id), {
     content: textPost
 });
+const updatePublishStart = async (id, stars) => await updateDoc(doc(db, "posts", id), {
+    stars: stars
+});
 
 const deletePublish = async (id) => await deleteDoc(doc(db, "posts", id));
 
 export {
-
+    updatePublishStart,
     savePublish,
     getPublishes,
     getDocs,

@@ -5,6 +5,7 @@ import {
   getPublishes,
   deletePublish,
   updatePublish,
+  updatePublishStart,
   getPublish,
 } from "../firebase/firestore.js"
 let displayName, photoURL, email;
@@ -69,7 +70,7 @@ export default () => {
 
 };
 
-let querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
+let querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto, TotalStarsPost;
 
 window.addEventListener('DOMContentLoaded', async (e) => {
   await showPublish();
@@ -87,13 +88,16 @@ async function showPublish() {
     hourPublish = doc.data().hourPublish;
     userName = doc.data().userName;
     urlPhoto = doc.data().urlPhoto;
-
-
+    TotalStarsPost = doc.data().stars;
+    if(TotalStarsPost==undefined){
+      TotalStarsPost=0;
+    }
+    console.log("estrellas", TotalStarsPost);
     if (displayName == userName) {
-      templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish)
+      templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, TotalStarsPost)
 
     } else {
-      templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish)
+      templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, TotalStarsPost)
     }
 
   });
@@ -110,57 +114,66 @@ async function showPublish() {
   const containerIconsBtn = document.querySelectorAll(".containerIconsBtn");
   const groupBtnUpdate = document.querySelectorAll(".groupBtnUpdate");
   const btnSave = document.querySelectorAll(".btnSave");
-  const iconPostStart = document.querySelectorAll(".iconPostStart");
 
-  let displayNameStart = "";
-  let arraynew = [];
 
-  userState((user) => {
-    if (user) {
-      displayNameStart = user.displayName;
-    }
-  })
-let guardarestrellas=[];
-  contenido.forEach((e) => {
+    const iconPostStart = document.querySelectorAll(".iconPostStart");
 
-    iconPostStart.forEach((icon) => {
-      icon.addEventListener("click", () => {
-        if (icon.dataset.id == e.dataset.id) {
-          console.log("contenido de post", e.dataset.id);
-          console.log("corazon", icon.dataset.id);
-          icon.classList.toggle("iconStart");
+    let displayNameStart = "";
+    let arraynew = [];
+    let total = 0;
 
-          if (arrayStart.userStart == undefined) {
-            arrayStart = {
-              totalStar: 1,
-              userStart: displayNameStart
-            };
-            guardarestrellas.push(arrayStart.totalStar);
-            console.log("por primera vez", arrayStart);
-          } else {
-            arrayStart = {
-              totalStar: 0,
-              userStart: undefined
-            };
-            console.log("por segunda vez", arrayStart);
-            guardarestrellas.push(-1);
-          }
-          let arrayTotalStart = arrayStart.totalStar;
-          console.log("estrela total", arrayTotalStart);
+    userState((user) => {
+      if (user) {
+        displayNameStart = user.displayName;
+      }
+    })
+    let guardarestrellas = 0;
+    contenido.forEach((e) => {
 
-          let total = guardarestrellas.reduce((a, b) => a + b, 0);
-            icon.innerHTML = total;
+      iconPostStart.forEach((icon) => {
+        icon.addEventListener("click", async () => {
+          
+          if (icon.dataset.id == e.dataset.id) {
+        
+            icon.classList.toggle("iconStart");
+
+            if (arrayStart.userStart == undefined) {
+              arrayStart = {
+                totalStar: 1,
+                userStart: displayNameStart
+              };
+
+              guardarestrellas+=(arrayStart.totalStar);
             
+            } else {
+              arrayStart = {
+                totalStar: 0,
+                userStart: undefined
+              };
+            
+              guardarestrellas-=(arrayStart.totalStar);
+            }
+           
+            console.log(guardarestrellas);
+            await updatePublishStart(icon.dataset.id, guardarestrellas);
+            await showPublish();
 
-        }
+
+
+          }
+
+
+        })
 
 
       })
 
+
     })
 
 
-  })
+ 
+
 
 
 

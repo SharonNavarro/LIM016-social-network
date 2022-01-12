@@ -154,7 +154,7 @@ const templateHome = `
 `;
 
 
-const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPublish) => `        
+const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPublish,totalStarPintada) => `        
           
 <div class="containerPosts" >
       <div class="containerAlignItems"> 
@@ -179,7 +179,7 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
                 <div class="addPosts">
                 <div class="iconPost " data-id="${id}" ><i class="far fa-heart icoHeart"></i></div>
                 <div class="iconPost"><i class="far fa-comment-alt"></i></div>
-                <div class="iconPost "  ><i class="far fa-star iconPostStart" data-id="${id}"></i></div>
+                <div class="iconPost " ><i class="far fa-star iconPostStart" data-id="${id}">${totalStarPintada}</i></div>
                 </div>
             </div>
             <div class="groupBtnOptionsUpdate hiddenBtn groupBtnUpdate" data-id="${id}" > 
@@ -200,7 +200,7 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
 </div> 
 
       `;
-const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, hourPublish) => `        
+const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, hourPublish,totalStarPintada) => `        
           
       <div class="containerPosts" >
             <div class="containerAlignItems"> 
@@ -225,7 +225,7 @@ const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, ho
                       <div class="addPosts">
                       <div class="iconPost " data-id="${id}" ><i class="far fa-heart icoHeart"></i></div>
                       <div class="iconPost"><i class="far fa-comment-alt"></i></div>
-                      <div class="iconPost "  ><i class="far fa-star iconPostStart" data-id="${id}">  </i></div>
+                      <div class="iconPost "><i class="far fa-star iconPostStart" data-id="${id}"> ${totalStarPintada} </i></div>
                       </div>
                   </div>
                   <div class="groupBtnOptionsUpdate hiddenBtn groupBtnUpdate" data-id="${id}" > 
