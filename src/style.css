@@ -19,14 +19,17 @@
 }
 
 h1 {
-  color: #208fc2;
+ 
+  color: #f0f6f9;
   margin-bottom: 4%;
   font-family: 'Turret Road', cursive;
   display: flex;
   justify-content: center;
+  text-shadow: 2px 2px 2px black;
+  text-transform: uppercase;
 }
 .sectionWelcome {
-background: url(  "./images/bgNetcoins.jpg");
+background: url(  "https://a-static.besthdwallpaper.com/logotipo-de-criptomoneda-bitcoin-papel-pintado-2048x1536-63700_26.jpg");
 width: 100%;
 height: 725px;
 background-position: center;
@@ -61,7 +64,7 @@ background: white;
 
     margin: auto;
     width: 100%;
-    background: url(  "https://api.time.com/wp-content/uploads/2021/11/Crypto-Bitcoin.jpg");
+    background: url(  "https://a-static.besthdwallpaper.com/logotipo-de-criptomoneda-bitcoin-papel-pintado-2048x1536-63700_26.jpg");
   /*   border-radius: 20px; */
     display: flex;
     flex-direction: column;
@@ -101,6 +104,7 @@ background-size: cover;
   padding-left: 3%;
   margin-top: 5%;
   border-radius: 10px;
+  box-shadow: 3px 3px 3px 3px black;
 }
 
 .containerInputEmail i,
@@ -431,6 +435,7 @@ margin-top: 20px;
   padding: 20px;
   color: #626262;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  z-index: 50;
 }
 .userProfile {
   display: flex;
@@ -495,7 +500,7 @@ margin-top: 20px;
 
 .postBtn {
   border: 0px solid rgba(55, 115, 179, 0.692);
-  background-color: rgba(55, 115, 179, 0.692);
+  background:linear-gradient(to left, rgb(122 173 186), #8cc7ca);
   padding: 10px;
   border-radius: 18px;
   color: white;
@@ -511,6 +516,7 @@ margin-top: 20px;
   color: #626262;
   margin: 20px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  z-index: 200;
 }
 
 .addPosts {
@@ -526,6 +532,9 @@ color: black;
 .iconPost {
   display: flex;
   align-items: center;
+}
+i{
+/*   color: rgba(35, 95, 207);; */
 }
 
 .containerAlignItems {
@@ -754,7 +763,8 @@ label:hover {
 }
 .ulMenu2 {
 list-style-type: none;
-padding: 1%;
+/* margin: 15px;  */
+padding: 7px;
 display: flex;
 justify-content: space-around;
 align-items: center;
@@ -798,13 +808,11 @@ letter-spacing: 2.9px;
     justify-content: center;
     min-height: 54px;
     align-items: center;
-    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
-    /* z-index: 100;
-    position: fixed; */
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1,#8cc7ca);
     width: 100%;
   }
 
-/*.containerAccount .userProfileBody,
+.containerAccount .userProfileBody,
 .containerAccount {
    display: flex;
    flex-wrap: wrap;
@@ -883,9 +891,9 @@ letter-spacing: 2.9px;
 }
 
 .containerAccount .userProfileBody {
-   width: 80%;
+   width: 100%;
    position: relative;
-   max-width: 750px;
+   max-width: 900px;
    justify-content: center;
 }
 
@@ -910,6 +918,7 @@ letter-spacing: 2.9px;
    background-color: #fff;
    border-radius: 15px;
    width: 100%;
+   margin-bottom: 2rem;
 }
 
 .containerAccount .userProfileBio  {
@@ -923,7 +932,7 @@ justify-content: center;
 margin: auto;
 padding-right: 20px;
 padding-left: 20px;
-width: 80%;
+/*width: 80%;*/
 display: flex;
 flex-wrap: wrap;
 background-color: rgba(229, 229, 229, 1);
@@ -946,7 +955,7 @@ font-weight: bold;
    margin-right: 1rem;
    font-size: 1.2rem;
    vertical-align: middle;
-}*/
+}
 
 @media (min-width: 410px) {
   .login,
@@ -992,7 +1001,7 @@ font-weight: bold;
   }
 
   .containerInputs {
-    background: rgba(214, 225, 233, 0.275);
+    background: rgb(7 35 54 / 79%);
     border-radius: 30px;
     box-shadow: 0px 0px 9px 4px black;
     /* min-height: 560px; */
@@ -1082,6 +1091,7 @@ select:focus {
   opacity: 1;
   pointer-events: auto;
   border-radius: 15px;
+  z-index: -1;
 }
 .modal {
   background-color: rgba(0, 0, 0, 0.8);
@@ -1093,6 +1103,7 @@ select:focus {
   opacity: 0;
   pointer-events: none;
   transition: all 1s;
+  z-index: -2;
 }
 .show {
   pointer-events: auto;
@@ -1104,6 +1115,7 @@ select:focus {
   left: 0;
   opacity: 1;
   pointer-events: none;
+  z-index: 100;
 }
 .h2Modal {
   text-align: center;
@@ -1112,7 +1124,7 @@ select:focus {
 
 .btnOptions {
   border: 0px solid rgba(35, 95, 207);
-  background-color: rgba(35, 95, 207);
+  background: linear-gradient(to left, rgb(122 173 186), #8cc7ca);
   padding: 10px;
   border-radius: 18px;
   color: white;
@@ -1146,6 +1158,8 @@ select:focus {
   opacity: 1;
   pointer-events: auto;
   border-radius: 15px;
+  z-index: -2;
+ 
 }
 .closeModal {
   background-color: rgba(0, 0, 0, 0.8);
@@ -1157,6 +1171,7 @@ select:focus {
   opacity: 0;
   pointer-events: none;
   transition: all 1s;
+  z-index: -1;
 }
 .showDelete {
   pointer-events: auto;
@@ -1193,7 +1208,7 @@ select:focus {
 }
 
 footer {
-  background: #b1daee91;
+
 }
 .bo-wrap {
   clear: both;
@@ -1689,29 +1704,38 @@ footer {
 
 @media (min-width: 1000px) {
   .containerLogin{
-    /* flex-direction: row; */
-    background: url( "https://elpulsolaboral.com.mx/img/articles/al-debate-el-futuro-del-trabajo-jszQy/86azY_futuro%20.jpg");
+    flex-direction: row;
+    background: url(  "https://a-static.besthdwallpaper.com/logotipo-de-criptomoneda-bitcoin-papel-pintado-2048x1536-63700_26.jpg");
     
-   
+     background-position: center;
+  background-size: cover;
+  width: 100%;
 
   }
-  .sectionLogin{
-   
-  }
-
+  .containerLogin .sectionLogin{
+    width: 30%;
+    height: 730px;
+    background: white;
+    /* padding: 5px; */
+    
+    }
+ 
   .sectionWelcome{
 /*     width: 70%;
     display: block; */
 /*     background: linear-gradient(to left, rgba(32, 44, 141, 0.919), rgba(77, 131, 169, 0.679), rgba(214, 225, 233, 0.145),rgba(248, 248, 248, 0.919));
  */
 /*   background: url( "http://www.riet-edu.org/uploads/imagenes/repositorio/2020/04/19/349/2020041903400133dfa769f91ff3acd80e166c6aa91fa5.jpg");
- *//*   background-position: center;
-  background-size: cover; */
+ */  
+  width: 100%;
+  display: block;
+  background-position: center;
+  background-size: cover;
 
   }
   .containerInputs {
     /*  background: rgba(214, 225, 233, 0.207);*/
-  background: linear-gradient(to bottom, rgba(248, 248, 248, 0.919), rgba(128, 182, 220, 0.207), rgba(214, 225, 233, 0.145),rgba(248, 248, 248, 0.919));
+  background: linear-gradient(to bottom, rgb(152 204 213 / 92%), rgba(128, 182, 220, 0.207), rgba(214, 225, 233, 0.145),rgb(28 97 158));
   border-radius: 30px;
   max-width: 300px;
   margin-right: initial;
@@ -1720,6 +1744,7 @@ footer {
   .containerLogin .sectionLogin .login{
 /*     background: url( "https://cdnb.artstation.com/p/assets/images/images/004/585/959/original/jordan-jaminet-m-hologram.gif?1484770364");
  */     
+ background: black;
  padding-right: 50px; 
   }
 }
@@ -1953,4 +1978,11 @@ position: fixed;
   .storyGallery {
     margin-top: 110px;
 } 
+}
+
+@media (min-width: 1000px) {
+
+.classViewLogin{
+  width: 100%;
+}
 }
