@@ -11,8 +11,8 @@ export default () => {
   <h2 class="titulo">Netcoins</h2>
   </div> 
   <nav>
-    <ul>
-    <li><a href="#/Account"><i class="far fa-user-circle"></i>Mi perfil</a></li>
+    <ul class="ulMenu">
+    <li class="li1"><a href="#/Account"><i class="far fa-user-circle"></i>Mi perfil</a></li>
     <li><a href="#/Friends"><i class="fas fa-users"></i>Amigos</a> </li>
     <li><a href="#/Messages"><i class="far fa-comments"></i>Mensajes</a> </li>
     <li><a href="#/Netchange"><i class="fas fa-search-dollar"></i></i>Netcambios</a> </li>   

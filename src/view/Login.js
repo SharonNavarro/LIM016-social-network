@@ -11,7 +11,11 @@ export default () => {
         <div class="login" id="login">  
 
           <div class="containerInputs">
-            <img class="logoLogin" src="./images/logo2.png" alt="">
+
+          <div class="icom">  
+          <i class="fab fa-bitcoin"></i>
+          </div>  
+
             <h1 >Netcoins</h1>
 
             <div class="containerInputEmail">

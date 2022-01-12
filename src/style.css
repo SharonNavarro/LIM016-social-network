@@ -33,7 +33,7 @@ h1 {
 }
 .sectionWelcome {
 background: url(  "https://a-static.besthdwallpaper.com/logotipo-de-criptomoneda-bitcoin-papel-pintado-2048x1536-63700_26.jpg");
-width: 100%;
+width: 65%;
 height: 725px;
 background-position: center;
 background-size: cover;
@@ -107,7 +107,7 @@ background-size: cover;
   padding-left: 3%;
   margin-top: 5%;
   border-radius: 10px;
-  box-shadow: 3px 3px 3px 3px black;
+  box-shadow: 2px 2px 2px 2px #34a3a985;
 }
 
 .containerInputEmail i,
@@ -147,19 +147,24 @@ background-size: cover;
   color: #ffffff;
   display: flex;
   justify-content: center;
+  font-size: 14px;
+  font-family: serif;
   /* margin-top: 20px; */
 }
 .lblCuenta {
   color: #ffffff;
   margin: 5px;
+  font-size: 14px;
+  font-family: serif;
 }
 .linkRegistrate{
-color:  #1776f1; 
-margin: 5px;
-cursor: pointer;
-text-shadow:0.4px 0.4px 0.4px #1776f1;
 
+color: #241e34;
+    margin: 5px;
+    cursor: pointer;
+    text-shadow: 0.4px 0.4px 0.4px #1d476c;
 }
+
 .groupLbl {
   display: flex;
   flex-direction: row;
@@ -228,22 +233,24 @@ text-shadow:0.4px 0.4px 0.4px #1776f1;
   outline: 0;
 }
 .third {
-  border-color: #16aed1;
+
+  border-color: #241e34;
   letter-spacing: 0.5px;
   text-align: center !important;
   font-weight: bold;
   color: #fff;
-  box-shadow: 0 0 40px 40px #64aed1 inset, 0 0 0 0 #64aed1;
-  -webkit-transition: all 150ms ease-in-out;
-  transition: all 150ms ease-in-out;
   width: 45%;
   display: flex;
   justify-content: center;
+  font-size: 12px;
+  font-family: system-ui;
 }
 
 .third:hover {
-  color: #64aed1;
-  box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #006fe6;
+  color: white;
+  box-shadow: 0 0 10px 0 #189da2 inset, 0 0 10px 4px #32bdc490; 
+  background: linear-gradient(to bottom, rgb(152 204 213 / 92%), rgba(128, 182, 220, 0.207), rgba(214, 225, 233, 0.145));
+
 }
 
 /*------------------------------SECTION REGISTER---------------------------------------*/
@@ -385,7 +392,7 @@ margin-top: 20px;
 }
 .story {
   flex-basis: 19%;
-  padding-top: 32%;
+  padding-top: 25%;
   position: relative;
   background-position: center;
   background-size: cover;
@@ -500,13 +507,13 @@ margin-top: 20px;
 
 .addPost a i {
   margin-right: 10px;
-  font-size: 30px;
+  font-size: 20px;
   background-color: white;
 }
 
 .postBtn {
   border: 0px solid rgba(55, 115, 179, 0.692);
-  background:linear-gradient(to left, rgb(122 173 186), #8cc7ca);
+  background:linear-gradient(to left, rgb(109 156 184), #99bea4);
   padding: 10px;
   border-radius: 18px;
   color: white;
@@ -617,7 +624,10 @@ label:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: linear-gradient(to left, rgb(33 100 159), rgb(124 167 189),rgb(152 187 198), rgb(228 228 228));
+
 }
+
 
 /* .respmenu a {
   color: inherit;
@@ -702,17 +712,17 @@ label:hover {
   color: inherit;
   text-decoration: none;
   display: flex;
-  padding: 40px;
+  padding: 39px;
   /*  border-bottom: 2px solid #456789; */
-  background: #9bd6f241;
+ /*  background: linear-gradient(70deg, rgb(33 101 160), #ebf8e1,rgb(229 229 229)); */
   /* font-variant: small-caps; */
   font-size: 14px;
   /* text-transform: uppercase; */
 
-  /*  text-shadow: 1px 1px black; */
+   text-shadow:1px 1px #0c144e;
   justify-content: center;
   width: 100%;
-  color: #285f9b;
+  color: white;
   font-family: 'arial', cursive;
   letter-spacing: 1.5px;
   column-gap: 3%;
@@ -768,13 +778,14 @@ label:hover {
   position: relative;
 }
 .ulMenu2 {
-list-style-type: none;
-/* margin: 15px;  */
-padding: 7px;
-display: flex;
-justify-content: space-around;
-align-items: center;
-background: white;
+  list-style-type: none;
+  /* margin: 15px; */
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: white;
+  
 }
 
 .liMenu {
@@ -783,19 +794,13 @@ background: white;
 
 .ulMenu2 .liMenu a i {
   font-size: 30px;
-  color: rgba(55, 115, 179, 0.692);
+  color: #3b77a8;;
 }
 
 .content {
   background: rgba(229, 229, 229, 1);
 }
-.titulo {
-  color: #3674b6;
-  text-transform: uppercase;
-  font-size: 23px;
-  font-family: 'Turret Road', cursive;
-  letter-spacing: 2.9px;
-}
+
 .contentTitulo {
   display: flex;
   justify-content: center;
@@ -803,19 +808,29 @@ background: white;
   align-items: center;
 }
 .titulo{
-color: #3674b6;
-text-transform: uppercase;
-font-size: 23px;
-font-family: 'Turret Road', cursive;   
-letter-spacing: 2.9px;
+  color: #f6f6f7;
+  text-transform: uppercase;
+  font-size: 25px;
+  font-family: 'Turret Road', cursive;
+  letter-spacing: 2.9px;
+  font-weight: 700;
+  text-shadow: 2px 2px #0c144e;
   }
   .contentTitulo{
     display: flex;
     justify-content: center;
     min-height: 54px;
     align-items: center;
-    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1,#8cc7ca);
+
+    background:linear-gradient(to right, rgb(33 100 159), rgb(124 167 189),rgb(152 187 198), rgb(228 228 228));
+    z-index: 100;
+    position: fixed;
     width: 100%;
+    /* cambios agregados de sharon
+     background: linear-gradient(0.25turn, #3f87a6, #ebf8e1,#8cc7ca);
+ 
+    width: 100%;*/
+
   }
 
 .containerAccount .userProfileBody,
@@ -1015,6 +1030,25 @@ font-weight: bold;
     /* margin-bottom: 5%; */
   }
 }
+@media (min-width: 750px) {
+  .containerAccount .lista-datos {
+    width: 100%;
+  }
+
+  .containerAccount .profileUserCover,
+  .containerAccount .userProfileBody {
+    width: 95%;
+    position: relative;
+  }
+
+  .containerInputs {
+    background: rgb(7 35 54 / 79%);
+    border-radius: 30px;
+    box-shadow: 0px 0px 9px 4px black;
+    height: 560px;
+    padding-bottom: 25px;
+  }
+}
 
 /* adaptación a dispositivos */
 @media (max-width: 750px) {
@@ -1130,7 +1164,7 @@ select:focus {
 
 .btnOptions {
   border: 0px solid rgba(35, 95, 207);
-  background: linear-gradient(to left, rgb(122 173 186), #8cc7ca);
+  background: linear-gradient(to left, rgb(109 156 184), #99bea4);
   padding: 10px;
   border-radius: 18px;
   color: white;
@@ -1269,6 +1303,7 @@ footer {
 .bo-footer-text {
   color:#dee2eb ;
   font-size: 14px;
+  
 }
 .bo-footer-text:hover {color: #ffffff; text-decoration: underline;}
 
@@ -1278,7 +1313,7 @@ footer {
 
 /*##### Footer Responsive #####*/
 /* for 980px or less */
-@media screen and (max-width: 750px) {
+/* @media screen and (max-width: 750px) {
 	
 	.bo-footer {
 		width: 100%;
@@ -1303,9 +1338,9 @@ footer {
     float: none;
     text-align: center;
   }
-}
+} */
 /* for 700px or less */
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 1200px) {
   .bo-footer-smap {
     width: auto;
     float: none;
@@ -1324,8 +1359,33 @@ footer {
     float: none;
     text-align: center;
   }
+
 }
 
+@media screen and (min-width: 1200px) {
+  .bo-footer-smap {
+    width: auto;
+    float: none;
+    text-align: center;
+  }
+
+  .bo-footer-uonline {
+    width: 100%;
+    float: none;
+    text-align: center;
+    color: rgb(157 172 191);
+	}
+
+  .bo-footer-power {
+    width: auto;
+    float: none;
+    text-align: center;
+  }
+  footer{
+    margin-right: -130px;
+  }
+
+}
 .content {
   display: flex;
   flex-direction: column;
@@ -1719,7 +1779,7 @@ footer {
 
   }
   .containerLogin .sectionLogin{
-    width: 30%;
+    width: 35%;
     height: 730px;
     background: white;
     /* padding: 5px; */
@@ -1727,12 +1787,7 @@ footer {
     }
  
   .sectionWelcome{
-/*     width: 70%;
-    display: block; */
-/*     background: linear-gradient(to left, rgba(32, 44, 141, 0.919), rgba(77, 131, 169, 0.679), rgba(214, 225, 233, 0.145),rgba(248, 248, 248, 0.919));
- */
-/*   background: url( "http://www.riet-edu.org/uploads/imagenes/repositorio/2020/04/19/349/2020041903400133dfa769f91ff3acd80e166c6aa91fa5.jpg");
- */  
+ 
   width: 100%;
   display: block;
   background-position: center;
@@ -1740,22 +1795,60 @@ footer {
 
   }
   .containerInputs {
-    /*  background: rgba(214, 225, 233, 0.207);*/
-  background: linear-gradient(to bottom, rgb(152 204 213 / 92%), rgba(128, 182, 220, 0.207), rgba(214, 225, 233, 0.145),rgb(28 97 158));
+  background: linear-gradient(to bottom, rgb(49 117 88), rgba(128, 182, 220, 0.207), rgba(214, 225, 233, 0.145),rgb(28 97 158));
   border-radius: 30px;
   max-width: 300px;
   margin-right: initial;
+  padding-bottom: 20px;
   }
 
   .containerLogin .sectionLogin .login{
-/*     background: url( "https://cdnb.artstation.com/p/assets/images/images/004/585/959/original/jordan-jaminet-m-hologram.gif?1484770364");
- */     
+  
  background: black;
- padding-right: 50px; 
+
+  }
+}
+@media (min-width: 1200px) {
+  .containerLogin{
+    flex-direction: row;
+    background: url(  "https://a-static.besthdwallpaper.com/logotipo-de-criptomoneda-bitcoin-papel-pintado-2048x1536-63700_26.jpg");
+    
+     background-position: center;
+  background-size: cover;
+  width: 100%;
+
+  }
+  .containerLogin .sectionLogin{
+    width: 35%;
+    height: 730px;
+    background: white;
+    /* padding: 5px; */
+    margin-right: 8%;
+    }
+ 
+  .sectionWelcome{
+ 
+  width: 100%;
+  display: block;
+  background-position: center;
+  background-size: cover;
+
+  }
+  .containerInputs {
+  background:linear-gradient(to bottom, rgb(49 117 88), rgba(128, 182, 220, 0.207), rgba(214, 225, 233, 0.145),rgb(28 97 158));
+  border-radius: 30px;
+  max-width: 300px;
+  margin-right: initial;
+  padding-bottom: 20px;
+  }
+
+  .containerLogin .sectionLogin .login{
+  
+ background: black;
+
   }
 }
 
-/*   hhhhhhhhhhhhh*/
 .perfil-usuario {
   background: linear-gradient(transparent, #d5dae0);
   color: #333;
@@ -1947,6 +2040,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  background: rgba(229, 229, 229, 1);
 }
 .respmenu input[type="checkbox"] {
   visibility: hidden;
@@ -1966,15 +2060,17 @@ footer {
   margin-top: 110px;
 }
 .ulMenu2 {
-  width: 69%;
-margin-left: 31%;
-position: fixed;
-  background: white;
-  /* padding-top: 16px;
-  padding-bottom: 6px; */
-  height: 50px;
+  width: 70%;
+  margin-left: 30%;
+  position: fixed;
+  background: rgba(229, 229, 229, 1);
+  /* height: 50px; */
   margin-top: 0px;
-  z-index: 100;
+  padding-top: 18px;
+  
+}
+.li1{
+  border-radius: 0 10px 0 0;
 }
 
 }
@@ -1990,5 +2086,26 @@ position: fixed;
 
 .classViewLogin{
   width: 100%;
+
+  overflow-x: hidden;
 }
+.icom{
+  color: white;
+  font-size: 130px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+}
+}
+.ulMenu{
+  background: rgba(229, 229, 229, 1);
+  padding-top: 50px;
+}
+.iconAdd{
+  font-size: 20px;
+  margin: auto;
+  color: #81abbf;
+  font-weight: bold;
+  padding-left: 40%;
+  padding-bottom: 10px;
 }
