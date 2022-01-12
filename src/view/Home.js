@@ -8,6 +8,7 @@ import {
   getPublish,
 } from "../firebase/firestore.js"
 let displayName, photoURL, email;
+let arrayStart = {};
 export default () => {
 
   //Template Home
@@ -54,7 +55,7 @@ export default () => {
       datePublish = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
       dateOrderComplet = dateOrder.getTime();
 
-      await savePublish(textPost, datePublish, hourPublish, displayName, photoURL, dateOrderComplet, email/*,totalStars,totalHearts,comments */);
+      await savePublish(textPost, datePublish, hourPublish, displayName, photoURL, dateOrderComplet, email, arrayStart/*,totalHearts,comments */);
       formPublish.reset();
       await showPublish();
     }
@@ -86,7 +87,7 @@ async function showPublish() {
     hourPublish = doc.data().hourPublish;
     userName = doc.data().userName;
     urlPhoto = doc.data().urlPhoto;
-   
+
 
     if (displayName == userName) {
       templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish)
@@ -109,11 +110,60 @@ async function showPublish() {
   const containerIconsBtn = document.querySelectorAll(".containerIconsBtn");
   const groupBtnUpdate = document.querySelectorAll(".groupBtnUpdate");
   const btnSave = document.querySelectorAll(".btnSave");
+  const iconPostStart = document.querySelectorAll(".iconPostStart");
+
+  let displayNameStart = "";
+  let arraynew = [];
+
+  userState((user) => {
+    if (user) {
+      displayNameStart = user.displayName;
+    }
+  })
+let guardarestrellas=[];
+  contenido.forEach((e) => {
+
+    iconPostStart.forEach((icon) => {
+      icon.addEventListener("click", () => {
+        if (icon.dataset.id == e.dataset.id) {
+          console.log("contenido de post", e.dataset.id);
+          console.log("corazon", icon.dataset.id);
+          icon.classList.toggle("iconStart");
+
+          if (arrayStart.userStart == undefined) {
+            arrayStart = {
+              totalStar: 1,
+              userStart: displayNameStart
+            };
+            guardarestrellas.push(arrayStart.totalStar);
+            console.log("por primera vez", arrayStart);
+          } else {
+            arrayStart = {
+              totalStar: 0,
+              userStart: undefined
+            };
+            console.log("por segunda vez", arrayStart);
+            guardarestrellas.push(-1);
+          }
+          let arrayTotalStart = arrayStart.totalStar;
+          console.log("estrela total", arrayTotalStart);
+
+          let total = guardarestrellas.reduce((a, b) => a + b, 0);
+            icon.innerHTML = total;
+            
+
+        }
+
+
+      })
+
+    })
+
+
+  })
 
 
 
-
-  
 
   selectEdition.forEach(selectEdition => {
 

@@ -14,19 +14,17 @@ import {
     limit
 } from "./config.js"
 
-const savePublish = (textPost, datePublish, hourPublish,userName,urlPhoto,dateOrderComplet,email/* ,totalStars,totalHearts,comments */) => addDoc(collection(db, "posts"), {
+const savePublish = (textPost, datePublish, hourPublish, userName, urlPhoto, dateOrderComplet, email,totalStars/* ,totalHearts,comments */) => addDoc(collection(db, "posts"), {
     content: textPost,
     datePublish: datePublish,
     hourPublish: hourPublish,
     userName: userName,
     urlPhoto: urlPhoto,
-    dateOrderComplet:dateOrderComplet,
-    email:email
-   
-    /* 
-   stars: totalStars,
-   hearts: totalHearts,
-   comments:comments, */
+    dateOrderComplet: dateOrderComplet,
+    email: email,
+    stars: totalStars,
+    /* hearts: totalHearts,
+  comments:comments, */
 
 });
 
