@@ -804,7 +804,7 @@ letter-spacing: 2.9px;
     width: 100%;
   }
 
-/*.containerAccount .userProfileBody,
+.containerAccount .userProfileBody,
 .containerAccount {
    display: flex;
    flex-wrap: wrap;
@@ -883,9 +883,9 @@ letter-spacing: 2.9px;
 }
 
 .containerAccount .userProfileBody {
-   width: 80%;
+   width: 100%;
    position: relative;
-   max-width: 750px;
+   max-width: 900px;
    justify-content: center;
 }
 
@@ -910,6 +910,7 @@ letter-spacing: 2.9px;
    background-color: #fff;
    border-radius: 15px;
    width: 100%;
+   margin-bottom: 2rem;
 }
 
 .containerAccount .userProfileBio  {
@@ -923,7 +924,7 @@ justify-content: center;
 margin: auto;
 padding-right: 20px;
 padding-left: 20px;
-width: 80%;
+/*width: 80%;*/
 display: flex;
 flex-wrap: wrap;
 background-color: rgba(229, 229, 229, 1);
@@ -946,7 +947,7 @@ font-weight: bold;
    margin-right: 1rem;
    font-size: 1.2rem;
    vertical-align: middle;
-}*/
+}
 
 @media (min-width: 410px) {
   .login,
