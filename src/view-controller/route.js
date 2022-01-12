@@ -32,7 +32,7 @@ export const changeTmp = (hash) => {
                 containerHeader.innerHTML="";
                 containerHeader.appendChild(components.Menu())  
                 sectionMain.appendChild(components[id]());
-            break;
+        break;
         default:
             return sectionMain.appendChild(components.Different())
             

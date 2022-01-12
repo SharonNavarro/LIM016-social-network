@@ -175,18 +175,22 @@ text-shadow:0.4px 0.4px 0.4px #1776f1;
 
 .activeLoginErrorMessage {
   visibility: visible;
-  color: rgb(223 28 28 / 77%);
-  padding-left: 3%;
-  margin-top: 3%;
-  font-family: 'Turret Road', cursive;
-  font-weight: bold;
-  font-size: 0.9rem;
+    color: rgb(223 28 28);
+    padding-left: 3%;
+    margin-top: 3%;
+    font-family: 'Turret Road', cursive;
+    font-weight: bold;
+    font-size: 0.7rem;
+    background-color: #ffffff96;
+    border-radius: 2%;
+    text-align: center;
+    padding: 2%;
 }
 
 .containerInputEmail.error,
-.containerInputPassword.error
-  .containerInputUsuario.error
-  .containerInputName.error
+.containerInputPassword.error,
+  .containerInputUsuario.error,
+  .containerInputName.error,
   .containerCheckbox {
   border: 2px solid rgba(223, 28, 28, 0.664);
 }
@@ -354,6 +358,11 @@ text-shadow:0.4px 0.4px 0.4px #1776f1;
 }
 /*-------------------------------SECTION HOME-------------------------------------------*/
 
+#containerHeader {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
 .containerHome {
   display: flex;
   flex-direction: column;
@@ -754,11 +763,12 @@ label:hover {
 }
 .ulMenu2 {
 list-style-type: none;
-margin: 15px; 
-padding: 0;
+/* margin: 15px;  */
+padding: 7px;
 display: flex;
 justify-content: space-around;
 align-items: center;
+background: white;
 }
 
 .liMenu {
@@ -799,8 +809,6 @@ letter-spacing: 2.9px;
     min-height: 54px;
     align-items: center;
     background: linear-gradient(0.25turn, #3f87a6, #ebf8e1,#8cc7ca);
-    z-index: 100;
-    position: fixed;
     width: 100%;
   }
 
@@ -996,8 +1004,9 @@ font-weight: bold;
     background: rgb(7 35 54 / 79%);
     border-radius: 30px;
     box-shadow: 0px 0px 9px 4px black;
-    height: 560px;
+    /* min-height: 560px; */
     padding-bottom: 25px;
+    /* margin-bottom: 5%; */
   }
 }
 
@@ -1184,6 +1193,16 @@ select:focus {
   resize: none;
   font-size: 1rem;
 }
+.contenido {
+  width: 100%;
+  /* border: 1px; */
+  outline: 0;
+  background: transparent;
+  resize: none;
+  font-size: 1rem;
+  margin-bottom: 3%;
+  border-radius: 3px;
+}
 .timePublish {
   font-size: 12px;
 }
@@ -1304,6 +1323,7 @@ footer {
 .content {
   display: flex;
   flex-direction: column;
+  /* margin-top: 90px; */
 }
 
 .btn-animado {
@@ -1671,6 +1691,10 @@ footer {
   border-radius: 12px;
   padding: 10px;
 }
+
+
+/*-------------MEDIA QUERIES----------------*/
+
 @media (max-width: 780px) {
   .seccion-usuarios {
     width: 280px;
@@ -1929,42 +1953,36 @@ footer {
   position: absolute;
   width: 30%;
   position: fixed;
-  margin-top: 5.3%;
+  margin-top: 56px;
 }
 .position {
   width: 69%;
-  margin-top: 7%;
+  margin-top: 110px;
 }
 .ulMenu2 {
   width: 69%;
 margin-left: 31%;
 position: fixed;
   background: white;
-  padding-top: 1px;
-/*   padding-bottom: 6px; */
+  /* padding-top: 16px;
+  padding-bottom: 6px; */
   height: 50px;
-  margin-top: 1px;
+  margin-top: 0px;
   z-index: 100;
 }
 
-
-
 }
 
-@media (max-width: 780px) and (min-width: 700px)  {
-/* .position {
-    margin-top: 7%;
-} */
-.respmenu nav {
-  margin-top: 7%;
-}
+
+@media (max-width: 700px) {
+  .storyGallery {
+    margin-top: 110px;
+} 
 }
 
 @media (min-width: 1000px) {
-.position {
-    margin-top: 4%;
-}
-}
+
 .classViewLogin{
   width: 100%;
+}
 }
