@@ -1,5 +1,5 @@
 import { userState } from "../firebase/auth.js"
-import { templateHome, templatePublishes } from "./templates/templateHome.js"
+import { templateHome, templatePublishes, templatePublishesUsers } from "./templates/templateHome.js"
 import {
   savePublish,
   getPublishes,
@@ -86,41 +86,14 @@ async function showPublish() {
     hourPublish = doc.data().hourPublish;
     userName = doc.data().userName;
     urlPhoto = doc.data().urlPhoto;
-    templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish)
-/* 
-    const selectEdition = document.querySelectorAll(".selectEdition");
-    
-    if (displayName !== userName) {
-      templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish)
-      setTimeout(() => {
-        selectEdition.forEach(classele => {
-          classele.classList.add("ocultar")
-          console.log(classele);
-        });
-      }, 100);
+   
 
+    if (displayName == userName) {
+      templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish)
+
+    } else {
+      templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish)
     }
-    else if (displayName === userName) {
-      templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish)
-      setTimeout(() => {
-
-        selectEdition.forEach(classele => {
-          classele.classList.remove("ocultar")
-          console.log(classele);
-        });
-      }, 100);
-    } */
-    /*   function select2() {
-        setTimeout(() => {
-          const selectEdition = document.querySelector(".selectEdition");   
-                 
-         
-             selectEdition.classList.add("ocultar") 
-             console.log(selectEdition);
-        }, 100);
-  
-      } */
-
 
   });
   //donde se ubica postContainer
@@ -138,22 +111,11 @@ async function showPublish() {
   const btnSave = document.querySelectorAll(".btnSave");
 
 
-  selectEdition.forEach(selectEdition => {
 
-    /*    if (selectEdition.target.dataset.id == idPosts) {
-         const getPost = await getPublish(selectEdition.dataset.id)
-   
-         const text = (getPost.data().content);
-         const emailUser=getPost.data().email;
-         if(emailUser==email){
-           
-         }
-       } */
-    /* 
-    selectEdition.addEventListener("click",function(){
-    
-    
-    }) */
+
+  
+
+  selectEdition.forEach(selectEdition => {
 
 
     selectEdition.addEventListener("change", async function () {
