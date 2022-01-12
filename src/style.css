@@ -1907,55 +1907,53 @@ select:focus {
 
 
 .containerAllFriends{
-  width: 80%;
-  height: 300px;
-  background-color: white;
+  position: absolute;
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  margin: 2rem;
-  
+  border-radius: 20px;
+  justify-content: center;
+
 
 }
 
 .myFriend{
-      margin: 0.5rem;
-      border-radius: 10px;
-      background: #5ab8e441;
-      align-items: center;
-      width: 26.6%;
-      height: 26.6%;
-  
+
+  background-color: lightblue;
+  width: 250px;
+  height: 250px;
+  justify-content: space-evenly;
+  margin: 1rem;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
 
 }
 
 #imgMyFriend{
-  
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  border:3px solid white;
-  margin-top:1rem ;
-  margin-bottom: 0rem;
 
+  width: 150px;
+  height:150px;
+  border-radius: 50%;
+  object-fit: cover;
+  align-content: center;
+  border:5px solid white;
+  margin-top: 1rem;
+ 
+  
 }
 
 
-
-.nameFriend{
- 
+.boxName{
   text-align: center;
 }
-.boxName{
 
-  display: flex;
+
+.contentFriends{
+
+  align-items: center;
+  width: 100%;
   flex-direction: column;
-  align-content: center;
- 
 
-}
-
-.boxMiFriend{
-  margin: 1rem;
 }
