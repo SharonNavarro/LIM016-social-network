@@ -10,6 +10,9 @@
 }
 /*     --------------------------------SECTION LOGIN------------------------------------------ */
 
+.classViewLogin {
+  width: 100%;
+}
 .logoLogin {
   display: flex;
   margin: auto;
@@ -245,6 +248,9 @@ text-shadow:0.4px 0.4px 0.4px #1776f1;
 
 /*------------------------------SECTION REGISTER---------------------------------------*/
 
+.classViewRegister {
+  width: 100%;
+}
 .containerInputsRegister {
   width: 70%;
   max-height: 100%;
