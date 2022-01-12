@@ -618,7 +618,10 @@ label:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: linear-gradient(to left, rgb(33 100 159), rgb(124 167 189),rgb(152 187 198), rgb(228 228 228));
+
 }
+
 
 /* .respmenu a {
   color: inherit;
@@ -705,15 +708,15 @@ label:hover {
   display: flex;
   padding: 39px;
   /*  border-bottom: 2px solid #456789; */
-  background: #9bd6f241;
+ /*  background: linear-gradient(70deg, rgb(33 101 160), #ebf8e1,rgb(229 229 229)); */
   /* font-variant: small-caps; */
   font-size: 14px;
   /* text-transform: uppercase; */
 
-  /*  text-shadow: 1px 1px black; */
+   text-shadow:1px 1px #0c144e;
   justify-content: center;
   width: 100%;
-  color: #285f9b;
+  color: white;
   font-family: 'arial', cursive;
   letter-spacing: 1.5px;
   column-gap: 3%;
@@ -785,19 +788,13 @@ label:hover {
 
 .ulMenu2 .liMenu a i {
   font-size: 30px;
-  color: #81abbf;
+  color: #3b77a8;;
 }
 
 .content {
   background: rgba(229, 229, 229, 1);
 }
-.titulo {
-  color: #3674b6;
-  text-transform: uppercase;
-  font-size: 23px;
-  font-family: 'Turret Road', cursive;
-  letter-spacing: 2.9px;
-}
+
 .contentTitulo {
   display: flex;
   justify-content: center;
@@ -805,11 +802,13 @@ label:hover {
   align-items: center;
 }
 .titulo{
-color: #3674b6;
-text-transform: uppercase;
-font-size: 23px;
-font-family: 'Turret Road', cursive;   
-letter-spacing: 2.9px;
+  color: #f6f6f7;
+  text-transform: uppercase;
+  font-size: 25px;
+  font-family: 'Turret Road', cursive;
+  letter-spacing: 2.9px;
+  font-weight: 700;
+  text-shadow: 2px 2px #0c144e;
   }
   .contentTitulo{
     display: flex;
@@ -817,7 +816,7 @@ letter-spacing: 2.9px;
     min-height: 54px;
     align-items: center;
 
-    background: linear-gradient(0.25turn, rgb(49 117 88), #ebf8e1,rgb(28 97 158));
+    background:linear-gradient(to right, rgb(33 100 159), rgb(124 167 189),rgb(152 187 198), rgb(228 228 228));
     z-index: 100;
     position: fixed;
     width: 100%;
@@ -2035,6 +2034,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  background: rgba(229, 229, 229, 1);
 }
 .respmenu input[type="checkbox"] {
   visibility: hidden;
@@ -2057,11 +2057,14 @@ footer {
   width: 70%;
   margin-left: 30%;
   position: fixed;
-  background: white;
+  background: rgba(229, 229, 229, 1);
   /* height: 50px; */
   margin-top: 0px;
   padding-top: 18px;
   
+}
+.li1{
+  border-radius: 0 10px 0 0;
 }
 
 }
@@ -2089,7 +2092,7 @@ footer {
 }
 }
 .ulMenu{
-  background: white;
+  background: rgba(229, 229, 229, 1);
   padding-top: 50px;
 }
 .iconAdd{
