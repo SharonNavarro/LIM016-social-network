@@ -5,9 +5,11 @@ import {
   getPublishes,
   deletePublish,
   updatePublish,
+  updatePublishStart,
   getPublish,
 } from "../firebase/firestore.js"
 let displayName, photoURL, email;
+let arrayStart = {};
 export default () => {
 
   //Template Home
@@ -54,7 +56,7 @@ export default () => {
       datePublish = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
       dateOrderComplet = dateOrder.getTime();
 
-      await savePublish(textPost, datePublish, hourPublish, displayName, photoURL, dateOrderComplet, email/*,totalStars,totalHearts,comments */);
+      await savePublish(textPost, datePublish, hourPublish, displayName, photoURL, dateOrderComplet, email, arrayStart/*,totalHearts,comments */);
       formPublish.reset();
       await showPublish();
     }
@@ -68,7 +70,7 @@ export default () => {
 
 };
 
-let querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
+let querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto, TotalStarsPost;
 
 window.addEventListener('DOMContentLoaded', async (e) => {
   await showPublish();
@@ -86,13 +88,16 @@ async function showPublish() {
     hourPublish = doc.data().hourPublish;
     userName = doc.data().userName;
     urlPhoto = doc.data().urlPhoto;
-   
-
+    TotalStarsPost = doc.data().stars;
+    if(TotalStarsPost==undefined){
+      TotalStarsPost=0;
+    }
+    console.log("estrellas", TotalStarsPost);
     if (displayName == userName) {
-      templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish)
+      templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, TotalStarsPost)
 
     } else {
-      templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish)
+      templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, TotalStarsPost)
     }
 
   });
@@ -111,9 +116,67 @@ async function showPublish() {
   const btnSave = document.querySelectorAll(".btnSave");
 
 
+    const iconPostStart = document.querySelectorAll(".iconPostStart");
+
+    let displayNameStart = "";
+    let arraynew = [];
+    let total = 0;
+
+    userState((user) => {
+      if (user) {
+        displayNameStart = user.displayName;
+      }
+    })
+    let guardarestrellas = 0;
+    contenido.forEach((e) => {
+
+      iconPostStart.forEach((icon) => {
+        icon.addEventListener("click", async () => {
+          
+          if (icon.dataset.id == e.dataset.id) {
+        
+            icon.classList.toggle("iconStart");
+
+            if (arrayStart.userStart == undefined) {
+              arrayStart = {
+                totalStar: 1,
+                userStart: displayNameStart
+              };
+
+              guardarestrellas+=(arrayStart.totalStar);
+            
+            } else {
+              arrayStart = {
+                totalStar: 0,
+                userStart: undefined
+              };
+            
+              guardarestrellas-=(arrayStart.totalStar);
+            }
+           
+            console.log(guardarestrellas);
+            await updatePublishStart(icon.dataset.id, guardarestrellas);
+            await showPublish();
 
 
-  
+
+          }
+
+
+        })
+
+
+      })
+
+
+    })
+
+
+ 
+
+
+
+
 
   selectEdition.forEach(selectEdition => {
 

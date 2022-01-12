@@ -617,7 +617,7 @@ label:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(to left, rgb(33 100 159), rgb(124 167 189),rgb(152 187 198), rgb(228 228 228));
+  background: rgb(126 169 191);
 
 }
 
@@ -1934,77 +1934,5 @@ select:focus {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-
-}
-
-#imgMyFriend{
-
-  width: 150px;
-  height:150px;
-  border-radius: 50%;
-  object-fit: cover;
-  align-content: center;
-  border:5px solid white;
-  margin-top: 1rem;
- 
-  
-}
-
-
-.boxName{
-  text-align: center;
-}
-
-
-  
-
-.contentFriends{
-
-  align-items: center;
-  width: 100%;
-  flex-direction: column;
-  display: flex;
-  position: relative;
-  margin-bottom: 1rem;
-  margin-left: 10px;
-  background-color: gray;
-
-}
-.searchBar{
-
- width: 100%;
- align-content: center;
- display: flex;
- align-items: center;
- position: relative;
- margin-bottom: 1rem;
- margin-left: 40px;
- margin-top: 3rem;
- height: 40px;
-
-}
-
-.seccion-buscar-Friends{
-
-  width: 400px;
-}
-.search{
-
-  width:500px;
-  height: 50px;
-  border-radius: 10px;
-  align-content: center;
-  position: relative;
-  border:1px solid rgb(79, 133, 196);
-  text-align: center;
-  
-
-}
-
-.containerFriendAll{
-
- background:  rgba(229, 229, 229, 1);
- height: 1000px;
-
 
 }
