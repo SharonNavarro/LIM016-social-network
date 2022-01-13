@@ -5,11 +5,16 @@ import {
   getPublishes,
   deletePublish,
   updatePublish,
-  updatePublishStart,
   getPublish,
+  saveUser,
+  getUsers,
+
+  updatePublishStars,
+
 } from "../firebase/firestore.js"
 let displayName, photoURL, email;
-let arrayStart = {};
+let arrayStart = [];
+let starsGuardadas = 0;
 export default () => {
 
   //Template Home
@@ -22,20 +27,39 @@ export default () => {
   const nameUser = divElemt.querySelector("#nameUser");
   const photoUser = divElemt.querySelector("#photoUser");
   const formPublish = divElemt.querySelector("#formPublish");
-
+  let idUser,nameUsers,users1,queryUsers;
   userState(async (user) => {
+   
     if (user) {
       displayName = user.displayName;
       photoURL = user.photoURL;
       email = user.email;
       nameUser.innerHTML = displayName;
-      photoUser.src = photoURL;
-
+      photoUser.src = photoURL;     
       await showPublish();
-
     }
   })
 
+  UserNotExistCreate();
+
+  async function UserNotExistCreate(){
+    queryUsers = await getUsers();           
+    queryUsers.forEach(async(doc) => {
+      users1 = doc.data();     
+      users1.id = doc.id;
+      idUser = users1.id;
+      nameUsers = users1.nameUser;
+      console.log(nameUsers);      
+    })  
+    if (displayName === nameUsers) {
+      console.log("Usuario ya registrado");
+  
+    }else{
+      await saveUser(displayName, email);
+      console.log("datos guardados");
+    }
+  }
+ 
 
   const miModalPublishVoid = divElemt.querySelector("#miModalPublishVoid");
   const btnReturn = divElemt.querySelector("#btnReturn");
@@ -88,11 +112,8 @@ async function showPublish() {
     hourPublish = doc.data().hourPublish;
     userName = doc.data().userName;
     urlPhoto = doc.data().urlPhoto;
-    TotalStarsPost = doc.data().stars;
-    if (TotalStarsPost == undefined) {
-      TotalStarsPost = 0;
-    }
-    console.log("estrellas", TotalStarsPost);
+    TotalStarsPost = doc.data().totalStars;
+
     if (displayName == userName) {
       templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, TotalStarsPost)
 
@@ -118,55 +139,30 @@ async function showPublish() {
 
   const iconPostStart = document.querySelectorAll(".iconPostStart");
 
-  let displayNameStart = "";
-  let arraynew = [];
-  let total = 0;
 
-  userState((user) => {
-    if (user) {
-      displayNameStart = user.displayName;
-    }
-  })
-  let starsGuardadas = 0;
+  let queryUsers1, users2, idUser1, nameUsers1, stars;
   contenido.forEach((e) => {
 
     iconPostStart.forEach((icon) => {
       icon.addEventListener("click", async () => {
-        const getPost = await getPublish(icon.dataset.id)
-         starsGuardadas = (getPost.data().stars);
-       /*  const userStars = (getPost.data().userName); */
-
         if (icon.dataset.id == e.dataset.id) {
 
-          icon.classList.toggle("iconStart");
+          queryUsers1 = await getUsers();           
+          queryUsers1.forEach(async(doc) => {
+            users2 = doc.data();     
+            users2.id = doc.id;
+            idUser1 = users2.id;
+            nameUsers1 = users2.nameUser;
+            console.log(nameUsers1);  
 
-          if (arrayStart.userStart == undefined) {
-            arrayStart = {
-              totalStar: 1,
-              userStart: displayNameStart
-            };
-
-            starsGuardadas += 1;
-
-          } else {
-           /*  if(arrayStart.userStart ) */{
-              arrayStart = {
-                totalStar: 0,
-                userStart: undefined 
-              };
-  
-              starsGuardadas -= 1;
-            }
-         
+          }) 
+          if (displayName === nameUsers1) {
+          await updatePublishStars(e.dataset.id, idUser1);
+          console.log("usuario añadido");
           }
 
-          console.log(starsGuardadas);
-          await updatePublishStart(icon.dataset.id, starsGuardadas);
-          await showPublish();
-
-
-
         }
+
 
 
       })
