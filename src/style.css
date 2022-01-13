@@ -1946,18 +1946,19 @@ select:focus {
 }
 .searchBar{
 
- align-content: center;
- display: flex;
- align-items: center;
- position: relative;
- margin-bottom: 1rem;
- margin-left: 40px;
+  align-content: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 1rem;
+  margin-left: 1.8rem;
+  flex-direction: column;
 
 }
 
 .seccion-buscar-Friends{
 
-  width: 100%;
+
   width: 100%;
   align-content: space-between;
   margin-top: 110px;
@@ -1998,17 +1999,18 @@ select:focus {
   display: inline-block;
   padding: 14px 25px;
   border-radius: 9px;
-  box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 12px 1px rgb(0 0 0 / 15%);
   background-color: #fff;
   border: 1px solid #3674b6;
   color: #3674b6;
   cursor: pointer;
   transition: all ease-in 150ms;
   overflow: hidden;
-  width:240px;
+  width: 240px;
   height: 60px;
   margin-right: 40px;
-  margin-left: 1rem;
+  margin-left: 2.8rem;
+}
 }
 
 .btn-animado i {
@@ -2026,7 +2028,7 @@ select:focus {
   background-color: #3674b6;
 }
 
-}
+
 
 
 .containerAllFriends {
@@ -2090,12 +2092,12 @@ select:focus {
 }
 .searchBar{
 
- align-content: center;
- display: flex;
- align-items: center;
- position: relative;
- margin-bottom: 1rem;
- margin-left: 40px;
+align-content: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 1rem;
+    margin-left: 1.8rem;
 
 }
 
