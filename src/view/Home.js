@@ -89,8 +89,8 @@ async function showPublish() {
     userName = doc.data().userName;
     urlPhoto = doc.data().urlPhoto;
     TotalStarsPost = doc.data().stars;
-    if(TotalStarsPost==undefined){
-      TotalStarsPost=0;
+    if (TotalStarsPost == undefined) {
+      TotalStarsPost = 0;
     }
     console.log("estrellas", TotalStarsPost);
     if (displayName == userName) {
@@ -116,54 +116,57 @@ async function showPublish() {
   const btnSave = document.querySelectorAll(".btnSave");
 
 
-    const iconPostStart = document.querySelectorAll(".iconPostStart");
+  const iconPostStart = document.querySelectorAll(".iconPostStart");
 
-    let displayNameStart = "";
-    let arraynew = [];
-    let total = 0;
+  let displayNameStart = "";
+  let arraynew = [];
+  let total = 0;
 
-    userState((user) => {
-      if (user) {
-        displayNameStart = user.displayName;
-      }
-    })
-    let guardarestrellas = 0;
-    contenido.forEach((e) => {
+  userState((user) => {
+    if (user) {
+      displayNameStart = user.displayName;
+    }
+  })
+  let starsGuardadas = 0;
+  contenido.forEach((e) => {
 
-      iconPostStart.forEach((icon) => {
-        icon.addEventListener("click", async () => {
-          
-          if (icon.dataset.id == e.dataset.id) {
-        
-            icon.classList.toggle("iconStart");
+    iconPostStart.forEach((icon) => {
+      icon.addEventListener("click", async () => {
+        const getPost = await getPublish(icon.dataset.id)
+         starsGuardadas = (getPost.data().stars);
+       /*  const userStars = (getPost.data().userName); */
 
-            if (arrayStart.userStart == undefined) {
-              arrayStart = {
-                totalStar: 1,
-                userStart: displayNameStart
-              };
+        if (icon.dataset.id == e.dataset.id) {
 
-              guardarestrellas+=(arrayStart.totalStar);
-            
-            } else {
+          icon.classList.toggle("iconStart");
+
+          if (arrayStart.userStart == undefined) {
+            arrayStart = {
+              totalStar: 1,
+              userStart: displayNameStart
+            };
+
+            starsGuardadas += 1;
+
+          } else {
+           /*  if(arrayStart.userStart ) */{
               arrayStart = {
                 totalStar: 0,
-                userStart: undefined
+                userStart: undefined 
               };
-            
-              guardarestrellas-=(arrayStart.totalStar);
+  
+              starsGuardadas -= 1;
             }
-           
-            console.log(guardarestrellas);
-            await updatePublishStart(icon.dataset.id, guardarestrellas);
-            await showPublish();
-
-
-
+         
           }
 
+          console.log(starsGuardadas);
+          await updatePublishStart(icon.dataset.id, starsGuardadas);
+          await showPublish();
 
-        })
+
+
+        }
 
 
       })
@@ -172,7 +175,10 @@ async function showPublish() {
     })
 
 
- 
+  })
+
+
+
 
 
 
