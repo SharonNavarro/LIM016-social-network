@@ -8,6 +8,8 @@ import {
   getPublish,
   saveUser,
   getUsers,
+  upLikes,
+  downLikes,
 
   updatePublishStars,
 
@@ -27,39 +29,40 @@ export default () => {
   const nameUser = divElemt.querySelector("#nameUser");
   const photoUser = divElemt.querySelector("#photoUser");
   const formPublish = divElemt.querySelector("#formPublish");
-  let idUser,nameUsers,users1,queryUsers;
+  let idUser, nameUsers, users1, queryUsers;
+
   userState(async (user) => {
-   
+
     if (user) {
       displayName = user.displayName;
       photoURL = user.photoURL;
       email = user.email;
       nameUser.innerHTML = displayName;
-      photoUser.src = photoURL;     
+      photoUser.src = photoURL;
       await showPublish();
     }
   })
 
   UserNotExistCreate();
 
-  async function UserNotExistCreate(){
-    queryUsers = await getUsers();           
-    queryUsers.forEach(async(doc) => {
-      users1 = doc.data();     
+  async function UserNotExistCreate() {
+    queryUsers = await getUsers();
+    queryUsers.forEach(async (doc) => {
+      users1 = doc.data();
       users1.id = doc.id;
       idUser = users1.id;
       nameUsers = users1.nameUser;
-      console.log(nameUsers);      
-    })  
+      console.log(nameUsers);
+    })
     if (displayName === nameUsers) {
       console.log("Usuario ya registrado");
-  
-    }else{
+
+    } else {
       await saveUser(displayName, email);
       console.log("datos guardados");
     }
   }
- 
+
 
   const miModalPublishVoid = divElemt.querySelector("#miModalPublishVoid");
   const btnReturn = divElemt.querySelector("#btnReturn");
@@ -80,7 +83,7 @@ export default () => {
       datePublish = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
       dateOrderComplet = dateOrder.getTime();
 
-      await savePublish(textPost, datePublish, hourPublish, displayName, photoURL, dateOrderComplet, email, arrayStart/*,totalHearts,comments */);
+      await savePublish(textPost, datePublish, hourPublish, displayName, photoURL, dateOrderComplet, email/*,totalHearts,comments */);
       formPublish.reset();
       await showPublish();
     }
@@ -101,6 +104,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 })
 
 async function showPublish() {
+  let contHeart=[];
   querySnapshot = await getPublishes();
   let templatePosts = "";
   querySnapshot.forEach((doc) => {
@@ -112,14 +116,18 @@ async function showPublish() {
     hourPublish = doc.data().hourPublish;
     userName = doc.data().userName;
     urlPhoto = doc.data().urlPhoto;
-    TotalStarsPost = doc.data().totalStars;
-
+     contHeart = doc.data().likesPost;
+    console.log("imprimir", contHeart);
+    if(contHeart.length!==0){   
+    const iconHeart = (contHeart.indexOf(idPosts) !== -1) ? 'paint' : '';
+   
     if (displayName == userName) {
-      templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, TotalStarsPost)
+      templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contHeart.length, iconHeart)
 
     } else {
-      templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, TotalStarsPost)
+      templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contHeart.length, iconHeart)
     }
+  }
 
   });
   //donde se ubica postContainer
@@ -137,42 +145,37 @@ async function showPublish() {
   const btnSave = document.querySelectorAll(".btnSave");
 
 
-  const iconPostStart = document.querySelectorAll(".iconPostStart");
-
 
   let queryUsers1, users2, idUser1, nameUsers1, stars;
-  contenido.forEach((e) => {
-
-    iconPostStart.forEach((icon) => {
-      icon.addEventListener("click", async () => {
-        if (icon.dataset.id == e.dataset.id) {
-
-          queryUsers1 = await getUsers();           
-          queryUsers1.forEach(async(doc) => {
-            users2 = doc.data();     
-            users2.id = doc.id;
-            idUser1 = users2.id;
-            nameUsers1 = users2.nameUser;
-            console.log(nameUsers1);  
-
-          }) 
-          if (displayName === nameUsers1) {
-          await updatePublishStars(e.dataset.id, idUser1);
-          console.log("usuario añadido");
-          }
-
-        }
-
-
-
-      })
+  /*  contenido.forEach((e) => {
+ 
+   
+ 
+ 
+   }) */
+  const iconPostStart = document.querySelectorAll(".iconPostStart");
+  iconPostStart.forEach((icon) => {
+    icon.addEventListener("click", async (e) => {
+      console.log("haces click");
+      const idPost = e.target.dataset.id;
+      console.log("idPost", idPost);
+      console.log("idPost", idPosts);
+      if (e.target.classList.contains('paint')) {
+        downLikes(idPost, idPosts);
+        console.log("se despinto");
+        await showPublish();
+      } else {
+        upLikes(idPost, idPosts);
+        //e.target.classList.add('paint')
+        console.log("se pinto");
+        await showPublish();
+      }
 
 
     })
 
 
   })
-
 
 
 
