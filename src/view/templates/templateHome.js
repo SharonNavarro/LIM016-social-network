@@ -104,61 +104,30 @@ const templateHome = /*html */ `
 
 </div>
 
-
-<div class="containerPosts">
-
-<div class="containerAlignItems">
-
-    <div class="userProfile">
-      <img src="./images/profile1.png">
-      <div>
-          <p>Melanie Sanchez</p>
-          <span>@SMelanie12</span>
-      </div>
+  <div id="miModalPublishVoid" class="closeModal">    
+    <div  class="modal-contenidoReturn">
+      <h5 class="h2Modal">Tu publicación está vacia!</h5>
+      <div class="groupBtnOptionsReturn"> 
+        <button  id="btnReturn" class="btnOptions">Volver</button>     
+      </div> 
     </div> 
-
-    <button type="button">
-            <i class="fas fa-ellipsis-h"></i>
-    </button>
-
-</div>
-
-    <div class="containerTextPost">
-        <p>Bienvenidxs a la experiencia Netcoins!! Contrary to popular 
-        belief, Lorem Ipsum is not simply random text.
-        It has roots in a piece of classical Latin.</p>
-    
-        <div class="containerIconsBtn">
-            <div class="addPosts">
-                <div class="iconPost"><img src="./images/heartIcon.png">1508</div>
-                <div class="iconPost"><img src="./images/textGlobeIcon.png"></div>
-                <div class="iconPost"><img src="./images/Star.png"></div>
-            </div>
-        </div>
-    </div>
- </div>
-
- </div>
- </div>
-
-   <div id="miModalPublishVoid" class="closeModal">    
-   <div  class="modal-contenidoReturn">
-     <h5 class="h2Modal">Tu publicación está vacia!!</h5>
-     <div class="groupBtnOptionsReturn"> 
-     <button  id="btnReturn" class="btnOptions">Volver</button>     
-     </div> 
-   </div> 
- </div> 
+  </div> 
 
 
 `;
+<<<<<<< HEAD
 const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPublish,totalStarPintada) => /*html*/`        
+=======
+
+
+const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPublish,contStars,iconStars) => `        
+>>>>>>> 73dec6cbcc44db3a4e062de87626ca4d7063ee6c
           
 <div class="containerPosts" >
       <div class="containerAlignItems"> 
 
       <div class="userProfile">
-          <img src=${urlPhoto}>
+          <img src= ${urlPhoto} >
           <div>
           <p class="nameUser"><bold > ${userName}</bold></p>
           <p class="timePublish"> ${datePublish}</p>
@@ -177,7 +146,7 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
                 <div class="addPosts">
                 <div class="iconPost " data-id="${id}" ><i class="far fa-heart icoHeart"></i></div>
                 <div class="iconPost"><i class="far fa-comment-alt"></i></div>
-                <div class="iconPost " ><i class="far fa-star iconPostStart" data-id="${id}">${totalStarPintada}</i></div>
+                <div class="iconPost " ><i class="far fa-star iconPostStart ${iconStars}" data-id="${id}" ></i>${contStars}</div>
                 </div>
             </div>
             <div class="groupBtnOptionsUpdate hiddenBtn groupBtnUpdate" data-id="${id}" > 
@@ -198,7 +167,7 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
 </div> 
 
       `;
-const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, hourPublish,totalStarPintada) => /*html*/ `        
+const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, hourPublish,contStars,iconStars) => `        
           
       <div class="containerPosts" >
             <div class="containerAlignItems"> 
@@ -223,7 +192,7 @@ const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, ho
                       <div class="addPosts">
                       <div class="iconPost " data-id="${id}" ><i class="far fa-heart icoHeart"></i></div>
                       <div class="iconPost"><i class="far fa-comment-alt"></i></div>
-                      <div class="iconPost "><i class="far fa-star iconPostStart" data-id="${id}"> ${totalStarPintada} </i></div>
+                      <div class="iconPost "><i class="far fa-star iconPostStart ${iconStars}" data-id="${id}"> </i>${contStars} </div>
                       </div>
                   </div>
                   <div class="groupBtnOptionsUpdate hiddenBtn groupBtnUpdate" data-id="${id}" > 

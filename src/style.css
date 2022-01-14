@@ -434,6 +434,7 @@ margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 .containerWriter {
   width: 95%;
@@ -449,6 +450,7 @@ margin-top: 20px;
   align-items: center;
   color: #9a9a9a;
   font-weight: bold;
+  width: 100%;
 }
 .userProfile img {
   height: 48px;
@@ -834,13 +836,13 @@ label:hover {
    align-items: center;
 }
 
-.containerAccount .userProfile{
+/* .containerAccount .userProfile{
    width: 100%;
    display: flex;
    justify-content: center;
    background: linear-gradient(#b1daee91, transparent);
    margin-bottom: 1.25rem;
-}
+} */
  
 .containerAccount .profileUserCover{
    display: block;
@@ -952,7 +954,7 @@ flex-wrap: wrap;
 background-color: rgba(229, 229, 229, 1);
 font-family: 'Inter', sans-serif;
 font-weight: bold;
-
+margin-top: 20px;
 }
 
 
@@ -1718,6 +1720,23 @@ select:focus {
 }
 
 
+/*------------SECTION FAVORITES------------*/
+
+.content h2 {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.7rem;
+  background: white;
+  letter-spacing: 7px;
+  padding: 2%;
+  position: fixed;
+  width: 70%;
+  background: linear-gradient(to right, rgb(253, 253, 253), rgb(255, 255, 255),rgb(255, 255, 255), rgb(228 228 228));
+}
+
+.favoritesPublishes {
+  margin-top: 10%;
+}
+
 /*-------------MEDIA QUERIES----------------*/
 
 @media (max-width: 780px) {
@@ -1766,6 +1785,11 @@ select:focus {
  background: black;
 
   }
+
+  .containerGeneralNotifications {
+    margin-top: 105px;
+  }
+
 }
 @media (min-width: 1200px) {
   .containerLogin{
@@ -1852,8 +1876,18 @@ select:focus {
   padding-top: 18px;
   
 }
+
 .li1{
   border-radius: 0 10px 0 0;
+}
+
+.classViewNotifications {
+width: 69%;
+margin-top: 110px;
+}
+
+.containerGeneralNotifications {
+  margin-top: 90px;
 }
 
 }
@@ -1863,6 +1897,19 @@ select:focus {
   .storyGallery {
     margin-top: 110px;
 } 
+
+.content h2 {
+  margin-top: 120px;
+  width: 100%;
+}
+
+.favoritesPublishes {
+  margin-top: 173px;
+}
+
+.containerGeneralNotifications {
+  margin-top: 200px;
+}
 }
 
 @media (min-width: 1000px) {
