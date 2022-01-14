@@ -619,7 +619,7 @@ label:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgb(126 169 191);
+  background: linear-gradient(to left, rgb(33 100 159), rgb(124 167 189),rgb(152 187 198), rgb(228 228 228));
 
 }
 
@@ -1390,43 +1390,6 @@ select:focus {
 
 }
 /*------------------------friends---------------*/
-.friends {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.btn-animado {
-  display: inline-block;
-  padding: 14px 25px;
-  border-radius: 9px;
-  box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.15);
-  background-color: #fff;
-  border: 1px solid #3674b6;
-  color: #3674b6;
-  cursor: pointer;
-  transition: all ease-in 150ms;
-  overflow: hidden;
-  width:400px;
-  margin-left: 2rem;
-  margin-top: 1rem;
-  
-}
-
-.btn-animado i {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 1rem;
-  font-size: 1.7rem;
-  opacity: 1;
-}
-.btn-animado:hover {
-  background-color: #3674b6;
-  color: #fff;
-}
-.btn-animado:active {
-  background-color: #3674b6;
-}
 
 
 /* estilos chat */
@@ -1881,6 +1844,13 @@ select:focus {
   align-items: flex-end;
   background: rgba(229, 229, 229, 1);
 }
+
+.classViewNetchange{
+  width: 69%;
+  margin-top: 110px;
+ }
+
+
 .respmenu input[type="checkbox"] {
   visibility: hidden;
 }
@@ -1948,7 +1918,6 @@ margin-top: 110px;
 
 .classViewLogin{
   width: 100%;
-
   overflow-x: hidden;
 }
 .icom{
@@ -1965,12 +1934,15 @@ margin-top: 110px;
   margin-bottom: 15px;
 }
 
-.containerAllFriends{
-  position: absolute;
+
+
+
+.containerAllFriends {
   display: flex;
   flex-wrap: wrap;
-  border-radius: 20px;
   justify-content: center;
+  height: 100%;
+  align-content: flex-start;
 
 
 }
@@ -1978,18 +1950,201 @@ margin-top: 110px;
 .myFriend{
 
   background-color: lightblue;
-  width: 250px;
-  height: 250px;
+  width: 230px;
+  height: 230px;
   justify-content: space-evenly;
-  margin: 1rem;
+  margin: 0.8rem;
   align-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  box-shadow: inherit;
+  border-radius: 20px;
+
 
 }
-.paint{
-  font-weight: 900 !important;
-  color: red;
+
+#imgMyFriend{
+
+  width: 150px;
+  height:150px;
+  border-radius: 50%;
+  object-fit: cover;
+  align-content: center;
+  border:5px solid white;
+  margin-top: 1rem;
+ 
+  
+}
+
+
+.boxName{
+  text-align: center;
+}
+
+
+             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.contentFriends{
+
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  position: relative;
+  margin-bottom: 1rem;
+  background-color: #e5f0f5;
+
+}
+.searchBar{
+
+    align-content: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 1rem;
+    margin-left: 1.8rem;
+    
+}
+
+.seccion-buscar-Friends{
+
+
+  width: 100%;
+  align-content: space-between;
+  margin-top: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.search{
+
+  width:240px;
+  height: 60px;
+  border-radius: 10px;
+  align-content: center;
+  position: relative;
+  border:1px solid rgb(79, 133, 196);
+  text-align: center;
+  border-radius: 30px;
+
+}
+
+.classViewNetchange{
+ width: 69%;
+ margin-top: 110px;
+}
+
+.friends {
+  display: flex;
+  
+  justify-content: center;
+}
+
+.btn-animado {
+  display: inline-block;
+  padding: 14px 25px;
+  border-radius: 9px;
+  box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  border: 1px solid #3674b6;
+  color: #3674b6;
+  cursor: pointer;
+  transition: all ease-in 150ms;
+  overflow: hidden;
+  width:240px;
+  height: 60px;
+  margin-right: 40px;
+  margin-left: 3rem;
+}
+
+
+.btn-animado i {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 1rem;
+  font-size: 1.7rem;
+  opacity: 1;
+}
+.btn-animado:hover {
+  background-color: #3674b6;
+  color: #fff;
+}
+.btn-animado:active {
+  background-color: #3674b6;
+}
+
+
+@media (min-width: 540px) {
+.searchBar{
+align-content: center;
+display: flex;
+align-items: center;
+position: relative;
+margin-bottom: 1rem;
+margin-left: 2rem;
+
+
+}
+
+.seccion-buscar-Friends{
+  width:100%;
+  align-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+
+  
+}
+.btn-animado{
+
+ width: 260px;
+ margin-left: 1rem;
+
+}
+
+.contentFriends{
+ height: 1500px;
+
+}
+.containerAllFriends{
+margin:0.2rem
+
+}
+
+.myFriend{
+
+  width: 250px;
+  height: 250px;
+  border-radius: 20px;
+  margin: 0.3rem;
+  
+
+}
+
+
+
 }
