@@ -1,6 +1,4 @@
-/*template*/
-const templateHome = `
-
+const templateHome = /*html */ `
 <div class="containerHome" id="containerHome">
 <div class="content" > 
 
@@ -154,9 +152,7 @@ const templateHome = `
 
 
 `;
-
-
-const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPublish,totalStarPintada) => `        
+const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPublish,totalStarPintada) => /*html*/`        
           
 <div class="containerPosts" >
       <div class="containerAlignItems"> 
@@ -202,7 +198,7 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
 </div> 
 
       `;
-const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, hourPublish,totalStarPintada) => `        
+const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, hourPublish,totalStarPintada) => /*html*/ `        
           
       <div class="containerPosts" >
             <div class="containerAlignItems"> 
