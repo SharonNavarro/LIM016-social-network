@@ -1,3 +1,7 @@
+.paint{
+  font-weight: 900 !important;
+  color: yellow;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -1977,8 +1981,6 @@ margin-top: 110px;
  
   
 }
-
-
 .boxName{
   text-align: center;
 }
