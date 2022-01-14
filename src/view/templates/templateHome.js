@@ -1,4 +1,6 @@
+/*template*/
 const templateHome = `
+
 <div class="containerHome" id="containerHome">
 <div class="content" > 
 
