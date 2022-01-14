@@ -24,16 +24,16 @@ const savePublish = (textPost, datePublish, hourPublish, userName, urlPhoto, dat
     userName: userName,
     urlPhoto: urlPhoto,
     dateOrderComplet: dateOrderComplet,
-    email: email,    
-    likesPost:[],
-    
+    email: email,
+    likesPost: [],
+
     /* hearts: totalHearts,
   comments:comments, */
 
 });
 
 const saveUser = (nameUser, emailUser) => addDoc(collection(db, "users"), {
-    
+
     nameUser: nameUser,
     emailUser: emailUser
 
@@ -55,16 +55,22 @@ const updatePublishStars = async (id, idUserStars) => await updateDoc(doc(db, "p
 
 const deletePublish = async (id) => await deleteDoc(doc(db, "posts", id));
 // Agregando datos al doc (data likesPost)
-const upLikes  = async (id, userLike) => await updateDoc(doc(db, "posts", id), {
+const upLikes = async (id, userLike) => await updateDoc(doc(db, "posts", id), {
     likesPost: arrayUnion(userLike),
 });
 
-  
-  // Quitando datos al doc (data likesPost)
-  const downLikes  = async (id, userLike) => await updateDoc(doc(db, "posts", id), {
-    likesPost:/* db.FieldValue. */arrayRemove(userLike),
+
+// Quitando datos al doc (data likesPost)
+const downLikes = async (id, userLike) => await updateDoc(doc(db, "posts", id), {
+    likesPost:arrayRemove(userLike),
 });
- 
+
+
+
+const queryEmailUnique = async (emailText) => await getDocs(query(collection(db, "users"), where("emailUser", "==", emailText)));
+
+
+
 export {
     upLikes,
     downLikes,
@@ -81,5 +87,6 @@ export {
     updatePublish,
     saveUser,
     getUsers,
-  
+    queryEmailUnique
+
 };

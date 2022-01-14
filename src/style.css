@@ -1831,7 +1831,9 @@ select:focus {
 
   }
 }
-
+#container {
+  overflow-x: hidden;
+}
 
 
 
