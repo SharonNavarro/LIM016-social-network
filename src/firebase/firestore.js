@@ -11,18 +11,22 @@ import {
     deleteDoc,
     updateDoc,
     orderBy,
-    limit
+    limit,
+    FieldValue,
+    arrayRemove,
+    arrayUnion
 } from "./config.js"
 
-const savePublish = (textPost, datePublish, hourPublish, userName, urlPhoto, dateOrderComplet, email, totalStars/* ,totalHearts,comments */) => addDoc(collection(db, "posts"), {
+const savePublish = (textPost, datePublish, hourPublish, userName, urlPhoto, dateOrderComplet, email/* ,totalHearts,comments */) => addDoc(collection(db, "posts"), {
     content: textPost,
     datePublish: datePublish,
     hourPublish: hourPublish,
     userName: userName,
     urlPhoto: urlPhoto,
     dateOrderComplet: dateOrderComplet,
-    email: email,
-    totalStars: totalStars,
+    email: email,    
+    likesPost:[],
+    
     /* hearts: totalHearts,
   comments:comments, */
 
@@ -50,8 +54,20 @@ const updatePublishStars = async (id, idUserStars) => await updateDoc(doc(db, "p
 });
 
 const deletePublish = async (id) => await deleteDoc(doc(db, "posts", id));
+// Agregando datos al doc (data likesPost)
+const upLikes  = async (id, userLike) => await updateDoc(doc(db, "posts", id), {
+    likesPost: arrayUnion(userLike),
+});
 
+  
+  // Quitando datos al doc (data likesPost)
+  const downLikes  = async (id, userLike) => await updateDoc(doc(db, "posts", id), {
+    likesPost:/* db.FieldValue. */arrayRemove(userLike),
+});
+ 
 export {
+    upLikes,
+    downLikes,
     updatePublishStars,
     savePublish,
     getPublishes,

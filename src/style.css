@@ -1998,3 +1998,7 @@ margin-top: 110px;
   padding: 10px;
 
 }
+.paint{
+  font-weight: 900 !important;
+  color: red;
+}

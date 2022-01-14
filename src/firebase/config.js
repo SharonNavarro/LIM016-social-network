@@ -29,7 +29,10 @@ import {
     deleteDoc,
     updateDoc,
      orderBy,
-     limit
+     limit,
+     FieldValue,
+     arrayRemove,
+     arrayUnion
 } from  "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 
@@ -91,6 +94,9 @@ export{
     getDoc,
     updateDoc,
      orderBy,
-     limit
+     limit,
+     FieldValue,
+     arrayRemove,
+     arrayUnion
 
 };
