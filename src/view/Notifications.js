@@ -1,12 +1,14 @@
-export default () => {
-    const viewNotifications = `
-  
-    <div class="content" > 
-   <p>bienvenido a notificaciones</p>
-    </div>`;
+import { templateNotifications, templateNotificationHeart, templateNotificationStar, templateNotificationComent } from "./templates/templateNotifications.js";
 
+export default () => {
+
+    const viewNotification = templateNotifications;
     const divElemt = document.createElement('section');
     divElemt.classList.add('classViewNotifications')
-    divElemt.innerHTML = viewNotifications;
+    divElemt.innerHTML = viewNotification;
+
+    const containerGeneralNotifications = divElemt.querySelector('.containerGeneralNotifications');
+    containerGeneralNotifications.innerHTML = templateNotificationComent;
+
     return divElemt;
 };
