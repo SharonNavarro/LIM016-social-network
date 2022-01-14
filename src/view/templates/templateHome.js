@@ -104,14 +104,14 @@ const templateHome = `
 
 </div>
 
-   <div id="miModalPublishVoid" class="closeModal">    
-   <div  class="modal-contenidoReturn">
-     <h5 class="h2Modal">Tu publicación está vacia!</h5>
-     <div class="groupBtnOptionsReturn"> 
-     <button  id="btnReturn" class="btnOptions">Volver</button>     
-     </div> 
-   </div> 
- </div> 
+  <div id="miModalPublishVoid" class="closeModal">    
+    <div  class="modal-contenidoReturn">
+      <h5 class="h2Modal">Tu publicación está vacia!</h5>
+      <div class="groupBtnOptionsReturn"> 
+        <button  id="btnReturn" class="btnOptions">Volver</button>     
+      </div> 
+    </div> 
+  </div> 
 
 
 `;

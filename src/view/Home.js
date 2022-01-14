@@ -290,6 +290,7 @@ async function showPublish() {
 
 }
 
+export { showPublish }
 
 
 
