@@ -1,15 +1,13 @@
 const templateHome = /*html */ `
 <div class="containerHome" id="containerHome">
-<div class="content" > 
+  <div class="content" > 
+    <div class="storyGallery">
+    <div class="story story1"> 
+      <i class="fas fa-plus-circle iconAdd"></i>
+    </div>
 
-<div class="storyGallery">
-
-  <div class="story story1"> 
-  <i class="fas fa-plus-circle iconAdd"></i>
-  </div>
-
-<div class="story story2"> 
- <p>Alessandra</p>
+    <div class="story story2"> 
+      <p>Alessandra</p>
 </div>
 
 <div class="story story3"> 
@@ -115,13 +113,9 @@ const templateHome = /*html */ `
 
 
 `;
-<<<<<<< HEAD
-const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPublish,totalStarPintada) => /*html*/`        
-=======
 
 
 const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPublish,contStars,iconStars) => `        
->>>>>>> 73dec6cbcc44db3a4e062de87626ca4d7063ee6c
           
 <div class="containerPosts" >
       <div class="containerAlignItems"> 
