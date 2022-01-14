@@ -22,9 +22,16 @@ const templateViewAccount = `
                         
                         <div class="containerIconsBtn">
                             <div class="addPost">
-                                <a href="#"><i class="far fa-image"></i></a>
-                                <a href="#"><i class="fas fa-unlock-alt ico"></i></a>
-                                <button class="postBtn" id="btnPublish">Publicar</button>
+                                <button type="button">
+                                    <i class="far fa-image"></i>
+                                    <label for="file"></label>
+                                    <input type="file" id="file">
+                                </button>
+                                <button type="button">
+                                    <i class="fas fa-unlock-alt ico"></i>
+                                    <label for="file"></label>
+                                    <input type="" id="">
+                                </button>
                             </div>
                         </div>
                     </form>
