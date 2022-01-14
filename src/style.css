@@ -976,11 +976,11 @@ margin-top: 20px;
    vertical-align: middle;
 }
 
-.addPost button input{
+.account button input{
   display: none;
 }
 
-.addPost button {
+.account button {
 width: 30px;
 height: 30px;
 border-radius: 50%;

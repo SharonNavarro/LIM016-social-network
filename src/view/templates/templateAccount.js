@@ -21,7 +21,7 @@ const templateViewAccount = `
                         <textarea class="textareaPublish" id="textPostAccount" rows="3" placeholder="¿Qué estás pensando?"></textarea>
                         
                         <div class="containerIconsBtn">
-                            <div class="addPost">
+                            <div class="addPost account">
                                 <button type="button">
                                     <i class="far fa-image"></i>
                                     <label for="file"></label>
