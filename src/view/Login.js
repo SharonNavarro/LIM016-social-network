@@ -1,6 +1,7 @@
 import { signIn, signInFacebook, userState, signInGoogle, signInTwitter, passwordReset } from "../firebase/auth.js"
 import { addErrorMessage, addErrorInput, removeErrorInput, removeErrorMessage } from "../lib/functions.js"
-
+let nombreUsuario;
+  let emailUsuario;
 export default () => {
   const viewLogin = `
     <div class="containerLogin">
@@ -198,8 +199,7 @@ export default () => {
 
 
   //uuuuuu
-
-
+  
 
   const loginGmaiL = divElemt.querySelector("#loginGmail");
   loginGmaiL.addEventListener("click", () => {
@@ -209,18 +209,18 @@ export default () => {
       .then((user) => {
         window.location.hash = '#/Home';
         console.log("iniciaste sesion con google")
-        console.log(user);
-        console.log(user.user.displayName);
-        console.log(user.user.email);
-        console.log(user.user.emailVerified);
-        console.log(user.user.photoURL);
+        //console.log(user);
+        nombreUsuario=(user.user.displayName);
+        emailUsuario=(user.user.email);
+       // console.log(user.user.emailVerified);
+       // console.log(user.user.photoURL);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage)
       })
-
+  
   })
 
 
@@ -257,9 +257,11 @@ export default () => {
 
   })
 
-
   return divElemt;
 };
-
+    export {
+        emailUsuario,
+        nombreUsuario
+      }
 
 

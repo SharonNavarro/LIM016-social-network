@@ -1,15 +1,13 @@
-const templateHome = `
+const templateHome = /*html */ `
 <div class="containerHome" id="containerHome">
-<div class="content" > 
+  <div class="content" > 
+    <div class="storyGallery">
+    <div class="story story1"> 
+      <i class="fas fa-plus-circle iconAdd"></i>
+    </div>
 
-<div class="storyGallery">
-
-  <div class="story story1"> 
-  <i class="fas fa-plus-circle iconAdd"></i>
-  </div>
-
-<div class="story story2"> 
- <p>Alessandra</p>
+    <div class="story story2"> 
+      <p>Alessandra</p>
 </div>
 
 <div class="story story3"> 

@@ -83,7 +83,7 @@ export default () => {
 
       await savePublish(textPostAccount, datePublish, hourPublish, displayName, photoURL, dateOrderComplet, email, arrayStart);
       formPublishAccount.reset();
-      await showPublish();
+      //await showPublish();
     }
   });
 
