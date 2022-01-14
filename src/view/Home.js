@@ -118,7 +118,8 @@ async function showPublish() {
     urlPhoto = doc.data().urlPhoto;
      contHeart = doc.data().likesPost;
     console.log("imprimir", contHeart);
-    if(contHeart.length!==0){   
+    if(contHeart.length!==0){  
+    }
     const iconHeart = (contHeart.indexOf(idPosts) !== -1) ? 'paint' : '';
    
     if (displayName == userName) {
@@ -127,7 +128,7 @@ async function showPublish() {
     } else {
       templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contHeart.length, iconHeart)
     }
-  }
+ 
 
   });
   //donde se ubica postContainer
