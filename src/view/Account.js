@@ -12,9 +12,7 @@ import {
   savePublish
 } from "../firebase/firestore.js";
 
-import { 
-  showPublish
- } from "./Home.js";
+
 
 
 export default () => {
@@ -76,7 +74,7 @@ export default () => {
 
       await savePublish(textPostAccount, datePublish, hourPublish, displayName, photoURL, dateOrderComplet, email, arrayStart);
       formPublishAccount.reset();
-      await showPublish();
+      //await showPublish();
     }
   });
 
@@ -91,6 +89,6 @@ export default () => {
   return divElemt;
 };
 
-window.addEventListener('DOMContentLoaded', async (e) => {
+/* window.addEventListener('DOMContentLoaded', async (e) => {
   await showPublish();
-})
+}) */
