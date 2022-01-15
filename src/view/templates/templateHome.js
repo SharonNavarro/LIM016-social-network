@@ -1,121 +1,104 @@
 const templateHome = /*html */ `
+
 <div class="containerHome" id="containerHome">
-  <div class="content" > 
-    <div class="storyGallery">
-    <div class="story story1"> 
+<div class="content">
+  <div class="storyGallery">
+    <div class="story story1">
       <i class="fas fa-plus-circle iconAdd"></i>
     </div>
-
-    <div class="story story2"> 
+    <div class="story story2">
       <p>Alessandra</p>
-</div>
-
-<div class="story story3"> 
- <p>Rocio</p>
-</div>
-<div class="story story2"> 
-<p>Camila</p>
-</div>
-
-</div>
-
-<div class="alignCenter" >
-
-<div class="containerWriter">
-
-<div class="userProfile">
-  <img id="photoUser">
-  <div>
-    <p class="nameUser"><bold id="nameUser"></bold></p>
-  </div>
-</div> 
-
-<form class="containerTextPost" id="formPublish">
-  <textarea class="textareaPublish" id="textPost" rows="3" placeholder="¿Qué estás pensando?"></textarea>
-  
-  <div class="containerIconsBtn">
-    <div class="addPost">
-      <a href="#"><i class="far fa-image"></i></a>
-      <a href="#"><i class="fas fa-unlock-alt ico"></i></a>
-      <button class="postBtn" id="btnPublish">Publicar</button>
+    </div>
+    <div class="story story3">
+      <p>Rocio</p>
+    </div>
+    <div class="story story2">
+      <p>Camila</p>
     </div>
   </div>
-</form>
-</div>
-
-<div  id="postContainer">
-
-</div>
-
-
-<div class="containerRecomendations">
-
-  <p>You might like...</p>
-
-  <div class="containerUsersRecomendations">
-
-    <div class="userProfileRecomendations">
-      <img src="./images/profile2.png">
+  <div class="alignCenter">
+    <div class="containerWriter">
+      <div class="userProfile">
+        <img id="photoUser">
         <div>
-          <p>Nicki Mendez</p>
-          <span>@Nickkki</span>
+          <p class="nameUser">
+            <bold id="nameUser"></bold>
+          </p>
         </div>
-        <button type="button">
+      </div>
+      <form class="containerTextPost" id="formPublish">
+        <textarea class="textareaPublish" id="textPost" rows="3" placeholder="¿Qué estás pensando?"></textarea>
+        <div class="containerIconsBtn">
+          <div class="addPost">
+            <input id="fichero" type="file">           
+            <label for="fichero" class="circle"> <i class="far fa-image"></i> </label>
+            <a href="#"><i class="fas fa-unlock-alt ico"></i></a>
+            <button class="postBtn" id="btnPublish">Publicar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div id="postContainer">
+    </div>
+    <div class="containerRecomendations">
+      <p>You might like...</p>
+      <div class="containerUsersRecomendations">
+        <div class="userProfileRecomendations">
+          <img src="./images/profile2.png">
+          <div>
+            <p>Nicki Mendez</p>
+            <span>@Nickkki</span>
+          </div>
+          <button type="button">
             <img src="./images/Verified.png">
-        </button>
-    </div> 
-
-    <div class="userProfileRecomendations">
-      <img src="./images/profile2.png">
-        <div>
-          <p>Camila Torres</p>
-          <span>@CTorres20</span>
+          </button>
         </div>
-        <button type="button">
-          <img src="./images/Verified.png">
-        </button>
-    </div> 
-
-    <div class="userProfileRecomendations">
-      <img src="./images/profile2.png">
-        <div>
-          <p>Roberto Armando</p>
-          <span>@Robert</span>
+        <div class="userProfileRecomendations">
+          <img src="./images/profile2.png">
+          <div>
+            <p>Camila Torres</p>
+            <span>@CTorres20</span>
+          </div>
+          <button type="button">
+            <img src="./images/Verified.png">
+          </button>
         </div>
-        <button type="button">
-          <img src="./images/Verified.png">
-        </button>
-    </div> 
-
-    <div class="userProfileRecomendations">
-      <img src="./images/profile2.png">
-        <div>
-          <p>Siena Gomez</p>
-          <span>@Gom23</span>
+        <div class="userProfileRecomendations">
+          <img src="./images/profile2.png">
+          <div>
+            <p>Roberto Armando</p>
+            <span>@Robert</span>
+          </div>
+          <button type="button">
+            <img src="./images/Verified.png">
+          </button>
         </div>
-        <button type="button">
-          <img src="./images/Verified.png">
-        </button>
-    </div> 
-        
-  </div>
-
-</div>
-
-  <div id="miModalPublishVoid" class="closeModal">    
-    <div  class="modal-contenidoReturn">
-      <h5 class="h2Modal">Tu publicación está vacia!</h5>
-      <div class="groupBtnOptionsReturn"> 
-        <button  id="btnReturn" class="btnOptions">Volver</button>     
-      </div> 
-    </div> 
-  </div> 
+        <div class="userProfileRecomendations">
+          <img src="./images/profile2.png">
+          <div>
+            <p>Siena Gomez</p>
+            <span>@Gom23</span>
+          </div>
+          <button type="button">
+            <img src="./images/Verified.png">
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="miModalPublishVoid" class="closeModal">
+      <div class="modal-contenidoReturn">
+        <h5 class="h2Modal">Tu publicación está vacia!</h5>
+        <div class="groupBtnOptionsReturn">
+          <button id="btnReturn" class="btnOptions">Volver</button>
+        </div>
+      </div>
+    </div>
 
 
 `;
 
 
-const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPublish,contStars,iconStars) => `        
+const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPublish, contStars, iconStars) => `        
           
 <div class="containerPosts" >
       <div class="containerAlignItems"> 
@@ -161,7 +144,7 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
 </div> 
 
       `;
-const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, hourPublish,contStars,iconStars) => `        
+const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, hourPublish, contStars, iconStars) => `        
           
       <div class="containerPosts" >
             <div class="containerAlignItems"> 

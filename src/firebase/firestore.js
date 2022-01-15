@@ -17,7 +17,11 @@ import {
     arrayUnion
 } from "./config.js"
 
-const savePublish = (textPost, datePublish, hourPublish, userName, urlPhoto, dateOrderComplet, email/* ,totalHearts,comments */) => addDoc(collection(db, "posts"), {
+const DBPosts= collection(db, 'posts');
+
+const DBUsers= collection(db, 'users');
+
+const savePublish = (textPost, datePublish, hourPublish, userName, urlPhoto, dateOrderComplet, email,idUser/* ,totalHearts,comments */) => addDoc((DBPosts),{
     content: textPost,
     datePublish: datePublish,
     hourPublish: hourPublish,
@@ -26,42 +30,36 @@ const savePublish = (textPost, datePublish, hourPublish, userName, urlPhoto, dat
     dateOrderComplet: dateOrderComplet,
     email: email,
     likesPost: [],
-
+    idUser:idUser
     /* hearts: totalHearts,
   comments:comments, */
 
 });
 
-const saveUser = (nameUser, emailUser) => addDoc(collection(db, "users"), {
-
-    nameUser: nameUser,
-    emailUser: emailUser
-
+const saveUser = async(idUser,nameUser, emailUser/* ,photoURL, */) => await setDoc(doc(db, "users",idUser ), {
+    idUser,
+    nameUser,
+    emailUser,
+   /*  photoURL */
 });
 
-const getUsers = () => getDocs(query(collection(db, "users")));
+const getUsers = () => getDocs(query(DBUsers));
 
-//const deleteStar = async (id) => await deleteDoc(doc(db, "stars", id));
+const getPublishes = () => getDocs(query(DBPosts, orderBy("dateOrderComplet", "desc")));
 
-const getPublishes = () => getDocs(query(collection(db, "posts"), orderBy("dateOrderComplet", "desc")));
 const getPublish = async (id) => await getDoc(doc(db, "posts", id));
 
 const updatePublish = async (id, textPost) => await updateDoc(doc(db, "posts", id), {
     content: textPost
 });
-const updatePublishStars = async (id, idUserStars) => await updateDoc(doc(db, "posts", id), {
-    totalStars: idUserStars
-});
 
 const deletePublish = async (id) => await deleteDoc(doc(db, "posts", id));
-// Agregando datos al doc (data likesPost)
-const upLikes = async (id, userLike) => await updateDoc(doc(db, "posts", id), {
+
+const inLikes = async (id, userLike) => await updateDoc(doc(db, "posts", id), {
     likesPost: arrayUnion(userLike),
 });
 
-
-// Quitando datos al doc (data likesPost)
-const downLikes = async (id, userLike) => await updateDoc(doc(db, "posts", id), {
+const desLikes = async (id, userLike) => await updateDoc(doc(db, "posts", id), {
     likesPost:arrayRemove(userLike),
 });
 
@@ -72,9 +70,9 @@ const queryEmailUnique = async (emailText) => await getDocs(query(collection(db,
 
 
 export {
-    upLikes,
-    downLikes,
-    updatePublishStars,
+    desLikes,
+    inLikes,
+    
     savePublish,
     getPublishes,
     getDocs,

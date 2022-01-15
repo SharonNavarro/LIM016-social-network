@@ -1,7 +1,7 @@
 import { signIn, signInFacebook, userState, signInGoogle, signInTwitter, passwordReset } from "../firebase/auth.js"
 import { addErrorMessage, addErrorInput, removeErrorInput, removeErrorMessage } from "../lib/functions.js"
-let nombreUsuario;
-  let emailUsuario;
+let nombreUsuario,idUsuario,emailUsuario;
+ 
 export default () => {
   const viewLogin = `
     <div class="containerLogin">
@@ -212,6 +212,8 @@ export default () => {
         //console.log(user);
         nombreUsuario=(user.user.displayName);
         emailUsuario=(user.user.email);
+        idUsuario = user.user.uid;
+        console.log("idusuario de login",idUsuario);
        // console.log(user.user.emailVerified);
        // console.log(user.user.photoURL);
       })
@@ -261,7 +263,8 @@ export default () => {
 };
     export {
         emailUsuario,
-        nombreUsuario
+        nombreUsuario,
+        idUsuario
       }
 
 

@@ -1,0 +1,11 @@
+#fichero{
+    display: none;
+  }
+  
+  .circle{
+    display: inline-block;
+   
+    width: 20px;
+   
+    cursor: pointer;
+  }
