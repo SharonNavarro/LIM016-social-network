@@ -6,9 +6,7 @@ import {
    getPublish,
    saveUser,
    getUsers,
-   upLikes,
-   downLikes,
-   updatePublishStars,
+  
 
 } from "../firebase/firestore.js"
 
@@ -38,7 +36,7 @@ export const removeErrorInput = (formControl, classControl) => {
 
 //Funcion que envia las publicaciones a la base de datos
 
-export const publishPosts = (formPublish, miModalPublishVoid, btnReturn, displayName, photoURL, email) => {
+export const publishPosts = (formPublish, miModalPublishVoid, btnReturn, displayName, photoURL, email,idUser) => {
    formPublish.addEventListener("submit", async (e) => {
       e.preventDefault();
       const textPost = formPublish['textPost'].value;
@@ -54,7 +52,7 @@ export const publishPosts = (formPublish, miModalPublishVoid, btnReturn, display
          hourPublish = hoy.getHours() + ':' + hoy.getMinutes();
          datePublish = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
          dateOrderComplet = dateOrder.getTime();
-         await savePublish(textPost, datePublish, hourPublish, displayName, photoURL, dateOrderComplet, email/*,totalHearts,comments */);
+         await savePublish(textPost, datePublish, hourPublish, displayName, photoURL, dateOrderComplet, email,idUser/*,totalHearts,comments */);
          formPublish.reset();
          await showPublish();
       }

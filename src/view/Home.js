@@ -2,46 +2,29 @@ import { userState } from "../firebase/auth.js"
 import { templateHome, templatePublishes, templatePublishesUsers } from "./templates/templateHome.js"
 import { publishPosts } from "../lib/functions.js"
 import {
-  savePublish,
-  getPublishes,
-  deletePublish,
-  updatePublish,
-  getPublish,
-  saveUser,
-  getUsers,
-  upLikes,
-  downLikes,
-  updatePublishStars,
-  queryEmailUnique,
-  
-
+  savePublish, getPublishes, deletePublish, updatePublish, getPublish, saveUser, getUsers,
+  inLikes, desLikes, queryEmailUnique,
 } from "../firebase/firestore.js"
 
-import {
-  emailUsuario,
-  nombreUsuario
-} from "./Login.js"
-import { FieldValue } from "../firebase/config.js"
-
-
+import { emailUsuario, nombreUsuario, idUsuario } from "./Login.js"
 
 let showPublish;
 
 export default () => {
 
-  //Template Home
   const viewHome = templateHome;
   const divElemt = document.createElement('section');
   divElemt.classList.add('position')
   divElemt.innerHTML = viewHome;
-  //Functions
-  let displayName, photoURL, email;
-  let arrayStart = [];
+
+  let displayName, photoURL, email, userid;
+
   const nameUser = divElemt.querySelector("#nameUser");
   const photoUser = divElemt.querySelector("#photoUser");
   const formPublish = divElemt.querySelector("#formPublish");
   const miModalPublishVoid = divElemt.querySelector("#miModalPublishVoid");
   const btnReturn = divElemt.querySelector("#btnReturn");
+
   userState(async (user) => {
 
     if (user) {
@@ -50,45 +33,48 @@ export default () => {
       email = user.email;
       nameUser.innerHTML = displayName;
       photoUser.src = photoURL;
+      userid = user.uid;
+      //console.log("para la publicacion",userid);
       await showPublish();
-      publishPosts(formPublish, miModalPublishVoid, btnReturn, displayName, photoURL, email);
+      publishPosts(formPublish, miModalPublishVoid, btnReturn, displayName, photoURL, email, userid);
+      
+     
     }
-  })
+  }) 
+  (localStorage.setItem("IdUsuario", idUsuario));
   localStorage.setItem("Nombre", nombreUsuario);
-  localStorage.setItem("Correo",emailUsuario );
-  const disName = localStorage.getItem("Nombre");
-  const emailUsu = localStorage.getItem("Correo");
-
+  localStorage.setItem("Correo", emailUsuario);
   UserNotExistCreate();
-
   async function UserNotExistCreate() {
+  
+    const disName = localStorage.getItem("Nombre");
+    const emailUsu = localStorage.getItem("Correo");
+    const idUsu = localStorage.getItem("IdUsuario");
     const querySnapshote = await queryEmailUnique(emailUsu);
-    console.log(querySnapshote.size);
     if (querySnapshote.size > 0) {
       console.log("usuario registrado");
     } else {
-      await saveUser(disName, emailUsu);
+      await saveUser(idUsu, disName, emailUsu);
       console.log("datos guardados");
+      await showPublish();
     }
+
   }
-  let idUsuarioLogin;
-  
-  async function getIdUsers() {
-    const querySnapshot= await getUsers();
-    console.log(querySnapshot);
-    querySnapshot.forEach((doc) => {   
-      if(displayName==doc.data().nameUser){       
-        idUsuarioLogin=doc.id;
-        console.log(idUsuarioLogin);
-      }
-    });
-  
-  }
-  //pegandooooooooooooo------------------------------------------------------------------------------------------------------
-  
-  getIdUsers();
-  let querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
+  let idUsuarioLogin, querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
+
   showPublish = async () => {
+    
+    await getIdUsers();
+    async function getIdUsers() {
+      const querySnapshot = await getUsers();
+      querySnapshot.forEach((doc) => {
+        if (displayName == doc.data().nameUser) {
+          idUsuarioLogin = doc.data().idUser;
+        }
+      });
+   
+
+    }
     let contStars = [];
     querySnapshot = await getPublishes();
     let templatePosts = "";
@@ -102,12 +88,11 @@ export default () => {
       userName = doc.data().userName;
       urlPhoto = doc.data().urlPhoto;
       contStars = doc.data().likesPost;
-     
+
       let iconStars;
-     
-      console.log("id para buscar en el arreglo de likes",idUsuarioLogin);
-      (contStars.indexOf(idUsuarioLogin) !==-1)? iconStars = 'paint' : iconStars = '';
-      
+
+      (contStars.indexOf(idUsuarioLogin) !== -1) ? iconStars = 'paint' : iconStars = '';
+
       if (displayName == userName) {
         templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars)
 
@@ -131,45 +116,31 @@ export default () => {
     const btnSave = document.querySelectorAll(".btnSave");
 
     const iconPostStart = document.querySelectorAll(".iconPostStart");
-//
 
-
-
-///
     iconPostStart.forEach((icon) => {
       icon.addEventListener("click", async (e) => {
-        console.log("haces click");
         const idPost = e.target.dataset.id;
-        console.log("idPost", idPost);
         if (e.target.classList.contains('paint')) {
-          downLikes(idPost, idUsuarioLogin).FieldValue;
+          desLikes(idPost, idUsuarioLogin).FieldValue;
           console.log("se despinto");
           await showPublish();
         } else {
-          upLikes(idPost, idUsuarioLogin).FieldValue;
+          inLikes(idPost, idUsuarioLogin).FieldValue;
           e.target.classList.add('paint')
           console.log("se pinto");
           await showPublish();
         }
-
-
       })
-
-
     })
 
     selectEdition.forEach(selectEdition => {
 
-
       selectEdition.addEventListener("change", async function () {
-        console.log("idpost", idPosts);
-        console.log("idselect", selectEdition.dataset.id);
         const selectedOption = this.options[selectEdition.selectedIndex];
 
         if (selectedOption.value === "delete") {
           miModal.setAttribute("class", "showDelete");
           btnDelete.addEventListener("click", modalDelete);
-          //preguntar por boton cancel
           btnCancel.forEach((btnCanc) => {
             btnCanc.addEventListener("click", cancelarModal);
           });
@@ -186,7 +157,6 @@ export default () => {
               showIconosAndGroupBtnUpdate(containerIconsBtn, statusShowNone)
               showIconosAndGroupBtnUpdate(groupBtnUpdate, statusShowBlock)
 
-              //inicio de boton que modifica la publicacion
               btnSave.forEach((btn) => {
 
                 btn.addEventListener("click", async () => {
@@ -201,25 +171,16 @@ export default () => {
 
                     e.disabled = true;
                     resetIconOption();
-
                   }
-
                 })
-
               });
 
-              //inicio de boton cuando se cancela la edicion
               btnCancelUpdate.forEach((btnCancelUp) => {
 
                 btnCancelUp.addEventListener("click", async (btnCancel) => {
                   if (btnCancel.target.dataset.id == selectedOption.dataset.id) {
                     const getPost = await getPublish(selectedOption.dataset.id)
-
                     const text = (getPost.data().content);
-                    /*      const emailUser=getPost.data().email;
-                         if(emailUser==email){
-       
-                         } */
                     e.value = text;
 
                     showIconosAndGroupBtnUpdate(groupBtnUpdate, statusShowNone)
@@ -230,14 +191,11 @@ export default () => {
                   }
                 })
               })
-              //fin de bpton cancelar cuando se edita
             }
           })
-          //fin de recorrer contenido
         }
 
         async function modalDelete() {
-          console.log(btnDelete);
           miModal.setAttribute("class", "modal");
           await deletePublish(selectedOption.dataset.id);
           await showPublish();
@@ -261,18 +219,13 @@ export default () => {
             selectEdition.value = "menuOptions";
           }
         }
-        //fin del else
-
       })
     })
 
   }
 
-  //pegandooooooooooooo------------------------------------------------------------------------------------------------------
   return divElemt;
 
 };
-
-
 
 export { showPublish }
