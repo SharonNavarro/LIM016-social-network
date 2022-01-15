@@ -14,14 +14,17 @@ import {
     limit,
     FieldValue,
     arrayRemove,
-    arrayUnion
+    arrayUnion,
+    getStorage,
+    ref,
+    uploadBytes
 } from "./config.js"
 
-const DBPosts= collection(db, 'posts');
+const DBPosts = collection(db, 'posts');
 
-const DBUsers= collection(db, 'users');
+const DBUsers = collection(db, 'users');
 
-const savePublish = (textPost, datePublish, hourPublish, userName, urlPhoto, dateOrderComplet, email,idUser/* ,totalHearts,comments */) => addDoc((DBPosts),{
+const savePublish = (textPost, datePublish, hourPublish, userName, urlPhoto, dateOrderComplet, email, idUser/* ,totalHearts,comments */) => addDoc((DBPosts), {
     content: textPost,
     datePublish: datePublish,
     hourPublish: hourPublish,
@@ -30,17 +33,17 @@ const savePublish = (textPost, datePublish, hourPublish, userName, urlPhoto, dat
     dateOrderComplet: dateOrderComplet,
     email: email,
     likesPost: [],
-    idUser:idUser
+    idUser: idUser
     /* hearts: totalHearts,
   comments:comments, */
 
 });
 
-const saveUser = async(idUser,nameUser, emailUser/* ,photoURL, */) => await setDoc(doc(db, "users",idUser ), {
+const saveUser = async (idUser, nameUser, emailUser/* ,photoURL, */) => await setDoc(doc(db, "users", idUser), {
     idUser,
     nameUser,
     emailUser,
-   /*  photoURL */
+    /*  photoURL */
 });
 
 const getUsers = () => getDocs(query(DBUsers));
@@ -60,9 +63,19 @@ const inLikes = async (id, userLike) => await updateDoc(doc(db, "posts", id), {
 });
 
 const desLikes = async (id, userLike) => await updateDoc(doc(db, "posts", id), {
-    likesPost:arrayRemove(userLike),
+    likesPost: arrayRemove(userLike),
 });
 
+const uploadFiles = (fileAdd) => {
+    //Utilizar Firebase Storage
+    const storage = getStorage();
+    const storageRef = ref(storage, 'Images_Posts');
+    const imageRef = ref(storage, fileAdd.name)
+    storageRef.name === imageRef.name;
+    uploadBytes(storageRef, fileAdd).then((snapshot) => {
+        console.log('Uploaded a blob or file!');
+    });
+}
 
 
 const queryEmailUnique = async (emailText) => await getDocs(query(collection(db, "users"), where("emailUser", "==", emailText)));
@@ -72,7 +85,7 @@ const queryEmailUnique = async (emailText) => await getDocs(query(collection(db,
 export {
     desLikes,
     inLikes,
-    
+
     savePublish,
     getPublishes,
     getDocs,
@@ -85,6 +98,7 @@ export {
     updatePublish,
     saveUser,
     getUsers,
-    queryEmailUnique
+    queryEmailUnique,
+    uploadFiles
 
 };

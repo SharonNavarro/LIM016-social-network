@@ -8,7 +8,7 @@ import {
 
 import { emailUsuario, nombreUsuario, idUsuario } from "./Login.js"
 
-let showPublish;
+let showPublish,getFile1;
 
 export default () => {
 
@@ -25,6 +25,8 @@ export default () => {
   const miModalPublishVoid = divElemt.querySelector("#miModalPublishVoid");
   const btnReturn = divElemt.querySelector("#btnReturn");
 
+  
+
   userState(async (user) => {
 
     if (user) {
@@ -37,16 +39,16 @@ export default () => {
       //console.log("para la publicacion",userid);
       await showPublish();
       publishPosts(formPublish, miModalPublishVoid, btnReturn, displayName, photoURL, email, userid);
-      
-     
+
+
     }
-  }) 
-  (localStorage.setItem("IdUsuario", idUsuario));
+  })
+    (localStorage.setItem("IdUsuario", idUsuario));
   localStorage.setItem("Nombre", nombreUsuario);
   localStorage.setItem("Correo", emailUsuario);
   UserNotExistCreate();
   async function UserNotExistCreate() {
-  
+
     const disName = localStorage.getItem("Nombre");
     const emailUsu = localStorage.getItem("Correo");
     const idUsu = localStorage.getItem("IdUsuario");
@@ -60,10 +62,17 @@ export default () => {
     }
 
   }
+
+
+
+
   let idUsuarioLogin, querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
 
+  
+ 
+
   showPublish = async () => {
-    
+
     await getIdUsers();
     async function getIdUsers() {
       const querySnapshot = await getUsers();
@@ -72,7 +81,7 @@ export default () => {
           idUsuarioLogin = doc.data().idUser;
         }
       });
-   
+
 
     }
     let contStars = [];
@@ -114,8 +123,20 @@ export default () => {
     const containerIconsBtn = document.querySelectorAll(".containerIconsBtn");
     const groupBtnUpdate = document.querySelectorAll(".groupBtnUpdate");
     const btnSave = document.querySelectorAll(".btnSave");
-
+    
     const iconPostStart = document.querySelectorAll(".iconPostStart");
+    //--------------------------------------------
+    const getFile = document.querySelector("#fichero");
+    getFile.addEventListener("change", ff)  
+  
+     
+  function ff(){
+    console.log("entraaa");
+    getFile1=getFile.files[0];
+    console.log("se obtiene",getFile1); 
+
+ }
+  
 
     iconPostStart.forEach((icon) => {
       icon.addEventListener("click", async (e) => {
@@ -228,4 +249,4 @@ export default () => {
 
 };
 
-export { showPublish }
+export { showPublish,getFile1 }
