@@ -16,9 +16,6 @@ import {
   getPublish,
   saveUser,
   getUsers,
-  upLikes,
-  downLikes,
-  updatePublishStars,
   queryEmailUnique,
 } from "../firebase/firestore.js";
 

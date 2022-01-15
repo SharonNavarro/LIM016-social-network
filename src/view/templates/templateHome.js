@@ -1,3 +1,4 @@
+// 
 const templateHome = /*html */ `
 
 <div class="containerHome" id="containerHome">
@@ -34,8 +35,9 @@ const templateHome = /*html */ `
             <label for="fichero" class="circle"> <i class="far fa-image"></i> </label>
             <a href="#"><i class="fas fa-unlock-alt ico"></i></a>
             <button class="postBtn" id="btnPublish">Publicar</button>
-          </div>
+          </div>          
         </div>
+        
       </form>
     </div>
     <div id="postContainer">
@@ -118,7 +120,8 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
           </select>
       </div>
         <div class="containerTextPost">
-            <textarea class="contenido" data-id="${id}" disabled> ${content}</textarea>        
+            <textarea class="contenido" data-id="${id}" disabled> ${content}</textarea>    
+            <div><img id="imageAdd"></div>    
             <div class="containerIconsBtn"  data-id="${id}">
                 <div class="addPosts">
                 <div class="iconPost " data-id="${id}" ><i class="far fa-heart icoHeart"></i></div>
@@ -164,7 +167,8 @@ const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, ho
                 </select>
             </div>
               <div class="containerTextPost">
-                  <textarea class="contenido" data-id="${id}" disabled> ${content}</textarea>        
+                  <textarea class="contenido" data-id="${id}" disabled> ${content}</textarea> 
+                  <div><img id="imageAdd"></div>       
                   <div class="containerIconsBtn"  data-id="${id}">
                       <div class="addPosts">
                       <div class="iconPost " data-id="${id}" ><i class="far fa-heart icoHeart"></i></div>
