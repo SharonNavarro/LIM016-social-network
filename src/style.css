@@ -852,7 +852,7 @@ label:hover {
    border-radius: 0 0 20px 20px;
 }
 
-.containerAccount .profileUserCover .boton-portada {
+.containerAccount .profileUserCover .boton-portada, .userProfileBody .perfil-usuario-footer .boton-portada {
    position: absolute;
    top: 1rem;
    right: 1rem;
@@ -934,6 +934,7 @@ label:hover {
    border-radius: 15px;
    width: 100%;
    margin-bottom: 2rem;
+   position: relative;
 }
 
 .containerAccount .userProfileBio  {
