@@ -1,37 +1,39 @@
+import { userState } from "../firebase/auth.js";
+
 import { 
   templateViewAccount,
   templateViewAccountProfileUser,
   templateViewAccountProfileUserBio 
 } from "./templates/templateAccount.js";
 
+import { publishPosts } from "../lib/functions.js";
+
 import { 
+  templateHome,
   templatePublishes
 } from "./templates/templateHome.js";
 
 import {
   savePublish,
-  getPublishes,
-  deletePublish,
-  updatePublish,
-  getPublish,
-  saveUser,
+  getPublishes, 
+  deletePublish, 
+  updatePublish, 
+  getPublish, 
+  saveUser, 
   getUsers,
+  inLikes, 
+  desLikes, 
   queryEmailUnique,
 } from "../firebase/firestore.js";
 
 import {
   emailUsuario,
-  nombreUsuario
+  nombreUsuario,
+  idUsuario
 } from "./Login.js";
 
-import { publishPosts } from "../lib/functions.js";
-
-import { 
-  userState,
-  updateProfileUser
- } from "../firebase/auth.js";
-
-let showPublish;
+let showPublish; 
+let getFile1;
 
 export default () => {
 
@@ -54,10 +56,10 @@ export default () => {
   const name = divElemt.querySelector('.name');
 
   const formPublishAccount = divElemt.querySelector("#formPublishAccount");
-  let displayName, photoURL, email;
-  let arrayStart = [];
 
   const btnReturn = divElemt.querySelector("#btnReturn");
+
+  let displayName, photoURL, email, userid;
 
   userState(async (user) => {
     if (user) {
@@ -69,45 +71,45 @@ export default () => {
       photoUser.src = photoURL;  
       photoPerfil.src = photoURL;     
       await showPublish();
-      publishPosts(formPublishAccount, miModalPublishVoid, btnReturn, displayName, photoURL, email);
+      publishPosts(formPublishAccount, miModalPublishVoid, btnReturn, displayName, photoURL, email, userid);
     }
   })
 
+  (localStorage.setItem("IdUsuario", idUsuario));
   localStorage.setItem("Nombre", nombreUsuario);
   localStorage.setItem("Correo",emailUsuario );
-  const disName = localStorage.getItem("Nombre");
-  const emailUsu = localStorage.getItem("Correo");
 
   UserNotExistCreate();
 
   async function UserNotExistCreate() {
+    const disName = localStorage.getItem("Nombre");
+    const emailUsu = localStorage.getItem("Correo");
+    const idUsu = localStorage.getItem("IdUsuario");
     const querySnapshote = await queryEmailUnique(emailUsu);
     console.log(querySnapshote.size);
     if (querySnapshote.size > 0) {
       console.log("usuario registrado");
     } else {
-      await saveUser(disName, emailUsu);
+      await saveUser(idUsu, disName, emailUsu);
       console.log("datos guardados");
+      await showPublish();
     }
   }
 
-  let idUsuarioLogin;
-  
-  async function getIdUsers() {
-    const querySnapshot= await getUsers();
-    console.log(querySnapshot);
-    querySnapshot.forEach((doc) => {   
-      if(displayName==doc.data().nameUser){       
-        idUsuarioLogin=doc.id;
-        console.log(idUsuarioLogin);
-      }
-    });
-  
-  }
-
-  getIdUsers();
-  let querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
+  let idUsuarioLogin, querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
+ 
   showPublish = async () => {
+
+    await getIdUsers();
+    async function getIdUsers() {
+      const querySnapshot = await getUsers();
+      querySnapshot.forEach((doc) => {
+        if (displayName == doc.data().nameUser) {
+          idUsuarioLogin = doc.data().idUser;
+        }
+      });
+    }
+
     let contStars = [];
     querySnapshot = await getPublishes();
     let templatePosts = "";
@@ -124,7 +126,6 @@ export default () => {
      
       let iconStars;
      
-    
       (contStars.indexOf(idUsuarioLogin) !==-1)? iconStars = 'paint' : iconStars = '';
       
       if (displayName == userName) {
@@ -150,44 +151,43 @@ export default () => {
 
     const iconPostStart = document.querySelectorAll(".iconPostStart");
 //
+    const getFile = document.querySelector("#fichero");
+    getFile.addEventListener("change", ff);
 
+    function ff(){
+      console.log("entraaa");
+      getFile1=getFile.files[0];
+      console.log("se obtiene",getFile1); 
+  
+   }
 
 
 ///
     iconPostStart.forEach((icon) => {
       icon.addEventListener("click", async (e) => {
-        console.log("haces click");
         const idPost = e.target.dataset.id;
-        console.log("idPost", idPost);
         if (e.target.classList.contains('paint')) {
-          downLikes(idPost, idUsuarioLogin).FieldValue;
+          desLikes(idPost, idUsuarioLogin).FieldValue;
           console.log("se despinto");
           await showPublish();
         } else {
-          upLikes(idPost, idUsuarioLogin).FieldValue;
+          inLikes(idPost, idUsuarioLogin).FieldValue;
           e.target.classList.add('paint')
           console.log("se pinto");
           await showPublish();
         }
-
-
       })
-
-
     })
 
     selectEdition.forEach(selectEdition => {
 
 
       selectEdition.addEventListener("change", async function () {
-        console.log("idpost", idPosts);
-        console.log("idselect", selectEdition.dataset.id);
         const selectedOption = this.options[selectEdition.selectedIndex];
 
         if (selectedOption.value === "delete") {
           miModal.setAttribute("class", "showDelete");
           btnDelete.addEventListener("click", modalDelete);
-          //preguntar por boton cancel
           btnCancel.forEach((btnCanc) => {
             btnCanc.addEventListener("click", cancelarModal);
           });
@@ -204,7 +204,6 @@ export default () => {
               showIconosAndGroupBtnUpdate(containerIconsBtn, statusShowNone)
               showIconosAndGroupBtnUpdate(groupBtnUpdate, statusShowBlock)
 
-              //inicio de boton que modifica la publicacion
               btnSave.forEach((btn) => {
 
                 btn.addEventListener("click", async () => {
@@ -219,25 +218,16 @@ export default () => {
 
                     e.disabled = true;
                     resetIconOption();
-
                   }
-
                 })
-
               });
 
-              //inicio de boton cuando se cancela la edicion
               btnCancelUpdate.forEach((btnCancelUp) => {
 
                 btnCancelUp.addEventListener("click", async (btnCancel) => {
                   if (btnCancel.target.dataset.id == selectedOption.dataset.id) {
                     const getPost = await getPublish(selectedOption.dataset.id)
-
                     const text = (getPost.data().content);
-                    /*      const emailUser=getPost.data().email;
-                         if(emailUser==email){
-       
-                         } */
                     e.value = text;
 
                     showIconosAndGroupBtnUpdate(groupBtnUpdate, statusShowNone)
@@ -255,7 +245,6 @@ export default () => {
         }
 
         async function modalDelete() {
-          console.log(btnDelete);
           miModal.setAttribute("class", "modal");
           await deletePublish(selectedOption.dataset.id);
           await showPublish();
@@ -280,7 +269,6 @@ export default () => {
           }
         }
         //fin del else
-
       })
     })
 
