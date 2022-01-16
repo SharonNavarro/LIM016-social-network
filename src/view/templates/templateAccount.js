@@ -11,18 +11,19 @@ const templateViewAccount = `
                 <div class="containerWriter">
 
                     <div class="userProfile">
-                        <img id="photoUser">
-                        <div>
-                            <p class="nameUser"><bold id="nameUser"></bold></p>
-                        </div>
+                    <img id="photoUser">
+                    <div>
+                        <p class="nameUser"><bold id="nameUser"></bold></p>
+                    </div>
                     </div> 
 
                     <form class="containerTextPost" id="formPublishAccount">
-                        <textarea class="textareaPublish" id="textPostAccount" rows="3" placeholder="¿Qué estás pensando?"></textarea>
-                        
+                        <textarea class="textareaPublish" id="textPost" rows="3" placeholder="¿Qué estás pensando?"></textarea>
+                
                         <div class="containerIconsBtn">
                             <div class="addPost">
-                                <a href="#"><i class="far fa-image"></i></a>
+                                <input id="fichero" type="file">           
+                                <label for="fichero" class="circle"> <i class="far fa-image"></i> </label>
                                 <a href="#"><i class="fas fa-unlock-alt ico"></i></a>
                                 <button class="postBtn" id="btnPublish">Publicar</button>
                             </div>
@@ -30,20 +31,20 @@ const templateViewAccount = `
                     </form>
                 </div>
 
-                <div id="postContainer"> </div>
+                <div id="postContainerAccount"> </div>
 
             </div>
         </div>
     </div>
 
     <div id="miModalPublishVoid" class="closeModal">    
-    <div  class="modal-contenidoReturn">
-      <h5 class="h2Modal">Tu publicación está vacia!</h5>
-      <div class="groupBtnOptionsReturn"> 
-        <button  id="btnReturnAccount" class="btnOptions">Volver</button>     
-      </div> 
+        <div  class="modal-contenidoReturn">
+            <h5 class="h2Modal">Tu publicación está vacia!</h5>
+            <div class="groupBtnOptionsReturn"> 
+                <button  id="btnReturn" class="btnOptions">Volver</button>     
+            </div> 
+        </div> 
     </div> 
-  </div> 
  
     `;
 
@@ -63,22 +64,19 @@ const templateViewAccountProfileUser = `
 const templateViewAccountProfileUserBio = `
     <div class="userProfileBody">
         <div class="userProfileBio" id="userProfileBio">
-            <h3 class="name"></h3>
+            <h3 class="name" ></h3>
             <p class="texto"></p>
         </div>
         <div class="perfil-usuario-footer">
             <ul class="lista-datos">
-                <li><i class="icono fas fa-map-signs"></i> Direccion de usuario:</li>
-                <li><i class="icono fas fa-phone-alt"></i> Telefono:</li>
-                <li><i class="icono fas fa-briefcase"></i> Trabaja en:</li>
-                <li><i class="icono fas fa-building"></i> Cargo:</li>
+                <li><i class="icono fas fa-at"></i>E-mail:</li>
+                <li><i class="icono fas fa-bolt"></i>Intereses:</li>
+                <li><i class="icono fas fa-map-marker-alt"></i>Locación:</li>
+                <li><i class="icono fas fa-share-alt"></i>Redes sociales:</li>
             </ul>
-            <ul class="lista-datos">
-                <li><i class="icono fas fa-map-marker-alt"></i> Ubicacion:</li>
-                <li><i class="icono fas fa-calendar-alt"></i> Fecha nacimiento:</li>
-                <li><i class="icono fas fa-user-check"></i> Registro:</li>
-                <li><i class="icono fas fa-share-alt"></i> Redes sociales:</li>
-            </ul>
+            <button type="button" class="boton-portada" id ="editAccountUser" >
+                <i class="fas fa-user-edit"></i> Editar perfil
+            </button>
         </div> 
     </div> `;
 

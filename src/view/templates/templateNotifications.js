@@ -10,40 +10,40 @@ export const templateNotifications = `
 
 `;
 
-export const templateNotificationHeart  = (userName, urlPhoto, id) => `      
+export const templateNotificationHeart  =  `      
 
-<div class="containerNotificationHeart"> 
+<div class="containerNotifications heart"> 
     <div class="userProfileNotification">
-        <img src= ${urlPhoto} >
+        <img src="./images/profile4.png" >
     </div>
     <div class="userDescriptionNotification">
-        <p class="">A <bold> ${userName}</bold> le a gustado tu publicación.</p>
+        <p class="">A <bold> Antonia</bold> le a gustado tu publicación.</p>
     </div>
 </div>
 
 `;
 
-export const templateNotificationStar  = (userName, urlPhoto, id) => `      
+export const templateNotificationStar  =  `      
 
-<div class="containerNotificationHeart"> 
+<div class="containerNotifications star"> 
     <div class="userProfileNotification">
-        <img src= ${urlPhoto} >
+    <img src="./images/profile4.png" >
     </div>
     <div class="userDescriptionNotification">
-        <p class=""><bold> ${userName}</bold> añadió tu publicación a <bold>Favoritos</bold>.</p>
+        <p class=""><bold> Antonia</bold> añadió tu publicación a <bold>Favoritos</bold>.</p>
     </div>
 </div>
 
 `;
 
-export const templateNotificationComent  = (userName, urlPhoto, id) => `      
+export const templateNotificationComent  =  `      
 
-<div class="containerNotificationHeart"> 
+<div class="containerNotifications coment"> 
     <div class="userProfileNotification">
-        <img src= ${urlPhoto} >
+        <img src="./images/profile4.png" >
     </div>
     <div class="userDescriptionNotification">
-        <p class=""><bold> ${userName}</bold> comentó tu publicación.</p>
+        <p class=""><bold> Antonia </bold> comentó tu publicación.</p>
     </div>
 </div>
 
