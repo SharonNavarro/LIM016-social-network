@@ -46,3 +46,7 @@ export const signOutAccount = () => signOut(auth);
 // observar el estado del usuario
 
 export const userState = (callback) => onAuthStateChanged(auth, callback);
+
+// Actualizar nombre y foto de perfil 
+
+//export const updateProfileUser = (nameUserProfile, photoUserProfile) => updateProfile(auth.currentUser, {displayName: nameUserProfile, photoURL: photoUserProfile} )

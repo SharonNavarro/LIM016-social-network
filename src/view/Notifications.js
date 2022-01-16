@@ -8,6 +8,8 @@ export default () => {
     divElemt.innerHTML = viewNotification;
 
     const containerGeneralNotifications = divElemt.querySelector('.containerGeneralNotifications');
+    containerGeneralNotifications.innerHTML = templateNotificationHeart;
+    containerGeneralNotifications.innerHTML = templateNotificationStar;
     containerGeneralNotifications.innerHTML = templateNotificationComent;
 
     return divElemt;

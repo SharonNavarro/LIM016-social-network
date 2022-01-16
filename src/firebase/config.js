@@ -1,40 +1,45 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { 
- getAuth,
- onAuthStateChanged, 
- FacebookAuthProvider, 
- TwitterAuthProvider,
- signInWithEmailAndPassword, 
- createUserWithEmailAndPassword, 
- GoogleAuthProvider, 
- signInWithPopup, 
- getRedirectResult,
- sendEmailVerification,
- sendPasswordResetEmail,
-
- signOut,
+import {
+    getAuth,
+    onAuthStateChanged,
+    FacebookAuthProvider,
+    TwitterAuthProvider,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup,
+    getRedirectResult,
+    sendEmailVerification,
+    sendPasswordResetEmail,
+    signOut,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
 
-import { 
+import {
     collection,
-    query, 
-    where, 
-    getDocs, 
+    query,
+    where,
+    getDocs,
     getDoc,
     getFirestore,
     doc, setDoc,
-    addDoc ,
+    addDoc,
     onSnapshot,
     deleteDoc,
     updateDoc,
-     orderBy,
-     limit,
-     FieldValue,
-     arrayRemove,
-     arrayUnion
-} from  "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+    orderBy,
+    limit,
+    FieldValue,
+    arrayRemove,
+    arrayUnion,
 
+
+} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+import {
+    getStorage, ref, uploadBytes
+
+} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"
 
 
 const firebaseConfig = {
@@ -45,58 +50,62 @@ const firebaseConfig = {
     projectId: "social-network-netcoins",
     storageBucket: "social-network-netcoins.appspot.com",
     messagingSenderId: "359714878827",
-    appId: "1:359714878827:web:1856985dbf41196a7b882e"
+    appId: "1:359714878827:web:1856985dbf41196a7b882e",
+    storageBucket: "gs://social-network-netcoins.appspot.com/"
 
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db= getFirestore(app);
-const user= auth.currentUser;
-const providerGoogle= new GoogleAuthProvider(app);
-const providerFacebook= new FacebookAuthProvider(app);
+const db = getFirestore(app);
+const user = auth.currentUser;
+const providerGoogle = new GoogleAuthProvider(app);
+const providerFacebook = new FacebookAuthProvider(app);
 const providerTwitter = new TwitterAuthProvider(app);
 
 
 
 // exportando firebase auth
-export { 
-    auth,   
+export {
+
+    auth,
     user,
     app,
     providerFacebook,
     providerGoogle,
     providerTwitter,
     sendEmailVerification,
-    onAuthStateChanged,  
-    signInWithEmailAndPassword, 
-    createUserWithEmailAndPassword, 
-    signInWithPopup, 
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    signInWithPopup,
     getRedirectResult,
     sendPasswordResetEmail,
-    
     signOut,
 };
 
 // exportando firestore
 
-export{ 
+export {
     db,
     collection,
-    query, 
-    where, 
+    query,
+    where,
     getDocs,
     doc, setDoc,
     addDoc,
-    onSnapshot ,
+    onSnapshot,
     deleteDoc,
     getDoc,
     updateDoc,
-     orderBy,
-     limit,
-     FieldValue,
-     arrayRemove,
-     arrayUnion
+    orderBy,
+    limit,
+    FieldValue,
+    arrayRemove,
+    arrayUnion,
+    getStorage,
+    ref,
+    uploadBytes
 
 };
