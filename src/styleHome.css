@@ -9,3 +9,7 @@
    
     cursor: pointer;
   }
+  .imageAdd{
+    display: inline-block;
+width: 85%;
+  }

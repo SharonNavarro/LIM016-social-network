@@ -1,14 +1,30 @@
 import { userState } from "../firebase/auth.js"
-import { templateHome, templatePublishes, templatePublishesUsers } from "./templates/templateHome.js"
+
 import { publishPosts } from "../lib/functions.js"
+
 import {
-  savePublish, getPublishes, deletePublish, updatePublish, getPublish, saveUser, getUsers,
-  inLikes, desLikes, queryEmailUnique,
+  templateHome,
+  templatePublishes,
+  templatePublishesUsers
+} from "./templates/templateHome.js"
+
+import {
+  getPublishes,
+  deletePublish,
+  updatePublish,
+  getPublish,
+  saveUser,
+  getUsers,
+  inLikes,
+  desLikes,
+  queryEmailUnique,
 } from "../firebase/firestore.js"
 
 import { emailUsuario, nombreUsuario, idUsuario } from "./Login.js"
 
-let showPublish,getFile1;
+let showPublish, getFileAdd;
+let displayName, photoURL, email, userid;
+let formPublish, miModalPublishVoid, btnReturn;
 
 export default () => {
 
@@ -17,15 +33,15 @@ export default () => {
   divElemt.classList.add('position')
   divElemt.innerHTML = viewHome;
 
-  let displayName, photoURL, email, userid;
+
 
   const nameUser = divElemt.querySelector("#nameUser");
   const photoUser = divElemt.querySelector("#photoUser");
-  const formPublish = divElemt.querySelector("#formPublish");
-  const miModalPublishVoid = divElemt.querySelector("#miModalPublishVoid");
-  const btnReturn = divElemt.querySelector("#btnReturn");
+  formPublish = divElemt.querySelector("#formPublish");
+  miModalPublishVoid = divElemt.querySelector("#miModalPublishVoid");
+  btnReturn = divElemt.querySelector("#btnReturn");
 
-  
+
 
   userState(async (user) => {
 
@@ -38,12 +54,11 @@ export default () => {
       userid = user.uid;
       //console.log("para la publicacion",userid);
       await showPublish();
-      publishPosts(formPublish, miModalPublishVoid, btnReturn, displayName, photoURL, email, userid);
-
-
+      publishPosts(formPublish, miModalPublishVoid, btnReturn);
     }
   })
-    (localStorage.setItem("IdUsuario", idUsuario));
+
+  localStorage.setItem("IdUsuario", idUsuario);
   localStorage.setItem("Nombre", nombreUsuario);
   localStorage.setItem("Correo", emailUsuario);
   UserNotExistCreate();
@@ -52,6 +67,7 @@ export default () => {
     const disName = localStorage.getItem("Nombre");
     const emailUsu = localStorage.getItem("Correo");
     const idUsu = localStorage.getItem("IdUsuario");
+
     const querySnapshote = await queryEmailUnique(emailUsu);
     if (querySnapshote.size > 0) {
       console.log("usuario registrado");
@@ -62,17 +78,13 @@ export default () => {
     }
 
   }
-
-
-
-
   let idUsuarioLogin, querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
 
-  
- 
+
+
 
   showPublish = async () => {
-
+    getFileAdd=""
     await getIdUsers();
     async function getIdUsers() {
       const querySnapshot = await getUsers();
@@ -81,9 +93,8 @@ export default () => {
           idUsuarioLogin = doc.data().idUser;
         }
       });
-
-
     }
+    let imagenAdd;
     let contStars = [];
     querySnapshot = await getPublishes();
     let templatePosts = "";
@@ -97,16 +108,17 @@ export default () => {
       userName = doc.data().userName;
       urlPhoto = doc.data().urlPhoto;
       contStars = doc.data().likesPost;
+      imagenAdd = doc.data().imagen;
 
       let iconStars;
 
       (contStars.indexOf(idUsuarioLogin) !== -1) ? iconStars = 'paint' : iconStars = '';
 
       if (displayName == userName) {
-        templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars)
+        templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd)
 
       } else {
-        templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars)
+        templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd)
       }
 
     });
@@ -123,20 +135,21 @@ export default () => {
     const containerIconsBtn = document.querySelectorAll(".containerIconsBtn");
     const groupBtnUpdate = document.querySelectorAll(".groupBtnUpdate");
     const btnSave = document.querySelectorAll(".btnSave");
-    
+
     const iconPostStart = document.querySelectorAll(".iconPostStart");
     //--------------------------------------------
-    const getFile = document.querySelector("#fichero");
-    getFile.addEventListener("change", ff)  
-  
-     
-  function ff(){
-    console.log("entraaa");
-    getFile1=getFile.files[0];
-    console.log("se obtiene",getFile1); 
+    const getFile = document.querySelector("#fichero")
 
- }
-  
+    getFile.addEventListener("change", uploadFile)
+
+    function uploadFile() {
+
+      console.log("entraaa");
+      getFileAdd = getFile.files[0];
+      console.log("se obtiene", getFileAdd);
+
+    }
+
 
     iconPostStart.forEach((icon) => {
       icon.addEventListener("click", async (e) => {
@@ -249,4 +262,4 @@ export default () => {
 
 };
 
-export { showPublish,getFile1 }
+export { showPublish, getFileAdd, displayName, photoURL, email, userid, formPublish, miModalPublishVoid, btnReturn }

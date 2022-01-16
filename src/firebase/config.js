@@ -38,7 +38,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 import {
-    getStorage, ref, uploadBytes
+    getStorage, ref, uploadBytes,getDownloadURL,uploadBytesResumable
 
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"
 
@@ -64,7 +64,7 @@ const user = auth.currentUser;
 const providerGoogle = new GoogleAuthProvider(app);
 const providerFacebook = new FacebookAuthProvider(app);
 const providerTwitter = new TwitterAuthProvider(app);
-
+const storage = getStorage(app);
 
 
 // exportando firebase auth
@@ -106,8 +106,10 @@ export {
     FieldValue,
     arrayRemove,
     arrayUnion,
-    getStorage,
+    storage,
     ref,
-    uploadBytes
+    uploadBytes,
+    getDownloadURL,
+    uploadBytesResumable
 
 };
