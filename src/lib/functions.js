@@ -46,10 +46,18 @@ export const removeErrorInput = (formControl, classControl) => {
 export const publishPosts = () => {
    formPublish.addEventListener("submit", async (e) => {
       e.preventDefault();
-
+      const textPost = formPublish['textPost'].value;
+      if (textPost == "" || textPost.trim() == "") {
+         miModalPublishVoid.setAttribute("class", "show");
+         btnReturn.addEventListener("click", () => {
+            miModalPublishVoid.setAttribute("class", "closeModal");
+         })
+         return false;
+      }
       if (getFileAdd != "") {
          uploadFiles(getFileAdd)
-      } else {
+      } else {       
+       
          const urlGetdescarga = ""
          let hoy = new Date();
          let dateOrder = new Date();
@@ -57,10 +65,11 @@ export const publishPosts = () => {
          hourPublish = hoy.getHours() + ':' + hoy.getMinutes();
          datePublish = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
          dateOrderComplet = dateOrder.getTime();
-         await savePublish(textPost.value, datePublish, hourPublish, displayName, photoURL, dateOrderComplet, email, userid, urlGetdescarga);
+         await savePublish(textPost, datePublish, hourPublish, displayName, photoURL, dateOrderComplet, email, userid, urlGetdescarga);
          formPublish.reset();
          await showPublish();
       }
+   
    });
 }
 
