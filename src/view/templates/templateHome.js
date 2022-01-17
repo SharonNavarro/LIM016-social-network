@@ -100,7 +100,7 @@ const templateHome = /*html */ `
 `;
 
 
-const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPublish, contStars, iconStars) => `        
+const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPublish, contStars, iconStars,imagenAdd) => `        
           
 <div class="containerPosts" >
       <div class="containerAlignItems"> 
@@ -121,7 +121,7 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
       </div>
         <div class="containerTextPost">
             <textarea class="contenido" data-id="${id}" disabled> ${content}</textarea>    
-            <div><img id="imageAdd"></div>    
+            <div><img class="imageAdd" src="${imagenAdd}"></div>    
             <div class="containerIconsBtn"  data-id="${id}">
                 <div class="addPosts">
                 <div class="iconPost " data-id="${id}" ><i class="far fa-heart icoHeart"></i></div>
@@ -147,7 +147,7 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
 </div> 
 
       `;
-const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, hourPublish, contStars, iconStars) => `        
+const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, hourPublish, contStars, iconStars,imagenAdd )=> `        
           
       <div class="containerPosts" >
             <div class="containerAlignItems"> 
@@ -168,7 +168,7 @@ const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, ho
             </div>
               <div class="containerTextPost">
                   <textarea class="contenido" data-id="${id}" disabled> ${content}</textarea> 
-                  <div><img id="imageAdd"></div>       
+                  <div><img class="imageAdd"  src="${imagenAdd}"></div>       
                   <div class="containerIconsBtn"  data-id="${id}">
                       <div class="addPosts">
                       <div class="iconPost " data-id="${id}" ><i class="far fa-heart icoHeart"></i></div>

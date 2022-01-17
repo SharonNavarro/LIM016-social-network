@@ -15,16 +15,18 @@ import {
     FieldValue,
     arrayRemove,
     arrayUnion,
-    getStorage,
+    storage,
     ref,
-    uploadBytes
+    uploadBytes,
+    getDownloadURL,
+    uploadBytesResumable
 } from "./config.js"
 
 const DBPosts = collection(db, 'posts');
 
 const DBUsers = collection(db, 'users');
 
-const savePublish = (textPost, datePublish, hourPublish, userName, urlPhoto, dateOrderComplet, email, idUser/* ,totalHearts,comments */) => addDoc((DBPosts), {
+const savePublish = (textPost, datePublish, hourPublish, userName, urlPhoto, dateOrderComplet, email, idUser,imagen/* ,totalHearts,comments */) => addDoc(( collection(db, 'posts')), {
     content: textPost,
     datePublish: datePublish,
     hourPublish: hourPublish,
@@ -33,7 +35,9 @@ const savePublish = (textPost, datePublish, hourPublish, userName, urlPhoto, dat
     dateOrderComplet: dateOrderComplet,
     email: email,
     likesPost: [],
-    idUser: idUser
+    idUser: idUser,
+    //contentFile: "",
+    imagen:imagen
     /* hearts: totalHearts,
   comments:comments, */
 
@@ -58,31 +62,20 @@ const updatePublish = async (id, textPost) => await updateDoc(doc(db, "posts", i
 
 const deletePublish = async (id) => await deleteDoc(doc(db, "posts", id));
 
-const inLikes = async (id, userLike) => await updateDoc(doc(db, "posts", id), {
-    likesPost: arrayUnion(userLike),
+const inLikes = async (id, idUserLike) => await updateDoc(doc(db, "posts", id), {
+    likesPost: arrayUnion(idUserLike),
 });
 
-const desLikes = async (id, userLike) => await updateDoc(doc(db, "posts", id), {
-    likesPost: arrayRemove(userLike),
+const desLikes = async (idPost, idUserLike) => await updateDoc(doc(db, "posts", idPost), {
+    likesPost: arrayRemove(idUserLike),
 });
-
-const uploadFiles = (fileAdd) => {
-    //Utilizar Firebase Storage
-    const storage = getStorage();
-    const storageRef = ref(storage, 'Images_Posts');
-    const imageRef = ref(storage, fileAdd.name)
-    storageRef.name === imageRef.name;
-    uploadBytes(storageRef, fileAdd).then((snapshot) => {
-        console.log('Uploaded a blob or file!');
-    });
-}
-
 
 const queryEmailUnique = async (emailText) => await getDocs(query(collection(db, "users"), where("emailUser", "==", emailText)));
 
-
+//Storage
 
 export {
+  
     desLikes,
     inLikes,
 
@@ -99,6 +92,10 @@ export {
     saveUser,
     getUsers,
     queryEmailUnique,
-    uploadFiles
+    getDownloadURL,
+    ref,storage,
+    uploadBytesResumable
+
+    
 
 };
