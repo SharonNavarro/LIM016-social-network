@@ -17,7 +17,7 @@ const templateViewAccount = `
                     </div> 
 
                     <form class="containerTextPost" id="formPublishAccount">
-                        <textarea class="textareaPublish" id="textPost" rows="3" placeholder="¿Qué estás pensando?"></textarea>
+                        <textarea class="textareaPublish" id="textPostAccount" rows="3" placeholder="¿Qué estás pensando?"></textarea>
                 
                         <div class="containerIconsBtn">
                             <div class="addPost">
@@ -36,11 +36,11 @@ const templateViewAccount = `
         </div>
     </div>
 
-    <div id="miModalPublishVoid" class="closeModal">    
+    <div id="miModalPublishVoidAccount" class="closeModal">    
         <div  class="modal-contenidoReturn">
             <h5 class="h2Modal">Tu publicación está vacia!</h5>
             <div class="groupBtnOptionsReturn"> 
-                <button  id="btnReturn" class="btnOptions">Volver</button>     
+                <button  id="btnReturnAccount" class="btnOptions">Volver</button>     
             </div> 
         </div> 
     </div> 
