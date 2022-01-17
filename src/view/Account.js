@@ -148,6 +148,16 @@ export default () => {
     const containerIconsBtn = document.querySelectorAll(".containerIconsBtn");
     const groupBtnUpdate = document.querySelectorAll(".groupBtnUpdate");
     const btnSave = document.querySelectorAll(".btnSave");
+   
+    
+    const openModal = document.querySelector('.hero__cta');
+    const modal = document.querySelector('.modal');
+    const closeModal = document.querySelector('.modal__close');
+    
+    openModal.addEventListener('click', (e)=>{
+        e.preventDefault();
+        modal.classList.add('modal--show');
+    });
 
     const iconPostStart = document.querySelectorAll(".iconPostStart");
 //
@@ -158,7 +168,6 @@ export default () => {
       console.log("entraaa");
       getFile1=getFile.files[0];
       console.log("se obtiene",getFile1); 
-  
    }
 
 
@@ -282,4 +291,5 @@ export default () => {
   return divElemt;
 
 }
+
 
