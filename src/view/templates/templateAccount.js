@@ -51,12 +51,16 @@ const templateViewAccountProfileUser = `
     <div class="profileUserCover">
         <div class="userProfileAvatar"  id="userProfileAvatar">
             <img class="photoPerfil" id="photoPerfil"alt="">
-            <button type="button" class="boton-avatar" >
+            <button type="file" class="boton-avatar"  >
                 <i class="far fa-image"></i>
+                <label for="fichero" class="circle"></label>
+                <input class="input" type="file" id="fichero" accept="image/png, .jpeg, .jpg">
             </button>
         </div>
         <button type="button" class="boton-portada" >
             <i class="far fa-image"></i> Cambiar fondo
+            <label for="fichero" class="circle"></label>
+            <input class="input" type="file" id="fichero" accept="image/png, .jpeg, .jpg">
         </button>
     </div> `;
 

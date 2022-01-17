@@ -148,19 +148,17 @@ export default () => {
     const containerIconsBtn = document.querySelectorAll(".containerIconsBtn");
     const groupBtnUpdate = document.querySelectorAll(".groupBtnUpdate");
     const btnSave = document.querySelectorAll(".btnSave");
-   
-    
-    const openModal = divElemt.querySelector('#editAccountUser');
+    const openModalEditar = divElemt.querySelector('#editAccountUser');
     const modal = divElemt.querySelector('.modal');
-    const closeModal = divElemt.querySelector('.modal__close');
+    const closeModalEditar = divElemt.querySelector('.modal__close');
     
-    openModal.addEventListener('click', (e)=>{
+    openModalEditar.addEventListener('click', (e)=>{
         e.preventDefault();
         console.log("modal")
-        modal.classList.add('modal--show');
+        modal.classList.add('modal--show'); 
     });
 
-    closeModal.addEventListener('click', (e)=>{
+    closeModalEditar.addEventListener('click', (e)=>{
       e.preventDefault();
       modal.classList.remove('modal--show');
   });
