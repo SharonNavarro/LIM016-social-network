@@ -1,45 +1,46 @@
 import { userState } from "../firebase/auth.js";
 
+import { publishPostsAccount } from "../lib/functions.js";
+
 import { 
   templateViewAccount,
   templateViewAccountProfileUser,
   templateViewAccountProfileUserBio 
 } from "./templates/templateAccount.js";
 
-import { publishPosts } from "../lib/functions.js";
-
-import { 
-  templateHome,
+import {
   templatePublishes
 } from "./templates/templateHome.js";
 
 import {
-  savePublish,
-  getPublishes, 
-  deletePublish, 
-  updatePublish, 
-  getPublish, 
-  saveUser, 
+  getPublishes,
+  deletePublish,
+  updatePublish,
+  getPublish,
+  saveUser,
   getUsers,
-  inLikes, 
-  desLikes, 
+  inLikes,
+  desLikes,
   queryEmailUnique,
 } from "../firebase/firestore.js";
 
-import {
-  emailUsuario,
-  nombreUsuario,
-  idUsuario
-} from "./Login.js";
+import { 
+  emailUsuario, 
+  nombreUsuario, 
+  idUsuario 
+} from "./Login.js"
 
-let showPublish; 
-let getFile1;
+let showPublishAccount, getFileAddAccount;
+let displayNameAccount, photoURLAccount, emailAccount, useridAccount;
+let formPublishAccount, miModalPublishVoidAccount;
+let btnReturnAccount;
 
 export default () => {
 
   const viewAccount = templateViewAccount;
   const viewAccountProfileUser = templateViewAccountProfileUser;
   const viewAccountProfileUserBio = templateViewAccountProfileUserBio;
+  //const viewTemplateHome = templateHome;
 
   const divElemt = document.createElement('section');
   divElemt.classList.add('position');
@@ -55,61 +56,60 @@ export default () => {
   const photoPerfil = divElemt.querySelector('.photoPerfil');
   const name = divElemt.querySelector('.name');
 
-  const formPublishAccount = divElemt.querySelector("#formPublishAccount");
-
-  const btnReturn = divElemt.querySelector("#btnReturn");
-
-  let displayName, photoURL, email, userid;
+  formPublishAccount = divElemt.querySelector("#formPublishAccount");
+  miModalPublishVoidAccount = divElemt.querySelector("#miModalPublishVoidAccount");
+  btnReturnAccount = divElemt.querySelector("#btnReturnAccount");
 
   userState(async (user) => {
     if (user) {
-      displayName = user.displayName;
-      photoURL = user.photoURL;
-      email = user.email;
-      nameUser.innerHTML = displayName;
-      name.innerHTML = displayName;
-      photoUser.src = photoURL;  
-      photoPerfil.src = photoURL;     
-      await showPublish();
-      publishPosts(formPublishAccount, miModalPublishVoid, btnReturn, displayName, photoURL, email, userid);
+      displayNameAccount = user.displayName;
+      photoURLAccount = user.photoURL;
+      emailAccount = user.email;
+      nameUser.innerHTML = displayNameAccount;
+      name.innerHTML = displayNameAccount;
+      photoUser.src = photoURLAccount;  
+      photoPerfil.src = photoURLAccount;     
+      useridAccount = user.uid;
+      await showPublishAccount();
+      publishPostsAccount(formPublishAccount, miModalPublishVoidAccount, btnReturnAccount);
     }
   })
 
-  (localStorage.setItem("IdUsuario", idUsuario));
+  localStorage.setItem("IdUsuario", idUsuario);
   localStorage.setItem("Nombre", nombreUsuario);
-  localStorage.setItem("Correo",emailUsuario );
-
+  localStorage.setItem("Correo", emailUsuario);
   UserNotExistCreate();
-
   async function UserNotExistCreate() {
+
     const disName = localStorage.getItem("Nombre");
     const emailUsu = localStorage.getItem("Correo");
     const idUsu = localStorage.getItem("IdUsuario");
+
     const querySnapshote = await queryEmailUnique(emailUsu);
-    console.log(querySnapshote.size);
     if (querySnapshote.size > 0) {
       console.log("usuario registrado");
     } else {
       await saveUser(idUsu, disName, emailUsu);
       console.log("datos guardados");
-      await showPublish();
+      await showPublishAccount();
     }
+
   }
 
   let idUsuarioLogin, querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
  
-  showPublish = async () => {
-
+  showPublishAccount = async () => {
+    getFileAddAccount="";
     await getIdUsers();
     async function getIdUsers() {
       const querySnapshot = await getUsers();
       querySnapshot.forEach((doc) => {
-        if (displayName == doc.data().nameUser) {
+        if (displayNameAccount == doc.data().nameUser) {
           idUsuarioLogin = doc.data().idUser;
         }
       });
     }
-
+    let imagenAdd;
     let contStars = [];
     querySnapshot = await getPublishes();
     let templatePosts = "";
@@ -123,19 +123,20 @@ export default () => {
       userName = doc.data().userName;
       urlPhoto = doc.data().urlPhoto;
       contStars = doc.data().likesPost;
+      imagenAdd = doc.data().imagen;
      
       let iconStars;
      
       (contStars.indexOf(idUsuarioLogin) !==-1)? iconStars = 'paint' : iconStars = '';
       
-      if (displayName == userName) {
-        templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars)
+      if (displayNameAccount == userName) {
+        templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd);
 
       }
 
     });
 
-    const postContainerAccount = document.querySelector('#postContainerAccount');
+    const postContainerAccount = divElemt.querySelector('#postContainerAccount');
     postContainerAccount.innerHTML = templatePosts;
 
     const selectEdition = document.querySelectorAll(".selectEdition");
@@ -152,29 +153,27 @@ export default () => {
     const iconPostStart = document.querySelectorAll(".iconPostStart");
 //
     const getFile = document.querySelector("#fichero");
-    getFile.addEventListener("change", ff);
+    getFile.addEventListener("change", uploadFile);
 
-    function ff(){
+    function uploadFile() {
+
       console.log("entraaa");
-      getFile1=getFile.files[0];
-      console.log("se obtiene",getFile1); 
-  
-   }
+      getFileAddAccount = getFile.files[0];
+      console.log("se obtiene", getFileAddAccount);
+    }
 
-
-///
     iconPostStart.forEach((icon) => {
       icon.addEventListener("click", async (e) => {
         const idPost = e.target.dataset.id;
         if (e.target.classList.contains('paint')) {
           desLikes(idPost, idUsuarioLogin).FieldValue;
           console.log("se despinto");
-          await showPublish();
+          await showPublishAccount();
         } else {
           inLikes(idPost, idUsuarioLogin).FieldValue;
           e.target.classList.add('paint')
           console.log("se pinto");
-          await showPublish();
+          await showPublishAccount();
         }
       })
     })
@@ -247,12 +246,12 @@ export default () => {
         async function modalDelete() {
           miModal.setAttribute("class", "modal");
           await deletePublish(selectedOption.dataset.id);
-          await showPublish();
+          await showPublishAccount();
         }
         async function cancelarModal() {
           miModal.setAttribute("class", "modal");
           resetIconOption();
-          await showPublish();
+          await showPublishAccount();
         }
 
         function showIconosAndGroupBtnUpdate(container, statusShow) {
@@ -274,12 +273,18 @@ export default () => {
 
   }
 
-  //  const editAccountUser = divElemt.querySelector("#editAccountUser");
-  //  editAccountUser.addEventListener("click", async function () {})
-
-
-
   return divElemt;
 
 }
 
+export {
+  showPublishAccount,
+  getFileAddAccount,
+  displayNameAccount,
+  photoURLAccount,
+  emailAccount,
+  useridAccount,
+  formPublishAccount,
+  miModalPublishVoidAccount,
+  btnReturnAccount
+} 
