@@ -61,7 +61,7 @@ const templateViewAccountProfileUser = `
         </button>
     </div> `;
 
-const templateViewAccountProfileUserBio = `
+const templateViewAccountProfileUserBio = /*html*/`
     <div class="userProfileBody">
         <div class="userProfileBio" id="userProfileBio">
             <h3 class="name" ></h3>
@@ -78,6 +78,17 @@ const templateViewAccountProfileUserBio = `
                 <i class="fas fa-user-edit"></i> Editar perfil
             </button>
         </div> 
+        <div id="miModal" class="modal">
+        <div class="modal-contenido">
+            <ul class="lista-datos">
+            <li><i class="icono fas fa-at"></i><input type="text" placeholder="E-mail"></li>
+            <li><i class="icono fas fa-bolt"></i>Intereses:</li>
+            <li><i class="icono fas fa-map-marker-alt"></i>Locación:</li>
+            <li><i class="icono fas fa-share-alt"></i>Redes sociales:</li>
+            </ul>
+        </div>  
+        </div>
+
     </div> `;
 
 export {
