@@ -150,14 +150,20 @@ export default () => {
     const btnSave = document.querySelectorAll(".btnSave");
    
     
-    const openModal = document.querySelector('.hero__cta');
-    const modal = document.querySelector('.modal');
-    const closeModal = document.querySelector('.modal__close');
+    const openModal = divElemt.querySelector('#editAccountUser');
+    const modal = divElemt.querySelector('.modal');
+    const closeModal = divElemt.querySelector('.modal__close');
     
     openModal.addEventListener('click', (e)=>{
         e.preventDefault();
+        console.log("modal")
         modal.classList.add('modal--show');
     });
+
+    closeModal.addEventListener('click', (e)=>{
+      e.preventDefault();
+      modal.classList.remove('modal--show');
+  });
 
     const iconPostStart = document.querySelectorAll(".iconPostStart");
 //

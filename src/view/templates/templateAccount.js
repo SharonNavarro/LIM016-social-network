@@ -1,7 +1,6 @@
 const templateViewAccount = `
     <div class="content">
         <div class="containerAccount" id="containerAccount">
-
             <div class="userProfile" id="userProfile"> </div>
 
             <div class="userBio"> </div>
@@ -61,38 +60,51 @@ const templateViewAccountProfileUser = `
         </button>
     </div> `;
 
-const templateViewAccountProfileUserBio = /*html*/`
-    <div class="userProfileBody">
-        <div class="userProfileBio" id="userProfileBio">
-            <h3 class="name" ></h3>
-            <p class="texto"></p>
-        </div>
-        <div class="perfil-usuario-footer">
-            <ul class="lista-datos">
-                <li><i class="icono fas fa-at"></i>E-mail:</li>
-                <li><i class="icono fas fa-bolt"></i>Intereses:</li>
-                <li><i class="icono fas fa-map-marker-alt"></i>Locación:</li>
-                <li><i class="icono fas fa-share-alt"></i>Redes sociales:</li>
-            </ul>
-            <button type="button" class="boton-portada" id ="editAccountUser" >
-                <i class="fas fa-user-edit"></i> Editar perfil
-            </button>
-        </div> 
-        <div id="miModal" class="modal">
-        <div class="modal-contenido">
-            <ul class="lista-datos">
-            <li><i class="icono fas fa-at"></i><input type="text" placeholder="E-mail"></li>
+const templateViewAccountProfileUserBio = /*html*/ `
+
+<div class="userProfileBody">
+<div class="userProfileBio" id="userProfileBio">
+    <h3 class="name" ></h3>
+    <p class="texto"></p>
+</div>
+    <div class="perfil-usuario-footer">
+        <ul class="lista-datos">                
+            <li><i class="icono fas fa-at"></i>E-mail:</li>
             <li><i class="icono fas fa-bolt"></i>Intereses:</li>
             <li><i class="icono fas fa-map-marker-alt"></i>Locación:</li>
             <li><i class="icono fas fa-share-alt"></i>Redes sociales:</li>
-            </ul>
-        </div>  
-        </div>
+        </ul>
+        <button class="hero__cta  boton-portada" id ="editAccountUser"> 
+        <i class="fas fa-user-edit"></i> Editar perfil
+        </button>
+    </div>
+</div>
+<section class="modal ">
+<div class="modal__container">
+    <div class="form-group">
+        <h3 class="datos">Datos de la Cuenta</h3>
+        <label for="user">Nombre de Usuario:</label>
+        <input type="text" class="form-control" id="user" placeholder="Usuario">
+        <label for="email">Correo Electronico:</label>
+        <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+        <label for="codipos" >Intereses:</label>
+        <input type="text" class="form-control intereses" id="codipos" placeholder="Criptomonedas y Tecnologia">
+        <label for="codipos">Locación:</label>
+        <input type="text" class="form-control" id="codipos" placeholder="Lima">
+        <label for="codipos">Redes Sociales :</label>
+        <input type="text" class="form-control" id="codipos" placeholder="Lima">
+      </div>
+<div class="buttonModalPerfil">
+    <button href="#" class="modal__close">Cancelar</button>
+    <button href="#" class="modal__close">Enviar</button>
+</div>
+</div>
+</section>
 
-    </div> `;
+ `;
 
 export {
-    templateViewAccount,
-    templateViewAccountProfileUser,
-    templateViewAccountProfileUserBio
-}
+  templateViewAccount,
+  templateViewAccountProfileUser,
+  templateViewAccountProfileUserBio
+};
