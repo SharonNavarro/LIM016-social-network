@@ -1,5 +1,8 @@
+import { userState } from "../firebase/auth.js"
+
+
 export default () => {
-    const viewMessages = `
+    const viewMessages = /*html*/`
     <div class="content" > 
     <div class="body-chat">
     <div class="seccion-titulo">
@@ -68,7 +71,7 @@ export default () => {
             </div>
             
         </div>
-        <div class="panel-chat">
+        <div class="panel-chat" id="formulario">
             <div class="mensaje">
                 <div class="avatar">
                     <img src="ruta_img" alt="img">
@@ -139,8 +142,8 @@ export default () => {
                         <input type="file" id="img">
                     </button>
                 </div>
-                <textarea placeholder="Escribir mensaje"></textarea>
-                <button type="button" class="enviar">
+                <textarea placeholder="Escribir mensaje" id="inputChat"></textarea>
+                <button type="buttonChat" class="buttonChat">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </form>
@@ -155,3 +158,24 @@ export default () => {
     divElemt.innerHTML = viewMessages;
     return divElemt;
 };
+
+const formulario=document.querySelector("#formulario")
+const inputChat= document.querySelector("#inputChat")
+
+const contenidoChat=(user)=>{
+
+formulario.addEventListener("submit", (e) =>{
+  e.preventDefault()
+  console.log("inputChat.value")
+  if(!inputChat.value.trim()){
+    console.log("input vacio")
+
+    return
+
+  }
+  
+ 
+
+
+})
+}

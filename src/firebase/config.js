@@ -11,7 +11,6 @@ import {
     getRedirectResult,
     sendEmailVerification,
     sendPasswordResetEmail,
-
     signOut,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
@@ -83,7 +82,6 @@ export {
     signInWithPopup,
     getRedirectResult,
     sendPasswordResetEmail,
-
     signOut,
 };
 

@@ -834,6 +834,9 @@ label:hover {
 
   }
 
+
+/*------------- SECTION ACCOUNT ---------*/
+
 .containerAccount .userProfileBody,
 .containerAccount {
    display: flex;
@@ -841,14 +844,6 @@ label:hover {
    flex-direction: row;
    align-items: center;
 }
-
-/* .containerAccount .userProfile{
-   width: 100%;
-   display: flex;
-   justify-content: center;
-   background: linear-gradient(#b1daee91, transparent);
-   margin-bottom: 1.25rem;
-} */
  
 .containerAccount .profileUserCover{
    display: block;
@@ -859,7 +854,7 @@ label:hover {
    border-radius: 0 0 20px 20px;
 }
 
-.containerAccount .profileUserCover .boton-portada {
+.containerAccount .profileUserCover .boton-portada, .userProfileBody .perfil-usuario-footer .boton-portada {
    position: absolute;
    top: 1rem;
    right: 1rem;
@@ -941,6 +936,7 @@ label:hover {
    border-radius: 15px;
    width: 100%;
    margin-bottom: 2rem;
+   position: relative;
 }
 
 .containerAccount .userProfileBio  {
@@ -977,6 +973,22 @@ margin-top: 20px;
    margin-right: 1rem;
    font-size: 1.2rem;
    vertical-align: middle;
+}
+
+.account button input{
+  display: none;
+}
+
+.account button {
+width: 30px;
+height: 30px;
+border-radius: 50%;
+background-color: white;
+border: 1px solid black;
+}
+
+#postContainerAccount {
+  width: 90%;
 }
 
 @media (min-width: 410px) {
@@ -1134,6 +1146,8 @@ select:focus {
   border-radius: 15px;
   z-index: -1;
 }
+
+
 .modal {
   background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
@@ -1743,6 +1757,38 @@ select:focus {
   margin-top: 10%;
 }
 
+/*------------SECTION FAVORITES------------*/
+
+.containerNotifications {
+    width: 90%;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: 'Questrial', sans-serif;
+    padding: 10px;
+    column-gap: 9px;
+}
+
+.heart {
+  background: #f5246866;
+}
+.coment {
+  background: #0edbff66;
+}
+.star {
+  background: #f8e21d66;
+}
+
+.userProfileNotification img {
+  width: 60px;
+  border-radius: 100%;
+  height: 60px;
+}
+
+.userDescriptionNotification bold {
+  font-weight: bold;
+}
 /*-------------MEDIA QUERIES----------------*/
 
 @media (max-width: 780px) {
@@ -2152,3 +2198,109 @@ margin:0.2rem
 
 
 }
+
+
+/* modal acccount*/
+
+
+.modal{
+ background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 1s;
+  z-index: -2;
+}
+
+.modal--show{
+  pointer-events: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.modal__container{
+  background-color: white;
+  width: 380px;
+  height: 500px;
+  padding: 10px 20px;
+  margin: 10% auto;
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+  border-radius: 15px;
+  z-index: -1;
+}
+
+
+.modal__close{
+  text-decoration: none;
+  color: #fff;
+  background-color: #4981d5;
+  padding: 1em 3em;
+  border: 1px solid ;
+  border-radius: 6px;
+  display: inline-block;
+  font-weight: 300;
+  transition: background-color .3s;
+}
+
+.modal__close:hover{
+  color: #3674b6;
+  background-color: #fff;
+}
+
+.datos{
+  text-transform:uppercase;
+  font: bold 20px/45px Helvetica, Verdana, sans-serif;
+  text-align: center;
+}
+
+label 
+{
+    display: block;
+}
+.form-control{
+      width: 320px;
+      height: 30px;
+      margin: 0.5rem;
+      margin-left: 0.8rem;
+   
+}
+
+.buttonModalPerfil{
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
+
+.profileUserCover button label {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+
+ .profileUserCover input{
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
