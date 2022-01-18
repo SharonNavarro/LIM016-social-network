@@ -2304,3 +2304,52 @@ label
 }
 
 
+input[type=checkbox].toggle-switch{
+
+  transform:rotate(90deg);
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: 0;
+  cursor: pointer;
+  width: 4em;
+  height: 1.5em;
+  border-radius: 3em;
+  background-color: #ebebeb;
+  transition: background color 0.09s ease-in-out;
+  position: relative;
+
+}
+
+input[ type= checkbox].toggle-switch:active::after{
+ background-color: #f2f2f2;
+ padding-right: .8em;
+
+}
+input[type=checkbox].toggle-switch::after{
+  content:"";
+  width:2em;
+  height: 2em;
+  background-color: white;
+  border-radius: 3rem ;
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: left 0.3s cubic-bezier(0.175 , 0.885 , 0.32, 1.275),
+  padding0.3s ease, margin0.3s ease;
+  box-shadow:2px 0px 5px 0 rgba(0,0,0,0,15) ;
+}
+input[type-checkbox].toggle-switch.active::after{
+ content:"";
+ width:2em;
+ height:2em;
+ background-color: white;
+ border-radius: 3em;
+ position: absolute;
+ left: 5px;
+ top: 50%;
+ transform: translateX(-50%) ;
+ transition:left 0.3s ;
+
+}
