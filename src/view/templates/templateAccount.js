@@ -84,27 +84,25 @@ const templateViewAccountProfileUserBio = /*html*/ `
     </div>
 </div>
 <section class="modal ">
-<div class="modal__container">
-    <div class="form-group">
+<form class="modal__container"id="register-form">
+    <div class="form-group" >
         <h3 class="datos">Datos de la Cuenta</h3>
         <label for="user">Nombre de Usuario:</label>
         <input type="text" class="form-control" id="user" placeholder="Usuario">
         <label for="email">Correo Electronico:</label>
         <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
-        <div class="field">
         <label for="codipos" >Intereses:</label>
-        <textarea class="form-control intereses" id="codipos" placeholder="Criptomonedas y Tecnologia">
-       </div>
+        <input type="text" class="form-control intereses" id="codipos" placeholder="Criptomonedas y Tecnologia">
         <label for="codipos">Locación:</label>
-        <input type="text" class="form-control" id="codipos" placeholder="Lima">
+        <input type="text" class="form-control" id="locacion" placeholder="Lima">
         <label for="codipos">Redes Sociales :</label>
-        <input type="text" class="form-control" id="codipos" placeholder="Lima">
+        <input type="text" class="form-control" id="redes" placeholder="Lima">
       </div>
-<div class="buttonModalPerfil">
-    <button href="#" class="modal__close">Cancelar</button>
-    <button href="#" class="modal__close">Enviar</button>
-</div>
-</div>
+    <div class="buttonModalPerfil">
+        <button href="#" class="modal__close">Cancelar</button>
+        <button type="submit" href="#" class="modal__close" id="editarForm">Enviar</button>
+    </div>
+</form>
 </section>
 
  `;

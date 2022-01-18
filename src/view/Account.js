@@ -152,6 +152,8 @@ export default () => {
     const openModalEditar = divElemt.querySelector('#editAccountUser');
     const modal = divElemt.querySelector('.modal');
     const closeModalEditar = divElemt.querySelector('.modal__close');
+    const editarForm= divElemt.querySelector("#editarForm");
+    const registerForm = divElemt.getElementsById("register-form")
     
     openModalEditar.addEventListener('click', (e)=>{
         e.preventDefault();
@@ -164,21 +166,36 @@ export default () => {
       modal.classList.remove('modal--show');
   });
 
+  registerForm.addEventListener("submit",(e)=>{
+    e.preventDefault();
+
+    const nameUser= registerForm["user"].value
+    const emailUser= registerForm["email"].value
+    const interesesUser= registerForm["codipos"].value
+    const locacionUser= registerForm["locacion"].value
+    const redesUser= registerForm["redes"].value
+  })
+
+
+
     const iconPostStart = document.querySelectorAll(".iconPostStart");
 //
     const getFile = document.querySelector("#fichero");
     getFile.addEventListener("change", uploadFile);
 
-    function ff(){
+
+    function uploadFile() {
+
       console.log("entraaa");
-      getFile1=getFile.files[0];
-      console.log("se obtiene",getFile1); 
-   }
+      getFileAdd = getFile.files[0];
+      console.log("se obtiene", getFileAdd);
+
+    }
 
       console.log("entraaa");
       getFileAddAccount = getFile.files[0];
       console.log("se obtiene", getFileAddAccount);
-    }
+    
 
     iconPostStart.forEach((icon) => {
       icon.addEventListener("click", async (e) => {
@@ -288,10 +305,13 @@ export default () => {
         //fin del else
       })
     })
-
   }
 
   return divElemt;
+  };
 
+  
+  export { showPublishAccount, getFileAddAccount, displayNameAccount, photoURLAccount, emailAccount, useridAccount, formPublishAccount, miModalPublishVoidAccount, btnReturnAccount }
+  
 
 
