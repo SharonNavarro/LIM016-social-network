@@ -9,6 +9,10 @@ export default () => {
   </label> 
   <div class="contentTitulo">
   <h2 class="titulo">Netcoins</h2>
+  <button class="switch" id="switch">
+    <span><i class="fas fa-sun"></i></span>
+    <span><i class="fas fa-moon"></i></span>
+  </button>
   </div> 
   <nav>
     <ul class="ulMenu">
