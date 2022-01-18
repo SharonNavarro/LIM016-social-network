@@ -91,8 +91,10 @@ const templateViewAccountProfileUserBio = /*html*/ `
         <input type="text" class="form-control" id="user" placeholder="Usuario">
         <label for="email">Correo Electronico:</label>
         <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+        <div class="field">
         <label for="codipos" >Intereses:</label>
-        <input type="text" class="form-control intereses" id="codipos" placeholder="Criptomonedas y Tecnologia">
+        <textarea class="form-control intereses" id="codipos" placeholder="Criptomonedas y Tecnologia">
+       </div>
         <label for="codipos">Locación:</label>
         <input type="text" class="form-control" id="codipos" placeholder="Lima">
         <label for="codipos">Redes Sociales :</label>
