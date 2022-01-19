@@ -1150,6 +1150,8 @@ select:focus {
   border-radius: 15px;
   z-index: -1;
 }
+
+
 .modal {
   background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
@@ -2128,5 +2130,160 @@ margin:0.2rem
 }
 
 
+
+}
+
+
+/* modal acccount*/
+
+
+.modal{
+ background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 1s;
+  z-index: -2;
+}
+
+.modal--show{
+  pointer-events: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.modal__container{
+  background-color: white;
+  width: 380px;
+  height: 500px;
+  padding: 10px 20px;
+  margin: 10% auto;
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+  border-radius: 15px;
+  z-index: -1;
+}
+
+
+.modal__close{
+  text-decoration: none;
+  color: #fff;
+  background-color: #4981d5;
+  padding: 1em 3em;
+  border: 1px solid ;
+  border-radius: 6px;
+  display: inline-block;
+  font-weight: 300;
+  transition: background-color .3s;
+}
+
+.modal__close:hover{
+  color: #3674b6;
+  background-color: #fff;
+}
+
+.datos{
+  text-transform:uppercase;
+  font: bold 20px/45px Helvetica, Verdana, sans-serif;
+  text-align: center;
+}
+
+label 
+{
+    display: block;
+}
+.form-control{
+      width: 320px;
+      height: 30px;
+      margin: 0.5rem;
+      margin-left: 0.8rem;
+   
+}
+
+.buttonModalPerfil{
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
+
+.profileUserCover button label {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+
+ .profileUserCover input{
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+input[type=checkbox].toggle-switch{
+
+  transform:rotate(90deg);
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: 0;
+  cursor: pointer;
+  width: 4em;
+  height: 1.5em;
+  border-radius: 3em;
+  background-color: #ebebeb;
+  transition: background color 0.09s ease-in-out;
+  position: relative;
+
+}
+
+input[ type= checkbox].toggle-switch:active::after{
+ background-color: #f2f2f2;
+ padding-right: .8em;
+
+}
+input[type=checkbox].toggle-switch::after{
+  content:"";
+  width:2em;
+  height: 2em;
+  background-color: white;
+  border-radius: 3rem ;
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: left 0.3s cubic-bezier(0.175 , 0.885 , 0.32, 1.275),
+  padding0.3s ease, margin0.3s ease;
+  box-shadow:2px 0px 5px 0 rgba(0,0,0,0,15) ;
+}
+input[type-checkbox].toggle-switch.active::after{
+ content:"";
+ width:2em;
+ height:2em;
+ background-color: white;
+ border-radius: 3em;
+ position: absolute;
+ left: 5px;
+ top: 50%;
+ transform: translateX(-50%) ;
+ transition:left 0.3s ;
 
 }

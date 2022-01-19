@@ -157,6 +157,8 @@ export default () => {
     const containerIconsBtn = document.querySelectorAll(".containerIconsBtn");
     const groupBtnUpdate = document.querySelectorAll(".groupBtnUpdate");
     const btnSave = document.querySelectorAll(".btnSave");
+   
+
 
     const iconPostStart = document.querySelectorAll(".iconPostStart");
     const iconPostHeart = document.querySelectorAll(".iconPostHeart");
@@ -164,12 +166,16 @@ export default () => {
     const getFile = document.querySelector("#fichero");
     getFile.addEventListener("change", uploadFile);
 
+
     function uploadFile() {
 
       console.log("entraaa");
       getFileAddAccount = getFile.files[0];
       console.log("se obtiene", getFileAddAccount);
+
     }
+
+     
 
     iconPostStart.forEach((icon) => {
       icon.addEventListener("click", async (e) => {
@@ -294,21 +300,52 @@ export default () => {
         //fin del else
       })
     })
-
   }
+  const openModalEditar = divElemt.querySelector('#editAccountUser');
+  const modal = divElemt.querySelector('.modal');
+  const closeModalEditar = divElemt.querySelector('.modal__close');
+  const editarForm= divElemt.querySelector("#editarForm");
+  const registerForm = divElemt.querySelector("#register-form")
+  
+  openModalEditar.addEventListener('click', (e)=>{
+      e.preventDefault();
+      console.log("modal")
+      modal.classList.add('modal--show'); 
+  });
+
+  closeModalEditar.addEventListener('click', (e)=>{
+    e.preventDefault();
+    modal.classList.remove('modal--show');
+});
+
+registerForm.addEventListener("submit",(e)=>{
+  e.preventDefault();
+
+  const nameUser= registerForm["user"].value
+  const emailUser= registerForm["email"].value
+  const interesesUser= registerForm["codipos"].value
+  const locacionUser= registerForm["locacion"].value
+  const redesUser= registerForm["redes"].value
+})
 
   return divElemt;
+  };
 
-}
 
-export {
-  showPublishAccount,
-  getFileAddAccount,
-  displayNameAccount,
-  photoURLAccount,
-  emailAccount,
-  useridAccount,
-  formPublishAccount,
-  miModalPublishVoidAccount,
-  btnReturnAccount
-} 
+
+
+  
+  
+  export { 
+    showPublishAccount, 
+    getFileAddAccount, 
+    displayNameAccount, 
+    photoURLAccount, 
+    emailAccount, 
+    useridAccount, 
+    formPublishAccount, 
+    miModalPublishVoidAccount, 
+    btnReturnAccount }
+  
+
+
