@@ -1,0 +1,32 @@
+/*------------SECTION NOTIFICATIONS------------*/
+
+.containerNotifications {
+    width: 90%;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: 'Questrial', sans-serif;
+    padding: 10px;
+    column-gap: 9px;
+}
+
+.heart {
+  background: #f5246866;
+}
+.coment {
+  background: #0edbff66;
+}
+.star {
+  background: #f8e21d66;
+}
+
+.userProfileNotification img {
+  width: 60px;
+  border-radius: 100%;
+  height: 60px;
+}
+
+.userDescriptionNotification bold {
+  font-weight: bold;
+}

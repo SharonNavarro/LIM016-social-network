@@ -21,6 +21,8 @@ import {
   getUsers,
   inLikes,
   desLikes,
+  inHeart,
+  desHeart,
   queryEmailUnique,
 } from "../firebase/firestore.js";
 
@@ -100,6 +102,7 @@ export default () => {
  
   showPublishAccount = async () => {
     getFileAddAccount="";
+
     await getIdUsers();
     async function getIdUsers() {
       const querySnapshot = await getUsers();
@@ -109,8 +112,10 @@ export default () => {
         }
       });
     }
+    
     let imagenAdd;
     let contStars = [];
+    let contHearts = [];
     querySnapshot = await getPublishes();
     let templatePosts = "";
     querySnapshot.forEach((doc) => {
@@ -124,13 +129,17 @@ export default () => {
       urlPhoto = doc.data().urlPhoto;
       contStars = doc.data().likesPost;
       imagenAdd = doc.data().imagen;
+      contHearts = doc.data().hearts;
      
       let iconStars;
+      let iconHearts;
      
       (contStars.indexOf(idUsuarioLogin) !==-1)? iconStars = 'paint' : iconStars = '';
       
+      (contHearts.indexOf(idUsuarioLogin) !==-1)? iconHearts = 'paintHeart' : iconHearts = ''; 
+
       if (displayNameAccount == userName) {
-        templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd);
+        templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd, iconHearts, contHearts.length);
 
       }
 
@@ -144,13 +153,13 @@ export default () => {
     const btnDelete = document.querySelector("#btnDelete");
     const btnCancel = document.querySelectorAll(".btnCancel");
     const btnCancelUpdate = document.querySelectorAll(".btnCancelUpdate");
-    const btnEdit = document.querySelector("#btnEdit");
     const contenido = document.querySelectorAll(".contenido");
     const containerIconsBtn = document.querySelectorAll(".containerIconsBtn");
     const groupBtnUpdate = document.querySelectorAll(".groupBtnUpdate");
     const btnSave = document.querySelectorAll(".btnSave");
 
     const iconPostStart = document.querySelectorAll(".iconPostStart");
+    const iconPostHeart = document.querySelectorAll(".iconPostHeart");
 //
     const getFile = document.querySelector("#fichero");
     getFile.addEventListener("change", uploadFile);
@@ -177,6 +186,21 @@ export default () => {
         }
       })
     })
+
+    iconPostHeart.forEach((iconHeart) => {
+      iconHeart.addEventListener("click", async (e) => {
+        const idPostHeart = e.target.dataset.id;
+        if (e.target.classList.contains('paintHeart')) {
+          desHeart(idPostHeart, idUsuarioLogin).FieldValue;
+          await showPublishAccount();
+        } else {
+          inHeart(idPostHeart, idUsuarioLogin).FieldValue;
+          e.target.classList.add('paintHeart');
+          await showPublishAccount();
+        }
+      })
+    })
+
 
     selectEdition.forEach(selectEdition => {
 
