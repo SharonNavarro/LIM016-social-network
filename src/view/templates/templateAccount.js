@@ -1,13 +1,12 @@
 const templateViewAccount = `
     <div class="content">
         <div class="containerAccount" id="containerAccount">
-            <div class="userProfile" id="userProfile"> </div>
-
+            <div class="userProfile" id="userProfile"> </div>   
             <div class="userBio"> </div>
         
             <div class="alignCenter">
 
-                <div class="containerWriter">
+                <div class="containerWriterAccount">
 
                     <div class="userProfile">
                     <img id="photoUser">

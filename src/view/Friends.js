@@ -2,7 +2,7 @@ export default () => {
   const viewFriends = /*html*/ `
  
   <div class="contentFriends" > 
-    <div class="containerFriends">
+    <div class="content">
     <div class="seccion-buscar-Friends">
     <div class="searchBar">
         <input type="search" class="search" placeholder="Buscar usuario">
