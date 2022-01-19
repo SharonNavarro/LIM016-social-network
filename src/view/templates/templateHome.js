@@ -100,7 +100,7 @@ const templateHome = /*html */ `
 `;
 
 
-const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPublish, contStars, iconStars,imagenAdd) => `        
+const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPublish, contStars, iconStars,imagenAdd, iconHearts, contHearts) => `        
           
 <div class="containerPosts" >
       <div class="containerAlignItems"> 
@@ -124,9 +124,9 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
             <div><img class="imageAdd" src="${imagenAdd}"></div>    
             <div class="containerIconsBtn"  data-id="${id}">
                 <div class="addPosts">
-                <div class="iconPost " data-id="${id}" ><i class="far fa-heart icoHeart"></i></div>
-                <div class="iconPost"><i class="far fa-comment-alt"></i></div>
-                <div class="iconPost " ><i class="far fa-star iconPostStart ${iconStars}" data-id="${id}" ></i>${contStars}</div>
+                  <div class="iconPost" data-id="${id}"> <i class="far fa-heart iconPostHeart ${iconHearts}" data-id="${id}"> </i>${contHearts}</div>
+                  <div class="iconPost"> <i class="far fa-comment-alt"> </i></div>
+                  <div class="iconPost" data-id="${id}"> <i class="far fa-star iconPostStart ${iconStars}" data-id="${id}" > </i>${contStars}</div>
                 </div>
             </div>
             <div class="groupBtnOptionsUpdate hiddenBtn groupBtnUpdate" data-id="${id}" > 
@@ -147,7 +147,7 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
 </div> 
 
       `;
-const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, hourPublish, contStars, iconStars,imagenAdd )=> `        
+const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, hourPublish, contStars, iconStars,imagenAdd, iconHearts, contHearts )=> `        
           
       <div class="containerPosts" >
             <div class="containerAlignItems"> 
@@ -171,9 +171,9 @@ const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, ho
                   <div><img class="imageAdd"  src="${imagenAdd}"></div>       
                   <div class="containerIconsBtn"  data-id="${id}">
                       <div class="addPosts">
-                      <div class="iconPost " data-id="${id}" ><i class="far fa-heart icoHeart"></i></div>
-                      <div class="iconPost"><i class="far fa-comment-alt"></i></div>
-                      <div class="iconPost "><i class="far fa-star iconPostStart ${iconStars}" data-id="${id}"> </i>${contStars} </div>
+                        <div class="iconPost" data-id="${id}"> <i class="far fa-heart iconPostHeart ${iconHearts}" data-id="${id}"> </i>${contHearts}</div>
+                        <div class="iconPost"> <i class="far fa-comment-alt"> </i></div>
+                        <div class="iconPost" data-id="${id}"> <i class="far fa-star iconPostStart ${iconStars}" data-id="${id}" > </i>${contStars}</div>
                       </div>
                   </div>
                   <div class="groupBtnOptionsUpdate hiddenBtn groupBtnUpdate" data-id="${id}" > 

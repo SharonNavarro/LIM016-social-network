@@ -17,6 +17,8 @@ import {
   getUsers,
   inLikes,
   desLikes,
+  inHeart,
+  desHeart,
   queryEmailUnique,
 } from "../firebase/firestore.js"
 
@@ -78,10 +80,8 @@ export default () => {
     }
 
   }
+
   let idUsuarioLogin, querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
-
-
-
 
   showPublish = async () => {
     getFileAdd=""
@@ -96,6 +96,7 @@ export default () => {
     }
     let imagenAdd;
     let contStars = [];
+    let contHearts = [];
     querySnapshot = await getPublishes();
     let templatePosts = "";
     querySnapshot.forEach((doc) => {
@@ -109,16 +110,20 @@ export default () => {
       urlPhoto = doc.data().urlPhoto;
       contStars = doc.data().likesPost;
       imagenAdd = doc.data().imagen;
+      contHearts = doc.data().hearts;
 
       let iconStars;
+      let iconHearts;
 
       (contStars.indexOf(idUsuarioLogin) !== -1) ? iconStars = 'paint' : iconStars = '';
+      
+      (contHearts.indexOf(idUsuarioLogin) !==-1)? iconHearts = 'paintHeart' : iconHearts = ''; 
 
       if (displayName == userName) {
-        templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd)
+        templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd, iconHearts, contHearts.length);
 
       } else {
-        templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd)
+        templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd, iconHearts, contHearts.length);
       }
 
     });
@@ -137,6 +142,7 @@ export default () => {
     const btnSave = document.querySelectorAll(".btnSave");
 
     const iconPostStart = document.querySelectorAll(".iconPostStart");
+    const iconPostHeart = document.querySelectorAll(".iconPostHeart");
     //--------------------------------------------
     const getFile = document.querySelector("#fichero")
 
@@ -163,6 +169,20 @@ export default () => {
           e.target.classList.add('paint')
           console.log("se pinto");
           await showPublish();
+        }
+      })
+    })
+
+    iconPostHeart.forEach((iconHeart) => {
+      iconHeart.addEventListener("click", async (e) => {
+        const idPostHeart = e.target.dataset.id;
+        if (e.target.classList.contains('paintHeart')) {
+          desHeart(idPostHeart, idUsuarioLogin).FieldValue;
+          await showPublishAccount();
+        } else {
+          inHeart(idPostHeart, idUsuarioLogin).FieldValue;
+          e.target.classList.add('paintHeart');
+          await showPublishAccount();
         }
       })
     })
