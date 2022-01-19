@@ -37,9 +37,9 @@ const savePublish = (textPost, datePublish, hourPublish, userName, urlPhoto, dat
     likesPost: [],
     idUser: idUser,
     //contentFile: "",
-    imagen:imagen
-    /* hearts: totalHearts,
-  comments:comments, */
+    imagen:imagen,
+    hearts: []
+    /*comments:comments, */
 
 });
 
@@ -47,7 +47,11 @@ const saveUser = async (idUser, nameUser, emailUser/* ,photoURL, */) => await se
     idUser,
     nameUser,
     emailUser,
-    /*  photoURL */
+    photoURL,
+    frontPageURL,
+    interests,
+    location,
+    socialNetwork
 });
 
 const getUsers = () => getDocs(query(DBUsers));
@@ -70,6 +74,14 @@ const desLikes = async (idPost, idUserLike) => await updateDoc(doc(db, "posts", 
     likesPost: arrayRemove(idUserLike),
 });
 
+const inHeart = async (id, idUserLikeHeart) => await updateDoc(doc(db, "posts", id), {
+    hearts: arrayUnion(idUserLikeHeart),
+});
+
+const desHeart = async (idPost, idUserLikeHeart) => await updateDoc(doc(db, "posts", idPost), {
+    hearts: arrayRemove(idUserLikeHeart),
+});
+
 const queryEmailUnique = async (emailText) => await getDocs(query(collection(db, "users"), where("emailUser", "==", emailText)));
 
 //Storage
@@ -78,6 +90,8 @@ export {
   
     desLikes,
     inLikes,
+    inHeart,
+    desHeart,
 
     savePublish,
     getPublishes,

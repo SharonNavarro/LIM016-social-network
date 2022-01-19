@@ -63,7 +63,7 @@ const templateViewAccountProfileUser = `
         </button>
     </div> `;
 
-const templateViewAccountProfileUserBio = /*html*/ `
+const templateViewAccountProfileUserBio =  `
 
 <div class="userProfileBody">
 <div class="userProfileBio" id="userProfileBio">
@@ -71,8 +71,7 @@ const templateViewAccountProfileUserBio = /*html*/ `
     <p class="texto"></p>
 </div>
     <div class="perfil-usuario-footer">
-        <ul class="lista-datos">                
-            <li><i class="icono fas fa-at"></i>E-mail:</li>
+        <ul class="lista-datos"> 
             <li><i class="icono fas fa-bolt"></i>Intereses:</li>
             <li><i class="icono fas fa-map-marker-alt"></i>Locación:</li>
             <li><i class="icono fas fa-share-alt"></i>Redes sociales:</li>
@@ -85,26 +84,24 @@ const templateViewAccountProfileUserBio = /*html*/ `
 <section class="modal ">
 <form class="modal__container"id="register-form">
     <div class="form-group" >
+
         <h3 class="datos">Datos de la Cuenta</h3>
-        <label for="user">Nombre de Usuario:</label>
-        <input type="text" class="form-control" id="user" placeholder="Usuario">
-        <label for="email">Correo Electronico:</label>
-        <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
-        <label for="codipos" >Intereses:</label>
-        <input type="text" class="form-control intereses" id="codipos" placeholder="Criptomonedas y Tecnologia">
-        <label for="codipos">Locación:</label>
-        <input type="text" class="form-control" id="locacion" placeholder="Lima">
-        <label for="codipos">Redes Sociales :</label>
-        <input type="text" class="form-control" id="redes" placeholder="Lima">
+
+        <input type="text" class="form-control" id="userNameBio" placeholder="Nombre de suario">
+
+        <input type="text" class="form-control intereses" id="interestBio" placeholder="Intereses">
+
+        <input type="text" class="form-control" id="locacionBio" placeholder="Locación">
+
+        <input type="text" class="form-control" id="socialNetworkBio" placeholder="Redes Sociales">
+
       </div>
     <div class="buttonModalPerfil">
         <button href="#" class="modal__close">Cancelar</button>
         <button type="submit" href="#" class="modal__close" id="editarForm">Enviar</button>
     </div>
 </form>
-</section>
-
- `;
+</section> `;
 
 export {
   templateViewAccount,
