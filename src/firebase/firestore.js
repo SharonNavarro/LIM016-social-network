@@ -47,7 +47,11 @@ const saveUser = async (idUser, nameUser, emailUser/* ,photoURL, */) => await se
     idUser,
     nameUser,
     emailUser,
-    /*  photoURL */
+    photoURL,
+    frontPageURL,
+    interests,
+    location,
+    socialNetwork
 });
 
 const getUsers = () => getDocs(query(DBUsers));
