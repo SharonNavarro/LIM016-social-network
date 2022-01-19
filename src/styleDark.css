@@ -1,0 +1,100 @@
+/*-----------------switch-------------------*/
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*VARIABLES*/
+
+:root {
+  --bg-color: #f3f3f3;
+  --txt-color: #030303;
+  --icon-color: #f3f3f3;
+}
+
+[data-theme='oscuro'] {
+  --bg-color: #3f3f3f;
+  --txt-color: #e9e5e5;
+}
+
+body .content , .body-chat,.contentFriends , .containerAccount .userProfileBio {
+
+ 
+background: var(--bg-color);
+color: var(--txt-color);
+
+  }
+
+
+body .containerAccount .perfil-usuario-footer,  .container, .userProfileBio ,.ulMenu2{
+
+  background: var(--bg-color);
+  color: var(--txt-color);
+
+}
+
+body .ulMenu{
+
+  background: var(--bg-color);
+  color: var(--txt-color);
+
+}
+
+
+/*TOGGLE SWITCH*/
+
+#toggleLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 28px;
+  width: 60px;
+  background-color: #1f1e1e;
+  border-radius: 16px;
+  padding: 2px 2px 0 2px;
+  position: relative;
+}
+
+#toggle {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.slider::before {
+  position: absolute;
+  content: '';
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #f3f3f3;
+  top: -1px;
+  left: -1px;
+  box-shadow: blue 0 0 5px;
+  transition: 0.4s;
+}
+
+input:checked + .slider::before {
+  transform: translateX(32px);
+}
+
+.btnDark{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 1rem;
+}    

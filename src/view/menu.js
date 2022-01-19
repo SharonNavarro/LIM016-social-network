@@ -9,12 +9,18 @@ export default () => {
   </label> 
   <div class="contentTitulo">
   <h2 class="titulo">Netcoins</h2>
-  <button class="switch" id="switch">
-    <span><i class="fas fa-sun"></i></span>
-    <span><i class="fas fa-moon"></i></span>
-  </button>
   </div> 
+  
   <nav>
+
+  <div class="btnDark">
+  <label id="toggleLabel" for="toggle">
+  <span>&#x1F31E</span>
+   <input type="checkbox" id="toggle">
+   <span class="slider"></span>
+ <span>🌜</span>
+</label>
+</div> 
     <ul class="ulMenu">
     <li class="li1"><a href="#/Account"><i class="far fa-user-circle"></i>Mi perfil</a></li>
     <li><a href="#/Friends"><i class="fas fa-users"></i>Amigos</a> </li>
@@ -63,8 +69,44 @@ export default () => {
 
   } */
 
+ 
+const toggle = divElemt.querySelector('#toggle');
+const themeActual= localStorage.getItem("theme");
+
+
+
+if(themeActual){
+
+ document.body.setAttribute("data-theme",themeActual);
+
+}
+
+if(themeActual === "oscuro"){
+
+  toggle.checked =true;
+
+}
+
+
+const cambiarTheme = (event) => {
+  if (event.target.checked) {
+    document.body.setAttribute('data-theme', 'oscuro');
+    localStorage.setItem("theme", "oscuro");
+ 
+  } else {
+    document.body.setAttribute('data-theme', null);
+    localStorage.setItem("theme", "null");
+  }
+};
+
+toggle.addEventListener('click', cambiarTheme);
+
+
+
   return divElemt;
 }
+
+
 
 /* function menuInteractivo() { setTimeout(() => {
   
