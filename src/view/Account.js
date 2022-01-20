@@ -1,11 +1,14 @@
 import { userState } from "../firebase/auth.js";
 
-import { publishPostsAccount } from "../lib/functions.js";
+import { 
+  publishPostsAccount,
+  editBioProfile
+ } from "../lib/functions.js";
 
 import { 
   templateViewAccount,
   templateViewAccountProfileUser,
-  templateViewAccountProfileUserBio 
+  templateForInsideBio
 } from "./templates/templateAccount.js";
 
 import {
@@ -19,6 +22,7 @@ import {
   getPublish,
   saveUser,
   getUsers,
+  getUser,
   inLikes,
   desLikes,
   inHeart,
@@ -35,14 +39,12 @@ import {
 let showPublishAccount, getFileAddAccount;
 let displayNameAccount, photoURLAccount, emailAccount, useridAccount;
 let formPublishAccount, miModalPublishVoidAccount;
-let btnReturnAccount;
+let btnReturnAccount, registerForm, modal,  publishBio;
 
 export default () => {
 
   const viewAccount = templateViewAccount;
   const viewAccountProfileUser = templateViewAccountProfileUser;
-  const viewAccountProfileUserBio = templateViewAccountProfileUserBio;
-  //const viewTemplateHome = templateHome;
 
   const divElemt = document.createElement('section');
   divElemt.classList.add('position');
@@ -50,8 +52,6 @@ export default () => {
 
   const userProfile =divElemt.querySelector('.userProfile');
   userProfile.innerHTML = viewAccountProfileUser;
-  const userBio =divElemt.querySelector('.userBio');
-  userBio.innerHTML = viewAccountProfileUserBio;
 
   const photoUser = divElemt.querySelector('#photoUser');
   const nameUser = divElemt.querySelector('.nameUser');
@@ -72,30 +72,45 @@ export default () => {
       photoUser.src = photoURLAccount;  
       photoPerfil.src = photoURLAccount;     
       useridAccount = user.uid;
+      editBioProfile();
       await showPublishAccount();
       publishPostsAccount(formPublishAccount, miModalPublishVoidAccount, btnReturnAccount);
+      await publishBio();
     }
   })
+
+  let photoURL, frontPageURL, interests, location, socialNetwork;
 
   localStorage.setItem("IdUsuario", idUsuario);
   localStorage.setItem("Nombre", nombreUsuario);
   localStorage.setItem("Correo", emailUsuario);
+  localStorage.setItem("photoURL", photoURL);
+  localStorage.setItem("frontPageURL", frontPageURL);
+  localStorage.setItem("interests", interests);
+  localStorage.setItem("location", location);
+  localStorage.setItem("socialNetwork", socialNetwork);
+
   UserNotExistCreate();
+
   async function UserNotExistCreate() {
 
+    const idUsu = localStorage.getItem("IdUsuario");
     const disName = localStorage.getItem("Nombre");
     const emailUsu = localStorage.getItem("Correo");
-    const idUsu = localStorage.getItem("IdUsuario");
+    const photoURLUsu = localStorage.getItem("photoURL");
+    const frontPageURLUsu = localStorage.getItem("frontPageURL");
+    const interestsUsu = localStorage.getItem("interests");
+    const locationUsu = localStorage.getItem("location");
+    const socialNetworkUsu = localStorage.getItem("socialNetwork");
 
     const querySnapshote = await queryEmailUnique(emailUsu);
     if (querySnapshote.size > 0) {
       console.log("usuario registrado");
     } else {
-      await saveUser(idUsu, disName, emailUsu);
+      await saveUser(idUsu, disName, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
       console.log("datos guardados");
       await showPublishAccount();
     }
-
   }
 
   let idUsuarioLogin, querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
@@ -108,7 +123,7 @@ export default () => {
       const querySnapshot = await getUsers();
       querySnapshot.forEach((doc) => {
         if (displayNameAccount == doc.data().nameUser) {
-          idUsuarioLogin = doc.data().idUser;
+              idUsuarioLogin = doc.data().idUser;
         }
       });
     }
@@ -301,40 +316,73 @@ export default () => {
       })
     })
   }
+
+  /* ----MODAL PARA EDITAR ACCOUNT---------*/
+
   const openModalEditar = divElemt.querySelector('#editAccountUser');
-  const modal = divElemt.querySelector('.modal');
-  const closeModalEditar = divElemt.querySelector('.modal__close');
-  const editarForm= divElemt.querySelector("#editarForm");
-  const registerForm = divElemt.querySelector("#register-form")
-  
-  openModalEditar.addEventListener('click', (e)=>{
-      e.preventDefault();
-      console.log("modal")
-      modal.classList.add('modal--show'); 
-  });
+    modal = divElemt.querySelector('.modal');
+    const closeModalEditar = divElemt.querySelector('.modal__close');
+    const editarForm= divElemt.querySelector("#editarForm");
+    registerForm = divElemt.querySelector("#register-form");
+    const containerBio = divElemt.querySelector('#containerBio');
 
-  closeModalEditar.addEventListener('click', (e)=>{
-    e.preventDefault();
-    modal.classList.remove('modal--show');
-});
+    let querySnapshotBio, idUsuarioBio;
 
-registerForm.addEventListener("submit",(e)=>{
-  e.preventDefault();
+    publishBio = async () => {
+    
+      openModalEditar.addEventListener("click", async (e)=>{
+        e.preventDefault();
+        modal.classList.add('modal--show'); 
+        registerForm["userNameBio"].value = displayNameAccount;
+      })
 
-  const nameUser= registerForm["user"].value
-  const emailUser= registerForm["email"].value
-  const interesesUser= registerForm["codipos"].value
-  const locacionUser= registerForm["locacion"].value
-  const redesUser= registerForm["redes"].value
-})
+      closeModalEditar.addEventListener('click', (e)=>{
+        e.preventDefault();
+        modal.classList.remove('modal--show');
+      });
 
-  return divElemt;
+      // await getIdUsers();
+      // async function getIdUsers() {
+      //   const querySnapshot = await getUsers();
+      //   querySnapshot.forEach((doc) => {
+      //     if (displayNameAccount == doc.data().nameUser) {
+      //       idUsuarioBio = doc.data().idUser;
+      //     }
+      //   })
+      // };
+
+      let interests = "";
+      let locationBio = "";
+      let socialNetwork = "";
+      let nameUserBio, emailUser, photo, frontPageURL;
+
+      containerBio.innerHTML = templateForInsideBio(interests, locationBio, socialNetwork);
+
+      querySnapshotBio = await getUsers();
+      let templateBio = "";
+      querySnapshotBio.forEach((doc) => {
+        nameUserBio = doc.data().nameUser;
+        emailUser = doc.data().emailUser;
+        photo = doc.data().photo;
+        frontPageURL = doc.data().frontPageURL;
+        interests = doc.data().interests;
+        locationBio = doc.data().location;
+        socialNetwork = doc.data().socialNetwork;
+
+        if (displayNameAccount == nameUserBio) {
+          templateBio = templateForInsideBio(interests, locationBio, socialNetwork);
+        }
+
+        containerBio.innerHTML = templateBio;
+
+    });
+
   };
 
+  return divElemt;
 
+};
 
-
-  
   
   export { 
     showPublishAccount, 
@@ -345,7 +393,11 @@ registerForm.addEventListener("submit",(e)=>{
     useridAccount, 
     formPublishAccount, 
     miModalPublishVoidAccount, 
-    btnReturnAccount }
+    btnReturnAccount,
+    registerForm,
+    modal,
+    publishBio
+  }
   
 
 

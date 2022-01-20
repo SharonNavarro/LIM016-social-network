@@ -1,5 +1,7 @@
 import {
    savePublish,
+   saveUser,
+   updateBio,
    getDownloadURL,
    ref, storage,
    uploadBytesResumable
@@ -28,7 +30,10 @@ import {
    useridAccount,
    formPublishAccount,
    miModalPublishVoidAccount,
-   btnReturnAccount
+   btnReturnAccount,
+   registerForm,
+   modal, 
+   publishBio
 } from "../view/Account.js"
 
 
@@ -240,5 +245,25 @@ let uploadFilesAccount = (getFileAddAccount) => {
    }
 
 }
+
+export const editBioProfile = () => {
+    registerForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      let frontPageURLUsu = "";
+      const userNameBio = registerForm["userNameBio"].value;
+      const interestBio = registerForm["interestBio"].value;
+      const locacionBio = registerForm["locacionBio"].value;
+      const socialNetworkBio = registerForm["socialNetworkBio"].value;
+
+      if (interestBio, locacionBio, socialNetworkBio == "") {
+         await saveUser(useridAccount, userNameBio, emailAccount, photoURLAccount, frontPageURLUsu, interestBio, locacionBio, socialNetworkBio);
+         modal.classList.remove('modal--show');
+         await publishBio();
+         console.log("se guardo una nueva coleccion");
+      } else {
+
+      }
+    });
+  };
 
 

@@ -3,7 +3,43 @@ const templateViewAccount = `
         <div class="containerAccount" id="containerAccount">
             <div class="userProfile" id="userProfile"> </div>
 
-            <div class="userBio"> </div>
+            <div class="userBio"> 
+                <div class="userProfileBody">
+                    <div class="userProfileBio" id="userProfileBio">
+                        <h3 class="name" ></h3>
+                        <p class="texto"></p>
+                    </div>
+                    <div class="perfil-usuario-footer">
+                        <div id="containerBio">
+                        
+                        </div>
+                        <button class="hero__cta  boton-portada" id ="editAccountUser"> 
+                            <i class="fas fa-user-edit"></i> Editar perfil
+                        </button>
+                    </div>
+                </div>
+                <section class="modal ">
+                    <form class="modal__container" id="register-form">
+                        <div class="form-group" >
+                
+                            <h3 class="datos">Datos de la Cuenta</h3>
+                
+                            <input type="text" class="form-control" id="userNameBio" placeholder="Nombre de usuario">
+                
+                            <input type="text" class="form-control intereses" id="interestBio" placeholder="Intereses">
+                
+                            <input type="text" class="form-control" id="locacionBio" placeholder="Locación">
+                
+                            <input type="text" class="form-control" id="socialNetworkBio" placeholder="Redes Sociales">
+                
+                        </div>
+                        <div class="buttonModalPerfil">
+                            <button href="#" class="modal__close">Cancelar</button>
+                            <button type="submit" href="#" class="modal__close" id="editarForm">Enviar</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
         
             <div class="alignCenter">
 
@@ -64,48 +100,18 @@ const templateViewAccountProfileUser = `
         </button>
     </div> `;
 
-const templateViewAccountProfileUserBio =  `
 
-<div class="userProfileBody">
-<div class="userProfileBio" id="userProfileBio">
-    <h3 class="name" ></h3>
-    <p class="texto"></p>
-</div>
-    <div class="perfil-usuario-footer">
+const templateForInsideBio = (interests, locationBio, socialNetwork) => `
+
         <ul class="lista-datos"> 
-            <li><i class="icono fas fa-bolt"></i>Intereses:</li>
-            <li><i class="icono fas fa-map-marker-alt"></i>Locación:</li>
-            <li><i class="icono fas fa-share-alt"></i>Redes sociales:</li>
-        </ul>
-        <button class="hero__cta  boton-portada" id ="editAccountUser"> 
-        <i class="fas fa-user-edit"></i> Editar perfil
-        </button>
-    </div>
-</div>
-<section class="modal ">
-<form class="modal__container"id="register-form">
-    <div class="form-group" >
+            <li><i class="icono fas fa-bolt"></i>Intereses: ${interests} </li>
+            <li><i class="icono fas fa-map-marker-alt"></i>Locación: ${locationBio} </li>
+            <li><i class="icono fas fa-share-alt"></i>Redes sociales: ${socialNetwork}</li>
+        </ul>`;
 
-        <h3 class="datos">Datos de la Cuenta</h3>
-
-        <input type="text" class="form-control" id="userNameBio" placeholder="Nombre de suario">
-
-        <input type="text" class="form-control intereses" id="interestBio" placeholder="Intereses">
-
-        <input type="text" class="form-control" id="locacionBio" placeholder="Locación">
-
-        <input type="text" class="form-control" id="socialNetworkBio" placeholder="Redes Sociales">
-
-      </div>
-    <div class="buttonModalPerfil">
-        <button href="#" class="modal__close">Cancelar</button>
-        <button type="submit" href="#" class="modal__close" id="editarForm">Enviar</button>
-    </div>
-</form>
-</section> `;
 
 export {
   templateViewAccount,
   templateViewAccountProfileUser,
-  templateViewAccountProfileUserBio
+  templateForInsideBio
 };
