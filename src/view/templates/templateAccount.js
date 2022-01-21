@@ -43,7 +43,7 @@ const templateViewAccount = `
         
             <div class="alignCenter">
 
-                <div class="containerWriter">
+                <div class="containerWriterAccount">
 
                     <div class="userProfile">
                     <img id="photoUser">
