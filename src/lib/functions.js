@@ -7,8 +7,9 @@ import {
    saveUser,
    getDownloadURL,
    ref, storage,
-   uploadBytesResumable
-
+   uploadBytesResumable,
+   updateUserNamePost,
+   getPublishes
 } from "../firebase/firestore.js"
 
 import {
@@ -35,7 +36,6 @@ import {
    miModalPublishVoidAccount,
    btnReturnAccount,
    registerForm,
-   modal, 
    publishBio
 } from "../view/Account.js"
 
@@ -262,10 +262,18 @@ export const editBioProfile = () => {
       const locacionBio = registerForm["locacionBio"].value;
       const socialNetworkBio = registerForm["socialNetworkBio"].value;
 
+      const querySnapshotPosts = await getPublishes();
+      querySnapshotPosts.forEach( async (doc) => {
+        if (useridAccount == doc.data().idUser) {
+               await updateUserNamePost(doc.id, userNameBio); 
+        }
+      });
+
       await updateNameUser(userNameBio);
       await saveUser(useridAccount, userNameBio, emailAccount, photoURLAccount, frontPageURLUsu, interestBio, locacionBio, socialNetworkBio);
       await publishBio();
-      window.onload;
+      await showPublishAccount();
+      window.location.reload();
     });
   };
 

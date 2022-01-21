@@ -66,6 +66,10 @@ const updatePublish = async (id, textPost) => await updateDoc(doc(db, "posts", i
     content: textPost
 });
 
+const updateUserNamePost = async (id, userName) => await updateDoc(doc(db, "posts", id), {
+    userName: userName
+});
+
 const deletePublish = async (id) => await deleteDoc(doc(db, "posts", id));
 
 const inLikes = async (id, idUserLike) => await updateDoc(doc(db, "posts", id), {
@@ -105,9 +109,11 @@ export {
     db,
     getPublish,
     updatePublish,
+    updateUserNamePost,
     saveUser,
     getUsers,
     getUser,
+    
     queryEmailUnique,
     getDownloadURL,
     ref,storage,
