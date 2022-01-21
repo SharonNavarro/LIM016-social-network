@@ -43,18 +43,20 @@ const savePublish = (textPost, datePublish, hourPublish, userName, urlPhoto, dat
 
 });
 
-const saveUser = async (idUser, nameUser, emailUser/* ,photoURL, */) => await setDoc(doc(db, "users", idUser), {
+const saveUser = async (idUser, nameUser, emailUser, photo, frontPageURL, interests, location, socialNetwork) => await setDoc(doc(db, "users", idUser), {
     idUser,
     nameUser,
     emailUser,
-    photoURL,
-    frontPageURL,
-    interests,
-    location,
-    socialNetwork
+    photoURL: photo,
+    frontPageURL: frontPageURL,
+    interests: interests,
+    location: location,
+    socialNetwork: socialNetwork
 });
 
 const getUsers = () => getDocs(query(DBUsers));
+
+const getUser = async (id) => await getDoc(doc(db, "users", id));
 
 const getPublishes = () => getDocs(query(DBPosts, orderBy("dateOrderComplet", "desc")));
 
@@ -105,11 +107,9 @@ export {
     updatePublish,
     saveUser,
     getUsers,
+    getUser,
     queryEmailUnique,
     getDownloadURL,
     ref,storage,
     uploadBytesResumable
-
-    
-
 };

@@ -1,5 +1,10 @@
 import {
+   updateNameUser
+} from "../firebase/auth.js"
+
+import {
    savePublish,
+   saveUser,
    getDownloadURL,
    ref, storage,
    uploadBytesResumable
@@ -28,7 +33,10 @@ import {
    useridAccount,
    formPublishAccount,
    miModalPublishVoidAccount,
-   btnReturnAccount
+   btnReturnAccount,
+   registerForm,
+   modal, 
+   publishBio
 } from "../view/Account.js"
 
 
@@ -53,7 +61,7 @@ export const removeErrorInput = (formControl, classControl) => {
    return formControl.classList.remove(classControl);
 }
 
-//Funcion que envia las publicaciones a la base de datos
+//Funcion que envia las publicaciones a la base de datos para Home
 
 export const publishPosts = () => {
    formPublish.addEventListener("submit", async (e) => {
@@ -150,6 +158,8 @@ let uploadFiles = (getFileAdd) => {
 
 }
 
+//Funcion que envia las publicaciones a la base de datos para Account
+
 export const publishPostsAccount = () => {
    formPublishAccount.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -240,5 +250,23 @@ let uploadFilesAccount = (getFileAddAccount) => {
    }
 
 }
+
+//Funcion que editar tu bio y tu nombre de usuario
+
+export const editBioProfile = () => {
+    registerForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      let frontPageURLUsu = "";
+      const userNameBio = registerForm["userNameBio"].value;
+      const interestBio = registerForm["interestBio"].value;
+      const locacionBio = registerForm["locacionBio"].value;
+      const socialNetworkBio = registerForm["socialNetworkBio"].value;
+
+      await updateNameUser(userNameBio);
+      await saveUser(useridAccount, userNameBio, emailAccount, photoURLAccount, frontPageURLUsu, interestBio, locacionBio, socialNetworkBio);
+      await publishBio();
+      window.onload;
+    });
+  };
 
 
