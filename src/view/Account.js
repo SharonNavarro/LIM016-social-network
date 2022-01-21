@@ -30,16 +30,10 @@ import {
   queryEmailUnique,
 } from "../firebase/firestore.js";
 
-import { 
-  emailUsuario, 
-  nombreUsuario, 
-  idUsuario 
-} from "./Login.js"
-
 let showPublishAccount, getFileAddAccount;
 let displayNameAccount, photoURLAccount, emailAccount, useridAccount;
 let formPublishAccount, miModalPublishVoidAccount;
-let btnReturnAccount, registerForm, modal,  publishBio;
+let btnReturnAccount, registerForm, modal,  publishBio, idPosts;
 
 export default () => {
 
@@ -76,8 +70,8 @@ export default () => {
       useridAccount = user.uid;
       await publishBio();
       editBioProfile();
-      await showPublishAccount();
       publishPostsAccount(formPublishAccount, miModalPublishVoidAccount, btnReturnAccount);
+      await showPublishAccount();
     }
   })
 
@@ -137,12 +131,11 @@ export default () => {
 
  /* ----MOSTRAR PUBLICACIONES---------*/
 
-  let idUsuarioLogin, querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
+  let idUsuarioLogin, querySnapshot, post, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
  
   showPublishAccount = async () => {
-    console.log("aqui")
+    
     getFileAddAccount="";
-    editBioProfile();
     await getIdUsers();
     async function getIdUsers() {
       const querySnapshot = await getUsers();
@@ -169,6 +162,7 @@ export default () => {
       userName = doc.data().userName;
       urlPhoto = doc.data().urlPhoto;
       contStars = doc.data().likesPost;
+      let idUser = doc.data().idUser;
       imagenAdd = doc.data().imagen;
       contHearts = doc.data().hearts;
      
@@ -179,7 +173,7 @@ export default () => {
       
       (contHearts.indexOf(idUsuarioLogin) !==-1)? iconHearts = 'paintHeart' : iconHearts = ''; 
 
-      if (displayNameAccount == userName) {
+      if (idUser == idUsuarioLogin) {
         templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd, iconHearts, contHearts.length);
       }
 
