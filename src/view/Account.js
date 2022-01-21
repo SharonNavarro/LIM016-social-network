@@ -62,6 +62,8 @@ export default () => {
   miModalPublishVoidAccount = divElemt.querySelector("#miModalPublishVoidAccount");
   btnReturnAccount = divElemt.querySelector("#btnReturnAccount");
 
+   /* ----OBSERVADOR---------*/
+
   userState(async (user) => {
     if (user) {
       displayNameAccount = user.displayName;
@@ -72,58 +74,82 @@ export default () => {
       photoUser.src = photoURLAccount;  
       photoPerfil.src = photoURLAccount;     
       useridAccount = user.uid;
+      await publishBio();
       editBioProfile();
       await showPublishAccount();
       publishPostsAccount(formPublishAccount, miModalPublishVoidAccount, btnReturnAccount);
-      await publishBio();
     }
   })
 
-  let photoURL, frontPageURL, interests, location, socialNetwork;
+  /* ----MODAL PARA EDITAR BIO---------*/
 
-  localStorage.setItem("IdUsuario", idUsuario);
-  localStorage.setItem("Nombre", nombreUsuario);
-  localStorage.setItem("Correo", emailUsuario);
-  localStorage.setItem("photoURL", photoURL);
-  localStorage.setItem("frontPageURL", frontPageURL);
-  localStorage.setItem("interests", interests);
-  localStorage.setItem("location", location);
-  localStorage.setItem("socialNetwork", socialNetwork);
+  const openModalEditar = divElemt.querySelector('#editAccountUser');
+    modal = divElemt.querySelector('.modal');
+    const closeModalEditar = divElemt.querySelector('.modal__close');
+    registerForm = divElemt.querySelector("#register-form");
+    const containerBio = divElemt.querySelector('#containerBio');
 
-  UserNotExistCreate();
+    let querySnapshotBio;
 
-  async function UserNotExistCreate() {
+    publishBio = async () => {
+    
+      openModalEditar.addEventListener("click", async (e)=>{
+        e.preventDefault();
+        modal.classList.add('modal--show'); 
+        registerForm["userNameBio"].value = displayNameAccount;
+      })
 
-    const idUsu = localStorage.getItem("IdUsuario");
-    const disName = localStorage.getItem("Nombre");
-    const emailUsu = localStorage.getItem("Correo");
-    const photoURLUsu = localStorage.getItem("photoURL");
-    const frontPageURLUsu = localStorage.getItem("frontPageURL");
-    const interestsUsu = localStorage.getItem("interests");
-    const locationUsu = localStorage.getItem("location");
-    const socialNetworkUsu = localStorage.getItem("socialNetwork");
+      closeModalEditar.addEventListener('click', (e)=>{
+        e.preventDefault();
+        modal.classList.remove('modal--show');
+      });
 
-    const querySnapshote = await queryEmailUnique(emailUsu);
-    if (querySnapshote.size > 0) {
-      console.log("usuario registrado");
-    } else {
-      await saveUser(idUsu, disName, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
-      console.log("datos guardados");
-      await showPublishAccount();
-    }
-  }
+      let interests = "";
+      let locationBio = "";
+      let socialNetwork = "";
+
+      containerBio.innerHTML = templateForInsideBio(interests, locationBio, socialNetwork);
+
+      let nameUserBio, emailUser, photo, frontPageURL;
+
+      querySnapshotBio = await getUsers();
+      let templateBio = "";
+
+      querySnapshotBio.forEach((doc) => {
+        nameUserBio = doc.data().nameUser;
+        emailUser = doc.data().emailUser;
+        photo = doc.data().photo;
+        frontPageURL = doc.data().frontPageURL;
+        interests = doc.data().interests;
+        locationBio = doc.data().location;
+        socialNetwork = doc.data().socialNetwork;
+
+        if (displayNameAccount == nameUserBio) {
+          templateBio = templateForInsideBio(interests, locationBio, socialNetwork);
+          registerForm["userNameBio"].value = nameUserBio;
+          registerForm["interestBio"].value = interests;
+          registerForm["locacionBio"].value = locationBio;
+          registerForm["socialNetworkBio"].value = socialNetwork;
+        }
+        containerBio.innerHTML = templateBio;
+    });
+  };
+
+ /* ----MOSTRAR PUBLICACIONES---------*/
 
   let idUsuarioLogin, querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
  
   showPublishAccount = async () => {
+    console.log("aqui")
     getFileAddAccount="";
-
+    editBioProfile();
     await getIdUsers();
     async function getIdUsers() {
       const querySnapshot = await getUsers();
       querySnapshot.forEach((doc) => {
         if (displayNameAccount == doc.data().nameUser) {
               idUsuarioLogin = doc.data().idUser;
+              console.log(displayNameAccount)
         }
       });
     }
@@ -155,7 +181,6 @@ export default () => {
 
       if (displayNameAccount == userName) {
         templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd, iconHearts, contHearts.length);
-
       }
 
     });
@@ -317,67 +342,7 @@ export default () => {
     })
   }
 
-  /* ----MODAL PARA EDITAR ACCOUNT---------*/
-
-  const openModalEditar = divElemt.querySelector('#editAccountUser');
-    modal = divElemt.querySelector('.modal');
-    const closeModalEditar = divElemt.querySelector('.modal__close');
-    const editarForm= divElemt.querySelector("#editarForm");
-    registerForm = divElemt.querySelector("#register-form");
-    const containerBio = divElemt.querySelector('#containerBio');
-
-    let querySnapshotBio, idUsuarioBio;
-
-    publishBio = async () => {
-    
-      openModalEditar.addEventListener("click", async (e)=>{
-        e.preventDefault();
-        modal.classList.add('modal--show'); 
-        registerForm["userNameBio"].value = displayNameAccount;
-      })
-
-      closeModalEditar.addEventListener('click', (e)=>{
-        e.preventDefault();
-        modal.classList.remove('modal--show');
-      });
-
-      // await getIdUsers();
-      // async function getIdUsers() {
-      //   const querySnapshot = await getUsers();
-      //   querySnapshot.forEach((doc) => {
-      //     if (displayNameAccount == doc.data().nameUser) {
-      //       idUsuarioBio = doc.data().idUser;
-      //     }
-      //   })
-      // };
-
-      let interests = "";
-      let locationBio = "";
-      let socialNetwork = "";
-      let nameUserBio, emailUser, photo, frontPageURL;
-
-      containerBio.innerHTML = templateForInsideBio(interests, locationBio, socialNetwork);
-
-      querySnapshotBio = await getUsers();
-      let templateBio = "";
-      querySnapshotBio.forEach((doc) => {
-        nameUserBio = doc.data().nameUser;
-        emailUser = doc.data().emailUser;
-        photo = doc.data().photo;
-        frontPageURL = doc.data().frontPageURL;
-        interests = doc.data().interests;
-        locationBio = doc.data().location;
-        socialNetwork = doc.data().socialNetwork;
-
-        if (displayNameAccount == nameUserBio) {
-          templateBio = templateForInsideBio(interests, locationBio, socialNetwork);
-        }
-
-        containerBio.innerHTML = templateBio;
-
-    });
-
-  };
+  
 
   return divElemt;
 

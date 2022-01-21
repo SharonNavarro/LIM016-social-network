@@ -58,12 +58,6 @@ const getUsers = () => getDocs(query(DBUsers));
 
 const getUser = async (id) => await getDoc(doc(db, "users", id));
 
-const updateBio = async (id, interests, location, socialNetwork) => await updateDoc(doc(db, "users", id), {
-    interests: interests,
-    location: location,
-    socialNetwork: socialNetwork
-});
-
 const getPublishes = () => getDocs(query(DBPosts, orderBy("dateOrderComplet", "desc")));
 
 const getPublish = async (id) => await getDoc(doc(db, "posts", id));
@@ -118,7 +112,4 @@ export {
     getDownloadURL,
     ref,storage,
     uploadBytesResumable
-
-    
-
 };

@@ -11,6 +11,7 @@ import {
     getRedirectResult,
     sendEmailVerification,
     sendPasswordResetEmail,
+    updateProfile,
     signOut,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
@@ -85,7 +86,8 @@ export {
     signInWithPopup,
     getRedirectResult,
     sendPasswordResetEmail,
-    signOut,
+    updateProfile,
+    signOut
 };
 
 // exportando firestore
