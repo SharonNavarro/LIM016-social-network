@@ -48,10 +48,10 @@ export const signOutAccount = () => signOut(auth);
 
 export const userState = (callback) => onAuthStateChanged(auth, callback);
 
-// Actualizar nombre y foto de perfil 
+// Actualizar foto de perfil 
 
 export const updatePhotoUser = (photoUserProfile) => updateProfile(auth.currentUser, {photoURL: photoUserProfile} );
 
-// Actualizar foto de perfil 
+// Actualizar nombre
 
 export const updateNameUser = (nameUserProfile) => updateProfile(auth.currentUser, {displayName: nameUserProfile} )

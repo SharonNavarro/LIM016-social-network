@@ -268,7 +268,6 @@ export const editBioProfile = () => {
                await updateUserNamePost(doc.id, userNameBio); 
         }
       });
-
       await updateNameUser(userNameBio);
       await saveUser(useridAccount, userNameBio, emailAccount, photoURLAccount, frontPageURLUsu, interestBio, locacionBio, socialNetworkBio);
       await publishBio();

@@ -1,4 +1,4 @@
-import { userState } from "../firebase/auth.js";
+import { userState, updatePhotoUser } from "../firebase/auth.js";
 
 import { 
   publishPostsAccount,
@@ -20,7 +20,6 @@ import {
   deletePublish,
   updatePublish,
   getPublish,
-  saveUser,
   getUsers,
   getUser,
   inLikes,
@@ -70,10 +69,24 @@ export default () => {
       useridAccount = user.uid;
       await publishBio();
       editBioProfile();
+      await updatePhoto();
       publishPostsAccount(formPublishAccount, miModalPublishVoidAccount, btnReturnAccount);
       await showPublishAccount();
     }
   })
+
+  /* ----ACTUALIZAR FOTO DE PERFIL---------*/
+
+  const updateUserPhoto = divElemt.querySelector('#btnUpdateUserPhoto');
+  updateUserPhoto.addEventListener("change", uploadFileAccount(updateUserPhoto));
+
+    function uploadFileAccount(photo) {
+
+      console.log("entraaa");
+      getFileAddAccount = photo.files[0];
+      console.log("se obtiene", getFileAddAccount);
+
+    }
 
   /* ----MODAL PARA EDITAR BIO---------*/
 
