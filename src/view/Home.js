@@ -22,7 +22,11 @@ import {
   queryEmailUnique,
 } from "../firebase/firestore.js"
 
-import { emailUsuario, nombreUsuario, idUsuario } from "./Login.js"
+import { 
+  emailUsuario,
+  nombreUsuario,
+  idUsuario 
+} from "./Login.js"
 
 let showPublish, getFileAdd;
 let displayName, photoURL, email, userid;
@@ -60,21 +64,37 @@ export default () => {
     }
   })
 
+  let photo, frontPageURL, interests, location, socialNetwork;
+
   localStorage.setItem("IdUsuario", idUsuario);
   localStorage.setItem("Nombre", nombreUsuario);
   localStorage.setItem("Correo", emailUsuario);
+  localStorage.setItem("photoURL", photo);
+  localStorage.setItem("frontPageURL", frontPageURL);
+  localStorage.setItem("interests", interests);
+  localStorage.setItem("location", location);
+  localStorage.setItem("socialNetwork", socialNetwork);
+
+
   UserNotExistCreate();
+
   async function UserNotExistCreate() {
 
+    const idUsu = localStorage.getItem("IdUsuario");
     const disName = localStorage.getItem("Nombre");
     const emailUsu = localStorage.getItem("Correo");
-    const idUsu = localStorage.getItem("IdUsuario");
+    const photoURLUsu = localStorage.getItem("photoURL");
+    const frontPageURLUsu = localStorage.getItem("frontPageURL");
+    const interestsUsu = localStorage.getItem("interests");
+    const locationUsu = localStorage.getItem("location");
+    const socialNetworkUsu = localStorage.getItem("socialNetwork");
+
 
     const querySnapshote = await queryEmailUnique(emailUsu);
     if (querySnapshote.size > 0) {
       console.log("usuario registrado");
     } else {
-      await saveUser(idUsu, disName, emailUsu);
+      await saveUser(idUsu, disName, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
       console.log("datos guardados");
       await showPublish();
     }
@@ -178,11 +198,11 @@ export default () => {
         const idPostHeart = e.target.dataset.id;
         if (e.target.classList.contains('paintHeart')) {
           desHeart(idPostHeart, idUsuarioLogin).FieldValue;
-          await showPublishAccount();
+          await showPublish();
         } else {
           inHeart(idPostHeart, idUsuarioLogin).FieldValue;
           e.target.classList.add('paintHeart');
-          await showPublishAccount();
+          await showPublish();
         }
       })
     })
