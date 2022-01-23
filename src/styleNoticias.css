@@ -1,0 +1,35 @@
+.newshome{
+    max-width:1000px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+}
+ 
+.newshome>div {width: 49%;}
+.newshome>div:first-child {width: 100%;}
+.newshome>div>a>img {
+  width: 100%;
+  border-top: 5px solid #F2A814;
+  float:left;}
+.newshome>div>a>p {
+  padding:2px;
+  color:#FFFFFF;
+  font-size:18px;
+  font-family:Verdana;
+  background-color:#0B2161;}
+
+  .newshome>div>a>h2{
+    padding:2px;
+    color:#FFFFFF;
+    font-size:24px;
+    font-family:Verdana;
+    background-color:#0B2161;
+  }
+
+
+
+
+ 

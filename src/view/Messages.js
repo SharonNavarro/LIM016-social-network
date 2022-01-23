@@ -174,8 +174,6 @@ formulario.addEventListener("submit", (e) =>{
 
   }
   
- 
-
 
 })
 }
