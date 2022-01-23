@@ -21,11 +21,10 @@ export default () => {
  <span>🌜</span>
 </label>
 </div> 
-    <ul class="ulMenu">
-    <li class="li1"><a href="#/Account"><i class="far fa-user-circle"></i>Mi perfil</a></li>
+    <ul class="ulMenu">   
     <li><a href="#/Friends"><i class="fas fa-users"></i>Amigos</a> </li>
-    <li><a href="#/Messages"><i class="far fa-comments"></i>Mensajes</a> </li>
-    <li><a href="#/Netchange"><i class="fas fa-search-dollar"></i></i>Netcambios</a> </li>   
+    <li class="liMenu"><a href="#/Favorite"><i class="fas fa-star" id="iconFavorite"></i>Favoritos</a></li>
+    <li><a href="#/Netchange"><i class="fas fa-search-dollar"></i></i>NetcNoticias</a> </li>   
     <li><a id="btnLogout" style="cursor:pointer" >Cerrar Sesión</a> </li>   
     </ul>
   </nav>
@@ -34,10 +33,9 @@ export default () => {
        
       <div class="containerMenuIcons">      
        <nav>
-        <ul class="ulMenu2">
-          <li class="liMenu" ><a href="#/Home"><i class="fas fa-home" id="iconHome"></i></a></li>        
-          <li class="liMenu"><a href="#/Favorite"><i class="fas fa-star" id="iconFavorite"></i></a></li>
-          <li class="liMenu"><a href="#/Notifications"><i class="fas fa-bell" id="iconNotifications"></i></a> </li>         
+        <ul class="ulMenu2">   
+         <li class="liMenu" ><a href="#/Home"><i class="fas fa-home" id="iconHome"></i></a></li>     
+         <li class="li1"><a href="#/Account"><i class="far fa-user-circle"></i></a></li> 
         </ul>
         </nav>
         

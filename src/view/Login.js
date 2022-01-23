@@ -79,11 +79,7 @@ export default () => {
               </div>
             </div>
             </footer>
-        </div>
-       
-        
-        
-        
+        </div>        
         `;
 
 
