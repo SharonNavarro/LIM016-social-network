@@ -61,9 +61,7 @@ const saveUser = (idUser, nameUser, emailUser, photo, frontPageURL, interests, l
 
 const getUsers = () => getDocs(query(collection(db, 'users')));
 
-const getUser = (id) => {
-    return getDoc(doc(db, "users", id));
-}
+const getUser = async(id) => await getDoc(doc(db, "users", id));
 
 const getPublishes = () => getDocs(query(collection(db, 'posts'), orderBy("dateOrderComplet", "desc")));
 

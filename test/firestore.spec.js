@@ -1,4 +1,4 @@
-import { saveUser, savePublish, getUser, updatePublish } from '../src/firebase/firestore';
+import { saveUser, savePublish, getUser, updatePublish, updateUserNamePost } from '../src/firebase/firestore';
 
 jest.mock('../src/firebase/config')
 
@@ -7,6 +7,7 @@ describe('myFunction saveUser', () => {
         expect(typeof saveUser).toBe("function")
     });
 });
+
 
 describe('myFunction saveUser', () => {
     it('should return equal values of saveUser​', async() => {
@@ -88,6 +89,19 @@ describe('myFunction updatePublish', () => {
         const result = await updatePublish('00000001', 'como estas')
         expect(result).toStrictEqual({
             content: 'como estas',
+        })
+    });
+});
+describe('myFunction updateUserNamePost', () => {
+    it('Is a function', () => {
+        expect(typeof updateUserNamePost).toBe("function")
+    });
+});
+describe('myFunction updateUserNamePost', () => {
+    it('should return value update ​of updateUserNamePost', async() => {
+        const result = await updateUserNamePost('Xuyd4t6jshaad888x', 'Sharon')
+        expect(result).toStrictEqual({
+            userName: 'Sharon',
         })
     });
 });
