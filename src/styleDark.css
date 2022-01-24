@@ -20,11 +20,11 @@ html {
 }
 
 [data-theme='oscuro'] {
-  --bg-color: #3f3f3f;
+  --bg-color: #161515;
   --txt-color: #e9e5e5;
 }
 
-body .content , .body-chat,.contentFriends , .containerAccount .userProfileBio {
+body .content , .body-chat,.contentFriends , .containerAccount .userProfileBi o ,#container{
 
  
 background: var(--bg-color);
@@ -33,7 +33,7 @@ color: var(--txt-color);
   }
 
 
-body .containerAccount .perfil-usuario-footer,  .container, .userProfileBio ,.ulMenu2{
+body .containerAccount .perfil-usuario-footer,  .container, .userProfileBio ,.ulMenu2,.classViewNetchange{
 
   background: var(--bg-color);
   color: var(--txt-color);
@@ -47,6 +47,12 @@ body .ulMenu{
 
 }
 
+body .containerAccount .userProfileBio{
+  background: var(--bg-color);
+  color: var(--txt-color);
+
+
+}
 
 /*TOGGLE SWITCH*/
 
