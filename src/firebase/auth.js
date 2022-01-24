@@ -11,7 +11,8 @@ import {
     getRedirectResult,
     sendEmailVerification,
     sendPasswordResetEmail,
-    signOut,
+    updateProfile,
+    signOut
 } from "./config.js"
 
 
@@ -49,4 +50,8 @@ export const userState = (callback) => onAuthStateChanged(auth, callback);
 
 // Actualizar nombre y foto de perfil 
 
-//export const updateProfileUser = (nameUserProfile, photoUserProfile) => updateProfile(auth.currentUser, {displayName: nameUserProfile, photoURL: photoUserProfile} )
+export const updatePhotoUser = (photoUserProfile) => updateProfile(auth.currentUser, {photoURL: photoUserProfile} );
+
+// Actualizar foto de perfil 
+
+export const updateNameUser = (nameUserProfile) => updateProfile(auth.currentUser, {displayName: nameUserProfile} )

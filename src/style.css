@@ -4,6 +4,10 @@
   font-weight: 900 !important;
   color: yellow;
 }
+.paintHeart{
+  font-weight: 900 !important;
+  color: rgb(255, 0, 0);
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -451,12 +455,25 @@ margin-top: 20px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
   z-index: 50;
 }
+
+
+.containerWriterAccount {
+  width: 85%;
+  background: #fff;
+  border-radius: 40px;
+  padding: 20px;
+  color: #626262;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  z-index: 50;
+  margin-top: 2.5rem;
+}
 .userProfile {
   display: flex;
   align-items: center;
   color: #9a9a9a;
   font-weight: bold;
   width: 100%;
+  margin-left: 2.5rem;
 }
 .userProfile img {
   height: 48px;
@@ -532,6 +549,7 @@ margin-top: 20px;
   margin: 20px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
   z-index: 200;
+
 }
 
 .addPosts {
@@ -852,6 +870,9 @@ label:hover {
    height: 17rem;
    background: linear-gradient(45deg, #5ab8e441,  #3674b6 );
    border-radius: 0 0 20px 20px;
+   margin-left: 0.7rem;
+
+
 }
 
 .containerAccount .profileUserCover .boton-portada, .userProfileBody .perfil-usuario-footer .boton-portada {
@@ -945,7 +966,8 @@ label:hover {
 }
 
 .userBio{
-
+width: 85%;
+height: 240px;
 justify-content: center;
 margin: auto;
 padding-right: 20px;
@@ -957,6 +979,7 @@ background-color: rgba(229, 229, 229, 1);
 font-family: 'Inter', sans-serif;
 font-weight: bold;
 margin-top: 20px;
+border-radius: 20px;
 }
 
 
@@ -1030,8 +1053,9 @@ border: 1px solid black;
 
   .containerAccount .profileUserCover,
   .containerAccount .userProfileBody {
-    width: 95%;
+    width: 98%;
     position: relative;
+    margin-right: 2rem;
   }
 
   .containerInputs {
@@ -1739,56 +1763,6 @@ select:focus {
   padding: 10px;
 }
 
-
-/*------------SECTION FAVORITES------------*/
-
-.content h2 {
-  font-family: 'Questrial', sans-serif;
-  font-size: 1.7rem;
-  background: white;
-  letter-spacing: 7px;
-  padding: 2%;
-  position: fixed;
-  width: 70%;
-  background: linear-gradient(to right, rgb(253, 253, 253), rgb(255, 255, 255),rgb(255, 255, 255), rgb(228 228 228));
-}
-
-.favoritesPublishes {
-  margin-top: 10%;
-}
-
-/*------------SECTION FAVORITES------------*/
-
-.containerNotifications {
-    width: 90%;
-    border-radius: 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-family: 'Questrial', sans-serif;
-    padding: 10px;
-    column-gap: 9px;
-}
-
-.heart {
-  background: #f5246866;
-}
-.coment {
-  background: #0edbff66;
-}
-.star {
-  background: #f8e21d66;
-}
-
-.userProfileNotification img {
-  width: 60px;
-  border-radius: 100%;
-  height: 60px;
-}
-
-.userDescriptionNotification bold {
-  font-weight: bold;
-}
 /*-------------MEDIA QUERIES----------------*/
 
 @media (max-width: 780px) {
@@ -1894,7 +1868,7 @@ select:focus {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  background: rgba(229, 229, 229, 1);
+
 }
 
 .classViewNetchange{
@@ -1953,8 +1927,10 @@ margin-top: 110px;
 } 
 
 .content h2 {
-  margin-top: 120px;
+  margin-top: 98px;
   width: 100%;
+  padding-top: 4%;
+  padding-bottom: 4%;
 }
 
 .favoritesPublishes {
@@ -2004,19 +1980,26 @@ margin-top: 110px;
   background-color: lightblue;
   width: 230px;
   height: 230px;
-  justify-content: space-evenly;
+  justify-content:center;
   margin: 0.8rem;
   align-content: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   padding: 10px;
   box-shadow: inherit;
   border-radius: 20px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  color:#3674b6;
 
 
 }
 
+.fa-search:before {
+  content: "\f002";
+  font-size: 20px;
+}
 #imgMyFriend{
 
   width: 150px;
@@ -2032,28 +2015,6 @@ margin-top: 110px;
 .boxName{
   text-align: center;
 }
-
-
-             
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .contentFriends{
 
   align-items: center;
@@ -2064,6 +2025,7 @@ margin-top: 110px;
   position: relative;
   margin-bottom: 1rem;
   background-color: #e5f0f5;
+
 
 }
 .searchBar{
@@ -2187,8 +2149,8 @@ margin:0.2rem
 
 .myFriend{
 
-  width: 250px;
-  height: 250px;
+  width: 400px;
+  height: 200px;
   border-radius: 20px;
   margin: 0.3rem;
   
@@ -2302,5 +2264,4 @@ label
   top: 0;
   left: 0;
 }
-
 

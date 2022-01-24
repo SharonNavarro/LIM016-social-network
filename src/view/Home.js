@@ -17,10 +17,16 @@ import {
   getUsers,
   inLikes,
   desLikes,
+  inHeart,
+  desHeart,
   queryEmailUnique,
 } from "../firebase/firestore.js"
 
-import { emailUsuario, nombreUsuario, idUsuario } from "./Login.js"
+import { 
+  emailUsuario,
+  nombreUsuario,
+  idUsuario 
+} from "./Login.js"
 
 let showPublish, getFileAdd;
 let displayName, photoURL, email, userid;
@@ -58,30 +64,44 @@ export default () => {
     }
   })
 
+  let photo, frontPageURL, interests, location, socialNetwork;
+
   localStorage.setItem("IdUsuario", idUsuario);
   localStorage.setItem("Nombre", nombreUsuario);
   localStorage.setItem("Correo", emailUsuario);
+  localStorage.setItem("photoURL", photo);
+  localStorage.setItem("frontPageURL", frontPageURL);
+  localStorage.setItem("interests", interests);
+  localStorage.setItem("location", location);
+  localStorage.setItem("socialNetwork", socialNetwork);
+
+
   UserNotExistCreate();
+
   async function UserNotExistCreate() {
 
+    const idUsu = localStorage.getItem("IdUsuario");
     const disName = localStorage.getItem("Nombre");
     const emailUsu = localStorage.getItem("Correo");
-    const idUsu = localStorage.getItem("IdUsuario");
+    const photoURLUsu = localStorage.getItem("photoURL");
+    const frontPageURLUsu = localStorage.getItem("frontPageURL");
+    const interestsUsu = localStorage.getItem("interests");
+    const locationUsu = localStorage.getItem("location");
+    const socialNetworkUsu = localStorage.getItem("socialNetwork");
+
 
     const querySnapshote = await queryEmailUnique(emailUsu);
     if (querySnapshote.size > 0) {
       console.log("usuario registrado");
     } else {
-      await saveUser(idUsu, disName, emailUsu);
+      await saveUser(idUsu, disName, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
       console.log("datos guardados");
       await showPublish();
     }
 
   }
+
   let idUsuarioLogin, querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
-
-
-
 
   showPublish = async () => {
     getFileAdd=""
@@ -96,6 +116,7 @@ export default () => {
     }
     let imagenAdd;
     let contStars = [];
+    let contHearts = [];
     querySnapshot = await getPublishes();
     let templatePosts = "";
     querySnapshot.forEach((doc) => {
@@ -109,16 +130,20 @@ export default () => {
       urlPhoto = doc.data().urlPhoto;
       contStars = doc.data().likesPost;
       imagenAdd = doc.data().imagen;
+      contHearts = doc.data().hearts;
 
       let iconStars;
+      let iconHearts;
 
       (contStars.indexOf(idUsuarioLogin) !== -1) ? iconStars = 'paint' : iconStars = '';
+      
+      (contHearts.indexOf(idUsuarioLogin) !==-1)? iconHearts = 'paintHeart' : iconHearts = ''; 
 
       if (displayName == userName) {
-        templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd)
+        templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd, iconHearts, contHearts.length);
 
       } else {
-        templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd)
+        templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd, iconHearts, contHearts.length);
       }
 
     });
@@ -137,6 +162,7 @@ export default () => {
     const btnSave = document.querySelectorAll(".btnSave");
 
     const iconPostStart = document.querySelectorAll(".iconPostStart");
+    const iconPostHeart = document.querySelectorAll(".iconPostHeart");
     //--------------------------------------------
     const getFile = document.querySelector("#fichero")
 
@@ -162,6 +188,20 @@ export default () => {
           inLikes(idPost, idUsuarioLogin).FieldValue;
           e.target.classList.add('paint')
           console.log("se pinto");
+          await showPublish();
+        }
+      })
+    })
+
+    iconPostHeart.forEach((iconHeart) => {
+      iconHeart.addEventListener("click", async (e) => {
+        const idPostHeart = e.target.dataset.id;
+        if (e.target.classList.contains('paintHeart')) {
+          desHeart(idPostHeart, idUsuarioLogin).FieldValue;
+          await showPublish();
+        } else {
+          inHeart(idPostHeart, idUsuarioLogin).FieldValue;
+          e.target.classList.add('paintHeart');
           await showPublish();
         }
       })
