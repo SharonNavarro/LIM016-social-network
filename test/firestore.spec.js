@@ -1,12 +1,8 @@
-import { saveUser, savePublish, getUser, updatePublish, updateUserNamePost } from '../src/firebase/firestore';
+import { saveUser, savePublish, getUser, updatePublish, updateUserNamePost, inLikes } from '../src/firebase/firestore';
 
 jest.mock('../src/firebase/config')
 
-describe('myFunction saveUser', () => {
-    it('Is a function', () => {
-        expect(typeof saveUser).toBe("function")
-    });
-});
+
 
 
 describe('myFunction saveUser', () => {
@@ -32,11 +28,7 @@ describe('myFunction saveUser', () => {
     });
 });
 
-describe('myFunction savePublish', () => {
-    it('Is a function', () => {
-        expect(typeof savePublish).toBe("function")
-    });
-});
+
 describe('myFunction savePublish', () => {
     it('should return equal values of savePublish', () => {
         const result = savePublish('Hola mundo', '22/1/2022', '02:14', 'Jenifer M', 'http.mi-foto.png', '1642778042479', 'jeny.m@gmail.com', 'WI8el6Vy4UfaBzvUq7nV8KpAiPJ3', 'http.bitcoin.jpg')
@@ -79,11 +71,7 @@ describe('myFunction savePublish', () => {
         })
     });
 }); */
-describe('myFunction updatePublish', () => {
-    it('Is a function', () => {
-        expect(typeof updatePublish).toBe("function")
-    });
-});
+
 describe('myFunction updatePublish', () => {
     it('should return value update ​of updatePublish', async() => {
         const result = await updatePublish('00000001', 'como estas')
@@ -92,11 +80,7 @@ describe('myFunction updatePublish', () => {
         })
     });
 });
-describe('myFunction updateUserNamePost', () => {
-    it('Is a function', () => {
-        expect(typeof updateUserNamePost).toBe("function")
-    });
-});
+
 describe('myFunction updateUserNamePost', () => {
     it('should return value update ​of updateUserNamePost', async() => {
         const result = await updateUserNamePost('Xuyd4t6jshaad888x', 'Sharon')
@@ -105,3 +89,17 @@ describe('myFunction updateUserNamePost', () => {
         })
     });
 });
+
+
+/* const inLikes = async(id, idUserLike) => await updateDoc(doc(db, "posts", id), {
+    likesPost: arrayUnion(idUserLike),
+}); */
+/* 
+describe('myFunction inLikes', () => {
+    it('should return value update ​of inLikes', async() => {
+        const result = await inLikes('Xuyd4t6jshaad888x', '001')
+        expect(result).toStrictEqual({
+            likesPost: arrayUnion('001')
+        })
+    });
+}); */
