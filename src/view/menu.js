@@ -1,6 +1,6 @@
 import { signOutAccount } from "../firebase/auth.js"
 export default () => {
-  const viewMenu = `
+    const viewMenu = `
   <div class= "containerMenu">
   <div class="respmenu">
   <input type="checkbox" >
@@ -15,17 +15,17 @@ export default () => {
 
   <div class="btnDark">
   <label id="toggleLabel" for="toggle">
-  <span>&#x1F31E</span>
+  <span></span>
    <input type="checkbox" id="toggle">
    <span class="slider"></span>
- <span>🌜</span>
+ <span></span>
 </label>
 </div> 
     <ul class="ulMenu">   
-    <li><a href="#/Friends"><i class="fas fa-users"></i>Amigos</a> </li>
-    <li class="liMenu"><a href="#/Favorite"><i class="fas fa-star" id="iconFavorite"></i>Favoritos</a></li>
-    <li><a href="#/Netchange"><i class="fas fa-search-dollar"></i></i>Noticias</a> </li>   
-    <li><a id="btnLogout" style="cursor:pointer" ><i class="fas salir fa-sign-out-alt"  data-fas-transform="flip-h"></i>Cerrar Sesión</a> </li>   
+    <li><a href="#/Friends"><i class="fas fa-users colorIcon"></i>Amigos</a> </li>
+    <li class="liMenu colorIcon"><a href="#/Favorite"><i class="fas fa-star colorIcon" id="iconFavorite"></i>Favoritos</a></li>
+    <li><a href="#/Noticias"><i class="fas fa-search-dollar colorIcon"></i></i>Noticias</a> </li>   
+    <li><a id="btnLogout" style="cursor:pointer" ><i class="fas salir fa-sign-out-alt colorIcon"  data-fas-transform="flip-h"></i>Cerrar Sesión</a> </li>   
     </ul>
   </nav>
   </div>      
@@ -43,65 +43,65 @@ export default () => {
         </div>          
                `;
 
-  const divElemt = document.createElement('section');
-  divElemt.classList.add('classViewMenu')
-  divElemt.innerHTML = viewMenu;
+    const divElemt = document.createElement('section');
+    divElemt.classList.add('classViewMenu')
+    divElemt.innerHTML = viewMenu;
 
-  const containerHeader = document.getElementById('containerHeader')
-  const container = document.getElementById('container')
-  const btnLogout = divElemt.querySelector("#btnLogout");
+    const containerHeader = document.getElementById('containerHeader')
+    const container = document.getElementById('container')
+    const btnLogout = divElemt.querySelector("#btnLogout");
 
-  btnLogout.addEventListener('click', () => {
-    containerHeader.innerHTML = "";
-    container.innerHTML = "";
-    signOutAccount()
-      .then(() => {
-        console.log("cerraste sesion");
-        window.location.hash = '#/';
-      })
-  })
+    btnLogout.addEventListener('click', () => {
+        containerHeader.innerHTML = "";
+        container.innerHTML = "";
+        signOutAccount()
+            .then(() => {
+                console.log("cerraste sesion");
+                window.location.hash = '#/';
+            })
+    })
 
-/*   if (container.innerHTML == "") {
-    
-    menuInteractivo();
+    /*   if (container.innerHTML == "") {
+        
+        menuInteractivo();
 
-  } */
-
- 
-const toggle = divElemt.querySelector('#toggle');
-const themeActual= localStorage.getItem("theme");
+      } */
 
 
-
-if(themeActual){
-
- document.body.setAttribute("data-theme",themeActual);
-
-}
-
-if(themeActual === "oscuro"){
-
-  toggle.checked =true;
-
-}
-
-
-const cambiarTheme = (event) => {
-  if (event.target.checked) {
-    document.body.setAttribute('data-theme', 'oscuro');
-    localStorage.setItem("theme", "oscuro");
- 
-  } else {
-    document.body.setAttribute('data-theme', null);
-    localStorage.setItem("theme", "null");
-  }
-};
-
-toggle.addEventListener('click', cambiarTheme);
+    const toggle = divElemt.querySelector('#toggle');
+    const themeActual = localStorage.getItem("theme");
 
 
 
-  return divElemt;
+    if (themeActual) {
+
+        document.body.setAttribute("data-theme", themeActual);
+
+    }
+
+    if (themeActual === "oscuro") {
+
+        toggle.checked = true;
+
+    }
+
+
+    const cambiarTheme = (event) => {
+        if (event.target.checked) {
+            document.body.setAttribute('data-theme', 'oscuro');
+            localStorage.setItem("theme", "oscuro");
+
+        } else {
+            document.body.setAttribute('data-theme', null);
+            localStorage.setItem("theme", "null");
+        }
+    };
+
+    toggle.addEventListener('click', cambiarTheme);
+
+
+
+    return divElemt;
 }
 
 
