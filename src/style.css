@@ -1996,6 +1996,10 @@ margin-top: 110px;
 
 }
 
+.fa-search:before {
+  content: "\f002";
+  font-size: 20px;
+}
 #imgMyFriend{
 
   width: 150px;
@@ -2260,5 +2264,4 @@ label
   top: 0;
   left: 0;
 }
-
 
