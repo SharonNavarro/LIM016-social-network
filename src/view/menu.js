@@ -24,8 +24,8 @@ export default () => {
     <ul class="ulMenu">   
     <li><a href="#/Friends"><i class="fas fa-users"></i>Amigos</a> </li>
     <li class="liMenu"><a href="#/Favorite"><i class="fas fa-star" id="iconFavorite"></i>Favoritos</a></li>
-    <li><a href="#/Netchange"><i class="fas fa-search-dollar"></i></i>NetcNoticias</a> </li>   
-    <li><a id="btnLogout" style="cursor:pointer" >Cerrar Sesión</a> </li>   
+    <li><a href="#/Netchange"><i class="fas fa-search-dollar"></i></i>Noticias</a> </li>   
+    <li><a id="btnLogout" style="cursor:pointer" ><i class="fas salir fa-sign-out-alt"  data-fas-transform="flip-h"></i>Cerrar Sesión</a> </li>   
     </ul>
   </nav>
   </div>      
@@ -35,7 +35,7 @@ export default () => {
        <nav>
         <ul class="ulMenu2">   
          <li class="liMenu" ><a href="#/Home"><i class="fas fa-home" id="iconHome"></i></a></li>     
-         <li class="li1"><a href="#/Account"><i class="far fa-user-circle"></i></a></li> 
+         <li class="liMenu"><a href="#/Account"><i class="fas fa-user-circle"></i></a></li> 
         </ul>
         </nav>
         
