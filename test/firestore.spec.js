@@ -2,9 +2,6 @@ import { saveUser, savePublish, getUser, updatePublish, updateUserNamePost, inLi
 
 jest.mock('../src/firebase/config')
 
-
-
-
 describe('myFunction saveUser', () => {
     it('should return equal values of saveUser​', async() => {
         const result = await saveUser('WI8el6Vy4UfaBzvUq7nV8KpAiPJ3', 'Milagros', 'mili@gmail.com', 'htppp.mili.com', 'ww.mili.com', 'me gusta pasear', 'lima', 'facke')
@@ -103,3 +100,32 @@ describe('myFunction inLikes', () => {
         })
     });
 }); */
+/* 
+const user = {
+    idUser: '00001',
+    nameUser: 'Alejandra',
+    emailUser: 'ale@gmail.com',
+    photoURL: 'htppp.mi-foto.png',
+    frontPageURL: 'wwww.ale.com',
+    interests: 'me gusta pasear',
+    location: 'Lima',
+    socialNetwork: 'redes sociales'
+
+}; */
+
+describe('myFunction getUser', () => {
+    it('should return value update ​of getUser', async() => {
+        const user = {
+            idUser: '00001',
+            nameUser: 'Alejandra',
+            emailUser: 'ale@gmail.com',
+            photoURL: 'htppp.mi-foto.png',
+            frontPageURL: 'wwww.ale.com',
+            interests: 'me gusta pasear',
+            location: 'Lima',
+            socialNetwork: 'redes sociales'
+        };
+        const result = await getUser('00001')
+        expect(result.user).toStrictEqual(user)
+    });
+});

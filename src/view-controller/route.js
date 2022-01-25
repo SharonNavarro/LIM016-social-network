@@ -10,15 +10,15 @@ export const changeTmp = (hash) => {
         case '':
         case '#':
         case '#/':
-                  sectionMain.innerHTML="";
-                  containerHeader.innerHTML=" ";
-                  sectionMain.appendChild(components.Login())
-        break;
-        case '/Regist#er':
-                  sectionMain.innerHTML="";
-                  containerHeader.innerHTML="";
-                  sectionMain.appendChild(components.Register())                
-        break;
+            sectionMain.innerHTML = "";
+            containerHeader.innerHTML = " ";
+            sectionMain.appendChild(components.Login())
+            break;
+        case '#/Register':
+            sectionMain.innerHTML = "";
+            containerHeader.innerHTML = "";
+            sectionMain.appendChild(components.Register())
+            break;
 
         case '#/Account':
         case '#/Friends':
@@ -26,14 +26,14 @@ export const changeTmp = (hash) => {
         case '#/Noticias':
         case '#/Favorite':
         case '#/Home':
-                         
-                sectionMain.innerHTML="";
-                containerHeader.innerHTML="";
-                containerHeader.appendChild(components.Menu())  
-                sectionMain.appendChild(components[id]());
-        break;
+
+            sectionMain.innerHTML = "";
+            containerHeader.innerHTML = "";
+            containerHeader.appendChild(components.Menu())
+            sectionMain.appendChild(components[id]());
+            break;
         default:
             return sectionMain.appendChild(components.Different())
-            
+
     }
 };
