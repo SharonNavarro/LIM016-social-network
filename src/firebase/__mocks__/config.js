@@ -5,3 +5,4 @@ export const addDoc = jest.fn((documents, values) => (values));
 export const collection = jest.fn();
 //export const getDoc = jest.fn();
 export const updateDoc = jest.fn((documents, values) => Promise.resolve(values));
+export const arrayUnion = {};
