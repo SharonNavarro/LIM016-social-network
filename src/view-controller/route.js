@@ -25,6 +25,7 @@ export const changeTmp = (hash) => {
         case '#/Messages':
         case '#/Noticias':
         case '#/Favorite':
+        case '#/Notifications':
         case '#/Home':
                          
                 sectionMain.innerHTML="";

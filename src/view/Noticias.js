@@ -1,7 +1,6 @@
 export default () => {
     const viewNetchange = `
-    
-     
+  
     <section class="newshome">
     <div>
     <a href="https://gestion.pe/opinion/pregunta-de-hoy/esta-de-acuerdo-con-que-las-afp-inviertan-en-criptomonedas-noticia/">
@@ -30,11 +29,13 @@ export default () => {
     <img src="https://static01.nyt.com/images/2021/08/27/us/politics/07dc-cryptoexplainer-ESP-00/merlin_193631907_a90f6be4-7e4f-4a54-9572-92886cebeaa0-jumbo.jpg?quality=75&auto=webp" alt="foto" /><p>Criptomonedas y finanzas descentralizadas para principiantes.</p>
     </a>
     </div>
-
-</section>`;
+    </div>
+</section>
+    
+`;
 
     const divElemt = document.createElement('section');
-    divElemt.classList.add('classViewNetchange')
+    divElemt.classList.add('classViewNoticia')
     divElemt.innerHTML = viewNetchange;
     return divElemt;
 };

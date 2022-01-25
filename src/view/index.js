@@ -3,7 +3,7 @@ import Account from './Account.js';
 import Messages from './Messages.js';
 import Home from './Home.js';
 import Friends from './Friends.js';
-import Netchange from './Netchange.js';
+import Noticias from './Noticias.js';
 
 import Register from './Register.js';
 import Different from './404.js';
@@ -17,7 +17,7 @@ const components = {
     Messages: Messages,
     Home: Home,
     Friends: Friends,
-    Netchange: Netchange,
+    Noticias: Noticias,
    
     Register: Register,
     Notifications: Notifications,

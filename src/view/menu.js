@@ -24,7 +24,7 @@ export default () => {
     <ul class="ulMenu">   
     <li><a href="#/Friends"><i class="fas fa-users"></i>Amigos</a> </li>
     <li class="liMenu"><a href="#/Favorite"><i class="fas fa-star" id="iconFavorite"></i>Favoritos</a></li>
-    <li><a href="#/Netchange"><i class="fas fa-search-dollar"></i></i>Noticias</a> </li>   
+    <li><a href="#/Noticias"><i class="fas fa-search-dollar"></i></i>Noticias</a> </li>   
     <li><a id="btnLogout" style="cursor:pointer" ><i class="fas salir fa-sign-out-alt"  data-fas-transform="flip-h"></i>Cerrar Sesión</a> </li>   
     </ul>
   </nav>
