@@ -59,7 +59,7 @@ const templateViewAccount = `
                             <div class="addPost">
                                 <input id="fichero" type="file">           
                                 <label for="fichero" class="circle"> <i class="far fa-image"></i> </label>
-                                <a href="#"><i class="fas fa-unlock-alt ico"></i></a>
+                           
                                 <button class="postBtn" id="btnPublish">Publicar</button>
                             </div>
                         </div>
@@ -89,14 +89,14 @@ const templateViewAccountProfileUser = `
             <img class="photoPerfil" id="photoPerfil"alt="">
             <button type="file" class="boton-avatar"  >
                 <i class="far fa-image"></i>
-                <label for="fichero" class="circle"></label>
-                <input class="input" type="file" id="fichero" accept="image/png, .jpeg, .jpg">
+                <label for="btnUpdateUserPhoto" class="circle"></label>
+                <input class="input" type="file" id="btnUpdateUserPhoto" accept="image/png, .jpeg, .jpg">
             </button>
         </div>
         <button type="button" class="boton-portada" >
             <i class="far fa-image"></i> Cambiar fondo
-            <label for="fichero" class="circle"></label>
-            <input class="input" type="file" id="fichero" accept="image/png, .jpeg, .jpg">
+            <label for="btnUpdateUserBackground" class="circle"></label>
+            <input class="input" type="file" id="btnUpdateUserBackground" accept="image/png, .jpeg, .jpg">
         </button>
     </div> `;
 
@@ -111,7 +111,7 @@ const templateForInsideBio = (interests, locationBio, socialNetwork) => `
 
 
 export {
-  templateViewAccount,
-  templateViewAccountProfileUser,
-  templateForInsideBio
+    templateViewAccount,
+    templateViewAccountProfileUser,
+    templateForInsideBio
 };

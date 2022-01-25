@@ -18,7 +18,6 @@ const components = {
     Home: Home,
     Friends: Friends,
     Noticias: Noticias,
-   
     Register: Register,
     Notifications: Notifications,
     Favorite: Favorite,
