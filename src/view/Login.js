@@ -7,9 +7,7 @@ import {
   signInFacebook,
   signInGoogle, 
   signInTwitter, 
-  passwordReset,
-  updateNameUser,
-  updatePhotoUser
+  passwordReset
 } from "../firebase/auth.js"
 
 import { 
@@ -17,13 +15,9 @@ import {
   addErrorInput, 
   removeErrorInput, 
   removeErrorMessage,
-  UserNotExistCreate
+  UserNotExistCreate,
+  UserNotExistCreateWithEmailAndPassword
 } from "../lib/functions.js"
-
-import {
-  queryEmailUnique,
-  saveUser
-} from "../firebase/firestore.js"
 
 let nombreUsuario,idUsuario,emailUsuario;
 let nameUserForSigIn,idUserForSignIn,emailUserForSignIn;
@@ -58,48 +52,7 @@ export default () => {
         console.log(user.emailVerified);
         console.log("idusuario de login",idUserForSignIn);
 
-        let photo, frontPageURL, interests, location, socialNetwork;
-
-          localStorage.setItem("IdUsuario", idUserForSignIn);
-          localStorage.setItem("Nombre", nameUserForSigIn);
-          localStorage.setItem("Correo", emailUserForSignIn);
-          localStorage.setItem("photoURL", photo);
-          localStorage.setItem("frontPageURL", frontPageURL);
-          localStorage.setItem("interests", interests);
-          localStorage.setItem("location", location);
-          localStorage.setItem("socialNetwork", socialNetwork);
-
-
-          UserNotExistCreate();
-
-          async function UserNotExistCreate() {
-
-            const idUsu = localStorage.getItem("IdUsuario");
-            const disName = localStorage.getItem("Nombre");
-            const emailUsu = localStorage.getItem("Correo");
-            const photoURLUsu = localStorage.getItem("photoURL");
-            const frontPageURLUsu = localStorage.getItem("frontPageURL");
-            const interestsUsu = localStorage.getItem("interests");
-            const locationUsu = localStorage.getItem("location");
-            const socialNetworkUsu = localStorage.getItem("socialNetwork");
-
-
-            const querySnapshote = await queryEmailUnique(emailUsu);
-            if (querySnapshote.size > 0) {
-              console.log("usuario registrado SIGN IN");
-              nameUserForSigIn = "Usuario nuevo";
-              await updatePhotoUser()
-              await updateNameUser(nameUserForSigIn);
-              await saveUser(idUsu, nameUserForSigIn, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
-              
-            } else {
-              nameUserForSigIn = "Usuario nuevo";
-              await updateNameUser(nameUserForSigIn);
-              await saveUser(idUsu, nameUserForSigIn, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
-              console.log("datos guardados SIGN IN");
-            }
-
-          }
+        UserNotExistCreateWithEmailAndPassword(idUserForSignIn, emailUserForSignIn, nameUserForSigIn);
 
         divElemt.querySelector("#inputUser").value = "";
         divElemt.querySelector("#inputPassword").value = "";
@@ -236,24 +189,5 @@ export default () => {
 
   return divElemt;
 };
-
-
-    // export {
-    //     emailUsuario,
-    //     nombreUsuario,
-    //     idUsuario,
-
-    //     nameUserForSigIn,
-    //     idUserForSignIn,
-    //     emailUserForSignIn,
-
-    //     nameUserForTwitter,
-    //     idUserForTwitter,
-    //     emailUserForTwitter,
-
-    //     nameUserForFacebook,
-    //     idUserForFacebook,
-    //     emailUserForFacebook
-    //   }
 
 
