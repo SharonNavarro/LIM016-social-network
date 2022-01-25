@@ -55,7 +55,8 @@ const saveUser = (idUser, nameUser, emailUser, photo, frontPageURL, interests, l
         frontPageURL: frontPageURL,
         interests: interests,
         location: location,
-        socialNetwork: socialNetwork
+        socialNetwork: socialNetwork,
+        followed: []
     });
 }
 
@@ -93,6 +94,14 @@ const desHeart = async(idPost, idUserLikeHeart) => await updateDoc(doc(db, "post
     hearts: arrayRemove(idUserLikeHeart),
 });
 
+const inFollow = async(id, idUserFollow) => await updateDoc(doc(db, "users", id), {
+    followed: arrayUnion(idUserFollow),
+});
+
+const desFollow = async(id, idUserFollow) => await updateDoc(doc(db, "users", id), {
+    followed: arrayRemove(idUserFollow),
+});
+
 const queryEmailUnique = async(emailText) => await getDocs(query(collection(db, "users"), where("emailUser", "==", emailText)));
 
 //Storage
@@ -103,6 +112,8 @@ export {
     inLikes,
     inHeart,
     desHeart,
+    inFollow,
+    desFollow,
 
     savePublish,
     getPublishes,
