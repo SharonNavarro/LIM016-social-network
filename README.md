@@ -24,7 +24,7 @@ Netcoins es una single-page responsive, la cual cuenta con 5 vistas. Permite a c
 
 
 
-## 3. Definición del Producto ✏️
+## 3. Definición del Producto 
 
 ¿Quienes son los principales usuarios?
 
@@ -49,7 +49,35 @@ Identificamos como principales usuarios a las personas interesadas en el uso de 
 
 Descentralizar información respecto a las monedas virtuales e interactuar y compartir experiencias de su estado.
 
-## 4. Historias de Usuario ✏️
+## 4. Historias de Usuario 
+
+**Historia N° 1** 
+
+- Yo como usuario
+- Quiero registrarme 
+- Para integrarme como usuario.
+
+[ ] Criterios de aceptación:
+
+   - [x] El usuario puede registrarse usando cuenta de correo  válida y una contraseña .
+   - [x] El usuario puede registrarse usando su cuenta de gmail, facebook y twitter.
+   - [x] El usuario recibe un correo de confirmación en el que debe hacer click para activar su cuenta.
+   - [x] El acceso al usuario queda bloqueado mientras no active su cuenta.
+   - [x] el usuario puede recuperar su cuenta a través de su cuenta de gmail.
+   - [x] El registro debe poder hacerse fácilmente desde cualquier dispositivo.
+
+
+**Historia N° 2**
+
+- Yo como usuario registrado
+- Quiero loguearme
+- Para acceder al contenido.
+
+- [x] Criterios de aceptación:
+
+   - [x] El usuario ya está registrado y su cuenta ya a sido activada.
+   - [x] El usuario solamente se puede loguear cuando sus credenciales son válidas.
+   - [x] El usuario puede pedir un correo para resetear su contraseña.
 
 
 
@@ -58,11 +86,7 @@ Descentralizar información respecto a las monedas virtuales e interactuar y com
 
 
 
-
-
-
-
-## 5. Tecnologias ✏️
+## 5. Tecnologias 
 
 Trabajamos este proyecto haciendo uso de :
 
