@@ -103,7 +103,7 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
 </div> 
 
       `;
-const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, hourPublish, contStars, iconStars, imagenAdd, iconHearts, contHearts) => `        
+const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, hourPublish, contStars, iconStars, imagenAdd, iconHearts, contHearts, btnFollowUsers) => `        
           
       <div class="containerPosts" >
             <div class="containerAlignItems"> 
@@ -111,7 +111,7 @@ const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, ho
             <div class="userProfile">
                 <img src=${urlPhoto}>
                 <div>
-                <p class="nameUser"><bold > ${userName}</bold></p>
+                <p class="nameUser"> <bold> ${userName}</bold> <button class ="btnFollow ${btnFollowUsers}" data-id="${id}">Seguir</button> </p>
                 <p class="timePublish"> ${datePublish}</p>
                 <p class="timePublish"> ${hourPublish}</p>
                 </div>
