@@ -89,14 +89,14 @@ const templateViewAccountProfileUser = `
             <img class="photoPerfil" id="photoPerfil"alt="">
             <button type="file" class="boton-avatar"  >
                 <i class="far fa-image"></i>
-                <label for="fichero" class="circle"></label>
-                <input class="input" type="file" id="fichero" accept="image/png, .jpeg, .jpg">
+                <label for="btnUpdateUserPhoto" class="circle"></label>
+                <input class="input" type="file" id="btnUpdateUserPhoto" accept="image/png, .jpeg, .jpg">
             </button>
         </div>
         <button type="button" class="boton-portada" >
             <i class="far fa-image"></i> Cambiar fondo
-            <label for="fichero" class="circle"></label>
-            <input class="input" type="file" id="fichero" accept="image/png, .jpeg, .jpg">
+            <label for="btnUpdateUserBackground" class="circle"></label>
+            <input class="input" type="file" id="btnUpdateUserBackground" accept="image/png, .jpeg, .jpg">
         </button>
     </div> `;
 

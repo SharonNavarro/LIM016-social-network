@@ -1,4 +1,4 @@
-import { userState } from "../firebase/auth.js";
+import { userState, updatePhotoUser } from "../firebase/auth.js";
 
 import { 
   publishPostsAccount,
@@ -20,14 +20,10 @@ import {
   deletePublish,
   updatePublish,
   getPublish,
-  saveUser,
   getUsers,
-  getUser,
   inLikes,
   desLikes,
-  inHeart,
-  desHeart,
-  queryEmailUnique,
+  inHeart
 } from "../firebase/firestore.js";
 
 let showPublishAccount, getFileAddAccount;
@@ -98,16 +94,9 @@ export default () => {
         modal.classList.remove('modal--show');
       });
 
-      let interests = "";
-      let locationBio = "";
-      let socialNetwork = "";
-
-      containerBio.innerHTML = templateForInsideBio(interests, locationBio, socialNetwork);
-
-      let nameUserBio, emailUser, photo, frontPageURL;
+      let nameUserBio, emailUser, photo, frontPageURL, interests, locationBio, socialNetwork;
 
       querySnapshotBio = await getUsers();
-      let templateBio = "";
 
       querySnapshotBio.forEach((doc) => {
         nameUserBio = doc.data().nameUser;
@@ -119,13 +108,22 @@ export default () => {
         socialNetwork = doc.data().socialNetwork;
 
         if (displayNameAccount == nameUserBio) {
-          templateBio = templateForInsideBio(interests, locationBio, socialNetwork);
-          registerForm["userNameBio"].value = nameUserBio;
-          registerForm["interestBio"].value = interests;
-          registerForm["locacionBio"].value = locationBio;
-          registerForm["socialNetworkBio"].value = socialNetwork;
+          console.log(displayNameAccount + " && " + nameUserBio )
+
+          if (interests, locationBio, socialNetwork == "undefined" ) {
+            interests = "";
+            locationBio = "";
+            socialNetwork = "";
+            containerBio.innerHTML = templateForInsideBio(interests, locationBio, socialNetwork);
+          } else {
+            registerForm["userNameBio"].value = nameUserBio;
+            registerForm["interestBio"].value = interests;
+            registerForm["locacionBio"].value = locationBio;
+            registerForm["socialNetworkBio"].value = socialNetwork;
+            containerBio.innerHTML = templateForInsideBio(interests, locationBio, socialNetwork);
+          }
+
         }
-        containerBio.innerHTML = templateBio;
     });
   };
 
@@ -142,7 +140,6 @@ export default () => {
       querySnapshot.forEach((doc) => {
         if (displayNameAccount == doc.data().nameUser) {
               idUsuarioLogin = doc.data().idUser;
-              console.log(displayNameAccount)
         }
       });
     }

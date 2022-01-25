@@ -9,7 +9,8 @@ import {
    ref, storage,
    uploadBytesResumable,
    updateUserNamePost,
-   getPublishes
+   getPublishes,
+   queryEmailUnique
 } from "../firebase/firestore.js"
 
 import {
@@ -251,7 +252,7 @@ let uploadFilesAccount = (getFileAddAccount) => {
 
 }
 
-//Funcion que editar tu bio y tu nombre de usuario
+//Funcion que edita tu bio y tu nombre de usuario
 
 export const editBioProfile = () => {
     registerForm.addEventListener("submit", async (e) => {
@@ -268,7 +269,6 @@ export const editBioProfile = () => {
                await updateUserNamePost(doc.id, userNameBio); 
         }
       });
-
       await updateNameUser(userNameBio);
       await saveUser(useridAccount, userNameBio, emailAccount, photoURLAccount, frontPageURLUsu, interestBio, locacionBio, socialNetworkBio);
       await publishBio();
@@ -276,5 +276,65 @@ export const editBioProfile = () => {
       window.location.reload();
     });
   };
+
+//Funcion que registra al usuario si no lo a estado previamente, con los proveedores de Gmail, Facebook y Twitter
+
+export const UserNotExistCreate = async(idUser, name, email) => {
+
+   let photo;
+         
+   localStorage.setItem("IdUsuario", idUser);
+   localStorage.setItem("Nombre", name);
+   localStorage.setItem("Correo", email);
+   localStorage.setItem("photoURL", photo);
+   
+   const idUsu = localStorage.getItem("IdUsuario");
+   const disName = localStorage.getItem("Nombre");
+   const emailUsu = localStorage.getItem("Correo");
+
+   const querySnapshote = await queryEmailUnique(emailUsu);
+   if (querySnapshote.size > 0) {
+     console.log("usuario registrado");
+   } else {
+      let interestsUsu = "",
+      photoURLUsu = "",
+      frontPageURLUsu = "",
+      locationUsu = "",
+      socialNetworkUsu = "";
+     await saveUser(idUsu, disName, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
+     console.log("datos guardados");
+     window.location.reload();
+   }
+
+ }
+
+ //Funcion que registra al usuario si no lo a estado previamente, solo con correo y contraseña
+
+ export const UserNotExistCreateWithEmailAndPassword = async(idUser, email, name) => {
+
+   localStorage.setItem("IdUsuario", idUser);
+   localStorage.setItem("Correo", email);
+
+   const idUsu = localStorage.getItem("IdUsuario");
+   const emailUsu = localStorage.getItem("Correo");
+
+   const querySnapshote = await queryEmailUnique(emailUsu);
+   if (querySnapshote.size > 0) {
+     console.log("usuario registrado SIGN IN");
+   } else {
+
+      let interestsUsu = "",
+      photoURLUsu = "",
+      frontPageURLUsu = "",
+      locationUsu = "",
+      socialNetworkUsu = "";
+      name = "Usuario desconocido";
+      await updateNameUser(name);
+      await saveUser(idUsu, name, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
+      window.location.reload();
+      console.log("datos guardados SIGN IN");
+   }
+
+ }
 
 

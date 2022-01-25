@@ -13,20 +13,16 @@ import {
   deletePublish,
   updatePublish,
   getPublish,
-  saveUser,
   getUsers,
   inLikes,
   desLikes,
   inHeart,
   desHeart,
-  queryEmailUnique,
+  inFollow,
+  desFollow
 } from "../firebase/firestore.js"
 
-import { 
-  emailUsuario,
-  nombreUsuario,
-  idUsuario 
-} from "./Login.js"
+
 
 let showPublish, getFileAdd;
 let displayName, photoURL, email, userid;
@@ -64,44 +60,7 @@ export default () => {
     }
   })
 
-  let photo, frontPageURL, interests, location, socialNetwork;
-
-  localStorage.setItem("IdUsuario", idUsuario);
-  localStorage.setItem("Nombre", nombreUsuario);
-  localStorage.setItem("Correo", emailUsuario);
-  localStorage.setItem("photoURL", photo);
-  localStorage.setItem("frontPageURL", frontPageURL);
-  localStorage.setItem("interests", interests);
-  localStorage.setItem("location", location);
-  localStorage.setItem("socialNetwork", socialNetwork);
-
-
-  UserNotExistCreate();
-
-  async function UserNotExistCreate() {
-
-    const idUsu = localStorage.getItem("IdUsuario");
-    const disName = localStorage.getItem("Nombre");
-    const emailUsu = localStorage.getItem("Correo");
-    const photoURLUsu = localStorage.getItem("photoURL");
-    const frontPageURLUsu = localStorage.getItem("frontPageURL");
-    const interestsUsu = localStorage.getItem("interests");
-    const locationUsu = localStorage.getItem("location");
-    const socialNetworkUsu = localStorage.getItem("socialNetwork");
-
-
-    const querySnapshote = await queryEmailUnique(emailUsu);
-    if (querySnapshote.size > 0) {
-      console.log("usuario registrado");
-    } else {
-      await saveUser(idUsu, disName, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
-      console.log("datos guardados");
-      await showPublish();
-    }
-
-  }
-
-  let idUsuarioLogin, querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
+  let idUsuarioLogin, followed, querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
 
   showPublish = async () => {
     getFileAdd=""
@@ -111,6 +70,7 @@ export default () => {
       querySnapshot.forEach((doc) => {
         if (displayName == doc.data().nameUser) {
           idUsuarioLogin = doc.data().idUser;
+          followed = doc.data().followed;
         }
       });
     }
@@ -132,18 +92,22 @@ export default () => {
       imagenAdd = doc.data().imagen;
       contHearts = doc.data().hearts;
 
+
       let iconStars;
       let iconHearts;
+      let btnFollowUsers;
 
       (contStars.indexOf(idUsuarioLogin) !== -1) ? iconStars = 'paint' : iconStars = '';
       
-      (contHearts.indexOf(idUsuarioLogin) !==-1)? iconHearts = 'paintHeart' : iconHearts = ''; 
+      (contHearts.indexOf(idUsuarioLogin) !==-1)? iconHearts = 'paintHeart' : iconHearts = '';
+      
+      (followed.indexOf(idUsuarioLogin) !==-1)? btnFollowUsers.innerHTML="Seguido" : btnFollowUsers.innerHTML=""; 
 
       if (displayName == userName) {
         templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd, iconHearts, contHearts.length);
 
       } else {
-        templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd, iconHearts, contHearts.length);
+        templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd, iconHearts, contHearts.length, btnFollowUsers);
       }
 
     });
@@ -161,6 +125,7 @@ export default () => {
     const groupBtnUpdate = document.querySelectorAll(".groupBtnUpdate");
     const btnSave = document.querySelectorAll(".btnSave");
 
+    const btnFollow = document.querySelectorAll(".btnFollow");
     const iconPostStart = document.querySelectorAll(".iconPostStart");
     const iconPostHeart = document.querySelectorAll(".iconPostHeart");
     //--------------------------------------------
@@ -176,6 +141,22 @@ export default () => {
 
     }
 
+    btnFollow.forEach((btn) => {
+      btn.addEventListener("click", async (e) => {
+        const idPost = e.target.dataset.id;
+        if (e.target.classList.contains('')) {
+          desFollow(idPost, idUsuarioLogin).FieldValue;
+          console.log("dejo de seguir");
+          await showPublish();
+        } else {
+          inFollow(idPost, idUsuarioLogin).FieldValue;
+          // e.target.classList.add('')
+          btn.innerHTML="Seguido";
+          console.log("empezo a segurilo");
+          await showPublish();
+        }
+      })
+    })
 
     iconPostStart.forEach((icon) => {
       icon.addEventListener("click", async (e) => {
