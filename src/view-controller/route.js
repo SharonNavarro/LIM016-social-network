@@ -23,9 +23,8 @@ export const changeTmp = (hash) => {
         case '#/Account':
         case '#/Friends':
         case '#/Messages':
-        case '#/Netchange':
+        case '#/Noticias':
         case '#/Favorite':
-        case '#/Notifications':
         case '#/Home':
                          
                 sectionMain.innerHTML="";

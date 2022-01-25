@@ -59,7 +59,7 @@ const templateViewAccount = `
                             <div class="addPost">
                                 <input id="fichero" type="file">           
                                 <label for="fichero" class="circle"> <i class="far fa-image"></i> </label>
-                                <a href="#"><i class="fas fa-unlock-alt ico"></i></a>
+                           
                                 <button class="postBtn" id="btnPublish">Publicar</button>
                             </div>
                         </div>
@@ -111,7 +111,7 @@ const templateForInsideBio = (interests, locationBio, socialNetwork) => `
 
 
 export {
-  templateViewAccount,
-  templateViewAccountProfileUser,
-  templateForInsideBio
+    templateViewAccount,
+    templateViewAccountProfileUser,
+    templateForInsideBio
 };

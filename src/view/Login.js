@@ -28,19 +28,19 @@ export default () => {
 
   const viewLogin = templateViewLogin;
 
-  const divElemt = document.createElement('section');
-  divElemt.classList.add('classViewLogin')
-  divElemt.innerHTML = viewLogin;
+    const divElemt = document.createElement('section');
+    divElemt.classList.add('classViewLogin')
+    divElemt.innerHTML = viewLogin;
 
-  const email = divElemt.querySelector("#inputUser");
-  const password = divElemt.querySelector("#inputPassword");
-  const btnLogin = divElemt.querySelector('#btnLogin');
-  const link = divElemt.querySelector('#link');
+    const email = divElemt.querySelector("#inputUser");
+    const password = divElemt.querySelector("#inputPassword");
+    const btnLogin = divElemt.querySelector('#btnLogin');
+    const link = divElemt.querySelector('#link');
 
-  const inactiveEmailErrorMessage = divElemt.querySelector('.inactiveEmailErrorMessage');
-  const inactivePasswordErrorMessage = divElemt.querySelector('.inactivePasswordErrorMessage');
-  const containerInputEmail = divElemt.querySelector('.containerInputEmail');
-  const containerInputPassword = divElemt.querySelector('.containerInputPassword');
+    const inactiveEmailErrorMessage = divElemt.querySelector('.inactiveEmailErrorMessage');
+    const inactivePasswordErrorMessage = divElemt.querySelector('.inactivePasswordErrorMessage');
+    const containerInputEmail = divElemt.querySelector('.containerInputEmail');
+    const containerInputPassword = divElemt.querySelector('.containerInputPassword');
 
   btnLogin.addEventListener('click', () => {
     signIn(email.value, password.value)
@@ -111,13 +111,13 @@ export default () => {
   //Restablecer contraseña
   function reestablecer(email) {
     link.addEventListener("click", () => {
-      passwordReset(email)
-        .then(console.log("verifica tu correo"))
+        passwordReset(email)
+            .then(console.log("verifica tu correo"))
 
     })
-  }
+}
 
-  //twiter
+//twiter
   const loginTwitter = divElemt.querySelector("#loginTwitter");
   loginTwitter.addEventListener("click", () => {
 
@@ -188,6 +188,8 @@ export default () => {
   })
 
   return divElemt;
-};
+
+}
+
 
 
