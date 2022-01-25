@@ -13,20 +13,14 @@ import {
   deletePublish,
   updatePublish,
   getPublish,
-  saveUser,
   getUsers,
   inLikes,
   desLikes,
   inHeart,
-  desHeart,
-  queryEmailUnique,
+  desHeart
 } from "../firebase/firestore.js"
 
-import { 
-  emailUsuario,
-  nombreUsuario,
-  idUsuario 
-} from "./Login.js"
+
 
 let showPublish, getFileAdd;
 let displayName, photoURL, email, userid;
@@ -63,43 +57,6 @@ export default () => {
       publishPosts(formPublish, miModalPublishVoid, btnReturn);
     }
   })
-
-  let photo, frontPageURL, interests, location, socialNetwork;
-
-  localStorage.setItem("IdUsuario", idUsuario);
-  localStorage.setItem("Nombre", nombreUsuario);
-  localStorage.setItem("Correo", emailUsuario);
-  localStorage.setItem("photoURL", photo);
-  localStorage.setItem("frontPageURL", frontPageURL);
-  localStorage.setItem("interests", interests);
-  localStorage.setItem("location", location);
-  localStorage.setItem("socialNetwork", socialNetwork);
-
-
-  UserNotExistCreate();
-
-  async function UserNotExistCreate() {
-
-    const idUsu = localStorage.getItem("IdUsuario");
-    const disName = localStorage.getItem("Nombre");
-    const emailUsu = localStorage.getItem("Correo");
-    const photoURLUsu = localStorage.getItem("photoURL");
-    const frontPageURLUsu = localStorage.getItem("frontPageURL");
-    const interestsUsu = localStorage.getItem("interests");
-    const locationUsu = localStorage.getItem("location");
-    const socialNetworkUsu = localStorage.getItem("socialNetwork");
-
-
-    const querySnapshote = await queryEmailUnique(emailUsu);
-    if (querySnapshote.size > 0) {
-      console.log("usuario registrado");
-    } else {
-      await saveUser(idUsu, disName, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
-      console.log("datos guardados");
-      await showPublish();
-    }
-
-  }
 
   let idUsuarioLogin, querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
 

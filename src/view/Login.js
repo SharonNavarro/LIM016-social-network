@@ -1,89 +1,38 @@
-import { signIn, signInFacebook, userState, signInGoogle, signInTwitter, passwordReset } from "../firebase/auth.js"
-import { addErrorMessage, addErrorInput, removeErrorInput, removeErrorMessage } from "../lib/functions.js"
-let nombreUsuario, idUsuario, emailUsuario;
+import { 
+  templateViewLogin
+} from "./templates/templateLogin.js";
 
+import { 
+  signIn,
+  signInFacebook,
+  signInGoogle, 
+  signInTwitter, 
+  passwordReset,
+  updateNameUser,
+  updatePhotoUser
+} from "../firebase/auth.js"
+
+import { 
+  addErrorMessage, 
+  addErrorInput, 
+  removeErrorInput, 
+  removeErrorMessage,
+  UserNotExistCreate
+} from "../lib/functions.js"
+
+import {
+  queryEmailUnique,
+  saveUser
+} from "../firebase/firestore.js"
+
+let nombreUsuario,idUsuario,emailUsuario;
+let nameUserForSigIn,idUserForSignIn,emailUserForSignIn;
+let nameUserForTwitter,idUserForTwitter,emailUserForTwitter;
+let nameUserForFacebook,idUserForFacebook,emailUserForFacebook;
+ 
 export default () => {
-    const viewLogin = `
-    <div class="containerLogin">
-    <div class="sectionWelcome">
-    </div>
-      <div class="sectionLogin" id="sectionLogin">
 
-        <div class="login" id="login">  
-
-          <div class="containerInputs">
-
-          <div class="icom">  
-          <i class="fab fa-bitcoin"></i>
-          </div>
-
-            <h1 >Netcoins</h1>
-
-            <div class="containerInputEmail">
-              <i class="fas fa-envelope"></i>
-              <input class="inputUser" id="inputUser" name="email" type="text" placeholder="Correo electronico">
-            </div>
-            <div class="inactiveEmailErrorMessage">
-              <i class="fas fa-exclamation-circle"></i>
-              <small>Error Message</small>
-            </div>
-
-            <div class="containerInputPassword">
-              <i class="fas fa-key"></i>
-              <input type="password" class="inputPassword" name="password" id="inputPassword" type="text" placeholder="Contraseña">
-            </div>
-            <div class="inactivePasswordErrorMessage">
-              <i class="fas fa-exclamation-circle"></i>
-              <small>Error Message</small>
-              <a id="link"> </a>
-            </div>
-
-            <button type="submit" class="btn third " id= "btnLogin">Inicia Sesión</button>
-            <label class="lbl" for=""> o ingresa con:</label>
-
-            <div class="loginIcons">    
-              <a id="loginFacebook"><img src="./images/logo-facebook.png" alt=""></a> 
-              <a id="loginGmail"><img  src="./images/logo-gmail.png" alt=""></a>
-              <a id="loginTwitter"><img  src="./images/logo-tu.png" alt=""></a>
-            </div>
-
-            <div class="groupLbl">  
-              <label class="lblCuenta" for="">¿No tienes una cuenta?</label>
-              <a href="#/Register" class="linkRegistrate" id="linkRegistrate" for="">Regístrate</a>     
-            </div>  
-
-          </div>
-          <footer id="containerFooter">
-
-          <div class="bo-wrap clr4">
-            <div class="bo-footer">
-              <div class="bo-footer-social"></div>
-            </div>
-          </div>
-          <div class="bo-wrap clr3">
-            <div class="bo-footer">
-              <div class="bo-footer-smap">
-                <a class= "bo-footer-text " href="">Politica de Privacidad</a> <a class="rayita"> | </a> 
-                <a class= "bo-footer-text" href="">Contact Us</a>
-              </div>
-              <div class="bo-footer-uonline">
-                <div class="bo-footer-power">
-                  Powered By  - <a class= "bo-footer-text" href="">SJM</a>
-                </div>
-                <div class="clearfix"></div>
-              </div>
-            </div>
-            <div class="bo-wrap clr4">
-              <div class="bo-footer">
-                <div class="bo-footer-copyright">&copy;2022 SJM  All rights reserved.</div>
-              </div>
-            </div>
-            </footer>
-        </div>        
-        `;
-
-
-
+  const viewLogin = templateViewLogin;
 
     const divElemt = document.createElement('section');
     divElemt.classList.add('classViewLogin')
@@ -190,9 +139,112 @@ export default () => {
 
     })
 
+  btnLogin.addEventListener('click', () => {
+    signIn(email.value, password.value)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        nameUserForSigIn = (user.displayName);
+        idUserForSignIn = (user.uid);
+        emailUserForSignIn = (user.email);
+        console.log(user.emailVerified);
+        console.log("idusuario de login",idUserForSignIn);
 
-    //uuuuuu
+        let photo, frontPageURL, interests, location, socialNetwork;
 
+          localStorage.setItem("IdUsuario", idUserForSignIn);
+          localStorage.setItem("Nombre", nameUserForSigIn);
+          localStorage.setItem("Correo", emailUserForSignIn);
+          localStorage.setItem("photoURL", photo);
+          localStorage.setItem("frontPageURL", frontPageURL);
+          localStorage.setItem("interests", interests);
+          localStorage.setItem("location", location);
+          localStorage.setItem("socialNetwork", socialNetwork);
+
+
+          UserNotExistCreate();
+
+          async function UserNotExistCreate() {
+
+            const idUsu = localStorage.getItem("IdUsuario");
+            const disName = localStorage.getItem("Nombre");
+            const emailUsu = localStorage.getItem("Correo");
+            const photoURLUsu = localStorage.getItem("photoURL");
+            const frontPageURLUsu = localStorage.getItem("frontPageURL");
+            const interestsUsu = localStorage.getItem("interests");
+            const locationUsu = localStorage.getItem("location");
+            const socialNetworkUsu = localStorage.getItem("socialNetwork");
+
+
+            const querySnapshote = await queryEmailUnique(emailUsu);
+            if (querySnapshote.size > 0) {
+              console.log("usuario registrado SIGN IN");
+              nameUserForSigIn = "Usuario nuevo";
+              await updatePhotoUser()
+              await updateNameUser(nameUserForSigIn);
+              await saveUser(idUsu, nameUserForSigIn, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
+              
+            } else {
+              nameUserForSigIn = "Usuario nuevo";
+              await updateNameUser(nameUserForSigIn);
+              await saveUser(idUsu, nameUserForSigIn, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
+              console.log("datos guardados SIGN IN");
+            }
+
+          }
+
+        divElemt.querySelector("#inputUser").value = "";
+        divElemt.querySelector("#inputPassword").value = "";
+
+        if (user.emailVerified === false) {
+          console.log("correo no verificado");
+
+        } else {
+          console.log("correo registrado y verificado");
+          window.location.hash = '#/Home';
+        }
+
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        if (email.value === '' && password.value === '') {
+          addErrorMessage(inactiveEmailErrorMessage, 'Campo inválido.');
+          addErrorInput(containerInputEmail, 'error');
+          addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido.');
+          addErrorInput(containerInputPassword, 'error');
+          link.innerHTML = "";
+        } else if (password.value === '') {
+          addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido. Por favor, escriba su contraseña.');
+        } else if (email.value === '') {
+          link.innerHTML = "";
+          addErrorMessage(inactiveEmailErrorMessage, 'Campo inválido. Por favor, escriba su correo electrónico.');
+        }
+        else if (errorCode === 'auth/wrong-password') {
+          removeErrorInput(containerInputPassword, 'error');
+          removeErrorInput(containerInputEmail, 'error');
+          removeErrorMessage(inactiveEmailErrorMessage, '');
+          addErrorMessage(inactivePasswordErrorMessage, 'Email/contraseña incorrecta. ¿Olvidaste tu contraseña?');
+          link.innerHTML = "Reestablecela";
+          addErrorInput(containerInputPassword, 'error');
+          reestablecer(email.value);
+        }
+        else if (errorCode === 'auth/user-not-found') {
+          removeErrorInput(containerInputPassword, 'error');
+          removeErrorInput(containerInputEmail, 'error');
+          removeErrorMessage(inactiveEmailErrorMessage, '');
+          addErrorMessage(inactivePasswordErrorMessage, 'Email/contraseña incorrecta. ¿Olvidaste tu contraseña?');
+          link.innerHTML = "Reestablecela";
+          addErrorInput(containerInputPassword, 'error');
+          reestablecer(email.value);
+        }
+        else {
+          link.innerHTML = "";
+          removeErrorInput(containerInputPassword, 'error');
+          removeErrorInput(containerInputEmail, 'error');
+          removeErrorMessage(inactiveEmailErrorMessage, '');
+          addErrorMessage(inactivePasswordErrorMessage, ' Ocurrió un error. Por favor, vuelva a escribir sus datos.')
+        }
+      })
+  });
 
     const loginGmaiL = divElemt.querySelector("#loginGmail");
     loginGmaiL.addEventListener("click", () => {
@@ -218,44 +270,77 @@ export default () => {
 
     })
 
+  }
 
+  //twiter
+  const loginTwitter = divElemt.querySelector("#loginTwitter");
+  loginTwitter.addEventListener("click", () => {
 
-    const loginFacebook = divElemt.querySelector("#loginFacebook");
-    loginFacebook.addEventListener("click", () => {
-        signInFacebook()
-            .then((user) => {
-                window.location.hash = '#/Home';
-                console.log("iniciaste sesion con Facebook")
+    signInTwitter()
+      .then((user) => {
+        window.location.hash = '#/Home';
+        console.log("iniciaste sesion con Twitter")
+        nameUserForTwitter = (user.user.displayName);
+        idUserForTwitter = (user.user.uid);
+        emailUserForTwitter = (user.user.email);
+        console.log("idusuario de login", idUserForTwitter);
+      
+        UserNotExistCreate(idUserForTwitter, nameUserForTwitter, emailUserForTwitter);
 
-                console.log(user.user.displayName);
-                console.log(user.user.email);
-                console.log(user.user.photoURL);
-            })
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage)
+      })
 
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage)
-        })
-    })
+  })
 
-    userState((user) => {
-        if (user) {
-            const displayName = user.displayName;
-            const email = user.email;
-            const photoURL = user.photoURL;
-            const emailVerified = user.emailVerified;
-            const uid = user.uid;
+  //gmail
+  const loginGmaiL = divElemt.querySelector("#loginGmail");
+  loginGmaiL.addEventListener("click", () => {
 
+    signInGoogle()
+      .then((user) => {
+        window.location.hash = '#/Home';
+        console.log("iniciaste sesion con google")
+        nombreUsuario=(user.user.displayName);
+        emailUsuario=(user.user.email);
+        idUsuario = (user.user.uid);
+        console.log("idusuario de login",idUsuario);
+      
+        UserNotExistCreate(idUsuario, nombreUsuario, emailUsuario);
+      
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage)
+      })
+  
+  })
 
-        }
+//facebook
+  const loginFacebook = divElemt.querySelector("#loginFacebook");
+  loginFacebook.addEventListener("click", () => {
+    signInFacebook()
+      .then((user) => {
+        window.location.hash = '#/Home';
+        console.log("iniciaste sesion con Facebook")
+        nameUserForFacebook = (user.user.displayName);
+        emailUserForFacebook = (user.user.email);
+        idUserForFacebook = (user.user.uid);
 
-    })
+        UserNotExistCreate(idUserForFacebook, nameUserForFacebook, emailUserForFacebook);
 
-    return divElemt;
+      })
+
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage)
+      })
+  })
+
+  return divElemt;
 };
-export {
-    emailUsuario,
-    nombreUsuario,
-    idUsuario
-}
