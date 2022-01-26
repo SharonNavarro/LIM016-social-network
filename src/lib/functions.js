@@ -300,8 +300,9 @@ export const UserNotExistCreate = async(idUser, name, email) => {
       photoURLUsu = "",
       frontPageURLUsu = "",
       locationUsu = "",
-      socialNetworkUsu = "";
-     await saveUser(idUsu, disName, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
+      socialNetworkUsu = "",
+      followed = [];
+     await saveUser(idUsu, disName, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu, followed);
      console.log("datos guardados");
      window.location.reload();
    }
@@ -327,10 +328,11 @@ export const UserNotExistCreate = async(idUser, name, email) => {
       photoURLUsu = "",
       frontPageURLUsu = "",
       locationUsu = "",
-      socialNetworkUsu = "";
+      socialNetworkUsu = "",
+      followed = [];
       name = "Usuario desconocido";
       await updateNameUser(name);
-      await saveUser(idUsu, name, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
+      await saveUser(idUsu, name, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu, followed);
       window.location.reload();
       console.log("datos guardados SIGN IN");
    }
