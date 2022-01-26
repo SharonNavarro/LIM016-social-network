@@ -91,10 +91,10 @@ export default () => {
 </div>
 
 
-<div id="miModalPublishVoid" class="closeModal">
-<div class="modal-contenidoReturn">
-  <h5 class="h2Modal">Tu publicación está vacia!</h5>
-  <div class="groupBtnOptionsReturn">
+<div id="miModalRegister" class="closeRegister">
+<div class="modal-contenidoRegister">
+  <h5 class="h2Modal">Revisa tu bandeja de entrada y verifica tu correo</h5>
+  <div class="groupBtnOptions">
     <button id="btnReturn" class="btnOptions">Volver</button>
   </div>
 </div>
@@ -159,6 +159,9 @@ export default () => {
     const userRegex = /^[a-zA-Z0-9\_\-]{4,16}$/;
 
 
+    const miModalRegister = divElemt.querySelector("#miModalRegister");
+    const btnReturn = divElemt.querySelector("#btnReturn");
+
     btnRegister.addEventListener("click", () => {
         signUp(email.value, password.value)
             .then(() => {
@@ -170,7 +173,14 @@ export default () => {
 
                 EmailVerification()
                     .then(() => {
+
+                        miModalRegister.setAttribute("class", "show");
+                        btnReturn.addEventListener("click", () => {
+                            miModalRegister.setAttribute("class", "closeRegister");
+                            window.location.hash = '#/';
+                        })
                         console.log("Revisa tu correo para verificarlo");
+
 
 
                     });
