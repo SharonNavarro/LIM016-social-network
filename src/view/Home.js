@@ -89,21 +89,21 @@ export default () => {
       userName = doc.data().userName;
       urlPhoto = doc.data().urlPhoto;
       contStars = doc.data().likesPost;
+      let idUser = doc.data().idUser;
       imagenAdd = doc.data().imagen;
       contHearts = doc.data().hearts;
 
-
       let iconStars;
       let iconHearts;
-      let btnFollowUsers;
+      let btnFollowUsers = document.querySelectorAll(".btnFollowUsers");
 
       (contStars.indexOf(idUsuarioLogin) !== -1) ? iconStars = 'paint' : iconStars = '';
       
       (contHearts.indexOf(idUsuarioLogin) !==-1)? iconHearts = 'paintHeart' : iconHearts = '';
       
-      (followed.indexOf(idUsuarioLogin) !==-1)? btnFollowUsers.innerHTML="Seguido" : btnFollowUsers.innerHTML=""; 
+      (followed.indexOf(idUsuarioLogin) !==-1)? btnFollowUsers.innerHTML="Seguido" : btnFollowUsers.innerHTML="Seguir"; 
 
-      if (displayName == userName) {
+      if (idUser == idUsuarioLogin) {
         templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd, iconHearts, contHearts.length);
 
       } else {
@@ -119,7 +119,6 @@ export default () => {
     const btnDelete = document.querySelector("#btnDelete");
     const btnCancel = document.querySelectorAll(".btnCancel");
     const btnCancelUpdate = document.querySelectorAll(".btnCancelUpdate");
-    const btnEdit = document.querySelector("#btnEdit");
     const contenido = document.querySelectorAll(".contenido");
     const containerIconsBtn = document.querySelectorAll(".containerIconsBtn");
     const groupBtnUpdate = document.querySelectorAll(".groupBtnUpdate");
