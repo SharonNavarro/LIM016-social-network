@@ -1,14 +1,14 @@
 # Netcoins: la red social para los apasionados de las Criptomonedas 
 ******************
 
-## 1. Introducción 💹
+### 1. Introducción 💹
 
 Entre tantas redes sociales existentes, creamos una completamente dedicada al mundo de las criptomonedas. 
 
 Netcoins, es el espacio ideal para todos aquellos que deseen conocer las noticias más importantes de la industria, estar al tanto de las oportunidades del mercado, aprender y compartir sus conocimientos sobre criptomonedas.
 
 
-## 2.  Resumen del proyecto ✍️
+### 2.  Resumen del proyecto ✍️
 
 Netcoins es una single-page responsive, la cual cuenta con 5 vistas. Permite a cualquier usuario crear una cuenta de acceso y loguearse con ella; crear, editar, borrar así como dar like a distintas publicaciones.
 
@@ -24,7 +24,7 @@ Netcoins es una single-page responsive, la cual cuenta con 5 vistas. Permite a c
 
 
 
-## 3. Definición del Producto 
+### 3. Definición del Producto 
 
 ¿Quienes son los principales usuarios?
 
@@ -68,7 +68,7 @@ Realizamos una encuesta para poder determinar cuales eran los  gustos y preferen
 
 
 
-## 4. 🎯 Historias de Usuario 
+### 4. 🎯 Historias de Usuario 
 
 #### Historia N° 1
 
@@ -132,7 +132,7 @@ Criterios de aceptación:
   - [x] Poder darle "estrella" a cualquier publicación, incluida la tuya.
 
 
-## 5. Tecnologias 🚀
+### 5. Tecnologias 🚀
 
 Trabajamos este proyecto haciendo uso de :
 
@@ -144,14 +144,14 @@ Trabajamos este proyecto haciendo uso de :
 - Firebase
 
 
-## 6. Objetivos de Aprendizaje 
+### 6. Objetivos de Aprendizaje 
 
-### HTML
+#### HTML
 
 - [✔️] **Uso de HTML semántico**
 
  
-### CSS
+#### CSS
 
 - [✔️] **Uso de selectores de CSS**
 
@@ -161,7 +161,7 @@ Trabajamos este proyecto haciendo uso de :
 
 - [✔️] **Uso de CSS Grid Layout**
 
-### Web APIs
+#### Web APIs
 
 - [✔️] **Uso de selectores del DOM**
 
@@ -173,7 +173,7 @@ Trabajamos este proyecto haciendo uso de :
 - [✔️] **Ruteado (History API, evento hashchange, window.location)**
 
 
-### JavaScript
+#### JavaScript
 
 - [✔️] **Arrays (arreglos)**
 
@@ -209,7 +209,7 @@ Trabajamos este proyecto haciendo uso de :
 - [✔️] **Promesas**
 
   
-### Control de Versiones (Git y GitHub)
+#### Control de Versiones (Git y GitHub)
 
 - [✔️] **Git: Instalación y configuración**
 
@@ -226,7 +226,7 @@ Trabajamos este proyecto haciendo uso de :
 
 - [✔️] **GitHub: Organización en Github (projects | issues | labels | milestones | releases)**
 
-### UX (User eXperience)
+#### UX (User eXperience)
 
 - [✔️] **Diseñar la aplicación pensando en y entendiendo al usuario**
 
@@ -236,7 +236,7 @@ Trabajamos este proyecto haciendo uso de :
 
 - [✔️] **Planear y ejecutar tests de usabilidad**
 
-### Firebase
+#### Firebase
 
 - [✔️] **Firebase Auth**
 
