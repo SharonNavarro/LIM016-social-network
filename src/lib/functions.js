@@ -279,10 +279,8 @@ export const editBioProfile = () => {
 
 //Funcion que registra al usuario si no lo a estado previamente, con los proveedores de Gmail, Facebook y Twitter
 
-export const UserNotExistCreate = async(idUser, name, email) => {
+export const UserNotExistCreate = async(idUser, name, email, photo) => {
 
-   let photo;
-         
    localStorage.setItem("IdUsuario", idUser);
    localStorage.setItem("Nombre", name);
    localStorage.setItem("Correo", email);
@@ -291,13 +289,13 @@ export const UserNotExistCreate = async(idUser, name, email) => {
    const idUsu = localStorage.getItem("IdUsuario");
    const disName = localStorage.getItem("Nombre");
    const emailUsu = localStorage.getItem("Correo");
+   const photoURLUsu = localStorage.getItem("photoURL");
 
    const querySnapshote = await queryEmailUnique(emailUsu);
    if (querySnapshote.size > 0) {
      console.log("usuario registrado");
    } else {
       let interestsUsu = "",
-      photoURLUsu = "",
       frontPageURLUsu = "",
       locationUsu = "",
       socialNetworkUsu = "",
