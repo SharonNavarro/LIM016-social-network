@@ -90,7 +90,6 @@ export default () => {
 </div>
 </div>
 
-
 <div id="miModalRegister" class="closeRegister">
 <div class="modal-contenidoRegister">
   <h5 class="h2Modal">Revisa tu bandeja de entrada y verifica tu correo</h5>
@@ -99,9 +98,6 @@ export default () => {
   </div>
 </div>
 </div>
-
-
-
 
 <footer id="containerFooter">
 
@@ -113,7 +109,7 @@ export default () => {
   <div class="bo-wrap clr3">
     <div class="bo-footer">
       <div class="bo-footer-smap">
-        <a class= "bo-footer-text" href="">Politica de Privacidad</a> |  
+        <a class= "bo-footer-text" href="">Politica de Privacidad</a> |
         <a class= "bo-footer-text" href="">Contact Us</a>
       </div>
       <div class="bo-footer-uonline">
@@ -128,8 +124,8 @@ export default () => {
         <div class="bo-footer-copyright">&copy;2022 SJM  All rights reserved.</div>
       </div>
     </div>
-    </footer> 
-   `;
+    </footer>
+    `;
 
 
     const divElemt = document.createElement('section');
@@ -180,12 +176,7 @@ export default () => {
                             window.location.hash = '#/';
                         })
                         console.log("Revisa tu correo para verificarlo");
-
-
-
                     });
-
-
             })
 
         .catch((error) => {

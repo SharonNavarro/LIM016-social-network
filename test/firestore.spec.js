@@ -13,15 +13,16 @@ describe('myFunction saveUser', () => {
             frontPageURL: 'ww.mili.com',
             interests: 'me gusta pasear',
             location: 'lima',
-            socialNetwork: 'facke'
+            socialNetwork: 'facke',
+            followed: [],
         })
     });
 });
 describe('myFunction saveUser', () => {
     it('should return 8 values ​​for the number of elements', async() => {
-        const result = await saveUser('001', 'Milagros', 'mili@gmail.com', 'htppp.mili.com', 'ww.mili.com', 'me gusta pasear', 'lima', 'facke')
+        const result = await saveUser('001', 'Milagros', 'mili@gmail.com', 'htppp.mili.com', 'ww.mili.com', 'me gusta pasear', 'lima', 'facke', 'werwtwttwet')
 
-        expect((Object.keys(result)).length).toBe(8);
+        expect((Object.keys(result)).length).toBe(9);
     });
 });
 
@@ -123,7 +124,8 @@ describe('myFunction getUser', () => {
             frontPageURL: 'wwww.ale.com',
             interests: 'me gusta pasear',
             location: 'Lima',
-            socialNetwork: 'redes sociales'
+            socialNetwork: 'redes sociales',
+            followed: [],
         };
         const result = await getUser('00001')
         expect(result.user).toStrictEqual(user)
