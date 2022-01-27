@@ -128,9 +128,10 @@ export default () => {
         nameUserForTwitter = (user.user.displayName);
         idUserForTwitter = (user.user.uid);
         emailUserForTwitter = (user.user.email);
+        photoUserTwitter = (user.user.photoURL);
         console.log("idusuario de login", idUserForTwitter);
       
-        UserNotExistCreate(idUserForTwitter, nameUserForTwitter, emailUserForTwitter);
+        UserNotExistCreate(idUserForTwitter, nameUserForTwitter, emailUserForTwitter, photoUserTwitter);
 
       })
       .catch((error) => {
@@ -152,9 +153,10 @@ export default () => {
         nombreUsuario=(user.user.displayName);
         emailUsuario=(user.user.email);
         idUsuario = (user.user.uid);
+        photoUserGoogle = (user.user.photoURL);
         console.log("idusuario de login",idUsuario);
       
-        UserNotExistCreate(idUsuario, nombreUsuario, emailUsuario);
+        UserNotExistCreate(idUsuario, nombreUsuario, emailUsuario, photoUserGoogle);
       
       })
       .catch((error) => {
@@ -175,8 +177,9 @@ export default () => {
         nameUserForFacebook = (user.user.displayName);
         emailUserForFacebook = (user.user.email);
         idUserForFacebook = (user.user.uid);
+        photoUserFacebook = (user.user.photoURL);
 
-        UserNotExistCreate(idUserForFacebook, nameUserForFacebook, emailUserForFacebook);
+        UserNotExistCreate(idUserForFacebook, nameUserForFacebook, emailUserForFacebook, photoUserFacebook);
 
       })
 

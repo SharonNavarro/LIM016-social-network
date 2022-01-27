@@ -27,16 +27,16 @@ const templateViewFriends = () => `
     </div>
   `;
 
-  const templateFriend = () => `
+  const templateFriend = (btnFollowUsers, photoUserFollowed, nameUserFollowed) => `
 
         <div class="myFriend">
-          <div class="boxMyFriend"><img src="images/profile1.png" id ="imgMyFriend"></div>
+          <div class="boxMyFriend"><img src= ${photoUserFollowed} id ="imgMyFriend"></div>
           <div class="boxName">
-            <h3 class="nameFriend">Johanna Smith</h3>
+            <h3 class="nameFriend">${nameUserFollowed}</h3>
             <p class="nameFriend">Seguidores:10</p>
           </div>
+          <input type="button" class ="btnFollow " value ="${btnFollowUsers}"></input>
         </div> 
-
   `;
 
   export {
