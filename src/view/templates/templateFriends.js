@@ -35,7 +35,7 @@ const templateViewFriends = () => `
             <h3 class="nameFriend">${nameUserFollowed}</h3>
             <p class="nameFriend">Seguidores:10</p>
           </div>
-          <input type="button" class ="btnFollow " value ="${btnFollowUsers}"></input>
+          <input type="button" class="btnFollows" value ="${btnFollowUsers}"></input>
         </div> 
   `;
 

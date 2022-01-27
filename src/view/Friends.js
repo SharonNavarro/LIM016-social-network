@@ -50,7 +50,6 @@ showPFollowed = async () => {
     })
   };
 
-console.log(followed)
 let templatePosts;
 
 let containerAllFriends = document.querySelector(".containerAllFriends");
@@ -60,39 +59,32 @@ templatePosts = "";
     nameUserFollow = query.data().nameUser;
     idUserFollow = query.data().idUser;
     photoURLFollow = query.data().photoURL;
-console.log(nameUserFollow)
-    let btnFollow = document.querySelectorAll(".btnFollow");
+
+    let btnFollow = document.querySelectorAll(".btnFollows");
     btnFollow.value = "Siguiendo";
     if (btnFollow.value=="Siguiendo") {
-      console.log(btnFollow.value)
-      templatePosts += templateFriend(btnFollow.value, photoURLFollow,nameUserFollow);
-      console.log(templatePosts)
-      console.log(containerAllFriends);
+      templatePosts += templateFriend(btnFollow.value, photoURLFollow, nameUserFollow);
       containerAllFriends.innerHTML = templatePosts;
     } 
 
   })
 
   
-  const btnFollow = document.querySelectorAll(".btnFollow");
+  const btnFollow = divElemt.querySelectorAll(".btnFollows");
 
   btnFollow.forEach((btn) => {
-    btn.addEventListener("click", async () => {
+    btn.addEventListener("click",  () => {
+      console.log("dksndjksn")
 
-      const getPost = await getPublish(btn.dataset.id)
-      const idUserPost = (getPost.data().idUser);
+      // const getPost = await getPublish(btn.dataset.id)
+      // const idUserPost = (getPost.data().idUser);
 
-      if (btn.value == "Seguir") {
-          btn.value = "Siguiendo"
-          inFollow(idUsuarioLogin, idUserPost).FieldValue;
-          console.log("empezo a seguirlo");
-          await showPFollowed();
-      } else {
-        btn.value = "Seguir"
-          desFollow(idUsuarioLogin, idUserPost).FieldValue;
-          console.log("dejo de seguirlo");
-          await showPFollowed();
-      }
+      // if (btn.value == "Seguir")  {
+      //      btn.value = "Seguir"
+      //     desFollow(idUsuarioLogin, idUserPost).FieldValue;
+      //     console.log("dejo de seguirlo");
+      //     await showPFollowed();
+      // }
     })
   })
 
