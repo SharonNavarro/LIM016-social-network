@@ -25,7 +25,7 @@ export default () => {
     <li><a href="#/Friends"><i class="fas fa-users colorIcon"></i>Amigos</a> </li>
     <li class="liMenu colorIcon"><a href="#/Favorite"><i class="fas fa-star colorIcon" id="iconFavorite"></i>Favoritos</a></li>
     <li><a href="#/Noticias"><i class="fas fa-search-dollar colorIcon"></i></i>Noticias</a> </li>   
-    <li><a id="btnLogout" style="cursor:pointer" ><i class="fas salir fa-sign-out-alt colorIcon"  data-fas-transform="flip-h"></i>Cerrar Sesión</a> </li>   
+    <li><a id="btnLogout" style="cursor:pointer" ><i class="fas salir fa-sign-out-alt colorIcon fa-flip-horizontal" ></i>Cerrar Sesión</a> </li>   
     </ul>
   </nav>
   </div>      
