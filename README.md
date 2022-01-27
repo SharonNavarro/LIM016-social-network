@@ -20,9 +20,7 @@ Netcoins es una single-page responsive, la cual cuenta con 5 vistas. Permite a c
 * Vista Desktop 💻
 
   [![vista-Destopk.png](https://i.postimg.cc/wB9mvGkh/vista-Destopk.png)](https://postimg.cc/cv5HkT2H)
-
-
-
+[![Netcoins-Google-Chrome-25-01-2022-20-46-45-4.png](https://i.postimg.cc/ZRmwCbsw/Netcoins-Google-Chrome-25-01-2022-20-46-45-4.png)](https://postimg.cc/yJfmGHHR)
 
 ### 3. Definición del Producto 
 
@@ -62,15 +60,23 @@ Realizamos una encuesta para poder determinar cuales eran los  gustos y preferen
 
 ### 3.2 Test de Usabilidad 📝
 
+Después de  realizar el test de usabilidad implementamos las siguientes mejoras:
+
+- Modo Dark.
+
+- Cambio en paleta de colores.
+
+- Alineacion de iconos en el inicio de sesión.
 
 
 
+[![Netcoins-Google-Chrome-25-01-2022-20-36-44-4.png](https://i.postimg.cc/Sxqbb4kf/Netcoins-Google-Chrome-25-01-2022-20-36-44-4.png)](https://postimg.cc/HVShbfJr)
 
 
 
 ### 4. 🎯 Historias de Usuario 
 
-#### Historia N° 1
+#### Historia N° 1 👩‍💻
 
 - Yo como usuario
 - Quiero registrarme 
@@ -86,7 +92,7 @@ Criterios de aceptación:
    - [x] El registro debe poder hacerse fácilmente desde cualquier dispositivo.
 
 
-#### Historia N° 2
+#### Historia N° 2 👩‍💻
 
 - Yo como usuario registrado
 - Quiero loguearme
@@ -98,7 +104,7 @@ Criterios de aceptación:
    - [x] El usuario solamente se puede loguear cuando sus credenciales son válidas.
    - [x] El usuario puede pedir un correo para resetear su contraseña.
 
-#### Historia N° 3
+#### Historia N° 3 👩‍💻
 
 - Yo como usuario registrado
 - Quiero realizar una publicación
@@ -116,7 +122,7 @@ Criterios de aceptación:
     - [x] Que solamente pueda editar el contenido la persona que realizó la publicación.
     - [x] Ordenar comentarios cronológicamente.
 
-#### Historia N° 4
+#### Historia N° 4 👩‍💻
 
 - Yo como usuario 
 - Quiero  darle "estrella" a las publicaciones que me gustan.

@@ -970,6 +970,9 @@ label:hover {
     padding: 12px 25px;
     background-color: rgba(229, 229, 229, 1);
     cursor: pointer;
+    margin-top: 4rem;
+    margin-right: 5rem;
+
 }
 
 .containerAccount .profileUserCover.boton-portada i {
@@ -1045,7 +1048,11 @@ label:hover {
     width: 100%;
     margin-bottom: 2rem;
     position: relative;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 .containerAccount .userProfileBio {
     margin-bottom: 1.25rem;
@@ -1054,7 +1061,7 @@ label:hover {
 
 .userBio {
     width: 85%;
-    height: 240px;
+    height: 310px;
     justify-content: center;
     margin: auto;
     padding-right: 20px;
@@ -1151,6 +1158,8 @@ label:hover {
         width: 98%;
         position: relative;
         margin-right: 2rem;
+        margin-top: 1rem;
+ 
     }
     .containerInputs {
         background: rgb(7 35 54 / 79%);
