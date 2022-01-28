@@ -23,6 +23,7 @@ html {
 [data-theme='oscuro'] {
     --bg-color: #000000;
     --txt-color: #e9e5e5;
+    background: black;
 }
 
 body .content,
