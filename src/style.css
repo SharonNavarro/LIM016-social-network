@@ -1541,7 +1541,6 @@ select:focus {
   }
 } */
 
-
 .content {
     display: flex;
     flex-direction: column;
@@ -1949,6 +1948,7 @@ select:focus {
 
 /*-------------MEDIA QUERIES----------------*/
 
+
 /* for 700px or less */
 
 @media screen and (max-width: 1200px) {
@@ -2001,10 +2001,12 @@ select:focus {
 @media (min-width: 1000px) {
     .containerLogin {
         flex-direction: row;
-        background: url("https://a-static.besthdwallpaper.com/logotipo-de-criptomoneda-bitcoin-papel-pintado-2048x1536-63700_26.jpg");
+        /*         background: url("https://a-static.besthdwallpaper.com/logotipo-de-criptomoneda-bitcoin-papel-pintado-2048x1536-63700_26.jpg");
+ */
         background-position: center;
         background-size: cover;
         width: 100%;
+        background: black;
     }
     .containerLogin .sectionLogin {
         width: 35%;
@@ -2041,7 +2043,6 @@ select:focus {
         margin-top: 15px;
         margin-bottom: 15px;
     }
-
     .userProfile {
         margin-left: 1.5rem;
     }
@@ -2059,14 +2060,15 @@ select:focus {
     }
 }
 
-
 @media (min-width: 1200px) {
     .containerLogin {
         flex-direction: row;
-        background: url("https://a-static.besthdwallpaper.com/logotipo-de-criptomoneda-bitcoin-papel-pintado-2048x1536-63700_26.jpg");
+        /*         background: url("https://a-static.besthdwallpaper.com/logotipo-de-criptomoneda-bitcoin-papel-pintado-2048x1536-63700_26.jpg");
+ */
         background-position: center;
         background-size: cover;
         width: 100%;
+        background: black;
     }
     .containerLogin .sectionLogin {
         width: 35%;
