@@ -290,11 +290,8 @@ export const UserNotExistCreate = async(idUser, name, email, photo) => {
 
     const idUsu = localStorage.getItem("IdUsuario");
     const disName = localStorage.getItem("Nombre");
-    console.log("🚀 ~ file: functions.js ~ line 293 ~ UserNotExistCreate ~ disName", disName)
     const emailUsu = localStorage.getItem("Correo");
-    console.log("🚀 ~ file: functions.js ~ line 295 ~ UserNotExistCreate ~ emailUsu", emailUsu)
     const photoURLUsu = localStorage.getItem("photoURL");
-    console.log("🚀 ~ file: functions.js ~ line 297 ~ UserNotExistCreate ~ photoURLUsu", photoURLUsu)
 
     const querySnapshote = await queryEmailUnique(emailUsu);
     if (querySnapshote.size > 0) {
@@ -309,8 +306,6 @@ export const UserNotExistCreate = async(idUser, name, email, photo) => {
         console.log("datos guardados");
         window.location.reload();
     }
-
-
 
 }
 
