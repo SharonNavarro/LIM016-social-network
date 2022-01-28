@@ -71,9 +71,12 @@ templatePosts = "";
 
   const btnSearchFollow = divElemt.querySelector("#btnSearchFollow");
   const textSearch = divElemt.querySelector(".search");
+  let templateSearchFollow;
 
   btnSearchFollow.addEventListener("click", () => {
-    
+    containerAllFriends.innerHTML = "";
+    templatePosts = "";
+    templateSearchFollow = "";
       // const arrayUsers = [ ];
       followed.forEach(async (el) => {
         let query = await getUser(el);
@@ -83,9 +86,8 @@ templatePosts = "";
 
         if (name.includes(textSearch.value.toLowerCase() )) {
           // arrayUsers.push(name)
-          containerAllFriends.innerHTML = "";
-          templatePosts += templateFriend(btnFollow.value, photoFollow, name);
-          containerAllFriends.innerHTML = templatePosts;
+          templateSearchFollow += templateFriend(btnFollow.value, photoFollow, name);
+          containerAllFriends.innerHTML = templateSearchFollow;
         }
       })
   console.log(textSearch.value.toLowerCase())
