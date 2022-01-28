@@ -1266,6 +1266,47 @@ select:focus {
     outline: none;
 }
 
+.modal-contenidoRegister {
+    background-color: white;
+    width: 300px;
+    height: 150px;
+    padding: 10px 20px;
+    margin: 20% auto;
+    position: relative;
+    opacity: 1;
+    pointer-events: auto;
+    border-radius: 15px;
+    z-index: -1;
+}
+
+.closeRegister {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1s;
+    z-index: -2;
+}
+
+
+/* .show {
+    pointer-events: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 100;
+}
+ */
+
 
 /* ---------------- Modal de eliminar posts--------------- */
 

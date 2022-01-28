@@ -1,30 +1,27 @@
 const user = {
-    idUser: '00001',
+    idUser: '0001',
     nameUser: 'Alejandra',
     emailUser: 'ale@gmail.com',
     photoURL: 'htppp.mi-foto.png',
     frontPageURL: 'wwww.ale.com',
     interests: 'me gusta pasear',
     location: 'Lima',
-    socialNetwork: 'redes sociales'
+    socialNetwork: 'redes sociales',
+    followed: []
 
 };
+
+const idUser = ['001'];
+const idUser2 = [];
 export const setDoc = jest.fn((documents, values) => Promise.resolve(values));
 export const doc = jest.fn((db, collection, docid) => Promise.resolve({}));
 export const db = {};
 export const addDoc = jest.fn((documents, values) => (values));
 export const collection = jest.fn();
-export const getDoc = jest.fn((documents) => Promise.resolve({ user }));
 export const updateDoc = jest.fn((documents, values) => Promise.resolve(values));
-export const arrayUnion = {};
+export const arrayUnion = jest.fn(() => idUser);
+export const arrayRemove = jest.fn(() => idUser2);
+export const getDoc = jest.fn((documents) => Promise.resolve({ user }));
 
 
-//const getUser = async(id) => await getDoc(doc(db, "users", id));
-/* idUser,
-nameUser,
-emailUser,
-photoURL: photo,
-frontPageURL: frontPageURL,
-interests: interests,
-location: location,
-socialNetwork: socialNetwork */
+const getPublish = async(id) => await getDoc(doc(db, "posts", id));

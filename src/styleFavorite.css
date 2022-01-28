@@ -8,10 +8,14 @@
     padding: 2%;
     position: fixed;
     width: 70%;
-    background: linear-gradient(to right, rgb(253, 253, 253), rgb(255, 255, 255),rgb(255, 255, 255), rgb(228 228 228));
-    margin-top: -5px;
-  }
-  
-  .favoritesPublishes {
-    margin-top: 10%;
-  }
+    background: linear-gradient(to right, rgb(253, 253, 253), rgb(255, 255, 255), rgb(255, 255, 255), rgb(228 228 228));
+    margin-top: 30px;
+}
+
+.favoritesPublishes {
+    margin-top: 20%;
+}
+
+.titleFavorite {
+    margin: 50px;
+}

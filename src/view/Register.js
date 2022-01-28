@@ -90,18 +90,14 @@ export default () => {
 </div>
 </div>
 
-
-<div id="miModalPublishVoid" class="closeModal">
-<div class="modal-contenidoReturn">
-  <h5 class="h2Modal">Tu publicación está vacia!</h5>
-  <div class="groupBtnOptionsReturn">
+<div id="miModalRegister" class="closeRegister">
+<div class="modal-contenidoRegister">
+  <h5 class="h2Modal">Revisa tu bandeja de entrada y verifica tu correo</h5>
+  <div class="groupBtnOptions">
     <button id="btnReturn" class="btnOptions">Volver</button>
   </div>
 </div>
 </div>
-
-
-
 
 <footer id="containerFooter">
 
@@ -113,7 +109,7 @@ export default () => {
   <div class="bo-wrap clr3">
     <div class="bo-footer">
       <div class="bo-footer-smap">
-        <a class= "bo-footer-text" href="">Politica de Privacidad</a> |  
+        <a class= "bo-footer-text" href="">Politica de Privacidad</a> |
         <a class= "bo-footer-text" href="">Contact Us</a>
       </div>
       <div class="bo-footer-uonline">
@@ -128,8 +124,8 @@ export default () => {
         <div class="bo-footer-copyright">&copy;2022 SJM  All rights reserved.</div>
       </div>
     </div>
-    </footer> 
-   `;
+    </footer>
+    `;
 
 
     const divElemt = document.createElement('section');
@@ -159,6 +155,9 @@ export default () => {
     const userRegex = /^[a-zA-Z0-9\_\-]{4,16}$/;
 
 
+    const miModalRegister = divElemt.querySelector("#miModalRegister");
+    const btnReturn = divElemt.querySelector("#btnReturn");
+
     btnRegister.addEventListener("click", () => {
         signUp(email.value, password.value)
             .then(() => {
@@ -170,12 +169,14 @@ export default () => {
 
                 EmailVerification()
                     .then(() => {
+
+                        miModalRegister.setAttribute("class", "show");
+                        btnReturn.addEventListener("click", () => {
+                            miModalRegister.setAttribute("class", "closeRegister");
+                            window.location.hash = '#/';
+                        })
                         console.log("Revisa tu correo para verificarlo");
-
-
                     });
-
-
             })
 
         .catch((error) => {
