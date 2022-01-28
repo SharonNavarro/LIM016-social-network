@@ -517,6 +517,7 @@ h1 {
     font-weight: bold;
     width: 100%;
     margin-left: 1.5rem;
+    font-family: 'Inter', sans-serif;
 }
 
 .userProfile img {
@@ -1431,6 +1432,7 @@ select:focus {
     font-size: 1rem;
     margin-bottom: 3%;
     border-radius: 3px;
+    min-height: 60px;
 }
 
 .timePublish {
@@ -2148,6 +2150,9 @@ select:focus {
     }
     .seccion-buscar-Friends {
         margin-top: 3rem;
+    }
+    .classViewNoticia {
+        width: 65%;
     }
 }
 

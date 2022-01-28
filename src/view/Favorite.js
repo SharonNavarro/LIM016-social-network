@@ -43,7 +43,7 @@ export default () => {
         }
     })
 
-    let idUsuarioLogin, querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
+    let idUsuarioLogin, followed, querySnapshot, post, idPosts, contentPosts, dateOfPublish, hourPublish, userName, urlPhoto;
 
     showPublishFavorite = async () => {
     
@@ -53,6 +53,8 @@ export default () => {
           querySnapshot.forEach((doc) => {
             if (displayNameFavorite == doc.data().nameUser) {
               idUsuarioLogin = doc.data().idUser;
+              followed = doc.data().followed;
+              console.log("aquyiiiiii", followed)
             }
           });
         }
@@ -72,20 +74,24 @@ export default () => {
             userName = doc.data().userName;
             urlPhoto = doc.data().urlPhoto;
             contStars = doc.data().likesPost;
+            let idUser = doc.data().idUser;
             imagenAdd = doc.data().imagen;
             contHearts = doc.data().hearts;
 
             let iconStars;
             let iconHearts;
+            let btnFollow = document.querySelectorAll(".btnFollow");
             
             (contStars.indexOf(idUsuarioLogin) !==-1)? iconStars = 'paint' : iconStars = '';
             
             (contHearts.indexOf(idUsuarioLogin) !==-1)? iconHearts = 'paintHeart' : iconHearts = ''; 
 
+            (followed.indexOf(idUser) !== -1) ? btnFollow.value = "Siguiendo": btnFollow.value = "Seguir";
+
             if (displayNameFavorite == userName && iconStars == 'paint') {
                 templatePosts += templatePublishes(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd, iconHearts, contHearts.length);
             } else if (displayNameFavorite !== userName && iconStars == 'paint') {
-                templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd, iconHearts, contHearts.length);
+                templatePosts += templatePublishesUsers(userName, urlPhoto, idPosts, contentPosts, dateOfPublish, hourPublish, contStars.length, iconStars, imagenAdd, iconHearts, contHearts.length, btnFollow.value);
             }
         
         });
@@ -103,8 +109,29 @@ export default () => {
         const groupBtnUpdate = document.querySelectorAll(".groupBtnUpdate");
         const btnSave = document.querySelectorAll(".btnSave");
 
+        const btnFollow = document.querySelectorAll(".btnFollow");
         const iconPostStart = document.querySelectorAll(".iconPostStart");
         const iconPostHeart = document.querySelectorAll(".iconPostHeart");
+
+        btnFollow.forEach((btn) => {
+          btn.addEventListener("click", async() => {
+
+              const getPost = await getPublish(btn.dataset.id)
+              const idUserPost = (getPost.data().idUser);
+
+              if (btn.value == "Seguir") {
+                  btn.value = "Siguiendo"
+                  inFollow(idUsuarioLogin, idUserPost).FieldValue;
+                  console.log("empezo a seguirlo");
+                  await showPublishFavorite();
+              } else {
+                  btn.value = "Seguir"
+                  desFollow(idUsuarioLogin, idUserPost).FieldValue;
+                  console.log("dejo de seguirlo");
+                  await showPublishFavorite();
+                }
+          })
+        })
 
         iconPostStart.forEach((icon) => {
             icon.addEventListener("click", async (e) => {

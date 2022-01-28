@@ -63,7 +63,7 @@ templatePosts = "";
 
     btnFollow.value = "Siguiendo";
     if (btnFollow.value=="Siguiendo") {
-      templatePosts += templateFriend(btnFollow.value, photoURL, nameUserFollow);
+      templatePosts += templateFriend(btnFollow.value, photoURLFollow, nameUserFollow);
       containerAllFriends.innerHTML = templatePosts;
     } 
 
