@@ -516,7 +516,7 @@ h1 {
     color: #9a9a9a;
     font-weight: bold;
     width: 100%;
-    margin-left: 2.5rem;
+    margin-left: 1.5rem;
 }
 
 .userProfile img {
@@ -691,13 +691,15 @@ h1 {
 }
 
 .btnFollow {
-    padding: 5px;
+    border: 0px;
+    padding: 7px;
     font-weight: bold;
-    border-radius: 3px;
+    border-radius: 7px;
     background-color: #bbcfe7 !important;
     margin-left: 7px;
     padding-left: 9px;
     padding-right: 9px;
+    cursor: pointer;
 }
 
 
@@ -1501,49 +1503,6 @@ select:focus {
 } */
 
 
-/* for 700px or less */
-
-@media screen and (max-width: 1200px) {
-    .bo-footer-smap {
-        width: auto;
-        float: none;
-        text-align: center;
-    }
-    .bo-footer-uonline {
-        width: auto;
-        float: none;
-        text-align: center;
-        color: rgb(157 172 191);
-    }
-    .bo-footer-power {
-        width: auto;
-        float: none;
-        text-align: center;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    .bo-footer-smap {
-        width: auto;
-        float: none;
-        text-align: center;
-    }
-    .bo-footer-uonline {
-        width: 100%;
-        float: none;
-        text-align: center;
-        color: rgb(157 172 191);
-    }
-    .bo-footer-power {
-        width: auto;
-        float: none;
-        text-align: center;
-    }
-    footer {
-        margin-right: -130px;
-    }
-}
-
 .content {
     display: flex;
     flex-direction: column;
@@ -1936,8 +1895,63 @@ select:focus {
     padding: 10px;
 }
 
+.btnFollows {
+    border: 0px;
+    padding: 7px;
+    font-weight: bold;
+    border-radius: 7px;
+    background-color: #bbcfe7 !important;
+    margin-left: 7px;
+    padding-left: 9px;
+    padding-right: 9px;
+    cursor: pointer;
+}
+
 
 /*-------------MEDIA QUERIES----------------*/
+
+/* for 700px or less */
+
+@media screen and (max-width: 1200px) {
+    .bo-footer-smap {
+        width: auto;
+        float: none;
+        text-align: center;
+    }
+    .bo-footer-uonline {
+        width: auto;
+        float: none;
+        text-align: center;
+        color: rgb(157 172 191);
+    }
+    .bo-footer-power {
+        width: auto;
+        float: none;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .bo-footer-smap {
+        width: auto;
+        float: none;
+        text-align: center;
+    }
+    .bo-footer-uonline {
+        width: 100%;
+        float: none;
+        text-align: center;
+        color: rgb(157 172 191);
+    }
+    .bo-footer-power {
+        width: auto;
+        float: none;
+        text-align: center;
+    }
+    footer {
+        margin-right: -130px;
+    }
+}
 
 @media (max-width: 780px) {
     .seccion-usuarios {
@@ -1978,7 +1992,34 @@ select:focus {
     .containerGeneralNotifications {
         margin-top: 105px;
     }
+    .classViewLogin {
+        width: 100%;
+        overflow-x: hidden;
+    }
+    .icom {
+        color: white;
+        font-size: 130px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .userProfile {
+        margin-left: 1.5rem;
+    }
 }
+
+@media (min-width: 500px) and (max-width: 1000px) {
+    .userProfile {
+        margin-left: 1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .userProfile {
+        margin-left: 0.5rem;
+    }
+}
+
 
 @media (min-width: 1200px) {
     .containerLogin {
@@ -2064,6 +2105,9 @@ select:focus {
     .containerGeneralNotifications {
         margin-top: 90px;
     }
+    .seccion-buscar-Friends {
+        margin-top: 3rem;
+    }
 }
 
 @media (max-width: 700px) {
@@ -2084,19 +2128,6 @@ select:focus {
     }
 }
 
-@media (min-width: 1000px) {
-    .classViewLogin {
-        width: 100%;
-        overflow-x: hidden;
-    }
-    .icom {
-        color: white;
-        font-size: 130px;
-        margin-top: 15px;
-        margin-bottom: 15px;
-    }
-}
-
 .icom {
     color: white;
     font-size: 130px;
@@ -2113,21 +2144,26 @@ select:focus {
 }
 
 .myFriend {
-    background-color: lightblue;
+    background-color: #2e2d30;
     width: 230px;
     height: 230px;
-    justify-content: center;
+    justify-content: space-around;
     margin: 0.8rem;
     align-content: center;
     display: flex;
-    flex-direction: row;
     align-items: center;
     padding: 10px;
     box-shadow: inherit;
     border-radius: 20px;
-    flex-wrap: wrap;
     font-size: 16px;
     color: #3674b6;
+    flex-direction: column;
+}
+
+.nameAndBtnFollow {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
 }
 
 .fa-search:before {
@@ -2172,7 +2208,7 @@ select:focus {
 .seccion-buscar-Friends {
     width: 100%;
     align-content: space-between;
-    margin-top: 110px;
+    /* margin-top: 140px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2241,7 +2277,7 @@ select:focus {
         align-items: center;
         position: relative;
         margin-bottom: 1rem;
-        margin-left: 2rem;
+        margin-left: 7%;
     }
     .seccion-buscar-Friends {
         width: 100%;
@@ -2250,7 +2286,7 @@ select:focus {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        margin-top: 2rem;
+        margin-top: 3rem;
     }
     .btn-animado {
         width: 260px;
@@ -2263,8 +2299,8 @@ select:focus {
         margin: 0.2rem
     }
     .myFriend {
-        width: 400px;
-        height: 200px;
+        width: 200px;
+        height: 250px;
         border-radius: 20px;
         margin: 0.3rem;
     }
