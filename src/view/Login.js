@@ -22,7 +22,7 @@ import {
 let nombreUsuario, idUsuario, emailUsuario;
 let nameUserForSigIn, idUserForSignIn, emailUserForSignIn;
 let nameUserForTwitter, idUserForTwitter, emailUserForTwitter;
-let nameUserForFacebook, idUserForFacebook, emailUserForFacebook;
+let nameUserForFacebook, idUserForFacebook, emailUserForFacebook, photoUserFacebook, photoUserGoogle;
 
 export default () => {
 
@@ -151,6 +151,7 @@ export default () => {
 
     //gmail
     const loginGmaiL = divElemt.querySelector("#loginGmail");
+
 
     loginGmaiL.addEventListener("click", () => {
         signInGoogle()

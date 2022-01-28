@@ -1,22 +1,23 @@
-// 
+/*  <div class="storyGallery">
+<div class="story story1">
+<i class="fas fa-plus-circle iconAdd"></i>
+</div>
+<div class="story story2">
+<p>Alessandra</p>
+</div>
+<div class="story story3">
+<p>Rocio</p>
+</div>
+<div class="story story2">
+<p>Camila</p>
+</div>
+</div> */
+//<div class="iconPost"> <i class="far fa-comment-alt"> </i></div>
 const templateHome = `
 
 <div class="containerHome" id="containerHome">
 <div class="content">
-  <div class="storyGallery">
-    <div class="story story1">
-      <i class="fas fa-plus-circle iconAdd"></i>
-    </div>
-    <div class="story story2">
-      <p>Alessandra</p>
-    </div>
-    <div class="story story3">
-      <p>Rocio</p>
-    </div>
-    <div class="story story2">
-      <p>Camila</p>
-    </div>
-  </div>
+
   <div class="alignCenter">
     <div class="containerWriter">
       <div class="userProfile">
@@ -81,7 +82,7 @@ const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPub
             <div class="containerIconsBtn"  data-id="${id}">
                 <div class="addPosts">
                   <div class="iconPost" data-id="${id}"> <i class="far fa-heart iconPostHeart ${iconHearts}" data-id="${id}"> </i>${contHearts}</div>
-                  <div class="iconPost"> <i class="far fa-comment-alt"> </i></div>
+                  
                   <div class="iconPost" data-id="${id}"> <i class="far fa-star iconPostStart ${iconStars}" data-id="${id}" > </i>${contStars}</div>
                 </div>
             </div>
@@ -131,7 +132,7 @@ const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, ho
                   <div class="containerIconsBtn"  data-id="${id}">
                       <div class="addPosts">
                         <div class="iconPost" data-id="${id}"> <i class="far fa-heart iconPostHeart ${iconHearts}" data-id="${id}"> </i>${contHearts}</div>
-                        <div class="iconPost"> <i class="far fa-comment-alt"> </i></div>
+                       
                         <div class="iconPost" data-id="${id}"> <i class="far fa-star iconPostStart ${iconStars}" data-id="${id}" > </i>${contStars}</div>
                       </div>
                   </div>
