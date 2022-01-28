@@ -481,6 +481,12 @@ h1 {
     border-left: 2px solid #383a3b;
     padding-left: 30px;
     padding-right: 30px;
+    margin-top: 35%;
+}
+
+.nameFriend {
+    font-size: 14px;
+    font-family: monospace;
 }
 
 .nameUserWhite {
@@ -2449,4 +2455,28 @@ label {
     position: absolute;
     top: 0;
     left: 0;
+}
+
+@media (min-width: 400px) {
+    .alignCenter {
+        margin-top: 25%;
+    }
+}
+
+@media (min-width: 600px) {
+    .alignCenter {
+        margin-top: 20%;
+    }
+}
+
+@media (min-width: 700px) {
+    .alignCenter {
+        margin-top: 5%;
+    }
+}
+
+@media (min-width: 1000px) {
+    .alignCenter {
+        margin-top: 3%;
+    }
 }
