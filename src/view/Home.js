@@ -72,7 +72,7 @@ export default () => {
         if (displayName == doc.data().nameUser) {
           idUsuarioLogin = doc.data().idUser;
           followed = doc.data().followed;
-          console.log(doc.data(), followed)
+          console.log(doc.data())
         }
       });
     }
