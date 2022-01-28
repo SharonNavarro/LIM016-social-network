@@ -283,14 +283,6 @@ export const editBioProfile = () => {
 
 export const UserNotExistCreate = async(idUser, name, email, photo) => {
 
-<<<<<<< HEAD
-    let photo;
-
-    localStorage.setItem("IdUsuario", idUser);
-    localStorage.setItem("Nombre", name);
-    localStorage.setItem("Correo", email);
-    localStorage.setItem("photoURL", photo);
-=======
    localStorage.setItem("IdUsuario", idUser);
    localStorage.setItem("Nombre", name);
    localStorage.setItem("Correo", email);
@@ -314,7 +306,6 @@ export const UserNotExistCreate = async(idUser, name, email, photo) => {
      console.log("datos guardados");
      window.location.reload();
    }
->>>>>>> 7b0e0d2f7dddcc17bd0725a7701f158e550fe930
 
     const idUsu = localStorage.getItem("IdUsuario");
     const disName = localStorage.getItem("Nombre");
