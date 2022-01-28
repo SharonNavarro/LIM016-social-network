@@ -12,8 +12,8 @@
     "scripts": {
         "htmlhint": "htmlhint dist/*.html ",
         "eslint": "eslint --ext .js src/ test/",
-        "stylelint": "stylelint --aei src/**/*.css",
-        "pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
+        "stylelint": "stylelint --aei src/**/",
+        "pretest.out": "npm run htmlhint && npm run eslint && npm run stylelint",
         "start": "serve src/",
         "test": "jest --env=jsdom --coverage"
 
