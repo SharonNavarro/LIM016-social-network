@@ -27,7 +27,7 @@ const templateViewFriends = `
     </div>
   `;
 
-  const templateFriend = (btnFollowUsers, photoUserFollowed, nameUserFollowed) => `
+const templateFriend = (btnFollowUsers, photoUserFollowed, nameUserFollowed) => `
 
         <div class="myFriend">
           <div class="boxMyFriend"><img src= ${photoUserFollowed} id ="imgMyFriend"></div>
@@ -38,7 +38,7 @@ const templateViewFriends = `
         </div> 
   `;
 
-  export {
+export {
     templateViewFriends,
     templateFriend
-  }
+}

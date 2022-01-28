@@ -34,9 +34,6 @@ export default () => {
     const divElemt = document.createElement('section');
     divElemt.classList.add('position')
     divElemt.innerHTML = viewHome;
-
-
-
     const nameUser = divElemt.querySelector("#nameUser");
     const photoUser = divElemt.querySelector("#photoUser");
     formPublish = divElemt.querySelector("#formPublish");
