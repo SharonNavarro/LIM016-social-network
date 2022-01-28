@@ -153,6 +153,29 @@ export default () => {
     const loginGmaiL = divElemt.querySelector("#loginGmail");
     loginGmaiL.addEventListener("click", () => {
 
+        signInTwitter()
+            .then((user) => {
+                window.location.hash = '#/Home';
+                console.log("iniciaste sesion con Twitter")
+                nameUserForTwitter = (user.user.displayName);
+                idUserForTwitter = (user.user.uid);
+                emailUserForTwitter = (user.user.email);
+                photoUserTwitter = (user.user.photoURL);
+                console.log("idusuario de login", idUserForTwitter);
+
+                UserNotExistCreate(idUserForTwitter, nameUserForTwitter, emailUserForTwitter, photoUserTwitter);
+
+                UserNotExistCreate(idUsuario, nombreUsuario, emailUsuario);
+
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage)
+            })
+
+    })
+    loginGmaiL.addEventListener("click", () => {
         signInGoogle()
             .then((user) => {
                 window.location.hash = '#/Home';
@@ -160,9 +183,10 @@ export default () => {
                 nombreUsuario = (user.user.displayName);
                 emailUsuario = (user.user.email);
                 idUsuario = (user.user.uid);
+                photoUserGoogle = (user.user.photoURL);
                 console.log("idusuario de login", idUsuario);
 
-                UserNotExistCreate(idUsuario, nombreUsuario, emailUsuario);
+                UserNotExistCreate(idUsuario, nombreUsuario, emailUsuario, photoUserGoogle);
 
             })
             .catch((error) => {
@@ -183,8 +207,9 @@ export default () => {
                 nameUserForFacebook = (user.user.displayName);
                 emailUserForFacebook = (user.user.email);
                 idUserForFacebook = (user.user.uid);
+                photoUserFacebook = (user.user.photoURL);
 
-                UserNotExistCreate(idUserForFacebook, nameUserForFacebook, emailUserForFacebook);
+                UserNotExistCreate(idUserForFacebook, nameUserForFacebook, emailUserForFacebook, photoUserFacebook);
 
             })
 

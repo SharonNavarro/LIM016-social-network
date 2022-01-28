@@ -1,5 +1,5 @@
 // 
-const templateHome = /*html */ `
+const templateHome = `
 
 <div class="containerHome" id="containerHome">
 <div class="content">
@@ -109,9 +109,9 @@ const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, ho
             <div class="containerAlignItems"> 
       
             <div class="userProfile">
-                <img src=${urlPhoto}>
+                <img src= ${urlPhoto}>
                 <div>
-                <p class="nameUser"> <bold> ${userName}</bold> <button class ="btnFollow ${btnFollowUsers}" data-id="${id}">Seguir</button> </p>
+                <p class="nameUser"> <bold> ${userName}</bold> <input type="button" class ="btnFollow " data-id="${id}" value ="${btnFollowUsers}"></input> </p>
                 <p class="timePublish"> ${datePublish}</p>
                 <p class="timePublish"> ${hourPublish}</p>
                 </div>
