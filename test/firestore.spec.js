@@ -1,4 +1,4 @@
-import { saveUser, savePublish, getUser, updatePublish, updateUserNamePost, inLikes } from '../src/firebase/firestore';
+import { saveUser, savePublish, getUser, desFollow, getPublish, desHeart, desLikes, inHeart, inFollow, updatePublish, updateUserNamePost, inLikes } from '../src/firebase/firestore';
 
 jest.mock('../src/firebase/config')
 
@@ -92,16 +92,9 @@ describe('myFunction updateUserNamePost', () => {
 /* const inLikes = async(id, idUserLike) => await updateDoc(doc(db, "posts", id), {
     likesPost: arrayUnion(idUserLike),
 }); */
-/* 
-describe('myFunction inLikes', () => {
-    it('should return value update ​of inLikes', async() => {
-        const result = await inLikes('Xuyd4t6jshaad888x', '001')
-        expect(result).toStrictEqual({
-            likesPost: arrayUnion('001')
-        })
-    });
-}); */
-/* 
+/*
+ */
+/*
 const user = {
     idUser: '00001',
     nameUser: 'Alejandra',
@@ -117,7 +110,7 @@ const user = {
 describe('myFunction getUser', () => {
     it('should return value update ​of getUser', async() => {
         const user = {
-            idUser: '00001',
+            idUser: '0001',
             nameUser: 'Alejandra',
             emailUser: 'ale@gmail.com',
             photoURL: 'htppp.mi-foto.png',
@@ -127,7 +120,89 @@ describe('myFunction getUser', () => {
             socialNetwork: 'redes sociales',
             followed: [],
         };
-        const result = await getUser('00001')
+        const result = await getUser('0001')
         expect(result.user).toStrictEqual(user)
+    });
+});
+
+describe('myFunction getPublish', () => {
+    it('should return value update ​of getUser', async() => {
+        const Publish = {
+            content: 'hola hola',
+            datePublish: '12-11-2022',
+            hourPublish: '12:40',
+            userName: 'Milagros',
+            urlPhoto: 'https/moli.com',
+            dateOrderComplet: '1234567',
+            email: 'mili@gmail.com',
+            likesPost: [],
+            idUser: '0001',
+            imagen: 'http:/muli.com',
+            hearts: []
+        };
+        const result = await getPublish('0001')
+        expect(result.user.idUser).toStrictEqual(Publish.idUser)
+    });
+});
+
+describe('myFunction inLikes', () => {
+    it('should return value update ​of inLikes', async() => {
+        const result = await inLikes('Xuyd4t6jshaad888x', '001')
+        console.log(result);
+        expect(result).toStrictEqual({
+            likesPost: ['001'],
+
+        })
+    });
+});
+describe('myFunction desLikes', () => {
+    it('should return value update ​of desLikes', async() => {
+        const result = await desLikes('Xuyd4t6jshaad888x', '001')
+        console.log(result);
+        expect(result).toStrictEqual({
+            likesPost: [],
+
+        })
+    });
+});
+describe('myFunction inHeart', () => {
+    it('should return value update ​of inHeart', async() => {
+        const result = await inHeart('Xuyd4t6jshaad888x', '001')
+        console.log(result);
+        expect(result).toStrictEqual({
+            hearts: ['001'],
+
+        })
+    });
+});
+describe('myFunction desHeart', () => {
+    it('should return value update ​of desHeart', async() => {
+        const result = await desHeart('Xuyd4t6jshaad888x', '001')
+        console.log(result);
+        expect(result).toStrictEqual({
+            hearts: [],
+
+        })
+    });
+});
+
+describe('myFunction inFollow', () => {
+    it('should return value update ​of inFollow', async() => {
+        const result = await inFollow('Xuyd4t6jshaad888x', '001')
+        console.log(result);
+        expect(result).toStrictEqual({
+            followed: ['001'],
+
+        })
+    });
+});
+describe('myFunction desFollow', () => {
+    it('should return value update ​of desFollow', async() => {
+        const result = await desFollow('Xuyd4t6jshaad888x', '001')
+        console.log(result);
+        expect(result).toStrictEqual({
+            followed: [],
+
+        })
     });
 });

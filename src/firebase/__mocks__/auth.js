@@ -1,9 +1,9 @@
-export const signIn = (email, password) => jest.fn( Promise.resolve({}))
-;
-export const signInGoogle = () => signInWithPopup(auth, providerGoogle);
+const user = {
+    displayName: 'Maria',
+    uid: '00005',
+    email: 'maria_cro@gmail.com',
+    emailVerified: true
 
-export const signInTwitter = () => signInWithPopup(auth, providerTwitter);
+}
 
-export const signInGoogleRedirectResult = () => getRedirectResult(auth);
-
-export const signInFacebook = () => signInWithPopup(auth, providerFacebook);
+export const signIn = jest.fn((email, password) => Promise.resolve(user));

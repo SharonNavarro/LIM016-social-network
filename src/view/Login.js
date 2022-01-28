@@ -44,78 +44,72 @@ export default () => {
     const containerInputEmail = divElemt.querySelector('.containerInputEmail');
     const containerInputPassword = divElemt.querySelector('.containerInputPassword');
 
-    const valueEmail = email.value;
-    const valuePassword = password.value;
 
 
-    function handleSubmit(valueEmail, valuePassword) {
 
-        signIn(valueEmail, valuePassword)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                nameUserForSigIn = (user.displayName);
-                idUserForSignIn = (user.uid);
-                emailUserForSignIn = (user.email);
-                console.log(user.emailVerified);
-                console.log("idusuario de login", idUserForSignIn);
+    signIn(email.value, password.value)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            nameUserForSigIn = (user.displayName);
+            idUserForSignIn = (user.uid);
+            emailUserForSignIn = (user.email);
+            console.log(user.emailVerified);
+            console.log("idusuario de login", idUserForSignIn);
 
-                UserNotExistCreateWithEmailAndPassword(idUserForSignIn, emailUserForSignIn, nameUserForSigIn);
+            UserNotExistCreateWithEmailAndPassword(idUserForSignIn, emailUserForSignIn, nameUserForSigIn);
 
-                divElemt.querySelector("#inputUser").value = "";
-                divElemt.querySelector("#inputPassword").value = "";
+            divElemt.querySelector("#inputUser").value = "";
+            divElemt.querySelector("#inputPassword").value = "";
 
-                if (user.emailVerified === false) {
-                    console.log("correo no verificado");
+            if (user.emailVerified === false) {
+                console.log("correo no verificado");
 
-                } else {
-                    console.log("correo registrado y verificado");
-                    window.location.hash = '#/Home';
-                }
+            } else {
+                console.log("correo registrado y verificado");
+                window.location.hash = '#/Home';
+            }
 
-            })
-            .catch((error) => {
-                console.log(error);
-                /*       const errorCode = error.code;
-                      if (email.value === '' && password.value === '') {
-                        addErrorMessage(inactiveEmailErrorMessage, 'Campo inválido.');
-                        addErrorInput(containerInputEmail, 'error');
-                        addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido.');
-                        addErrorInput(containerInputPassword, 'error');
-                        link.innerHTML = "";
-                      } else if (password.value === '') {
-                        addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido. Por favor, escriba su contraseña.');
-                      } else if (email.value === '') {
-                        link.innerHTML = "";
-                        addErrorMessage(inactiveEmailErrorMessage, 'Campo inválido. Por favor, escriba su correo electrónico.');
-                      }
-                      else if (errorCode === 'auth/wrong-password') {
-                        removeErrorInput(containerInputPassword, 'error');
-                        removeErrorInput(containerInputEmail, 'error');
-                        removeErrorMessage(inactiveEmailErrorMessage, '');
-                        addErrorMessage(inactivePasswordErrorMessage, 'Email/contraseña incorrecta. ¿Olvidaste tu contraseña?');
-                        link.innerHTML = "Reestablecela";
-                        addErrorInput(containerInputPassword, 'error');
-                        reestablecer(email.value);
-                      }
-                      else if (errorCode === 'auth/user-not-found') {
-                        removeErrorInput(containerInputPassword, 'error');
-                        removeErrorInput(containerInputEmail, 'error');
-                        removeErrorMessage(inactiveEmailErrorMessage, '');
-                        addErrorMessage(inactivePasswordErrorMessage, 'Email/contraseña incorrecta. ¿Olvidaste tu contraseña?');
-                        link.innerHTML = "Reestablecela";
-                        addErrorInput(containerInputPassword, 'error');
-                        reestablecer(email.value);
-                      }
-                      else {
-                        link.innerHTML = "";
-                        removeErrorInput(containerInputPassword, 'error');
-                        removeErrorInput(containerInputEmail, 'error');
-                        removeErrorMessage(inactiveEmailErrorMessage, '');
-                        addErrorMessage(inactivePasswordErrorMessage, ' Ocurrió un error. Por favor, vuelva a escribir sus datos.')
-                      } */
-            })
+        })
+        .catch((error) => {
+            console.log(error);
+            const errorCode = error.code;
+            if (email.value === '' && password.value === '') {
+                addErrorMessage(inactiveEmailErrorMessage, 'Campo inválido.');
+                addErrorInput(containerInputEmail, 'error');
+                addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido.');
+                addErrorInput(containerInputPassword, 'error');
+                link.innerHTML = "";
+            } else if (password.value === '') {
+                addErrorMessage(inactivePasswordErrorMessage, 'Campo inválido. Por favor, escriba su contraseña.');
+            } else if (email.value === '') {
+                link.innerHTML = "";
+                addErrorMessage(inactiveEmailErrorMessage, 'Campo inválido. Por favor, escriba su correo electrónico.');
+            } else if (errorCode === 'auth/wrong-password') {
+                removeErrorInput(containerInputPassword, 'error');
+                removeErrorInput(containerInputEmail, 'error');
+                removeErrorMessage(inactiveEmailErrorMessage, '');
+                addErrorMessage(inactivePasswordErrorMessage, 'Email/contraseña incorrecta. ¿Olvidaste tu contraseña?');
+                link.innerHTML = "Reestablecela";
+                addErrorInput(containerInputPassword, 'error');
+                reestablecer(email.value);
+            } else if (errorCode === 'auth/user-not-found') {
+                removeErrorInput(containerInputPassword, 'error');
+                removeErrorInput(containerInputEmail, 'error');
+                removeErrorMessage(inactiveEmailErrorMessage, '');
+                addErrorMessage(inactivePasswordErrorMessage, 'Email/contraseña incorrecta. ¿Olvidaste tu contraseña?');
+                link.innerHTML = "Reestablecela";
+                addErrorInput(containerInputPassword, 'error');
+                reestablecer(email.value);
+            } else {
+                link.innerHTML = "";
+                removeErrorInput(containerInputPassword, 'error');
+                removeErrorInput(containerInputEmail, 'error');
+                removeErrorMessage(inactiveEmailErrorMessage, '');
+                addErrorMessage(inactivePasswordErrorMessage, ' Ocurrió un error. Por favor, vuelva a escribir sus datos.')
+            }
+        })
 
-    }
+
 
 
 
