@@ -1,4 +1,4 @@
-const templateViewFriends = () => `
+const templateViewFriends = `
  
     <div class="contentFriends" > 
 
@@ -7,10 +7,10 @@ const templateViewFriends = () => `
             <div class="seccion-buscar-Friends">
                 <div class="searchBar">
                     <input type="search" class="search" placeholder="Buscar usuario">
-                    <i class="fas fa-search"></i>
+                    <i class="fas fa-search" id = "btnSearchFollow"></i>
                 </div>      
                 
-                <button type="button" class="btn-animado animacion-dos">
+                <button type="button" class="btn-animado animacion-dos" id="allFollows">
                     <i class="fas fa-users"></i>
                     <span class="tex-icono">
                         Todos tus amigos 
@@ -33,9 +33,8 @@ const templateViewFriends = () => `
           <div class="boxMyFriend"><img src= ${photoUserFollowed} id ="imgMyFriend"></div>
           <div class="boxName">
             <h3 class="nameFriend">${nameUserFollowed}</h3>
-            <p class="nameFriend">Seguidores:10</p>
           </div>
-          <input type="button" class ="btnFollow " value ="${btnFollowUsers}"></input>
+          <input type="button" class="btnFollows" value ="${btnFollowUsers}"></input>
         </div> 
   `;
 
