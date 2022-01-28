@@ -336,4 +336,4 @@ export const UserNotExistCreateWithEmailAndPassword = async(idUser, email, name)
     console.log("datos guardados SIGN IN");
   }
 
-}
+}}
