@@ -1,5 +1,4 @@
 .classViewNoticia{
-  width: 71%;
   margin-top: 30px;
 }
 
@@ -37,15 +36,15 @@
     background-color:#141313;
   }
 
-
+/* 
   @media (max-width: 760px) {
     
     .classViewNoticia{
 
       width: 100%;
-   }
+   } */
    
 
 
-  }
+  
 

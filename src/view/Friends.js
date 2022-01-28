@@ -23,12 +23,12 @@ export default () => {
 
   let idUsuarioLogin, followed;
   let showPFollowed, displayName, userid, idUserFollow;
-  let query, nameUserFollow, photoURLFollow;
+  let query, nameUserFollow, photoURLFollow, photoURL;
 
   userState(async (user) => {
     if (user) {
       displayName = user.displayName;
-      // photoURL = user.photoURL;
+      photoURL = user.photoURL;
       // email = user.email;
       userid = user.uid;
       showPFollowed();
@@ -50,64 +50,74 @@ showPFollowed = async () => {
     })
   };
 
-console.log(followed)
+let btnFollow = document.querySelectorAll(".btnFollows");
 let templatePosts;
-
 let containerAllFriends = document.querySelector(".containerAllFriends");
+
 templatePosts = "";
   followed.forEach( async (idUserFollower) => {
     query = await getUser(idUserFollower);
     nameUserFollow = query.data().nameUser;
     idUserFollow = query.data().idUser;
     photoURLFollow = query.data().photoURL;
-console.log(nameUserFollow)
-    let btnFollow = document.querySelectorAll(".btnFollow");
+
     btnFollow.value = "Siguiendo";
     if (btnFollow.value=="Siguiendo") {
-      console.log(btnFollow.value)
-      templatePosts += templateFriend(btnFollow.value, photoURLFollow,nameUserFollow);
-      console.log(templatePosts)
-      console.log(containerAllFriends);
+      templatePosts += templateFriend(btnFollow.value, photoURLFollow, nameUserFollow);
       containerAllFriends.innerHTML = templatePosts;
     } 
 
   })
 
-  
-  const btnFollow = document.querySelectorAll(".btnFollow");
+  const btnSearchFollow = divElemt.querySelector("#btnSearchFollow");
+  const textSearch = divElemt.querySelector(".search");
+  let templateSearchFollow;
 
-  btnFollow.forEach((btn) => {
-    btn.addEventListener("click", async () => {
+  btnSearchFollow.addEventListener("click", () => {
+    containerAllFriends.innerHTML = "";
+    templatePosts = "";
+    templateSearchFollow = "";
+      followed.forEach(async (el) => {
+        let query = await getUser(el);
+        nameUserFollow = query.data().nameUser;
+        let name = nameUserFollow.toLowerCase();
+        let photoFollow = query.data().photoURL;
 
-      const getPost = await getPublish(btn.dataset.id)
-      const idUserPost = (getPost.data().idUser);
-
-      if (btn.value == "Seguir") {
-          btn.value = "Siguiendo"
-          inFollow(idUsuarioLogin, idUserPost).FieldValue;
-          console.log("empezo a seguirlo");
-          await showPFollowed();
-      } else {
-        btn.value = "Seguir"
-          desFollow(idUsuarioLogin, idUserPost).FieldValue;
-          console.log("dejo de seguirlo");
-          await showPFollowed();
-      }
-    })
+        if (name.includes(textSearch.value.toLowerCase() )) {
+          templateSearchFollow += templateFriend(btnFollow.value, photoFollow, name);
+          containerAllFriends.innerHTML = templateSearchFollow;
+        }
+      })
+  console.log(textSearch.value.toLowerCase())
   })
 
-};
+  const btnAllFollows = divElemt.querySelector("#allFollows");
 
+  btnAllFollows.addEventListener("click", async () => {
+    await showPFollowed();
+  });
 
-// let query;
-// query = await getUser(userid);
-// query.forEach((doc) => {
-//   idUser = doc.data().followed;
-//   if (followed.indexOf(idUser) !==-1) {
-//     let nombre = doc.data().nameUser;
-//     console.log(nombre);
-//   }
-// })  
+  
+//   const btnFollow = divElemt.querySelectorAll(".btnFollows");
+
+//   btnFollow.forEach((btn) => {
+//     btn.addEventListener("click",  () => {
+//       console.log("dksndjksn")
+
+//       // const getPost = await getPublish(btn.dataset.id)
+//       // const idUserPost = (getPost.data().idUser);
+
+//       // if (btn.value == "Seguir")  {
+//       //      btn.value = "Seguir"
+//       //     desFollow(idUsuarioLogin, idUserPost).FieldValue;
+//       //     console.log("dejo de seguirlo");
+//       //     await showPFollowed();
+//       // }
+//     })
+//   })
+
+ };
+
 
 
 
