@@ -1,6 +1,14 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-undef */
+/* eslint-disable consistent-return */
+/* eslint-disable no-use-before-define */
+/* eslint-disable dot-notation */
+/* eslint-disable max-len */
+/* eslint-disable no-return-assign */
+/* eslint-disable import/no-cycle */
 import {
-    updateNameUser
-} from "../firebase/auth.js"
+    updateNameUser,
+} from '../firebase/auth.js';
 
 import {
     savePublish,
@@ -11,8 +19,8 @@ import {
     uploadBytesResumable,
     updateUserNamePost,
     getPublishes,
-    queryEmailUnique
-} from "../firebase/firestore.js"
+    queryEmailUnique,
+} from '../firebase/firestore.js';
 
 import {
     showPublish,
@@ -23,9 +31,8 @@ import {
     userid,
     formPublish,
     miModalPublishVoid,
-    btnReturn
-
-} from "../view/Home.js"
+    btnReturn,
+} from '../view/Home.js';
 
 import {
     showPublishAccount,
@@ -38,94 +45,82 @@ import {
     miModalPublishVoidAccount,
     btnReturnAccount,
     registerForm,
-    publishBio
-} from "../view/Account.js"
+    publishBio,
+} from '../view/Account.js';
 
+// errores registro
 
-// errores registro 
 export const addErrorMessage = (formControl, message) => {
     const small = formControl.querySelector('small');
     formControl.classList.add('activeLoginErrorMessage');
     return small.innerText = message;
-}
+};
 
-export const addErrorInput = (formControl, classControl) => {
-    return formControl.classList.add(classControl);
-}
+export const addErrorInput = (formControl, classControl) => formControl.classList.add(classControl);
 
 export const removeErrorMessage = (formControl, message) => {
     const small = formControl.querySelector('small');
     formControl.classList.remove('activeLoginErrorMessage');
     return small.innerText = message;
-}
+};
 
-export const removeErrorInput = (formControl, classControl) => {
-    return formControl.classList.remove(classControl);
-}
+export const removeErrorInput = (formControl, classControl) => formControl.classList.remove(classControl);
 
-//Funcion que envia las publicaciones a la base de datos para Home
+// Funcion que envia las publicaciones a la base de datos para Home
 
 export const publishPosts = () => {
-    formPublish.addEventListener("submit", async(e) => {
+    formPublish.addEventListener('submit', async(e) => {
         e.preventDefault();
         const textPost = formPublish['textPost'].value;
-        if (textPost == "" || textPost.trim() == "") {
-            miModalPublishVoid.setAttribute("class", "show");
-            btnReturn.addEventListener("click", () => {
-                miModalPublishVoid.setAttribute("class", "closeModal");
-            })
+        if (textPost === '' || textPost.trim() === '') {
+            miModalPublishVoid.setAttribute('class', 'show');
+            btnReturn.addEventListener('click', () => {
+                miModalPublishVoid.setAttribute('class', 'closeModal');
+            });
             return false;
         }
-        if (getFileAdd != "") {
-            uploadFiles(getFileAdd)
+        if (getFileAdd !== '') {
+            uploadFiles(getFileAdd);
         } else {
-
-            const urlGetdescarga = ""
-            let hoy = new Date();
-            let dateOrder = new Date();
-            let datePublish, hourPublish, dateOrderComplet;
-            hourPublish = hoy.getHours() + ':' + hoy.getMinutes();
-            datePublish = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
-            dateOrderComplet = dateOrder.getTime();
+            const urlGetdescarga = '';
+            const hoy = new Date();
+            const dateOrder = new Date();
+            const hourPublish = `${hoy.getHours()}:${hoy.getMinutes()}`;
+            const datePublish = `${hoy.getDate()}/${hoy.getMonth() + 1}/${hoy.getFullYear()}`;
+            const dateOrderComplet = dateOrder.getTime();
             await savePublish(textPost, datePublish, hourPublish, displayName, photoURL, dateOrderComplet, email, userid, urlGetdescarga);
             formPublish.reset();
             await showPublish();
         }
-
     });
-}
-
+};
 async function getUrl(urlGetdescarga) {
-
     // getFileAdd=""
-    let hoy = new Date();
-    let dateOrder = new Date();
-    let datePublish, hourPublish, dateOrderComplet;
-    hourPublish = hoy.getHours() + ':' + hoy.getMinutes();
-    datePublish = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
-    dateOrderComplet = dateOrder.getTime();
+    const hoy = new Date();
+    const dateOrder = new Date();
+    const hourPublish = `${hoy.getHours()}:${hoy.getMinutes()}`;
+    const datePublish = `${hoy.getDate()}/${hoy.getMonth() + 1}/${hoy.getFullYear()}`;
+    const dateOrderComplet = dateOrder.getTime();
     await savePublish(textPost.value, datePublish, hourPublish, displayName, photoURL, dateOrderComplet, email, userid, urlGetdescarga);
     formPublish.reset();
     await showPublish();
-    // getFileAdd=""
-
 }
 
 
 let urlDescarga;
 let uploadFiles = (getFileAdd) => {
     const textPost = formPublish['textPost'].value;
-    if (textPost == "" || textPost.trim() == "") {
-        miModalPublishVoid.setAttribute("class", "show");
-        btnReturn.addEventListener("click", () => {
-            miModalPublishVoid.setAttribute("class", "closeModal");
-        })
+    if (textPost == '' || textPost.trim() == '') {
+        miModalPublishVoid.setAttribute('class', 'show');
+        btnReturn.addEventListener('click', () => {
+            miModalPublishVoid.setAttribute('class', 'closeModal');
+        });
     } else {
-        let storageRef = ref(storage, 'Images_Posts/' + getFileAdd.name)
-        let uploadTask = uploadBytesResumable(storageRef, getFileAdd);
+        const storageRef = ref(storage, `Images_Posts/${getFileAdd.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, getFileAdd);
         uploadTask.on('state_changed', (snapshot) => {
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                console.log('Upload is ' + progress + '% done');
+                console.log(`Upload is ${progress}% done`);
                 switch (snapshot.state) {
                     case 'paused':
                         console.log('Upload is paused');
@@ -149,77 +144,70 @@ let uploadFiles = (getFileAdd) => {
                 getDownloadURL(uploadTask.snapshot.ref)
                     .then((downloadURL) => {
                         urlDescarga = downloadURL;
-                        console.log("subio");
+                        console.log('subio');
                         getUrl(urlDescarga);
-                        getFileAdd = "";
+                        getFileAdd = '';
                     });
             }
 
         );
     }
-
-}
+};
 
 //Funcion que envia las publicaciones a la base de datos para Account
 
 export const publishPostsAccount = () => {
-    formPublishAccount.addEventListener("submit", async(e) => {
+    formPublishAccount.addEventListener('submit', async(e) => {
         e.preventDefault();
         const textPost = formPublishAccount['textPostAccount'].value;
-        if (textPost == "" || textPost.trim() == "") {
-            miModalPublishVoidAccount.setAttribute("class", "show");
-            btnReturnAccount.addEventListener("click", () => {
-                miModalPublishVoidAccount.setAttribute("class", "closeModal");
-            })
+        if (textPost === '' || textPost.trim() === '') {
+            miModalPublishVoidAccount.setAttribute('class', 'show');
+            btnReturnAccount.addEventListener('click', () => {
+                miModalPublishVoidAccount.setAttribute('class', 'closeModal');
+            });
             return false;
         }
-        if (getFileAddAccount != "") {
-            uploadFilesAccount(getFileAddAccount)
+        if (getFileAddAccount !== '') {
+            uploadFilesAccount(getFileAddAccount);
         } else {
-
-            const urlGetdescarga = ""
-            let hoy = new Date();
-            let dateOrder = new Date();
-            let datePublish, hourPublish, dateOrderComplet;
-            hourPublish = hoy.getHours() + ':' + hoy.getMinutes();
-            datePublish = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
-            dateOrderComplet = dateOrder.getTime();
+            const urlGetdescarga = '';
+            const hoy = new Date();
+            const dateOrder = new Date();
+            const hourPublish = `${hoy.getHours()}:${hoy.getMinutes()}`;
+            const datePublish = `${hoy.getDate()}/${hoy.getMonth() + 1}/${hoy.getFullYear()}`;
+            const dateOrderComplet = dateOrder.getTime();
             await savePublish(textPost, datePublish, hourPublish, displayNameAccount, photoURLAccount, dateOrderComplet, emailAccount, useridAccount, urlGetdescarga);
             formPublishAccount.reset();
             await showPublishAccount();
         }
-
     });
-}
+};
 
 async function getUrlAccount(urlGetDescargaAccount) {
-
-    let hoy = new Date();
-    let dateOrder = new Date();
-    let datePublish, hourPublish, dateOrderComplet;
-    hourPublish = hoy.getHours() + ':' + hoy.getMinutes();
-    datePublish = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
-    dateOrderComplet = dateOrder.getTime();
-    await savePublish(textPostAccount.value, datePublish, hourPublish, displayNameAccount, photoURLAccount, dateOrderComplet, emailAccount, useridAccount, urlGetDescargaAccount)
+    const hoy = new Date();
+    const dateOrder = new Date();
+    const hourPublish = `${hoy.getHours()}:${hoy.getMinutes()}`;
+    const datePublish = `${hoy.getDate()}/${hoy.getMonth() + 1}/${hoy.getFullYear()}`;
+    const dateOrderComplet = dateOrder.getTime();
+    await savePublish(textPostAccount.value, datePublish, hourPublish, displayNameAccount, photoURLAccount, dateOrderComplet, emailAccount, useridAccount, urlGetDescargaAccount);
     formPublishAccount.reset();
     await showPublishAccount();
-
 }
 
 let urlDescargaAccount;
 let uploadFilesAccount = (getFileAddAccount) => {
     const textPostAccount = formPublishAccount['textPostAccount'].value;
-    if (textPostAccount == "" || textPostAccount.trim() == "") {
-        miModalPublishVoidAccount.setAttribute("class", "show");
-        btnReturnAccount.addEventListener("click", () => {
-            miModalPublishVoidAccount.setAttribute("class", "closeModal");
-        })
+    if (textPostAccount == '' || textPostAccount.trim() == '') {
+        miModalPublishVoidAccount.setAttribute('class', 'show');
+        btnReturnAccount.addEventListener('click', () => {
+            miModalPublishVoidAccount.setAttribute('class', 'closeModal');
+        });
     } else {
-        let storageRef = ref(storage, 'Images_Posts/' + getFileAddAccount.name)
-        let uploadTask = uploadBytesResumable(storageRef, getFileAddAccount);
+        const storageRef = ref(storage, `Images_Posts/${getFileAddAccount.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, getFileAddAccount);
         uploadTask.on('state_changed', (snapshot) => {
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                console.log('Upload is ' + progress + '% done');
+                console.log(`Upload is ${progress}% done`);
                 switch (snapshot.state) {
                     case 'paused':
                         console.log('Upload is paused');
@@ -243,31 +231,30 @@ let uploadFilesAccount = (getFileAddAccount) => {
                 getDownloadURL(uploadTask.snapshot.ref)
                     .then((downloadURL) => {
                         urlDescargaAccount = downloadURL;
-                        console.log("subio");
+                        console.log('subio');
                         getUrlAccount(urlDescargaAccount);
-                        getFileAddAccount = "";
+                        getFileAddAccount = '';
                     });
             }
 
         );
     }
-
-}
+};
 
 //Funcion que edita tu bio y tu nombre de usuario
 
 export const editBioProfile = () => {
-    registerForm.addEventListener("submit", async(e) => {
+    registerForm.addEventListener('submit', async(e) => {
         e.preventDefault();
-        let frontPageURLUsu = "";
-        const userNameBio = registerForm["userNameBio"].value;
-        const interestBio = registerForm["interestBio"].value;
-        const locacionBio = registerForm["locacionBio"].value;
-        const socialNetworkBio = registerForm["socialNetworkBio"].value;
+        const frontPageURLUsu = '';
+        const userNameBio = registerForm['userNameBio'].value;
+        const interestBio = registerForm['interestBio'].value;
+        const locacionBio = registerForm['locacionBio'].value;
+        const socialNetworkBio = registerForm['socialNetworkBio'].value;
 
         const querySnapshotPosts = await getPublishes();
         querySnapshotPosts.forEach(async(doc) => {
-            if (useridAccount == doc.data().idUser) {
+            if (useridAccount === doc.data().idUser) {
                 await updateUserNamePost(doc.id, userNameBio);
             }
         });
@@ -282,63 +269,54 @@ export const editBioProfile = () => {
 //Funcion que registra al usuario si no lo a estado previamente, con los proveedores de Gmail, Facebook y Twitter
 
 export const UserNotExistCreate = async(idUser, name, email, photo) => {
+    localStorage.setItem('IdUsuario', idUser);
+    localStorage.setItem('Nombre', name);
+    localStorage.setItem('Correo', email);
+    localStorage.setItem('photoURL', photo);
 
-    localStorage.setItem("IdUsuario", idUser);
-    localStorage.setItem("Nombre", name);
-    localStorage.setItem("Correo", email);
-    localStorage.setItem("photoURL", photo);
-
-    const idUsu = localStorage.getItem("IdUsuario");
-    const disName = localStorage.getItem("Nombre");
-    console.log("🚀 ~ file: functions.js ~ line 293 ~ UserNotExistCreate ~ disName", disName)
-    const emailUsu = localStorage.getItem("Correo");
-    console.log("🚀 ~ file: functions.js ~ line 295 ~ UserNotExistCreate ~ emailUsu", emailUsu)
-    const photoURLUsu = localStorage.getItem("photoURL");
-    console.log("🚀 ~ file: functions.js ~ line 297 ~ UserNotExistCreate ~ photoURLUsu", photoURLUsu)
+    const idUsu = localStorage.getItem('IdUsuario');
+    const disName = localStorage.getItem('Nombre');
+    const emailUsu = localStorage.getItem('Correo');
+    const photoURLUsu = localStorage.getItem('photoURL');
 
     const querySnapshote = await queryEmailUnique(emailUsu);
     if (querySnapshote.size > 0) {
-        console.log("usuario registrado");
+        console.log('usuario registrado');
     } else {
-        let interestsUsu = "",
-            frontPageURLUsu = "",
-            locationUsu = "",
-            socialNetworkUsu = "",
+        let interestsUsu = '',
+            frontPageURLUsu = '',
+            locationUsu = '',
+            socialNetworkUsu = '',
             followed = [];
         await saveUser(idUsu, disName, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu, followed);
-        console.log("datos guardados");
+        console.log('datos guardados');
         window.location.reload();
     }
-
-
-
-}
+};
 
 //Funcion que registra al usuario si no lo a estado previamente, solo con correo y contraseña
 
 export const UserNotExistCreateWithEmailAndPassword = async(idUser, email, name) => {
+    localStorage.setItem('IdUsuario', idUser);
+    localStorage.setItem('Correo', email);
 
-    localStorage.setItem("IdUsuario", idUser);
-    localStorage.setItem("Correo", email);
-
-    const idUsu = localStorage.getItem("IdUsuario");
-    const emailUsu = localStorage.getItem("Correo");
+    const idUsu = localStorage.getItem('IdUsuario');
+    const emailUsu = localStorage.getItem('Correo');
 
     const querySnapshote = await queryEmailUnique(emailUsu);
     if (querySnapshote.size > 0) {
-        console.log("usuario registrado SIGN IN");
+        console.log('usuario registrado SIGN IN');
     } else {
-        let interestsUsu = "",
-            photoURLUsu = "",
-            frontPageURLUsu = "",
-            locationUsu = "",
-            socialNetworkUsu = "",
+        let interestsUsu = '',
+            photoURLUsu = '',
+            frontPageURLUsu = '',
+            locationUsu = '',
+            socialNetworkUsu = '',
             followed = [];
-        name = "Usuario desconocido";
+        name = 'Usuario desconocido';
         await updateNameUser(name);
         await saveUser(idUsu, name, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu, followed);
         window.location.reload();
-        console.log("datos guardados SIGN IN");
+        console.log('datos guardados SIGN IN');
     }
-
-}
+};

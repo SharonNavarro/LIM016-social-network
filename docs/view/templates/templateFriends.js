@@ -40,5 +40,5 @@ const templateFriend = (btnFollowUsers, photoUserFollowed, nameUserFollowed) => 
 
 export {
     templateViewFriends,
-    templateFriend
-}
+    templateFriend,
+};

@@ -287,4 +287,7 @@ export default () => {
 
 };
 
-export { showPublish, getFileAdd, displayName, photoURL, email, userid, formPublish, miModalPublishVoid, btnReturn }
+export {
+  showPublish, getFileAdd, displayName, photoURL, email,
+  userid, formPublish, miModalPublishVoid, btnReturn,
+};
