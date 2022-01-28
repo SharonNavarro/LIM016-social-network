@@ -56,7 +56,6 @@ export default () => {
         container.innerHTML = "";
         signOutAccount()
             .then(() => {
-                console.log("cerraste sesion");
                 window.location.hash = '#/';
             })
     })
@@ -67,11 +66,8 @@ export default () => {
 
       } */
 
-
     const toggle = divElemt.querySelector('#toggle');
     const themeActual = localStorage.getItem("theme");
-
-
 
     if (themeActual) {
 
@@ -84,7 +80,6 @@ export default () => {
         toggle.checked = true;
 
     }
-
 
     const cambiarTheme = (event) => {
         if (event.target.checked) {
@@ -99,18 +94,13 @@ export default () => {
 
     toggle.addEventListener('click', cambiarTheme);
 
-
-
     return divElemt;
 }
-
-
 
 /* function menuInteractivo() { setTimeout(() => {
   
   if ('ontouchstart' in window) { var click = 'touchstart'; }
   else { var click = 'click'; }
-
 
   document.getElementById('burger').addEventListener(click, function () {
 
@@ -149,7 +139,6 @@ export default () => {
     document.querySelector('.x').classList.add('collapse');
     document.querySelector('.y').classList.add('collapse');
     document.querySelector('.z').classList.add('collapse');
-
 
     document.getElementsByTagName("li")[0].classList.add('animate');
     document.getElementsByTagName("li")[1].classList.add('animate');
