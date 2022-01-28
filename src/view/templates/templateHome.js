@@ -111,7 +111,10 @@ const templatePublishesUsers = (userName, urlPhoto, id, content, datePublish, ho
             <div class="userProfile">
                 <img src= ${urlPhoto}>
                 <div>
-                <p class="nameUser"> <bold> ${userName}</bold> <input type="button" class ="btnFollow " data-id="${id}" value ="${btnFollowUsers}"></input> </p>
+                <div class ="nameAndBtnFollow"
+                  <p class="nameUser"> <bold> ${userName}</bold> </p>
+                  <input type="button" class ="btnFollow " data-id="${id}" value ="${btnFollowUsers}"></input>
+                </div>
                 <p class="timePublish"> ${datePublish}</p>
                 <p class="timePublish"> ${hourPublish}</p>
                 </div>
