@@ -48,7 +48,7 @@ const savePublish = (content, datePublish, hourPublish, userName, urlPhoto, date
 const saveUser = (idUser, nameUser, emailUser, photo, frontPageURL, interests, location, socialNetwork) => {
 
     return setDoc(doc(db, "users", idUser), {
-        idUser,
+        idUser: idUser,
         nameUser,
         emailUser,
         photoURL: photo,

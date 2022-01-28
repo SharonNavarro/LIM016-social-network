@@ -283,49 +283,21 @@ export const editBioProfile = () => {
 
 export const UserNotExistCreate = async(idUser, name, email, photo) => {
 
-<<<<<<< HEAD
-    let photo;
-
     localStorage.setItem("IdUsuario", idUser);
     localStorage.setItem("Nombre", name);
     localStorage.setItem("Correo", email);
     localStorage.setItem("photoURL", photo);
-=======
-   localStorage.setItem("IdUsuario", idUser);
-   localStorage.setItem("Nombre", name);
-   localStorage.setItem("Correo", email);
-   localStorage.setItem("photoURL", photo);
-   
-   const idUsu = localStorage.getItem("IdUsuario");
-   const disName = localStorage.getItem("Nombre");
-   const emailUsu = localStorage.getItem("Correo");
-   const photoURLUsu = localStorage.getItem("photoURL");
-
-   const querySnapshote = await queryEmailUnique(emailUsu);
-   if (querySnapshote.size > 0) {
-     console.log("usuario registrado");
-   } else {
-      let interestsUsu = "",
-      frontPageURLUsu = "",
-      locationUsu = "",
-      socialNetworkUsu = "",
-      followed = [];
-     await saveUser(idUsu, disName, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu, followed);
-     console.log("datos guardados");
-     window.location.reload();
-   }
->>>>>>> 7b0e0d2f7dddcc17bd0725a7701f158e550fe930
 
     const idUsu = localStorage.getItem("IdUsuario");
     const disName = localStorage.getItem("Nombre");
     const emailUsu = localStorage.getItem("Correo");
+    const photoURLUsu = localStorage.getItem("photoURL");
 
     const querySnapshote = await queryEmailUnique(emailUsu);
     if (querySnapshote.size > 0) {
         console.log("usuario registrado");
     } else {
         let interestsUsu = "",
-            photoURLUsu = "",
             frontPageURLUsu = "",
             locationUsu = "",
             socialNetworkUsu = "",
@@ -334,6 +306,8 @@ export const UserNotExistCreate = async(idUser, name, email, photo) => {
         console.log("datos guardados");
         window.location.reload();
     }
+
+
 
 }
 

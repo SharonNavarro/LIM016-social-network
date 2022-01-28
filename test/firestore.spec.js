@@ -2,6 +2,7 @@ import { saveUser, savePublish, getUser, desFollow, getPublish, desHeart, desLik
 
 jest.mock('../src/firebase/config')
 
+
 describe('myFunction saveUser', () => {
     it('should return equal values of saveUser​', async() => {
         const result = await saveUser('WI8el6Vy4UfaBzvUq7nV8KpAiPJ3', 'Milagros', 'mili@gmail.com', 'htppp.mili.com', 'ww.mili.com', 'me gusta pasear', 'lima', 'facke')
@@ -19,7 +20,7 @@ describe('myFunction saveUser', () => {
     });
 });
 describe('myFunction saveUser', () => {
-    it('should return 8 values ​​for the number of elements', async() => {
+    it('should return 9 values ​​for the number of elements', async() => {
         const result = await saveUser('001', 'Milagros', 'mili@gmail.com', 'htppp.mili.com', 'ww.mili.com', 'me gusta pasear', 'lima', 'facke', 'werwtwttwet')
 
         expect((Object.keys(result)).length).toBe(9);
@@ -53,22 +54,6 @@ describe('myFunction savePublish', () => {
     });
 });
 
-/* describe('myFunction getUser', () => {
-    it('should return 8 values ​​for the number of elements', async() => {
-        const result = await getUser('WI8el6Vy4UfaBzvUq7nV8KpAiPJ3')
-
-        expect(result).toStrictEqual({
-            idUser: '00WI8el6Vy4UfaBzvUq7nV8KpAiPJ31',
-            nameUser: 'Milagros',
-            emailUser: 'mili@gmail.com',
-            photoURL: 'htppp.mili.com',
-            frontPageURL: 'ww.mili.com',
-            interests: 'me gusta pasear',
-            location: 'lima',
-            socialNetwork: 'facke'
-        })
-    });
-}); */
 
 describe('myFunction updatePublish', () => {
     it('should return value update ​of updatePublish', async() => {
@@ -76,6 +61,13 @@ describe('myFunction updatePublish', () => {
         expect(result).toStrictEqual({
             content: 'como estas',
         })
+    });
+});
+describe('myFunction updatePublish', () => {
+    it('should return 11 values ​​for the number of elements', async() => {
+        const result = updatePublish('00000001', 'como estas')
+        console.log("totalllllll", (Object.keys(result)).length);
+        //expect((Object.keys(result)).length).toBe();
     });
 });
 
@@ -148,7 +140,6 @@ describe('myFunction getPublish', () => {
 describe('myFunction inLikes', () => {
     it('should return value update ​of inLikes', async() => {
         const result = await inLikes('Xuyd4t6jshaad888x', '001')
-        console.log(result);
         expect(result).toStrictEqual({
             likesPost: ['001'],
 
@@ -158,7 +149,6 @@ describe('myFunction inLikes', () => {
 describe('myFunction desLikes', () => {
     it('should return value update ​of desLikes', async() => {
         const result = await desLikes('Xuyd4t6jshaad888x', '001')
-        console.log(result);
         expect(result).toStrictEqual({
             likesPost: [],
 
@@ -168,7 +158,6 @@ describe('myFunction desLikes', () => {
 describe('myFunction inHeart', () => {
     it('should return value update ​of inHeart', async() => {
         const result = await inHeart('Xuyd4t6jshaad888x', '001')
-        console.log(result);
         expect(result).toStrictEqual({
             hearts: ['001'],
 
@@ -178,7 +167,6 @@ describe('myFunction inHeart', () => {
 describe('myFunction desHeart', () => {
     it('should return value update ​of desHeart', async() => {
         const result = await desHeart('Xuyd4t6jshaad888x', '001')
-        console.log(result);
         expect(result).toStrictEqual({
             hearts: [],
 
@@ -189,7 +177,6 @@ describe('myFunction desHeart', () => {
 describe('myFunction inFollow', () => {
     it('should return value update ​of inFollow', async() => {
         const result = await inFollow('Xuyd4t6jshaad888x', '001')
-        console.log(result);
         expect(result).toStrictEqual({
             followed: ['001'],
 
@@ -199,7 +186,6 @@ describe('myFunction inFollow', () => {
 describe('myFunction desFollow', () => {
     it('should return value update ​of desFollow', async() => {
         const result = await desFollow('Xuyd4t6jshaad888x', '001')
-        console.log(result);
         expect(result).toStrictEqual({
             followed: [],
 
