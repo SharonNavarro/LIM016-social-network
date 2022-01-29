@@ -49,7 +49,7 @@ body .ulMenu {
     color: var(--txt-color);
 }
 
-body .containerAccount .userProfileBio {
+body .containerAccount .userProfileBio, .containerWriterAccount , .userProfile .nameUser{
     background: var(--bg-color);
     color: var(--txt-color);
 }
