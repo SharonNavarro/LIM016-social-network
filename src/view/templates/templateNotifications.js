@@ -10,7 +10,7 @@ export const templateNotifications = `
 
 `;
 
-export const templateNotificationHeart  =  `      
+export const templateNotificationHeart = `      
 
 <div class="containerNotifications heart"> 
     <div class="userProfileNotification">
@@ -23,7 +23,7 @@ export const templateNotificationHeart  =  `
 
 `;
 
-export const templateNotificationStar  =  `      
+export const templateNotificationStar = `      
 
 <div class="containerNotifications star"> 
     <div class="userProfileNotification">
@@ -36,7 +36,7 @@ export const templateNotificationStar  =  `
 
 `;
 
-export const templateNotificationComent  =  `      
+export const templateNotificationComent = `      
 
 <div class="containerNotifications coment"> 
     <div class="userProfileNotification">

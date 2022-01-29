@@ -1,8 +1,6 @@
 import { saveUser, savePublish, getUser, desFollow, getPublish, desHeart, desLikes, inHeart, inFollow, updatePublish, updateUserNamePost, inLikes } from '../src/firebase/firestore';
 
 jest.mock('../src/firebase/config')
-
-
 describe('myFunction saveUser', () => {
     it('should return equal values of saveUser​', async() => {
         const result = await saveUser('WI8el6Vy4UfaBzvUq7nV8KpAiPJ3', 'Milagros', 'mili@gmail.com', 'htppp.mili.com', 'ww.mili.com', 'me gusta pasear', 'lima', 'facke')
@@ -26,7 +24,6 @@ describe('myFunction saveUser', () => {
         expect((Object.keys(result)).length).toBe(9);
     });
 });
-
 
 describe('myFunction savePublish', () => {
     it('should return equal values of savePublish', () => {
@@ -54,7 +51,6 @@ describe('myFunction savePublish', () => {
     });
 });
 
-
 describe('myFunction updatePublish', () => {
     it('should return value update ​of updatePublish', async() => {
         const result = await updatePublish('00000001', 'como estas')
@@ -79,7 +75,6 @@ describe('myFunction updateUserNamePost', () => {
         })
     });
 });
-
 
 /* const inLikes = async(id, idUserLike) => await updateDoc(doc(db, "posts", id), {
     likesPost: arrayUnion(idUserLike),
@@ -165,7 +160,7 @@ describe('myFunction inHeart', () => {
     });
 });
 describe('myFunction desHeart', () => {
-    it('should return value update ​of desHeart', async() => {
+    it('should return value update of desHeart', async() => {
         const result = await desHeart('Xuyd4t6jshaad888x', '001')
         expect(result).toStrictEqual({
             hearts: [],
@@ -175,7 +170,7 @@ describe('myFunction desHeart', () => {
 });
 
 describe('myFunction inFollow', () => {
-    it('should return value update ​of inFollow', async() => {
+    it('should return value update of inFollow', async() => {
         const result = await inFollow('Xuyd4t6jshaad888x', '001')
         expect(result).toStrictEqual({
             followed: ['001'],
@@ -184,7 +179,7 @@ describe('myFunction inFollow', () => {
     });
 });
 describe('myFunction desFollow', () => {
-    it('should return value update ​of desFollow', async() => {
+    it('should return value update of desFollow', async() => {
         const result = await desFollow('Xuyd4t6jshaad888x', '001')
         expect(result).toStrictEqual({
             followed: [],
