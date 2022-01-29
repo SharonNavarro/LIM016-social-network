@@ -14,7 +14,9 @@
         "eslint": "eslint --ext .js src/ test/",
         "pretest": "npm run htmlhint && npm run eslint",
         "start": "serve src/",
-        "test": "jest --env=jsdom --coverage"
+        "test": "jest --env=jsdom --coverage",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
 
     },
     "devDependencies": {
