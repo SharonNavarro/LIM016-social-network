@@ -1,4 +1,4 @@
-# Netcoins: la red social para los apasionados de las Criptomonedas 
+# Netcoins: La red social para los apasionados de las Criptomonedas!!!
 ******************
 
 ### 1. Introducción 💹
@@ -20,7 +20,7 @@ Netcoins es una single-page responsive, la cual cuenta con 5 vistas. Permite a c
 * Vista Desktop 💻
 
   [![vista-Destopk.png](https://i.postimg.cc/wB9mvGkh/vista-Destopk.png)](https://postimg.cc/cv5HkT2H)
-[![Netcoins-Google-Chrome-25-01-2022-20-46-45-4.png](https://i.postimg.cc/ZRmwCbsw/Netcoins-Google-Chrome-25-01-2022-20-46-45-4.png)](https://postimg.cc/yJfmGHHR)
+
 
 ### 3. Definición del Producto 
 
