@@ -100,7 +100,6 @@ const templateViewAccountProfileUser = `
         </button>
     </div> `;
 
-
 const templateForInsideBio = (interests, locationBio, socialNetwork) => `
 
         <ul class="lista-datos"> 
@@ -108,7 +107,6 @@ const templateForInsideBio = (interests, locationBio, socialNetwork) => `
             <li><i class="icono fas fa-map-marker-alt"></i>Locación: ${locationBio} </li>
             <li><i class="icono fas fa-share-alt"></i>Redes sociales: ${socialNetwork}</li>
         </ul>`;
-
 
 export {
     templateViewAccount,

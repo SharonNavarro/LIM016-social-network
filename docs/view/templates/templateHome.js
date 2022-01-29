@@ -56,7 +56,6 @@ const templateHome = `
 
 `;
 
-
 const templatePublishes = (userName, urlPhoto, id, content, datePublish, hourPublish, contStars, iconStars, imagenAdd, iconHearts, contHearts) => `        
           
 <div class="containerPosts" >
