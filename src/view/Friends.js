@@ -82,10 +82,10 @@ export default () => {
             followed.forEach(async(el) => {
                 let query = await getUser(el);
                 nameUserFollow = query.data().nameUser;
-                let name = nameUserFollow.toLowerCase();
+                let name = nameUserFollow;
                 let photoFollow = query.data().photoURL;
 
-                if (name.includes(textSearch.value.toLowerCase())) {
+                if (name.toLowerCase().includes(textSearch.value.toLowerCase())) {
                     // arrayUsers.push(name)
                     templateSearchFollow += templateFriend(btnFollow.value, photoFollow, name);
                     containerAllFriends.innerHTML = templateSearchFollow;
