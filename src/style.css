@@ -2203,8 +2203,10 @@ select:focus {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    height: 1500px;
+    height: 100%;
     align-content: flex-start;
+    flex-direction: row ;
+    align-items: centers;
 }
 
 .myFriend {
