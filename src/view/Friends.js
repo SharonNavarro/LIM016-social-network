@@ -42,7 +42,7 @@ export default () => {
             const querySnapshot = await getUsers();
 
             querySnapshot.forEach((doc) => {
-                if (displayName == doc.data().nameUser) {
+                if (displayName === doc.data().nameUser) {
                     idUsuarioLogin = doc.data().idUser;
                     followed = doc.data().followed;
 
@@ -63,7 +63,7 @@ export default () => {
             photoURLFollow = query.data().photoURL;
 
             btnFollow.value = "Siguiendo";
-            if (btnFollow.value == "Siguiendo") {
+            if (btnFollow.value === "Siguiendo") {
                 templatePosts += templateFriend(btnFollow.value, photoURLFollow, nameUserFollow);
                 containerAllFriends.innerHTML = templatePosts;
             }

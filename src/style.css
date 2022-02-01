@@ -1563,6 +1563,7 @@ select:focus {
 .content {
     display: flex;
     flex-direction: column;
+    width: 100%;
     /* margin-top: 90px; */
 }
 
@@ -2204,6 +2205,8 @@ select:focus {
     justify-content: center;
     height: 100%;
     align-content: flex-start;
+    flex-direction: row ;
+    align-items: centers;
 }
 
 .myFriend {
