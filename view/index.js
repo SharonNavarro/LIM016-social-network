@@ -9,7 +9,7 @@ import Register from './Register.js';
 import Different from './404.js';
 import Favorite from './Favorite.js';
 import Notifications from './Notifications.js';
-import Menu from './Menu.js';
+import Menus from './Menus.js';
 
 const components = {
     Login: Login,
@@ -22,7 +22,7 @@ const components = {
     Notifications: Notifications,
     Favorite: Favorite,
     Different: Different,
-    Menu: Menu,
+    Menus: Menus,
 }
 
 export { components }
