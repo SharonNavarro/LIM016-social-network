@@ -30,7 +30,7 @@ export const changeTmp = (hash) => {
 
             sectionMain.innerHTML = "";
             containerHeader.innerHTML = "";
-            containerHeader.appendChild(components.Menu())
+            containerHeader.appendChild(components.Menus())
             sectionMain.appendChild(components[id]());
             break;
         default:
