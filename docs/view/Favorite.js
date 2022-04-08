@@ -54,7 +54,7 @@ export default () => {
             if (displayNameFavorite == doc.data().nameUser) {
               idUsuarioLogin = doc.data().idUser;
               followed = doc.data().followed;
-              console.log("aquyiiiiii", followed)
+              console.log(followed)
             }
           });
         }
@@ -122,12 +122,10 @@ export default () => {
               if (btn.value == "Seguir") {
                   btn.value = "Siguiendo"
                   inFollow(idUsuarioLogin, idUserPost).FieldValue;
-                  console.log("empezo a seguirlo");
                   await showPublishFavorite();
               } else {
                   btn.value = "Seguir"
                   desFollow(idUsuarioLogin, idUserPost).FieldValue;
-                  console.log("dejo de seguirlo");
                   await showPublishFavorite();
                 }
           })
@@ -138,12 +136,10 @@ export default () => {
               const idPost = e.target.dataset.id;
               if (e.target.classList.contains('paint')) {
                 desLikes(idPost, idUsuarioLogin).FieldValue;
-                console.log("se despinto");
                 await showPublishFavorite();
               } else {
                 inLikes(idPost, idUsuarioLogin).FieldValue;
-                e.target.classList.add('paint')
-                console.log("se pinto");
+                e.target.classList.add('paint');
                 await showPublishFavorite();
               }
             })

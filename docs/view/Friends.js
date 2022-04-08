@@ -51,7 +51,6 @@ export default () => {
         };
 
         let btnFollow = document.querySelectorAll(".btnFollows");
-        console.log(btnFollow);
         let templatePosts;
         let containerAllFriends = document.querySelector(".containerAllFriends");
 
@@ -90,10 +89,7 @@ export default () => {
                     templateSearchFollow += templateFriend(btnFollow.value, photoFollow, name);
                     containerAllFriends.innerHTML = templateSearchFollow;
                 }
-            })
-            console.log(textSearch.value.toLowerCase())
-                // console.log(arrayUsers)
-                // return arrayUsers;
+            });
         })
 
         const btnAllFollows = divElemt.querySelector("#allFollows");
@@ -102,13 +98,8 @@ export default () => {
             await showPFollowed();
         });
 
-
-        /*    const btnFollowe = divElemt.querySelectorAll(".btnFollows");
-           console.log(btnFollowe); */
-        console.log(btnFollow);
         btnFollow.forEach((btn) => {
             btn.addEventListener("click", () => {
-                console.log("dksndjksn")
 
                 /*    const getPost = await getPublish(btn.dataset.id)
                    const idUserPost = (getPost.data().idUser);

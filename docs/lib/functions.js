@@ -192,7 +192,7 @@ async function getUrlAccount(urlGetDescargaAccount) {
     let datePublish, hourPublish, dateOrderComplet;
     hourPublish = hoy.getHours() + ':' + hoy.getMinutes();
     datePublish = hoy.getDate() + '/' + (hoy.getMonth() + 1) + '/' + hoy.getFullYear();
-    dateOrderComplet = dateOrder.getTime();
+    dateOrderComplet = dateOrder.getTime(); 
     await savePublish(textPostAccount.value, datePublish, hourPublish, displayNameAccount, photoURLAccount, dateOrderComplet, emailAccount, useridAccount, urlGetDescargaAccount)
     formPublishAccount.reset();
     await showPublishAccount();
@@ -293,8 +293,8 @@ export const UserNotExistCreate = async(idUser, name, emailProvider, photo) => {
         let frontPageURLUsu = '';
         let locationUsu = '';
         let socialNetworkUsu = '';
-        let followed = [];
-        await saveUser(idUsu, disName, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu, followed);
+        // let followed = [];
+        await saveUser(idUsu, disName, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
         console.log('datos guardados');
         window.location.reload();
     }
@@ -319,10 +319,10 @@ export const UserNotExistCreateWithEmailAndPassword = async(idUser, email, name)
             frontPageURLUsu = '',
             locationUsu = '',
             socialNetworkUsu = '',
-            followed = [];
+            // followed = [];
         name = 'Usuario desconocido';
         await updateNameUser(name);
-        await saveUser(idUsu, name, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu, followed);
+        await saveUser(idUsu, name, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
         window.location.reload();
         console.log('datos guardados SIGN IN');
     }

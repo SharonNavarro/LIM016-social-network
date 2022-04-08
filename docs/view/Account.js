@@ -108,7 +108,6 @@ export default () => {
         socialNetwork = doc.data().socialNetwork;
 
         if (displayNameAccount == nameUserBio) {
-          console.log(displayNameAccount + " && " + nameUserBio )
 
           if (interests, locationBio, socialNetwork == "undefined" ) {
             interests = "";
@@ -199,11 +198,7 @@ export default () => {
 
 
     function uploadFile() {
-
-      console.log("entraaa");
       getFileAddAccount = getFile.files[0];
-      console.log("se obtiene", getFileAddAccount);
-
     }
 
      
@@ -213,12 +208,10 @@ export default () => {
         const idPost = e.target.dataset.id;
         if (e.target.classList.contains('paint')) {
           desLikes(idPost, idUsuarioLogin).FieldValue;
-          console.log("se despinto");
           await showPublishAccount();
         } else {
           inLikes(idPost, idUsuarioLogin).FieldValue;
           e.target.classList.add('paint')
-          console.log("se pinto");
           await showPublishAccount();
         }
       })

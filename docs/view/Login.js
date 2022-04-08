@@ -52,10 +52,6 @@ export default () => {
                 nameUserForSigIn = (user.displayName);
                 idUserForSignIn = (user.uid);
                 emailUserForSignIn = (user.email);
-                console.log(user.emailVerified);
-                console.log("idusuario de login", idUserForSignIn);
-
-                UserNotExistCreateWithEmailAndPassword(idUserForSignIn, emailUserForSignIn, nameUserForSigIn);
 
                 divElemt.querySelector("#inputUser").value = "";
                 divElemt.querySelector("#inputPassword").value = "";
@@ -65,12 +61,12 @@ export default () => {
 
                 } else {
                     console.log("correo registrado y verificado");
+                    UserNotExistCreateWithEmailAndPassword(idUserForSignIn, emailUserForSignIn, nameUserForSigIn);
                     window.location.hash = '#/Home';
                 }
 
             })
             .catch((error) => {
-                console.log(error);
                 const errorCode = error.code;
                 if (email.value === '' && password.value === '') {
                     addErrorMessage(inactiveEmailErrorMessage, 'Campo inválido.');
@@ -136,7 +132,6 @@ export default () => {
                 nameUserForTwitter = (user.user.displayName);
                 idUserForTwitter = (user.user.uid);
                 emailUserForTwitter = (user.user.email);
-                console.log("idusuario de login", idUserForTwitter);
 
                 UserNotExistCreate(idUserForTwitter, nameUserForTwitter, emailUserForTwitter);
 
@@ -144,7 +139,6 @@ export default () => {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorCode, errorMessage)
             })
 
     })
@@ -162,15 +156,12 @@ export default () => {
                 emailUsuario = (user.user.email);
                 idUsuario = (user.user.uid);
                 photoUserGoogle = (user.user.photoURL);
-                console.log("idusuario de login", idUsuario);
-
                 UserNotExistCreate(idUsuario, nombreUsuario, emailUsuario, photoUserGoogle);
 
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorCode, errorMessage)
             })
     })
 
@@ -193,7 +184,6 @@ export default () => {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode, errorMessage)
         })
     })
 

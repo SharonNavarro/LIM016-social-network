@@ -51,7 +51,6 @@ export default () => {
             nameUser.innerHTML = displayName;
             photoUser.src = photoURL;
             userid = user.uid;
-            //console.log("para la publicacion",userid);
             await showPublish();
             publishPosts(formPublish, miModalPublishVoid, btnReturn);
         }
@@ -64,14 +63,11 @@ export default () => {
         await getIdUsers();
         async function getIdUsers() {
             const querySnapshot = await getUsers();
-            console.log(querySnapshot);
-            console.log(displayName);
             querySnapshot.forEach((doc) => {
-                console.log(displayName);
                 if (displayName == doc.data().nameUser) {
                     idUsuarioLogin = doc.data().idUser;
                     followed = doc.data().followed;
-                    console.log("aquyiiiiii", followed)
+                    console.log(followed)
                 }
             });
         }
@@ -136,10 +132,7 @@ export default () => {
         getFile.addEventListener("change", uploadFile)
 
         function uploadFile() {
-
-            console.log("entraaa");
             getFileAdd = getFile.files[0];
-            console.log("se obtiene", getFileAdd);
 
         }
 
@@ -152,12 +145,10 @@ export default () => {
                 if (btn.value == "Seguir") {
                     btn.value = "Siguiendo"
                     inFollow(idUsuarioLogin, idUserPost).FieldValue;
-                    console.log("empezo a seguirlo");
                     await showPublish();
                 } else {
                     btn.value = "Seguir"
                     desFollow(idUsuarioLogin, idUserPost).FieldValue;
-                    console.log("dejo de seguirlo");
                     await showPublish();
                 }
             })
@@ -168,12 +159,10 @@ export default () => {
                 const idPost = e.target.dataset.id;
                 if (e.target.classList.contains('paint')) {
                     desLikes(idPost, idUsuarioLogin).FieldValue;
-                    console.log("se despinto");
                     await showPublish();
                 } else {
                     inLikes(idPost, idUsuarioLogin).FieldValue;
                     e.target.classList.add('paint')
-                    console.log("se pinto");
                     await showPublish();
                 }
             })
