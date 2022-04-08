@@ -48,7 +48,7 @@ const templateViewAccount = `
                     <div class="userProfile">
                     <img id="photoUser">
                     <div>
-                        <p class="nameUserAccount"><bold id="nameUser"></bold></p>
+                        <p class="nameUserAccount" id="nameUser"><bold></bold></p>
                     </div>
                     </div> 
 
