@@ -55,19 +55,16 @@ export default () => {
                 console.log(user.emailVerified);
                 console.log("idusuario de login", idUserForSignIn);
 
-                UserNotExistCreateWithEmailAndPassword(idUserForSignIn, emailUserForSignIn, nameUserForSigIn);
-
                 divElemt.querySelector("#inputUser").value = "";
                 divElemt.querySelector("#inputPassword").value = "";
 
                 if (user.emailVerified === false) {
                     console.log("correo no verificado");
-
                 } else {
                     console.log("correo registrado y verificado");
                     window.location.hash = '#/Home';
+                    UserNotExistCreateWithEmailAndPassword(idUserForSignIn, emailUserForSignIn, nameUserForSigIn);
                 }
-
             })
             .catch((error) => {
                 console.log(error);

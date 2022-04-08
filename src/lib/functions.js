@@ -320,7 +320,7 @@ export const UserNotExistCreateWithEmailAndPassword = async(idUser, email, name)
             locationUsu = '',
             socialNetworkUsu = '',
             followed = [];
-        name = 'Usuario desconocido';
+        name = 'UserHero';
         await updateNameUser(name);
         await saveUser(idUsu, name, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu, followed);
         window.location.reload();

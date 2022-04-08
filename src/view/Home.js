@@ -64,14 +64,11 @@ export default () => {
         await getIdUsers();
         async function getIdUsers() {
             const querySnapshot = await getUsers();
-            console.log(querySnapshot);
-            console.log(displayName);
             querySnapshot.forEach((doc) => {
-                console.log(displayName);
                 if (displayName == doc.data().nameUser) {
                     idUsuarioLogin = doc.data().idUser;
                     followed = doc.data().followed;
-                    console.log("aquyiiiiii", followed)
+                    console.log(followed)
                 }
             });
         }
