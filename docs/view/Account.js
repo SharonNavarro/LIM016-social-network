@@ -60,6 +60,7 @@ export default () => {
       photoURLAccount = user.photoURL;
       emailAccount = user.email;
       nameUser.innerHTML = displayNameAccount;
+      console.log(nameUser)
       name.innerHTML = displayNameAccount;
       photoUser.src = photoURLAccount;  
       photoPerfil.src = photoURLAccount;     
