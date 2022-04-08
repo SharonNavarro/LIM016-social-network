@@ -302,7 +302,7 @@ export const UserNotExistCreate = async(idUser, name, emailProvider, photo) => {
 
 // Funcion que registra al usuario si no lo a estado previamente, solo con correo y contraseña
 
-export const UserNotExistCreateWithEmailAndPassword = async(idUser, email, name) => {
+export const UserNotExistCreateWithEmailAndPassword = async(idUser, email) => {
 
     localStorage.setItem('IdUsuario', idUser);
     localStorage.setItem('Correo', email);
@@ -320,7 +320,7 @@ export const UserNotExistCreateWithEmailAndPassword = async(idUser, email, name)
             locationUsu = '',
             socialNetworkUsu = '',
             // followed = [];
-        name = 'Usuario desconocido';
+        name = 'UserHero01';
         await updateNameUser(name);
         await saveUser(idUsu, name, emailUsu, photoURLUsu, frontPageURLUsu, interestsUsu, locationUsu, socialNetworkUsu);
         window.location.reload();

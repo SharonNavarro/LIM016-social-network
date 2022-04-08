@@ -40,8 +40,6 @@ export default () => {
     miModalPublishVoid = divElemt.querySelector("#miModalPublishVoid");
     btnReturn = divElemt.querySelector("#btnReturn");
 
-
-
     userState(async(user) => {
 
         if (user) {

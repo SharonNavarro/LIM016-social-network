@@ -49,7 +49,7 @@ export default () => {
         signIn(email.value, password.value)
             .then((userCredential) => {
                 const user = userCredential.user;
-                nameUserForSigIn = (user.displayName);
+                // nameUserForSigIn = (user.displayName);
                 idUserForSignIn = (user.uid);
                 emailUserForSignIn = (user.email);
 
@@ -61,7 +61,7 @@ export default () => {
 
                 } else {
                     console.log("correo registrado y verificado");
-                    UserNotExistCreateWithEmailAndPassword(idUserForSignIn, emailUserForSignIn, nameUserForSigIn);
+                    UserNotExistCreateWithEmailAndPassword(idUserForSignIn, emailUserForSignIn);
                     window.location.hash = '#/Home';
                 }
 
