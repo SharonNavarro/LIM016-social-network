@@ -44,7 +44,7 @@ export default () => {
   userProfile.innerHTML = viewAccountProfileUser;
 
   const photoUser = divElemt.querySelector('#photoUser');
-  const nameUser = divElemt.querySelector('.nameUser');
+  const nameUser = divElemt.querySelector('#nameUser');
   const photoPerfil = divElemt.querySelector('.photoPerfil');
   const name = divElemt.querySelector('.name');
 
