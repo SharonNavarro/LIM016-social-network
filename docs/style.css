@@ -64,17 +64,19 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
 }
 
 #containerFooter {
     background-color: black;
+    width: 100vw;
 }
 
 .containerLogin .sectionLogin {
-    /* width: 0%; */
     height: 730px;
     background: white;
-    /* padding: 5px; */
+    height: 100vh;
 }
 
 .containerLogin .sectionLogin .login {
@@ -106,6 +108,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 700px;
 }
 
 .containerInputEmail,
@@ -1975,11 +1978,6 @@ select:focus {
     padding-right: 9px;
     cursor: pointer;
 }
-
-.containerLogin {
-    height: 90vh;
-}
-
 
 /*-------------MEDIA QUERIES----------------*/
 
