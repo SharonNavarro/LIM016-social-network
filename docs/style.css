@@ -1307,6 +1307,10 @@ select:focus {
     z-index: -2;
 }
 
+.classViewRegister {
+    width: 100vw;
+    height: 100vh;
+}
 
 /* .show {
     pointer-events: auto;
